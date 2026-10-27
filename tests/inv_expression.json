@@ -1,0 +1,8 @@
+{
+  "request_id": "TEST-INV-1",
+  "name": "dd2_g5__inv_1",
+  "inputs": ["A"],
+  "output": "Y",
+  "expression": "!A",
+  "sizing": "hd"
+}

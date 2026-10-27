@@ -1,4 +1,4 @@
-# <Project 1, Option N: tool name>
+# <Project 1, Option 1: From a Boolean Function to an HD Cell>
 
 ## 1. Group
 <names and student IDs> · Option <1, 2 or 3> · AI used as <a development aid | an agentic system>
