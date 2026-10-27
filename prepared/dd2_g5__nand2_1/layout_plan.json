@@ -1,0 +1,1596 @@
+{
+  "schema": "dd2.cp1.layout-plan.v1",
+  "units": "um",
+  "name": "dd2_g5__nand2_1",
+  "grid_um": 0.005,
+  "input": {
+    "name": "dd2_g5__nand2_1",
+    "inputs": [
+      "A",
+      "B"
+    ],
+    "output": "Y",
+    "devices": [
+      {
+        "id": "N1",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "A",
+        "source": "X",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15
+      },
+      {
+        "id": "N2",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "B",
+        "source": "VGND",
+        "drain": "X",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15
+      },
+      {
+        "id": "P1",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "VPWR",
+        "drain": "Y",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15
+      },
+      {
+        "id": "P2",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "B",
+        "source": "VPWR",
+        "drain": "Y",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15
+      }
+    ],
+    "euler_paths": {
+      "nmos": {
+        "devices": [
+          "N1",
+          "N2"
+        ],
+        "nodes": [
+          "Y",
+          "X",
+          "VGND"
+        ]
+      },
+      "pmos": {
+        "devices": [
+          "P1",
+          "P2"
+        ],
+        "nodes": [
+          "Y",
+          "VPWR",
+          "Y"
+        ]
+      }
+    },
+    "truth_table": "0x7",
+    "sizing": "hd",
+    "request_id": "TEST-NAND-1"
+  },
+  "dimensions": {
+    "gate_length_um": 0.15,
+    "gate_pitch_um": 0.64,
+    "pitch_lower_bounds_um": {
+      "poly_stripe_spacing": 0.36,
+      "diffusion_contact_between_gates": 0.42000000000000004,
+      "poly_contact_landing_spacing": 0.54,
+      "li1_pin_spacing": 0.5,
+      "separate_npc_openings": 0.64
+    },
+    "dominant_pitch_constraint": "separate_npc_openings",
+    "li1_landing_um": 0.33,
+    "poly_landing_um": 0.33,
+    "npc_landing_um": 0.37,
+    "met1_landing_um": 0.29,
+    "diffusion_end_extension_um": 0.32,
+    "side_margin_um": 0.465,
+    "end_extension_lower_bounds_um": {
+      "diffusion_extension": 0.25,
+      "contact_fit": 0.28,
+      "end_contact_li1_spacing": 0.32
+    },
+    "active_x_um": [
+      0.465,
+      1.895
+    ],
+    "gate_x_um": [
+      0.86,
+      1.5
+    ],
+    "diffusion_node_x_um": [
+      0.61,
+      1.18,
+      1.75
+    ],
+    "raw_width_um": 2.36,
+    "minimum_width_sites": 6,
+    "formulas": {
+      "pitch": "snap_up(max(poly stripe, contacted diffusion gap, poly landing, li1 pin, NPC bounds))",
+      "end_extension": "max(poly.7, contact fit, contact_offset + (li1_landing + li1_space - L)/2)",
+      "side_margin": "implant enclosure + li1 wire width + li1 spacing; conservative routing policy",
+      "raw_width": "2*side_margin + 2*end_extension + L + (gate_count-1)*pitch",
+      "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
+    },
+    "width_sites": 6,
+    "cell_width_um": 2.76,
+    "cell_height_um": 2.72,
+    "routing_retries": [],
+    "rule_values_and_sources": {
+      "grid": {
+        "value": 0.005,
+        "source": "Instructor given/plan_hd.json grid; Tutorial 3 section 4.1 and cells.py GRID"
+      },
+      "poly_min_width": {
+        "value": 0.15,
+        "source": "poly.1a; installed sky130A.tech line 4094, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "poly_space": {
+        "value": 0.21,
+        "source": "poly.2; installed sky130A.tech line 4095, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "diff_end_extension": {
+        "value": 0.25,
+        "source": "poly.7; installed sky130A.tech line 4103, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "poly_endcap": {
+        "value": 0.13,
+        "source": "poly.8; installed sky130A.tech line 4108, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "channel_min_width": {
+        "value": 0.36,
+        "source": "difftap.2b inside areaid.sc; installed sky130A.tech line 4513, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "implant_enclosure": {
+        "value": 0.125,
+        "source": "Tutorial 3 cells.py implant expansion 0.125; SKY130 n/psd.5a; Magic does not verify these shapes as drawn"
+      },
+      "licon_size": {
+        "value": 0.17,
+        "source": "licon.1; installed sky130A.tech line 4181, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "licon_diff_enclosure": {
+        "value": 0.06,
+        "source": "licon.5c; use this on all four sides conservatively; installed sky130A.tech line 4244, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "licon_poly_enclosure": {
+        "value": 0.08,
+        "source": "licon.8a; use this on all four sides conservatively; installed sky130A.tech line 4289, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "licon_gate_space": {
+        "value": 0.05,
+        "source": "Installed sky130A.tech lines 4215-4216: standard-cell contact-to-gate spacing 50 nm"
+      },
+      "licon_npc_enclosure": {
+        "value": 0.1,
+        "source": "Installed sky130A.tech line 4175: NPC generated around poly contacts with 0.1 um growth; explicit coverage required by project"
+      },
+      "npc_space": {
+        "value": 0.27,
+        "source": "SKY130 manual npc.2 = 0.27 um; Tutorial 3 section 4.1 explains drawn NPC is not checked by Magic"
+      },
+      "li_width": {
+        "value": 0.17,
+        "source": "li.1; installed sky130A.tech line 4299, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "li_space": {
+        "value": 0.17,
+        "source": "li.3; installed sky130A.tech line 4303, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "li_contact_enclosure": {
+        "value": 0.08,
+        "source": "li.5; use this on all four sides conservatively; installed sky130A.tech line 4315, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "li_min_area": {
+        "value": 0.0561,
+        "source": "li.6; value in um^2; installed sky130A.tech line 4321, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "mcon_size": {
+        "value": 0.17,
+        "source": "ct.1; installed sky130A.tech line 4331, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "met1_contact_enclosure": {
+        "value": 0.06,
+        "source": "m1.5; conservative on all four sides; installed sky130A.tech line 4347, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      },
+      "met1_min_area": {
+        "value": 0.083,
+        "source": "m1.6; value in um^2; installed sky130A.tech line 4342, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+      }
+    },
+    "frame_source": "C:\\Users\\Hassan\\Documents\\Codex\\2026-10-26\\new-chat\\work\\instructor\\project_pack\\DD2_Project1_student_pack\\given\\plan_hd.json",
+    "frame_sha256": "d22bd12109df202fa34c590c2402030e2b38952a6962b806499f2ed3aa2a11df"
+  },
+  "geometry": {
+    "width_um": 2.76,
+    "width_sites": 6,
+    "height_um": 2.72,
+    "shapes": [
+      {
+        "layer": "boundary",
+        "box": [
+          0.0,
+          0.0,
+          2.76,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          236,
+          0
+        ]
+      },
+      {
+        "layer": "areaid_sc",
+        "box": [
+          0.0,
+          0.0,
+          2.76,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          81,
+          4
+        ]
+      },
+      {
+        "layer": "nwell",
+        "box": [
+          -0.19,
+          1.305,
+          2.95,
+          2.91
+        ],
+        "net": null,
+        "gds": [
+          64,
+          20
+        ]
+      },
+      {
+        "layer": "nsdm",
+        "box": [
+          0.0,
+          -0.19,
+          2.76,
+          1.015
+        ],
+        "net": null,
+        "gds": [
+          93,
+          44
+        ]
+      },
+      {
+        "layer": "psdm",
+        "box": [
+          0.0,
+          1.355,
+          2.76,
+          2.91
+        ],
+        "net": null,
+        "gds": [
+          94,
+          20
+        ]
+      },
+      {
+        "layer": "hvtp",
+        "box": [
+          0.0,
+          1.25,
+          2.76,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          78,
+          44
+        ]
+      },
+      {
+        "layer": "met1",
+        "box": [
+          0.0,
+          -0.24,
+          2.76,
+          0.24
+        ],
+        "net": "VGND",
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.605,
+          -0.085,
+          0.775,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.065,
+          -0.085,
+          1.235,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.525,
+          -0.085,
+          1.695,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.985,
+          -0.085,
+          2.155,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.445,
+          -0.085,
+          2.615,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "met1",
+        "box": [
+          0.0,
+          2.48,
+          2.76,
+          2.96
+        ],
+        "net": "VPWR",
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.605,
+          2.635,
+          0.775,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.065,
+          2.635,
+          1.235,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.525,
+          2.635,
+          1.695,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.985,
+          2.635,
+          2.155,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.445,
+          2.635,
+          2.615,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.465,
+          0.235,
+          1.895,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.525,
+          0.575,
+          0.695,
+          0.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.665,
+          0.335,
+          1.835,
+          0.505
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.465,
+          1.485,
+          1.895,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.525,
+          1.575,
+          0.695,
+          1.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.095,
+          2.215,
+          1.265,
+          2.385
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.665,
+          1.575,
+          1.835,
+          1.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.785,
+          0.105,
+          0.935,
+          2.615
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.695,
+          0.995,
+          1.025,
+          1.325
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.775,
+          1.075,
+          0.945,
+          1.245
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "npc",
+        "box": [
+          0.675,
+          0.975,
+          1.045,
+          1.345
+        ],
+        "net": null,
+        "gds": [
+          95,
+          20
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.775,
+          1.075,
+          0.945,
+          1.245
+        ],
+        "net": "A",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.425,
+          0.105,
+          1.575,
+          2.615
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.335,
+          0.995,
+          1.665,
+          1.325
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.415,
+          1.075,
+          1.585,
+          1.245
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "npc",
+        "box": [
+          1.315,
+          0.975,
+          1.685,
+          1.345
+        ],
+        "net": null,
+        "gds": [
+          95,
+          20
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          1.415,
+          1.075,
+          1.585,
+          1.245
+        ],
+        "net": "B",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          2.34,
+          1.075,
+          2.51,
+          1.245
+        ],
+        "net": "Y",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "met1_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          68,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "met1_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          68,
+          16
+        ]
+      },
+      {
+        "layer": "vpb_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPB",
+        "gds": [
+          64,
+          16
+        ]
+      },
+      {
+        "layer": "vnb_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VNB",
+        "gds": [
+          122,
+          16
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          0.0,
+          -0.085,
+          2.76,
+          0.085
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          1.585,
+          0.085,
+          1.915,
+          0.585
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          1.015,
+          2.135,
+          1.345,
+          2.635
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          0.0,
+          2.635,
+          2.76,
+          2.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.445,
+          0.495,
+          0.775,
+          0.655
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.355,
+          0.655,
+          0.775,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.26,
+          0.995,
+          2.59,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.355,
+          0.825,
+          0.525,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.355,
+          1.495,
+          0.775,
+          1.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.585,
+          1.495,
+          1.915,
+          1.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.335,
+          1.325,
+          2.505,
+          1.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.355,
+          1.575,
+          2.505,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.445,
+          1.665,
+          2.505,
+          1.745
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.445,
+          1.745,
+          0.775,
+          1.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.585,
+          1.745,
+          1.915,
+          1.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "A",
+        "box": [
+          0.695,
+          0.995,
+          1.025,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B",
+        "box": [
+          1.335,
+          0.995,
+          1.665,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      }
+    ],
+    "terminals": {
+      "Y": [
+        [
+          0.61,
+          0.66
+        ],
+        [
+          0.61,
+          1.66
+        ],
+        [
+          1.75,
+          1.66
+        ],
+        [
+          2.425,
+          1.16
+        ]
+      ],
+      "VGND": [
+        [
+          1.75,
+          0.42
+        ],
+        [
+          1.75,
+          0.0
+        ]
+      ],
+      "VPWR": [
+        [
+          1.18,
+          2.3
+        ],
+        [
+          1.18,
+          2.7199999999999998
+        ]
+      ],
+      "A": [
+        [
+          0.86,
+          1.16
+        ]
+      ],
+      "B": [
+        [
+          1.5,
+          1.16
+        ]
+      ]
+    },
+    "contacts": [
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          0.23,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          0.6900000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          1.1500000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          1.61,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          2.0700000000000003,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          2.5300000000000002,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          0.23,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          0.6900000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          1.1500000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          1.61,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          2.0700000000000003,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          2.5300000000000002,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          0.61,
+          0.66
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "VGND",
+        "point_um": [
+          1.75,
+          0.42
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          0.61,
+          1.66
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "VPWR",
+        "point_um": [
+          1.18,
+          2.3
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          1.75,
+          1.66
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "poly",
+        "net": "A",
+        "point_um": [
+          0.86,
+          1.16
+        ]
+      },
+      {
+        "type": "poly",
+        "net": "B",
+        "point_um": [
+          1.5,
+          1.16
+        ]
+      }
+    ],
+    "devices": [
+      {
+        "id": "N1",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "A",
+        "source": "X",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "gate_x_um": 0.86,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "left_net": "Y",
+        "right_net": "X",
+        "diffusion_edge_distances_um": {
+          "left": 0.32,
+          "right": 0.96
+        }
+      },
+      {
+        "id": "N2",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "B",
+        "source": "VGND",
+        "drain": "X",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "gate_x_um": 1.5,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "left_net": "X",
+        "right_net": "VGND",
+        "diffusion_edge_distances_um": {
+          "left": 0.96,
+          "right": 0.32
+        }
+      },
+      {
+        "id": "P1",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "VPWR",
+        "drain": "Y",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "gate_x_um": 0.86,
+        "diffusion_y_um": [
+          1.4849999999999999,
+          2.485
+        ],
+        "left_net": "Y",
+        "right_net": "VPWR",
+        "diffusion_edge_distances_um": {
+          "left": 0.32,
+          "right": 0.96
+        }
+      },
+      {
+        "id": "P2",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "B",
+        "source": "VPWR",
+        "drain": "Y",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "gate_x_um": 1.5,
+        "diffusion_y_um": [
+          1.4849999999999999,
+          2.485
+        ],
+        "left_net": "VPWR",
+        "right_net": "Y",
+        "diffusion_edge_distances_um": {
+          "left": 0.96,
+          "right": 0.32
+        }
+      }
+    ],
+    "output_pin_um": [
+      2.425,
+      1.16
+    ],
+    "gate_contact_y_um": 1.16,
+    "supply_pin_x_um": 0.23,
+    "routes": [
+      {
+        "net": "VPWR",
+        "points_um": [
+          [
+            1.18,
+            2.3
+          ],
+          [
+            1.18,
+            2.72
+          ]
+        ]
+      },
+      {
+        "net": "VGND",
+        "points_um": [
+          [
+            1.76,
+            0.42
+          ],
+          [
+            1.76,
+            0.0
+          ]
+        ]
+      },
+      {
+        "net": "Y",
+        "points_um": [
+          [
+            0.6,
+            0.66
+          ],
+          [
+            0.6,
+            0.74
+          ],
+          [
+            0.44,
+            0.74
+          ],
+          [
+            0.44,
+            1.58
+          ],
+          [
+            0.6,
+            1.58
+          ],
+          [
+            0.6,
+            1.66
+          ]
+        ]
+      },
+      {
+        "net": "Y",
+        "points_um": [
+          [
+            0.6,
+            1.66
+          ],
+          [
+            1.76,
+            1.66
+          ]
+        ]
+      },
+      {
+        "net": "Y",
+        "points_um": [
+          [
+            1.76,
+            1.66
+          ],
+          [
+            2.42,
+            1.66
+          ],
+          [
+            2.42,
+            1.16
+          ]
+        ]
+      }
+    ],
+    "li1_notch_fill_added_area_um2": {
+      "VGND": 0.0272,
+      "VPWR": 0.0272,
+      "Y": 0.0,
+      "A": 0.0,
+      "B": 0.0
+    }
+  },
+  "labels": [
+    {
+      "text": "VPWR",
+      "position_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "gds": [
+        68,
+        5
+      ]
+    },
+    {
+      "text": "VPWR",
+      "position_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "VGND",
+      "position_um": [
+        0.23,
+        0.0
+      ],
+      "gds": [
+        68,
+        5
+      ]
+    },
+    {
+      "text": "VGND",
+      "position_um": [
+        0.23,
+        0.0
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "A",
+      "position_um": [
+        0.86,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "B",
+      "position_um": [
+        1.5,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "Y",
+      "position_um": [
+        2.425,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "VPB",
+      "position_um": [
+        0.23,
+        2.72
+      ],
+      "gds": [
+        64,
+        5
+      ]
+    },
+    {
+      "text": "VNB",
+      "position_um": [
+        0.23,
+        0
+      ],
+      "gds": [
+        64,
+        59
+      ]
+    }
+  ],
+  "status": "prepared_unverified"
+}
