@@ -1,0 +1,21 @@
+{
+  "repository": "C:\\DD2_Project_1",
+  "reader_sha256": "3dc6d41ab4cccece29e2c367d30348f2ae3d5a4c23a0d09d30f5e0ec082b63e4",
+  "tests": [
+    {
+      "source": "C:\\DD2_Project_1\\tests\\inv_expression.json",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "source": "C:\\DD2_Project_1\\tests\\nand2_table.json",
+      "exit_code": 0,
+      "status": "pass"
+    },
+    {
+      "source": "C:\\DD2_Project_1\\tests\\broken\\bad_request.json",
+      "exit_code": 1,
+      "status": "fail"
+    }
+  ]
+}

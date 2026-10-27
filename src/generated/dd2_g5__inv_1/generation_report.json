@@ -1,0 +1,28 @@
+{
+  "status": "generated_unverified",
+  "prepared_plan_sha256": "a17b45b8c6786ecf6746e2b80c1f63e55039a29f50c50b04a8a26fcb9c3acac1",
+  "gds_sha256": "24159667465f0d7e78ac20f03f12f7dbcfa210a1519ec8e838be230154fd8f81",
+  "gdsfactory_version": "9.51.0",
+  "klayout_version": "0.30.12",
+  "tutorial_source": {
+    "root": "C:\\Users\\Hassan\\Documents\\Codex\\2026-10-26\\new-chat\\work\\instructor\\tutorial3\\student",
+    "cells_sha256": "70aa336657bfe7975a56d1b25f3aedbfd3692f3bcda7a9e872a35c740d858983",
+    "plan_sha256": "223c3e29691a0781f50c2ebd78679003c3d8cb7e76e34109a5c07b5389981365",
+    "python_packages": {
+      "gdsfactory": "9.51.0",
+      "klayout": "0.30.12",
+      "matplotlib": "3.11.2"
+    },
+    "reused_function": "cells.py::rect"
+  },
+  "preparation_performed_here": false,
+  "checks_not_implied": [
+    "DRC",
+    "LVS",
+    "RC-LVS",
+    "functional simulation",
+    "HD abutment"
+  ],
+  "png_sha256": "103bd4009ac14880ffe5ef2e1982a62c8361d5612c7feaf97645dbe781f430d6",
+  "preview_source": "cell.gds read back with KLayout"
+}

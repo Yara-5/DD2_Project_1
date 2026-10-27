@@ -1,0 +1,35 @@
+{
+  "source_verify_sha256": "86af6b7054586a23eae4b39d3b38fd6c996fdf886c4053ad5cac09853757198e",
+  "instructor_checks_modified": false,
+  "image": "dd2-project1-tools",
+  "cells": {
+    "dd2_g5__inv_1": {
+      "isolated_core_drc_count": 3,
+      "tapped_context_drc_count": 0,
+      "schematic_lvs_passed": true,
+      "rc_components": {
+        "resistors": 13,
+        "capacitors": 23
+      },
+      "rc_lvs_passed": true,
+      "installed_reference_lvs_passed": true,
+      "passed": true,
+      "verified_gds_sha256": "24159667465f0d7e78ac20f03f12f7dbcfa210a1519ec8e838be230154fd8f81"
+    },
+    "dd2_g5__nand2_1": {
+      "isolated_core_drc_count": 4,
+      "tapped_context_drc_count": 0,
+      "schematic_lvs_passed": true,
+      "rc_components": {
+        "resistors": 24,
+        "capacitors": 38
+      },
+      "rc_lvs_passed": true,
+      "installed_reference_lvs_passed": true,
+      "passed": true,
+      "verified_gds_sha256": "7d4b5273531270c913cd2938d37c7a6dcf785f502925554053f0b4c65ef57ac9"
+    }
+  },
+  "passed": true,
+  "fixed_ngspice_stress_passed": true
+}

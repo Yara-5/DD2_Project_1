@@ -1,0 +1,210 @@
+{
+  "source": "/home/hassan/work/pdks/ciel/sky130/versions/dd7771c384ed36b91a25e9f8b314355fc26561be/sky130A/libs.tech/magic/sky130A.tech",
+  "sha256": "94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56",
+  "evidence": {
+    "poly.1a": [
+      {
+        "line": 4094,
+        "text": "\n width allpoly,polyfill 150 \"poly width < %d (poly.1a)\""
+      },
+      {
+        "line": 4578,
+        "text": "  # NOTE: u/xhrpoly resistor requires discrete widths 0.35, 0.69, ... up to 1.27.\n  width xhrpoly 350 \"xhrpoly resistor width < %d (P+ poly.1a)\""
+      },
+      {
+        "line": 4579,
+        "text": "  width xhrpoly 350 \"xhrpoly resistor width < %d (P+ poly.1a)\"\n  width uhrpoly 350 \"uhrpoly resistor width < %d (P+ poly.1a)\""
+      }
+    ],
+    "poly.2)": [
+      {
+        "line": 4095,
+        "text": " width allpoly,polyfill 150 \"poly width < %d (poly.1a)\"\n spacing allpoly,polyfill allpoly,polyfill 210 touching_ok \"poly spacing < %d (poly.2)\""
+      },
+      {
+        "line": 4114,
+        "text": " spacing xhrpoly,uhrpoly,xpc xhrpoly,uhrpoly,xpc 210 touching_illegal \\\n\t\"Distance between precision resistors < %d (poly.2)\""
+      }
+    ],
+    "poly.7)": [
+      {
+        "line": 4103,
+        "text": "\t\"poly resistor spacing to N-tap < %d (poly.9)\"\n overhang *ndiff,rndiff nfet,scnfet,npd,npass,nsonos 250 \"N-Diffusion overhang of nFET < %d (poly.7)\""
+      },
+      {
+        "line": 4105,
+        "text": " overhang *mvndiff,mvrndiff mvnfet,mvnnfet,nnfet 250 \\\n\t\"N-Diffusion overhang of nFET < %d (poly.7)\""
+      },
+      {
+        "line": 4106,
+        "text": "\t\"N-Diffusion overhang of nFET < %d (poly.7)\"\n overhang *pdiff,rpdiff pfet,scpfet,ppu 250 \"P-Diffusion overhang of pmos < %d (poly.7)\""
+      },
+      {
+        "line": 4107,
+        "text": " overhang *pdiff,rpdiff pfet,scpfet,ppu 250 \"P-Diffusion overhang of pmos < %d (poly.7)\"\n overhang *mvpdiff,mvrpdiff mvpfet,mvpfetesd 250 \"P-Diffusion overhang of pmos < %d (poly.7)\""
+      }
+    ],
+    "poly.8)": [
+      {
+        "line": 4108,
+        "text": " overhang *mvpdiff,mvrpdiff mvpfet,mvpfetesd 250 \"P-Diffusion overhang of pmos < %d (poly.7)\"\n overhang *poly allfetsstd,allfetsspecial 130 \"poly overhang of transistor < %d (poly.8)\""
+      },
+      {
+        "line": 4109,
+        "text": " overhang *poly allfetsstd,allfetsspecial 130 \"poly overhang of transistor < %d (poly.8)\"\n overhang *poly allfetscore 110 \"poly overhang of SRAM core transistor < %d (poly.8)\""
+      }
+    ],
+    "licon.1)": [
+      {
+        "line": 4181,
+        "text": "\n width ndc/li 170 \"N-diffusion contact width < %d (licon.1)\""
+      },
+      {
+        "line": 4182,
+        "text": " width ndc/li 170 \"N-diffusion contact width < %d (licon.1)\"\n width nsc/li 170 \"N-tap contact width     < %d (licon.1)\""
+      },
+      {
+        "line": 4183,
+        "text": " width nsc/li 170 \"N-tap contact width     < %d (licon.1)\"\n width pdc/li 170 \"P-diffusion contact width < %d (licon.1)\""
+      },
+      {
+        "line": 4184,
+        "text": " width pdc/li 170 \"P-diffusion contact width < %d (licon.1)\"\n width psc/li 170 \"P-tap contact width     < %d (licon.1)\""
+      },
+      {
+        "line": 4185,
+        "text": " width psc/li 170 \"P-tap contact width     < %d (licon.1)\"\n width ndic/li 170 \"N-diode contact width < %d (licon.1)\""
+      }
+    ],
+    "licon.5c": [
+      {
+        "line": 4244,
+        "text": " surround ndc/a *ndiff,nfet,scnfet,npd,npass,nfetlvt,rnd 60 directional \\\n\t\"N-diffusion overlap of N-diffusion contact < %d in one direction (licon.5c)\""
+      },
+      {
+        "line": 4247,
+        "text": "\t 60 directional \\\n\t\"P-diffusion overlap of P-diffusion contact < %d in one direction (licon.5c)\""
+      },
+      {
+        "line": 4249,
+        "text": " surround ndic/a *ndi 60 directional \\\n\t\"N-diode overlap of N-diode contact < %d in one direction (licon.5c)\""
+      },
+      {
+        "line": 4251,
+        "text": " surround pdic/a *pdi 60 directional \\\n\t\"P-diode overlap of N-diode contact < %d in one direction (licon.5c)\""
+      },
+      {
+        "line": 4273,
+        "text": " surround mvndc/a *mvndiff,mvnfet,mvnfetesd,mvrnd 60 directional \\\n\t\"N-diffusion overlap of N-diffusion contact < %d in one direction (licon.5c)\""
+      }
+    ],
+    "licon.8a": [
+      {
+        "line": 4289,
+        "text": " surround pc/a *poly,mrp1,xhrpoly,uhrpoly 80 directional \\\n\t\"poly overlap of poly contact < %d in one direction (licon.8a)\""
+      }
+    ],
+    "licon.11a": [],
+    "licon.11b": [],
+    "licon.15": [],
+    "li.1)": [
+      {
+        "line": 4299,
+        "text": "\n width *li 170 \"Local interconnect width < %d (li.1)\""
+      }
+    ],
+    "li.3)": [
+      {
+        "line": 4303,
+        "text": " spacing *locali,rli *locali,rli,*obsli 170 touching_ok  \\\n\t\"Local interconnect spacing < %d (li.3)\""
+      }
+    ],
+    "li.5)": [
+      {
+        "line": 4112,
+        "text": " extend  xpc/a xhrpoly,uhrpoly 2160 \\\n \t\"poly contact extends poly resistor by < %d (licon.1c + li.5)\""
+      },
+      {
+        "line": 4189,
+        "text": "\n width xpc/li  350 \"poly resistor contact width < %d (licon.1b + 2 * li.5)\""
+      },
+      {
+        "line": 4315,
+        "text": " surround pc/li *li,coreli 80 directional \\\n\t\"Local interconnect overlap of poly contact < %d in one direction (li.5)\""
+      },
+      {
+        "line": 4319,
+        "text": "\t*li,rli,coreli 80 directional \\\n\t\"Local interconnect overlap of diffusion contact < %d in one direction (li.5)\""
+      }
+    ],
+    "li.6)": [
+      {
+        "line": 4191,
+        "text": " area  xpc/li  700000 350 \"poly resistor contact length < 2.0um (licon.1c)\"\n area allli,*obsli 56100 170 \"Local interconnect minimum area < %a (li.6)\""
+      },
+      {
+        "line": 4321,
+        "text": "\n area allli,*obsli,coreli 56100 170 \"Local interconnect minimum area < %a (li.6)\""
+      }
+    ],
+    "npc.2": [],
+    "diff/tap.2": [
+      {
+        "line": 3984,
+        "text": " cifmaxwidth lvdiff_in_mvnwell 0 bend_illegal \\\n\t\"All HV nwell can contain only HV diffusion (diff/tap.21)\" "
+      },
+      {
+        "line": 4015,
+        "text": " spacing *mvnsd,*mvpdiff,mvpfet,mvpfetesd,mvvar,*mvpdiode *mvpsd,*psd 760 touching_illegal \\\n\t\"MV Diffusion in N-well to P-tap spacing < %d (diff/tap.20 + diff/tap.17,19)\""
+      },
+      {
+        "line": 4511,
+        "text": " edge4way *poly allfetsstd 420 allfets 0 0 \\\n\t\"Transistor width < %d (diff/tap.2)\""
+      },
+      {
+        "line": 4513,
+        "text": " edge4way *poly allfetsspecial 360 allfets 0 0 \\\n\t\"Transistor in standard cell width < %d (diff/tap.2)\""
+      },
+      {
+        "line": 4515,
+        "text": " edge4way *poly npass,npd,nsonos 210 allfets 0 0 \\\n\t\"N-Transistor in SRAM core width < %d (diff/tap.2)\""
+      }
+    ],
+    "mcon.1": [
+      {
+        "line": 4331,
+        "text": "\n width mcon/m1 170 \"mcon.width < %d (mcon.1)\""
+      }
+    ],
+    "met1.5": [
+      {
+        "line": 4347,
+        "text": " surround mcon/m1 *met1 60 directional \\\n\t\"Metal1 overlap of local interconnect contact < %d in one direction (met1.5)\""
+      }
+    ],
+    "met1.6": [
+      {
+        "line": 4342,
+        "text": " spacing allm1,m1fill allm1,*obsm1,m1fill 140 touching_ok \"Metal1 spacing < %d (met1.2)\"\n area allm1,*obsm1 83000 140 \"Metal1 minimum area < %a (met1.6)\""
+      }
+    ],
+    "nsd.5a": [
+      {
+        "line": 4057,
+        "text": " edge4way (*pdiff)/a ~(*pdiff,*nsd)/a 125 ~(*nsd)/a (*nsd)/a 125 \\\n\t\"P-Diffusion to N-tap spacing < %d across butted junction (nsd.5a)\""
+      },
+      {
+        "line": 4066,
+        "text": " edge4way (*mvpdiff)/a ~(*mvpdiff,*mvnsd)/a 125 ~(*mvnsd)/a (*mvnsd)/a 125 \\\n\t\"MV P-Diffusion to MV N-tap spacing < %d across butted junction (nsd.5a)\""
+      },
+      {
+        "line": 4121,
+        "text": " spacing xhrpoly,uhrpoly,xpc allndifflv,allndiffmv 525 touching_illegal \\\n\t\"Distance from precision resistor to N+ diffusion < %d (rpm.3 + rpm.6 + nsd.5a)\""
+      },
+      {
+        "line": 4133,
+        "text": " cifmaxwidth rpm_nsd_check 0 bend_illegal \\\n\t\"Distance from precision resistor to N+ diffusion < 0.525um (rpm.3 + rpm.6 + nsd.5a)\""
+      }
+    ]
+  }
+}
