@@ -1,0 +1,29 @@
+{
+  "check": "switch_level",
+  "cell": "dd2_g5__inv_1",
+  "passed": true,
+  "rows": [
+    {
+      "inputs": {
+        "A": 0
+      },
+      "expected_output": 1,
+      "expected_rail": "VPWR",
+      "output_connected_to_VPWR": true,
+      "output_connected_to_VGND": false,
+      "VPWR_to_VGND_path": false,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1
+      },
+      "expected_output": 0,
+      "expected_rail": "VGND",
+      "output_connected_to_VPWR": false,
+      "output_connected_to_VGND": true,
+      "VPWR_to_VGND_path": false,
+      "passed": true
+    }
+  ]
+}
