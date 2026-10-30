@@ -1,8 +1,11 @@
-
 #!/usr/bin/env python3
-"""Read and validate Boolean function cell requests.
-The request may specify the function using: an expression only, a hexadecimal truth table only or both
-I'm considering the truth table to be the normalized function representation."""
+"""Step 1 (handout section 3.3): read and validate a cell request.
+
+The request may give the function as an expression, a hexadecimal truth table,
+or both; both must agree. The truth table is the normalized representation:
+bit i is the output for the input row whose index is sum(value(inputs[k]) << k),
+so inputs[0] is the least significant bit. Writes the normalized request as JSON
+(stdout, or --out) and exits 1 on a refused request."""
 
 import argparse
 import json
@@ -14,6 +17,8 @@ from pathlib import Path
 class RequestError(ValueError):
     """Raised when a cell request is invalid."""
 
+
+IDENTIFIER_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
 
 # Boolean expression parser
 TOKEN_RE = re.compile(r"\s*([A-Za-z_][A-Za-z0-9_]*|[!&|^()])")
@@ -165,11 +170,10 @@ def parse_truth_table(raw_value, input_count):
             raise RequestError("truth_table cannot be negative.")
         value = raw_value
     elif isinstance(raw_value, str):
-        try:
-            # hexadecimal truth table
-            value = int(raw_value.strip(), 16)
-        except ValueError as exc:
-            raise RequestError("truth_table must be a hexadecimal value, e.g. '0x7'.") from exc
+        # int(..., 16) also accepts "_" separators and surrounding signs; allow only hex digits.
+        if not re.fullmatch(r"\s*(0[xX])?[0-9a-fA-F]+\s*", raw_value):
+            raise RequestError("truth_table must be a hexadecimal value, e.g. '0x7'.")
+        value = int(raw_value.strip(), 16)
     else:
         raise RequestError("truth_table must be a hexadecimal string or integer.")
 
@@ -193,6 +197,17 @@ def expression_truth_table(tree, inputs):
             result |= 1 << combination
 
     return result
+
+
+def function_truth_table(expression, inputs):
+    """Truth table of an expression in this format, e.g. a Liberty 'function'."""
+    return expression_truth_table(BooleanParser(expression, inputs).parse(), inputs)
+
+
+def output_bit(truth_table, values, inputs):
+    """Expected output for a {name: 0/1} input assignment."""
+    row = sum(int(values[name]) << index for index, name in enumerate(inputs))
+    return (truth_table >> row) & 1
 
 
 def format_truth_table(value, input_count):
@@ -223,22 +238,22 @@ def validate_request(request):
     if not isinstance(request["request_id"], str) or not request["request_id"]:
         raise RequestError("request_id must be a non-empty string.")
 
-    if not isinstance(request["name"], str) or not request["name"]:
-        raise RequestError("name must be a non-empty string.")
+    if not isinstance(request["name"], str) or not IDENTIFIER_RE.fullmatch(request["name"]):
+        raise RequestError("name must be an identifier, e.g. 'dd2_g5__nand2_1'.")
 
     inputs = request["inputs"]
-    if not isinstance(inputs, list) or not all(isinstance(name, str) and name for name in inputs):
-        raise RequestError("inputs must be a list of non-empty strings.")
+    if not isinstance(inputs, list) or not all(isinstance(name, str) and IDENTIFIER_RE.fullmatch(name) for name in inputs):
+        raise RequestError("inputs must be a list of identifiers.")
 
     if not 1 <= len(inputs) <= 4:
-        raise RequestError("This prototype supports 1 to 4 inputs.")
+        raise RequestError(f"The tool builds functions of 1 to 4 inputs; this request has {len(inputs)}.")
 
     if len(set(inputs)) != len(inputs):
         raise RequestError("Input names must be unique.")
 
     output = request["output"]
-    if not isinstance(output, str) or not output:
-        raise RequestError("output must be a non-empty string.")
+    if not isinstance(output, str) or not IDENTIFIER_RE.fullmatch(output):
+        raise RequestError("output must be an identifier.")
 
     if output in inputs:
         raise RequestError("The output name must differ from every input name.")
@@ -304,27 +319,23 @@ def main():
         description="Validate a Boolean function cell request."
     )
     parser.add_argument("request_json", type=Path)
+    parser.add_argument("--out", type=Path, help="Also write the result to this JSON file")
     args = parser.parse_args()
 
     try:
         with args.request_json.open("r", encoding="utf-8") as file:
             request = json.load(file)
 
-        normalized = validate_request(request)
-        print(json.dumps({
-            "status": "pass",
-            "reason": None,
-            "request": normalized,
-        }, indent=2))
-
+        result = {"status": "pass", "reason": None, "request": validate_request(request)}
     except (OSError, json.JSONDecodeError, RequestError) as exc:
-        print(json.dumps({
-            "status": "fail",
-            "reason": str(exc),
-        }, indent=2))
-        return 1
+        result = {"status": "fail", "reason": str(exc)}
 
-    return 0
+    text = json.dumps(result, indent=2)
+    print(text)
+    if args.out:
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        args.out.write_text(text + "\n", encoding="utf-8")
+    return 0 if result["status"] == "pass" else 1
 
 
 if __name__ == "__main__":

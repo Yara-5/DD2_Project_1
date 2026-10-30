@@ -1,0 +1,112 @@
+{
+  "units": "um",
+  "scope": "The SKY130 rules behind every number in the layout plan. Area rules are in um^2. Every entry names where its value comes from; src/pdk_rules.py checks each one against the installed PDK (make check).",
+  "source_url": "https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html",
+  "rules": {
+    "grid": {
+      "value": 0.005,
+      "source": "manufacturing grid, given/plan_hd.json 'grid'",
+      "check": {"kind": "frame", "key": "grid"}
+    },
+    "poly_min_width": {
+      "value": 0.15,
+      "source": "poly.1a",
+      "check": {"kind": "drc", "rule": "poly.1a", "message": "poly width"}
+    },
+    "poly_space": {
+      "value": 0.21,
+      "source": "poly.2",
+      "check": {"kind": "drc", "rule": "poly.2", "message": "poly spacing"}
+    },
+    "diff_end_extension": {
+      "value": 0.25,
+      "source": "poly.7, diffusion extension past the gate",
+      "check": {"kind": "drc", "rule": "poly.7", "message": "N-Diffusion overhang of nFET"}
+    },
+    "poly_endcap": {
+      "value": 0.13,
+      "source": "poly.8, poly extension past the diffusion",
+      "check": {"kind": "drc", "rule": "poly.8", "message": "poly overhang of transistor"}
+    },
+    "channel_min_width": {
+      "value": 0.36,
+      "source": "diff/tap.2, transistor width inside a standard cell",
+      "check": {"kind": "drc", "rule": "diff/tap.2", "message": "Transistor in standard cell width"}
+    },
+    "implant_enclosure": {
+      "value": 0.125,
+      "source": "nsd.5a / psd.5a, implant enclosure of diffusion (Magic does not check drawn implants; src/verify_drc.py layer check does)",
+      "check": {"kind": "drc", "rule": "psd.5a", "message": "N-Diffusion to P-tap spacing"}
+    },
+    "licon_size": {
+      "value": 0.17,
+      "source": "licon.1",
+      "check": {"kind": "drc", "rule": "licon.1", "message": "N-diffusion contact width"}
+    },
+    "licon_diff_enclosure": {
+      "value": 0.06,
+      "source": "licon.5c, applied on all four sides (conservative)",
+      "check": {"kind": "drc", "rule": "licon.5c", "message": "N-diffusion overlap of N-diffusion contact"}
+    },
+    "licon_poly_enclosure": {
+      "value": 0.08,
+      "source": "licon.8a, applied on all four sides (conservative)",
+      "check": {"kind": "drc", "rule": "licon.8a", "message": "poly overlap of poly contact"}
+    },
+    "licon_gate_space": {
+      "value": 0.05,
+      "source": "licon.11, diffusion contact to standard-cell gate",
+      "check": {"kind": "drc", "rule": "licon.11", "message": "Diffusion contact to standard cell gate"}
+    },
+    "licon_npc_enclosure": {
+      "value": 0.1,
+      "source": "NPC grown 0.1 um around every poly contact (npc.1/npc.5 as Magic generates it; drawn NPC is checked by src/verify_drc.py)",
+      "check": {"kind": "cif", "layer": "NPC pc", "operation": "grow", "occurrence": 1}
+    },
+    "npc_space": {
+      "value": 0.27,
+      "source": "npc.2, NPC openings closer than 0.27 um are bridged by Magic's NPC generation",
+      "check": {"kind": "cif", "layer": "NPC pc", "operation": "bridge", "occurrence": 1}
+    },
+    "li_width": {
+      "value": 0.17,
+      "source": "li.1",
+      "check": {"kind": "drc", "rule": "li.1", "message": "Local interconnect width"}
+    },
+    "li_space": {
+      "value": 0.17,
+      "source": "li.3",
+      "check": {"kind": "drc", "rule": "li.3", "message": "Local interconnect spacing"}
+    },
+    "li_contact_enclosure": {
+      "value": 0.08,
+      "source": "li.5, applied on all four sides (conservative)",
+      "check": {"kind": "drc", "rule": "li.5", "message": "Local interconnect overlap of poly contact"}
+    },
+    "li_min_area": {
+      "value": 0.0561,
+      "source": "li.6 (um^2)",
+      "check": {"kind": "drc", "rule": "li.6", "message": "Local interconnect minimum area", "area": true}
+    },
+    "mcon_size": {
+      "value": 0.17,
+      "source": "mcon.1 (ct.1)",
+      "check": {"kind": "drc", "rule": "mcon.1", "message": "mcon.width"}
+    },
+    "met1_contact_enclosure": {
+      "value": 0.06,
+      "source": "met1.5, applied on all four sides (conservative)",
+      "check": {"kind": "drc", "rule": "met1.5", "message": "Metal1 overlap of local interconnect contact"}
+    },
+    "met1_min_area": {
+      "value": 0.083,
+      "source": "met1.6 (um^2)",
+      "check": {"kind": "drc", "rule": "met1.6", "message": "Metal1 minimum area", "area": true}
+    }
+  },
+  "policies": {
+    "routing_grid": 0.02,
+    "maximum_extra_sites": 6,
+    "description": "Routing grid and retry budget are implementation choices, not PDK rules."
+  }
+}

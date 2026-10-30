@@ -1,7 +1,11 @@
-"""
-Input: supplied transistor connectivity, Euler paths, W/L, actual HD frame.
-Output: a completed JSON physical plan and intended schematic; NO GDS.
-This module does not import GDSfactory or create any gf.Component.
+"""Step 5, part 1: plan the layout of one cell, without drawing it.
+
+Input: a stage spec (transistor connections, Euler paths, W/L), the normalized
+request, the instructor's plan_hd.json frame and src/rules.json.
+Output in cells/<name>/: layout_plan.json (every rectangle and label),
+dimensions.json (each dimension with the rules that bound it) and the intended
+schematic.spice. This module does not import GDSfactory or write GDS
+(AGENTS.md, rule 8).
 """
 from __future__ import annotations
 import argparse
@@ -57,7 +61,7 @@ def load_plan_hd(path):
         'gate_contact_band':f['npc_band']['y'],'nwell_band':f['nwell']['y'],
         'nsdm_band':f['nsdm']['y'],'psdm_band':f['psdm']['y'],'hvtp_band':f['hvtp']['y'],
         'ground_y':sum(ground['met1']['y'])/2,'power_y':sum(power['met1']['y'])/2,
-        'source':str(path),'source_sha256':sha256(path),
+        'source':path.name,'source_sha256':sha256(path),
         '_contract':f,'_reference':ref,
     }
     return result
@@ -114,11 +118,7 @@ def load_rules(document):
 
 def validate(spec, frame, r):
     """Validate the supplied physical-stage inputs; do not discover an Euler path."""
-    if frame.get('units') != 'um' or abs(frame['height'] - 2.72) > 1e-9:
-        raise ValueError('Expected the fixed 2.72 um HD frame')
-    if abs(frame['site_width'] - 0.46) > 1e-9:
-        raise ValueError('Expected the HD 0.46 um placement-site width')
-    if '_contract' not in frame or abs(frame['grid']-r['grid'])>1e-9:
+    if frame.get('units') != 'um' or '_contract' not in frame or abs(frame['grid']-r['grid'])>1e-9:
         raise ValueError('Use the actual instructor frame and its manufacturing grid')
     names = [spec['name'], spec['output'], *spec['inputs']]
     devices = spec['devices']
@@ -136,9 +136,10 @@ def validate(spec, frame, r):
     if len(by_id) != len(devices):
         raise ValueError('Device IDs must be unique')
     gate_orders = []
+    models = frame['_contract']['devices']
     for kind, model, bulk in (
-        ('nmos', 'sky130_fd_pr__nfet_01v8', 'VNB'),
-        ('pmos', 'sky130_fd_pr__pfet_01v8_hvt', 'VPB'),
+        ('nmos', models['nmos'], 'VNB'),
+        ('pmos', models['pmos'], 'VPB'),
     ):
         path = spec['euler_paths'][kind]
         ids, nodes = path['devices'], path['nodes']
@@ -161,10 +162,10 @@ def validate(spec, frame, r):
             band = frame[f'{kind}_band']
             if not r['channel_min_width'] <= w <= band[1] - band[0] + 1e-9:
                 raise ValueError(f'{identifier}: finger width does not fit row; supply legal folded fingers upstream')
-            # The selected contact-to-gate rule is specific to the supported
-            # 0.15 um reference devices; do not apply it to other L silently.
-            if abs(length - 0.15) > 1e-9:
-                raise ValueError('This profile currently supports L=0.15 um reference devices only')
+            # The selected contact-to-gate rule is specific to the frame's
+            # device length; do not apply it to other L silently.
+            if abs(length - models['l']) > 1e-9:
+                raise ValueError(f"This profile supports the frame's L={models['l']} um devices only")
             if abs(w / r['grid'] - round(w / r['grid'])) > 1e-7:
                 raise ValueError('Supplied widths must lie on the configured manufacturing grid')
             widths.append(w)
@@ -534,7 +535,7 @@ def main():
     parser.add_argument('--request',type=Path,help='Optional JSON output of the existing request_reader.py')
     parser.add_argument('--frame',type=Path,required=True,help='Actual instructor given/plan_hd.json')
     parser.add_argument('--rules',type=Path,default=base/'rules.json')
-    parser.add_argument('--outdir',type=Path,default=base/'prepared')
+    parser.add_argument('--outdir',type=Path,default=base.parent/'cells')
     args=parser.parse_args()
     spec=read_json(args.cell_spec)
     if args.request:spec=bind_normalized_request(spec,read_json(args.request))

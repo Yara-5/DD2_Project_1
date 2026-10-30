@@ -1,6 +1,14 @@
 # links that make setup creates
 pdk
 given
+# machine-specific make settings
+local.mk
+# everything the flow generates: make all writes it again
+# (cells/<name>/ views, results/<check>/ reports; the folders themselves stay)
+cells/*
+!cells/.gitkeep
+results/*
+!results/.gitkeep
 # build trees and local environments
 build/
 .venv/

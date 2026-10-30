@@ -1,0 +1,55 @@
+{
+  "name": "dd2_g5__inv_1",
+  "inputs": [
+    "A"
+  ],
+  "output": "Y",
+  "devices": [
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "VGND",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "VPWR",
+      "drain": "Y",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15
+    }
+  ],
+  "euler_paths": {
+    "nmos": {
+      "devices": [
+        "N1"
+      ],
+      "nodes": [
+        "VGND",
+        "Y"
+      ]
+    },
+    "pmos": {
+      "devices": [
+        "P1"
+      ],
+      "nodes": [
+        "VPWR",
+        "Y"
+      ]
+    }
+  },
+  "truth_table": "0x1",
+  "sizing": "hd",
+  "request_id": "TEST-INV-1",
+  "hd_reference": "sky130_fd_sc_hd__inv_1"
+}

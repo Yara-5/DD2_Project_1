@@ -1,0 +1,7 @@
+* Broken case for verify_lvs.py: XP1 is 0.84 um wide in this schematic, 1.00 um in the layout.
+.subckt dd2_g5__nand2_1 A B VGND VNB VPB VPWR Y
+XN1 Y A X VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN2 X B VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XP1 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=0.84 l=0.15
+XP2 Y B VPWR VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+.ends dd2_g5__nand2_1

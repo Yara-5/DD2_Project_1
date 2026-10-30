@@ -1,6 +1,9 @@
-"""
-Every rectangle and label is read from layout_plan.json. This part does not size
-transistors, search Euler paths, compute dimensions, place devices or route.
+"""Step 5, part 2: draw a prepared layout plan with GDSfactory.
+
+Every rectangle and label is read from cells/<name>/layout_plan.json. This part
+does not size transistors, search Euler paths, compute dimensions, place devices
+or route (AGENTS.md, rule 8). Writes cell.gds and layout_preview.png beside the
+plan, using Tutorial 3's unchanged cells.py::rect for every Tutorial 3 layer.
 """
 from __future__ import annotations
 import argparse
@@ -42,7 +45,7 @@ def load_tutorial_rect(root):
     sys.modules[name]=module
     spec.loader.exec_module(module)
     module.course_provenance={
-        'root':str(root),'cells_sha256':sha256(root/'cells.py'),
+        'root':root.name,'cells_sha256':sha256(root/'cells.py'),
         'plan_sha256':sha256(root/'plan.json'),'python_packages':pins,
         'reused_function':'cells.py::rect',
     }
@@ -181,7 +184,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('layout_plan',type=Path)
     parser.add_argument('--tutorial-root',type=Path,required=True,help='Unchanged instructor Tutorial 3 student folder')
-    parser.add_argument('--outdir',type=Path,default=base/'generated')
+    parser.add_argument('--outdir',type=Path,default=base.parent/'cells')
     args=parser.parse_args()
     path=generate_gds(args.layout_plan,args.tutorial_root,args.outdir)
     print(f'Wrote {path} and {path.with_name("layout_preview.png")}; dimensions and routes came entirely from the prepared plan.')

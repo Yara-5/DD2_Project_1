@@ -1,0 +1,70 @@
+{
+  "name": "dd2_g5__nand2_1",
+  "inputs": [
+    "A",
+    "B"
+  ],
+  "output": "Y",
+  "devices": [
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "X",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15
+    },
+    {
+      "id": "N2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "VGND",
+      "drain": "X",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "VPWR",
+      "drain": "Y",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15
+    }
+  ],
+  "euler_paths": {
+    "nmos": {
+      "devices": [
+        "N1",
+        "N2"
+      ],
+      "nodes": [
+        "Y",
+        "X",
+        "VGND"
+      ]
+    },
+    "pmos": {
+      "devices": [
+        "P1"
+      ],
+      "nodes": [
+        "Y",
+        "VPWR"
+      ]
+    }
+  },
+  "truth_table": "0x7",
+  "sizing": "hd",
+  "request_id": "TEST-NAND-1",
+  "hd_reference": "sky130_fd_sc_hd__nand2_1",
+  "broken_case": "P2 (pull-up controlled by B) deleted: Y floats for A=1, B=0"
+}
