@@ -25,8 +25,8 @@ PDK_HOST ?= $(PDK)
 GIVEN    ?= ../DD2_Project1_student_pack/given
 TUT3     ?= ../student
 IMAGE    ?= dd2-layout-tools
-CELLS    ?= inv_1 nand2_1
 NETWORK_CELLS ?= $(sort $(basename $(notdir $(wildcard tests/requests/*.json))))
+CELLS    ?= $(NETWORK_CELLS)
 OBJECTIVE ?= inverters
 PREFIX    = dd2_g5__
 
@@ -34,6 +34,7 @@ LPYTHON   = $(LINUX) env LAYOUT_IMAGE=$(IMAGE) python3
 FRAME     = $(GIVEN)/plan_hd.json
 HD_GDS    = $(PDK_HOST)/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
 HD_SPICE  = $(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
+HD_SPICE_HOST = $(PDK_HOST)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 TECH      = $(PDK)/libs.tech/magic/sky130A.tech
 
 # A broken case passes only when its check exits non-zero.
@@ -43,7 +44,7 @@ define expect_fail
 	 else echo "ok   broken case $(1) rejected"; fi
 endef
 
-.PHONY: setup check test all demo clean requests network switch layout drc lvs compare sim model
+.PHONY: setup check test all demo clean network layout drc lvs compare sim model
 
 setup:            ## Tutorial 3's pdk link, which its tools.sh mounts into the container
 	$(LINUX) ln -sfn $(PDK) $(TUT3)/pdk
@@ -64,12 +65,7 @@ check:            ## tool versions, PDK, and the ngspice stress test for Option 
 	  status=$$?; cat results/check/ngspice_stress.log; exit $$status
 	$(LPYTHON) src/pdk_rules.py --tech $(TECH) --frame $(FRAME) --out results/pdk_rules/report.json
 
-requests:         ## step 1: read and check every request
-	@for c in $(CELLS); do \
-	  $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request.json > /dev/null \
-	    && echo "PASS: request $$c" || { echo "FAIL: request $$c"; exit 1; }; done
-
-network:          ## steps 2-3: minimize, decompose into stages, size; then the switch-level check
+network:          ## steps 1-3: read, minimize, decompose into stages, size; then the switch-level check
 	@for c in $(NETWORK_CELLS); do \
 	  $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request.json > /dev/null && \
 	  $(PYTHON) src/synthesize.py --request cells/$(PREFIX)$$c/request.json --frame $(FRAME) \
@@ -77,14 +73,12 @@ network:          ## steps 2-3: minimize, decompose into stages, size; then the 
 	  $(PYTHON) src/switch_level_check.py cells/$(PREFIX)$$c/network.json --request cells/$(PREFIX)$$c/request.json \
 	    --out results/switch_level/$${c}_network.json || exit 1; done
 
-switch: requests  ## section 4.2 level 1: switch-level network check
+layout: network   ## steps 4-5: Euler paths, then plan and draw; the reordered network is checked again
 	@for c in $(CELLS); do \
-	  $(PYTHON) src/switch_level_check.py tests/specs/$$c.json --request cells/$(PREFIX)$$c/request.json \
-	    --out results/switch_level/$$c.json || exit 1; done
-
-layout: requests  ## step 5: plan, then draw
-	@for c in $(CELLS); do \
-	  $(PYTHON) src/prepare_layout.py tests/specs/$$c.json --request cells/$(PREFIX)$$c/request.json \
+	  $(PYTHON) src/euler.py cells/$(PREFIX)$$c/network.json --hd-spice $(HD_SPICE_HOST) && \
+	  $(PYTHON) src/switch_level_check.py cells/$(PREFIX)$$c/layout_spec.json --request cells/$(PREFIX)$$c/request.json \
+	    --out results/switch_level/$$c.json && \
+	  $(PYTHON) src/prepare_layout.py cells/$(PREFIX)$$c/layout_spec.json --request cells/$(PREFIX)$$c/request.json \
 	    --frame $(FRAME) --outdir cells && \
 	  $(PYTHON) src/generate_gds.py cells/$(PREFIX)$$c/layout_plan.json --tutorial-root $(TUT3) \
 	    --outdir cells || exit 1; done
@@ -112,7 +106,7 @@ model:            ## section 4.2 level 3: Verilog model and Liberty function
 	  $(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$$c/request.json \
 	    --outdir cells/$(PREFIX)$$c --report results/model_level/$$c.json $$broken || exit 1; done
 
-all: network switch layout drc lvs compare sim model
+all: network layout drc lvs compare sim model
 
 test: all         ## every broken case must be rejected by its check
 	$(call expect_fail,bad_request,$(PYTHON) src/request_reader.py tests/broken/bad_request.json)
@@ -127,11 +121,9 @@ test: all         ## every broken case must be rejected by its check
 	$(call expect_fail,nand2_1_pex_missing_pullup,$(LPYTHON) src/transistor_level_check.py --pex tests/broken/nand2_1_pex_missing_pullup.spice --request cells/$(PREFIX)nand2_1/request.json --models $(TUT3)/pdk/libs.tech/ngspice/sky130.lib.spice --liberty $(GIVEN)/hd_reduced.lib --ngspice "$(TUT3)/tools.sh ngspice" --workdir $(TUT3)/build/dd2_sim_broken --out build/broken/transistor_level.json)
 	@echo "PASS: every broken case was rejected (DRC and layer-check broken cases run inside make drc)"
 
-demo:             ## what the interview runs: make demo IN=<request>
+demo:             ## what the interview runs: make demo IN=tests/requests/<cell>.json
 	@test -n "$(IN)" || (echo "usage: make demo IN=tests/requests/<cell>.json" && exit 1)
-	$(PYTHON) src/request_reader.py $(IN)
-	@echo "Steps 2-4 (stages, sizing, Euler paths) are not written yet: only cells with a"
-	@echo "stage spec in tests/specs/ can be built, with make all CELLS=<cell>."
+	$(MAKE) all NETWORK_CELLS=$(basename $(notdir $(IN))) CELLS=$(basename $(notdir $(IN)))
 
 clean:
 	rm -rf build

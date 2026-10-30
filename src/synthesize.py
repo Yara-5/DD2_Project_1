@@ -311,7 +311,9 @@ class Builder:
             final = st['output'] == self.output
             for kind, tree, top, bottom in (('nmos', pdn, st['output'], 'VGND'),
                                             ('pmos', pun, 'VPWR', st['output'])):
-                self.place(tree, top, bottom, kind, 0, final, serial, st['output'])
+                # dual() keeps the leaf order, so leaf k is the same gate in both
+                # networks: the NMOS/PMOS pair that shares one poly column.
+                self.place(tree, top, bottom, kind, 0, final, serial, st['output'], [0])
             out.append({
                 'output': st['output'],
                 'kind': 'inverter' if pdn[0] == 'g' else 'complex',
@@ -324,7 +326,7 @@ class Builder:
             })
         return out
 
-    def place(self, t, top, bottom, kind, extra, final, serial, stage):
+    def place(self, t, top, bottom, kind, extra, final, serial, stage, leaf):
         if t[0] == 'g':
             depth = extra + 1
             scale = depth if (self.sizing == 'stack' and final) else 1
@@ -336,12 +338,13 @@ class Builder:
                 'id': f"{'N' if kind == 'nmos' else 'P'}{serial[kind]}", 'type': kind,
                 'model': self.model[kind], 'gate': t[1], 'source': source, 'drain': drain,
                 'bulk': 'VNB' if kind == 'nmos' else 'VPB', 'w_um': w, 'l_um': self.length,
-                'stage': stage, 'stack_depth': depth,
+                'stage': stage, 'leaf': leaf[0], 'stack_depth': depth,
                 'fingers': math.ceil(w / self.finger_max[kind] - 1e-9)})
+            leaf[0] += 1
             return
         if t[0] == 'p':
             for c in t[1]:
-                self.place(c, top, bottom, kind, extra, final, serial, stage)
+                self.place(c, top, bottom, kind, extra, final, serial, stage, leaf)
             return
         counts = [series_count(c) for c in t[1]]
         # Internal series nodes: <stage>_d<k> in the pull-down, <stage>_u<k> in the pull-up.
@@ -349,7 +352,7 @@ class Builder:
         nets = [top] + [self.net(prefix) for _ in t[1][1:]] + [bottom]
         for i, c in enumerate(t[1]):
             others = sum(counts) - counts[i]
-            self.place(c, nets[i], nets[i + 1], kind, extra + others, final, serial, stage)
+            self.place(c, nets[i], nets[i + 1], kind, extra + others, final, serial, stage, leaf)
 
 
 def dual(t):

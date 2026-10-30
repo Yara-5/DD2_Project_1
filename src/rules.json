@@ -33,6 +33,11 @@
       "source": "diff/tap.2, transistor width inside a standard cell",
       "check": {"kind": "drc", "rule": "diff/tap.2", "message": "Transistor in standard cell width"}
     },
+    "diff_space": {
+      "value": 0.27,
+      "source": "diff/tap.3, spacing between diffusion strips (a diffusion break)",
+      "check": {"kind": "drc", "rule": "diff/tap.3", "message": "Diffusion spacing"}
+    },
     "implant_enclosure": {
       "value": 0.125,
       "source": "nsd.5a / psd.5a, implant enclosure of diffusion (Magic does not check drawn implants; src/verify_drc.py layer check does)",
@@ -93,6 +98,21 @@
       "source": "mcon.1 (ct.1)",
       "check": {"kind": "drc", "rule": "mcon.1", "message": "mcon.width"}
     },
+    "mcon_space": {
+      "value": 0.19,
+      "source": "mcon.2",
+      "check": {"kind": "drc", "rule": "mcon.2", "message": "mcon.spacing"}
+    },
+    "met1_width": {
+      "value": 0.14,
+      "source": "met1.1",
+      "check": {"kind": "drc", "rule": "met1.1", "message": "Metal1 width"}
+    },
+    "met1_space": {
+      "value": 0.14,
+      "source": "met1.2",
+      "check": {"kind": "drc", "rule": "met1.2", "message": "Metal1 spacing"}
+    },
     "met1_contact_enclosure": {
       "value": 0.06,
       "source": "met1.5, applied on all four sides (conservative)",
@@ -107,6 +127,9 @@
   "policies": {
     "routing_grid": 0.02,
     "maximum_extra_sites": 6,
-    "description": "Routing grid and retry budget are implementation choices, not PDK rules."
+    "routing_orders": 12,
+    "met1_step_cost": 4,
+    "via_cost": 40,
+    "description": "Routing grid, retry budget, net orders tried, and the router's relative costs of a met1 step and of an mcon via (li1 step = 1) are implementation choices, not PDK rules."
   }
 }
