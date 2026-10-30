@@ -1,0 +1,11 @@
+{
+  "request_id": "T6-08",
+  "name": "dd2_g5__and2_1",
+  "inputs": [
+    "A",
+    "B"
+  ],
+  "output": "Y",
+  "expression": "A & B",
+  "sizing": "hd"
+}

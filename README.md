@@ -30,6 +30,7 @@ Verilog/Liberty model check.
 |---|---|---|
 | `make check` | PDK, `given/`, course image | `results/check/`, `results/pdk_rules/report.json` |
 | `make requests` | `tests/requests/<cell>.json` | `cells/<name>/request.json` |
+| `make network` | `tests/requests/*.json` | `cells/<name>/network.json`, `network.spice`, `network_schematic.png`, `network_tree.png`, `results/switch_level/<cell>_network.json` |
 | `make switch` | `tests/specs/<cell>.json` | `results/switch_level/<cell>.json` |
 | `make layout` | spec, request, frame, rules | `cells/<name>/layout_plan.json`, `dimensions.json`, `schematic.spice`, `cell.gds`, `layout_preview.png` |
 | `make drc` | `cells/*/cell.gds` | `results/drc/verification.json` and one Magic log per context |
@@ -64,9 +65,12 @@ These files are not in the repository; `make all` writes them (about 4 minutes).
 AGENTS.md · ai/use_log.md · ai/mistakes_log.md · report/ai_report.pdf
 
 ## 9. Limitations
-- Steps 2 to 4 are not written: the stage network, sizing and Euler paths come from a hand-written
-  spec in `tests/specs/`, so only inv_1 and nand2_1 can be built. Multi-stage cells, folding,
-  unequal finger widths and diffusion breaks are refused.
+- Steps 2 and 3 (`synthesize.py`) build a checked transistor network for any request, but
+  step 4 (Euler paths) is not written: layout still needs a hand-written spec in
+  `tests/specs/`, so only inv_1 and nand2_1 reach GDS. Multi-stage cells, folding, unequal
+  finger widths and diffusion breaks are refused by the layout step.
+- `synthesize.py` does not share identical sub-stages, and only considers algebraic
+  factorings of minimum SOP/POS covers.
 - The cells are wider than HD (gate pitch 0.64 um against 0.42 um): each poly contact has its
   own NPC opening, and contacts use the larger enclosure on all four sides.
 - No characterization (section 5): the Liberty cell is functional only, there are no SA/SB on

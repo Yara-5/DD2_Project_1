@@ -9,6 +9,7 @@ check pass (AGENTS.md, rule 4).
 | `request_reader.py` | `bad_request.json` | expression `!(A & B)` is 0x7, truth table says 0xF |
 | `pdk_rules.py` | `rules_wrong_poly_space.json` | poly spacing 0.20 um; the PDK says 0.21 um (poly.2) |
 | `switch_level_check.py` | `nand2_1_missing_pullup.json` | NAND2 without the B pull-up: Y floats for A=1, B=0 |
+| `switch_level_check.py` (multi-stage) | `and2_1_network_missing_pullup.json` | synthesized AND2 (NAND2 + inverter) without the inverter's pull-up: Y floats for A=B=1 |
 | `verify_lvs.py` | `nand2_1_wrong_width.spice` | schematic PMOS XP1 is 0.84 um wide, the layout's is 1.00 um |
 | `compare_hd.py` (frame) | `frame/dd2_g5__inv_1_no_hvtp/` | the inverter with its hvtp layer removed |
 | `transistor_level_check.py` | `nand2_1_pex_missing_pullup.spice` | RC-extracted NAND2 with the A pull-up deleted |

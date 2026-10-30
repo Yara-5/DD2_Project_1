@@ -20,10 +20,12 @@ ngspice 47 with the BSIM4 stress fix run from the course `dd2-layout-tools` cont
 (built from the student pack's `container/`) through Tutorial 3's unchanged `tools.sh` and
 `flow.py`; Icarus Verilog, Yosys/ABC and OpenSTA run on Linux.
 
-Current state: steps 1 and 5 to 7 work for inv_1 and nand2_1 from a supplied stage spec
-(transistors and Euler paths in `tests/specs/`). Steps 2 to 4 (stage search, sizing,
-Euler-path search), characterization (section 5) and the round trip (section 3.3) are not
-written yet. The README's Limitations section is the up-to-date list.
+Current state: steps 1 to 3 work for any request (`synthesize.py`: Quine-McCluskey,
+decomposition into stages of at most 3 series transistors, fewest inverters, sizing).
+Layout (steps 5 to 7) still starts from a supplied stage spec with Euler paths in
+`tests/specs/`, so only inv_1 and nand2_1 reach GDS. Step 4 (Euler-path search),
+characterization (section 5) and the round trip (section 3.3) are not written yet. The
+README's Limitations section is the up-to-date list.
 
 ## How this project is checked
 Pass or fail is the exit status of these commands (0 = pass). Each check also writes a JSON
@@ -32,7 +34,7 @@ report with a top-level `"passed"` field under `results/`.
 | Command | What it runs |
 |---|---|
 | `make check` | Python package pins; tool versions; the PDK and `given/` files are present; the ngspice stress test inside the course image (`/opt/dd2/stress_test/check_stress.sh`, must PASS); `src/pdk_rules.py`, which checks every value in `src/rules.json` against the installed `sky130A.tech` |
-| `make all` | The whole flow for every cell in `CELLS`: `request_reader.py` -> `switch_level_check.py` -> `prepare_layout.py` -> `generate_gds.py` -> `verify_drc.py` (Magic full DRC in tapped rows, 48 abutment contexts, layer check) -> `verify_lvs.py` (extraction, Netgen LVS against the schematic and against the installed HD subcircuit, RC-LVS) -> `compare_hd.py` -> `transistor_level_check.py` -> `model_level_check.py` |
+| `make all` | `make network` for every request in `tests/requests/` (`synthesize.py`, then `switch_level_check.py` on the network), then the layout flow for every cell in `CELLS`: `request_reader.py` -> `switch_level_check.py` -> `prepare_layout.py` -> `generate_gds.py` -> `verify_drc.py` (Magic full DRC in tapped rows, 48 abutment contexts, layer check) -> `verify_lvs.py` (extraction, Netgen LVS against the schematic and against the installed HD subcircuit, RC-LVS) -> `compare_hd.py` -> `transistor_level_check.py` -> `model_level_check.py` |
 | `make test` | `make all`, then every broken case in `tests/broken/` against its check; each must be rejected (non-zero exit) |
 | `make demo IN=<request>` | The flow on one request, as at the interview |
 

@@ -1,0 +1,187 @@
+{
+  "schema": "dd2.network.v1",
+  "name": "dd2_g5__and2_1",
+  "request_id": "T6-08",
+  "inputs": [
+    "A",
+    "B"
+  ],
+  "output": "Y",
+  "truth_table": "0x8",
+  "sizing": "hd",
+  "objective": "inverters",
+  "unateness": {
+    "A": "positive",
+    "B": "positive"
+  },
+  "minimization": {
+    "f": {
+      "minterms": [
+        3
+      ],
+      "prime_implicants": [
+        "A & B"
+      ],
+      "essential_prime_implicants": [
+        "A & B"
+      ],
+      "minimum_covers": [
+        "A & B"
+      ],
+      "terms": 1,
+      "literals": 2
+    },
+    "not_f": {
+      "minterms": [
+        0,
+        1,
+        2
+      ],
+      "prime_implicants": [
+        "!B",
+        "!A"
+      ],
+      "essential_prime_implicants": [
+        "!B",
+        "!A"
+      ],
+      "minimum_covers": [
+        "!B | !A"
+      ],
+      "terms": 2,
+      "literals": 2
+    }
+  },
+  "formula": "Y = A & B",
+  "formula_source": "SOP of f",
+  "formulas_considered": 1,
+  "cost": {
+    "inverters": 1,
+    "input_inverters": 0,
+    "output_inverter": true,
+    "stages": 2,
+    "complex_stages": 1,
+    "transistors": 6,
+    "max_series_pull_down": 2,
+    "max_series_pull_up": 1
+  },
+  "stages": [
+    {
+      "output": "n1",
+      "kind": "complex",
+      "function": "n1 = !(A & B)",
+      "pull_down": {
+        "op": "series",
+        "children": [
+          {
+            "gate": "A"
+          },
+          {
+            "gate": "B"
+          }
+        ]
+      },
+      "pull_up": {
+        "op": "parallel",
+        "children": [
+          {
+            "gate": "A"
+          },
+          {
+            "gate": "B"
+          }
+        ]
+      },
+      "pull_down_series": 2,
+      "pull_up_series": 1,
+      "transistors": 4
+    },
+    {
+      "output": "Y",
+      "kind": "inverter",
+      "function": "Y = !(n1)",
+      "pull_down": {
+        "gate": "n1"
+      },
+      "pull_up": {
+        "gate": "n1"
+      },
+      "pull_down_series": 1,
+      "pull_up_series": 1,
+      "transistors": 2
+    }
+  ],
+  "devices": [
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "n1_d1",
+      "drain": "n1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "n1",
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "N2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "VGND",
+      "drain": "n1_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "n1",
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "VPWR",
+      "drain": "n1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "n1",
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P2",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "B",
+      "source": "VPWR",
+      "drain": "n1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "n1",
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "N3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "n1",
+      "source": "VGND",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "stack_depth": 1,
+      "fingers": 1
+    }
+  ],
+  "broken_case": "P3 (the output inverter's pull-up) deleted: Y floats when A = B = 1"
+}

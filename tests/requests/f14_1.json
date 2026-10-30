@@ -1,0 +1,13 @@
+{
+  "request_id": "T6-13",
+  "name": "dd2_g5__f14_1",
+  "inputs": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "output": "Y",
+  "expression": "!(A & (B | (C & D)))",
+  "sizing": "hd"
+}

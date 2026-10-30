@@ -26,6 +26,8 @@ GIVEN    ?= ../DD2_Project1_student_pack/given
 TUT3     ?= ../student
 IMAGE    ?= dd2-layout-tools
 CELLS    ?= inv_1 nand2_1
+NETWORK_CELLS ?= $(sort $(basename $(notdir $(wildcard tests/requests/*.json))))
+OBJECTIVE ?= inverters
 PREFIX    = dd2_g5__
 
 LPYTHON   = $(LINUX) env LAYOUT_IMAGE=$(IMAGE) python3
@@ -41,7 +43,7 @@ define expect_fail
 	 else echo "ok   broken case $(1) rejected"; fi
 endef
 
-.PHONY: setup check test all demo clean requests switch layout drc lvs compare sim model
+.PHONY: setup check test all demo clean requests network switch layout drc lvs compare sim model
 
 setup:            ## Tutorial 3's pdk link, which its tools.sh mounts into the container
 	$(LINUX) ln -sfn $(PDK) $(TUT3)/pdk
@@ -66,6 +68,14 @@ requests:         ## step 1: read and check every request
 	@for c in $(CELLS); do \
 	  $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request.json > /dev/null \
 	    && echo "PASS: request $$c" || { echo "FAIL: request $$c"; exit 1; }; done
+
+network:          ## steps 2-3: minimize, decompose into stages, size; then the switch-level check
+	@for c in $(NETWORK_CELLS); do \
+	  $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request.json > /dev/null && \
+	  $(PYTHON) src/synthesize.py --request cells/$(PREFIX)$$c/request.json --frame $(FRAME) \
+	    --outdir cells/$(PREFIX)$$c --objective $(OBJECTIVE) | head -1 && \
+	  $(PYTHON) src/switch_level_check.py cells/$(PREFIX)$$c/network.json --request cells/$(PREFIX)$$c/request.json \
+	    --out results/switch_level/$${c}_network.json || exit 1; done
 
 switch: requests  ## section 4.2 level 1: switch-level network check
 	@for c in $(CELLS); do \
@@ -102,12 +112,13 @@ model:            ## section 4.2 level 3: Verilog model and Liberty function
 	  $(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$$c/request.json \
 	    --outdir cells/$(PREFIX)$$c --report results/model_level/$$c.json $$broken || exit 1; done
 
-all: switch layout drc lvs compare sim model
+all: network switch layout drc lvs compare sim model
 
 test: all         ## every broken case must be rejected by its check
 	$(call expect_fail,bad_request,$(PYTHON) src/request_reader.py tests/broken/bad_request.json)
 	$(call expect_fail,rules_wrong_poly_space,$(LPYTHON) src/pdk_rules.py --rules tests/broken/rules_wrong_poly_space.json --tech $(TECH) --frame $(FRAME) --out build/broken/pdk_rules.json)
 	$(call expect_fail,nand2_1_missing_pullup,$(PYTHON) src/switch_level_check.py tests/broken/nand2_1_missing_pullup.json)
+	$(call expect_fail,and2_1_network_missing_pullup,$(PYTHON) src/switch_level_check.py tests/broken/and2_1_network_missing_pullup.json)
 	@rm -rf build/broken/lvs && mkdir -p build/broken/lvs/$(PREFIX)nand2_1 && \
 	  cp cells/$(PREFIX)nand2_1/cell.gds cells/$(PREFIX)nand2_1/input.json build/broken/lvs/$(PREFIX)nand2_1/ && \
 	  cp tests/broken/nand2_1_wrong_width.spice build/broken/lvs/$(PREFIX)nand2_1/schematic.spice

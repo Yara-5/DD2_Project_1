@@ -1,0 +1,12 @@
+{
+  "request_id": "T6-10",
+  "name": "dd2_g5__mux2_1",
+  "inputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "output": "Y",
+  "expression": "(A & !C) | (B & C)",
+  "sizing": "hd"
+}
