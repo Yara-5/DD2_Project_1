@@ -1,0 +1,939 @@
+{
+  "width_um": 1.84,
+  "width_sites": 4,
+  "height_um": 2.72,
+  "shapes": [
+    {
+      "layer": "boundary",
+      "box": [
+        0.0,
+        0.0,
+        1.84,
+        2.72
+      ],
+      "net": null,
+      "gds": [
+        236,
+        0
+      ]
+    },
+    {
+      "layer": "areaid_sc",
+      "box": [
+        0.0,
+        0.0,
+        1.84,
+        2.72
+      ],
+      "net": null,
+      "gds": [
+        81,
+        4
+      ]
+    },
+    {
+      "layer": "nwell",
+      "box": [
+        -0.19,
+        1.305,
+        2.03,
+        2.91
+      ],
+      "net": null,
+      "gds": [
+        64,
+        20
+      ]
+    },
+    {
+      "layer": "nsdm",
+      "box": [
+        0.0,
+        -0.19,
+        1.84,
+        1.015
+      ],
+      "net": null,
+      "gds": [
+        93,
+        44
+      ]
+    },
+    {
+      "layer": "psdm",
+      "box": [
+        0.0,
+        1.355,
+        1.84,
+        2.91
+      ],
+      "net": null,
+      "gds": [
+        94,
+        20
+      ]
+    },
+    {
+      "layer": "hvtp",
+      "box": [
+        0.0,
+        1.25,
+        1.84,
+        2.72
+      ],
+      "net": null,
+      "gds": [
+        78,
+        44
+      ]
+    },
+    {
+      "layer": "met1",
+      "box": [
+        0.0,
+        -0.24,
+        1.84,
+        0.24
+      ],
+      "net": "VGND",
+      "gds": [
+        68,
+        20
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        0.145,
+        -0.085,
+        0.315,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        0.605,
+        -0.085,
+        0.775,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.065,
+        -0.085,
+        1.235,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.525,
+        -0.085,
+        1.695,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "met1",
+      "box": [
+        0.0,
+        2.48,
+        1.84,
+        2.96
+      ],
+      "net": "VPWR",
+      "gds": [
+        68,
+        20
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        0.145,
+        2.635,
+        0.315,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        0.605,
+        2.635,
+        0.775,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.065,
+        2.635,
+        1.235,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.525,
+        2.635,
+        1.695,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        0.465,
+        0.235,
+        1.255,
+        0.885
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        0.525,
+        0.335,
+        0.695,
+        0.505
+      ],
+      "net": "VGND",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        1.025,
+        0.575,
+        1.195,
+        0.745
+      ],
+      "net": "Y",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        0.465,
+        1.485,
+        1.255,
+        2.485
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        0.525,
+        2.215,
+        0.695,
+        2.385
+      ],
+      "net": "VPWR",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        1.025,
+        1.575,
+        1.195,
+        1.745
+      ],
+      "net": "Y",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        0.785,
+        0.105,
+        0.935,
+        2.615
+      ],
+      "net": "A",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        0.695,
+        0.995,
+        1.025,
+        1.325
+      ],
+      "net": "A",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        0.775,
+        1.075,
+        0.945,
+        1.245
+      ],
+      "net": "A",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "npc",
+      "box": [
+        0.675,
+        0.975,
+        1.045,
+        1.345
+      ],
+      "net": null,
+      "gds": [
+        95,
+        20
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        0.775,
+        1.075,
+        0.945,
+        1.245
+      ],
+      "net": "A",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        1.42,
+        1.075,
+        1.59,
+        1.245
+      ],
+      "net": "Y",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        0.145,
+        2.635,
+        0.315,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "met1_pin",
+      "box": [
+        0.145,
+        2.635,
+        0.315,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        68,
+        16
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        0.145,
+        -0.085,
+        0.315,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "met1_pin",
+      "box": [
+        0.145,
+        -0.085,
+        0.315,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        68,
+        16
+      ]
+    },
+    {
+      "layer": "vpb_pin",
+      "box": [
+        0.145,
+        2.635,
+        0.315,
+        2.805
+      ],
+      "net": "VPB",
+      "gds": [
+        64,
+        16
+      ]
+    },
+    {
+      "layer": "vnb_pin",
+      "box": [
+        0.145,
+        -0.085,
+        0.315,
+        0.085
+      ],
+      "net": "VNB",
+      "gds": [
+        122,
+        16
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VGND",
+      "box": [
+        0.0,
+        -0.085,
+        1.84,
+        0.085
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VGND",
+      "box": [
+        0.445,
+        0.085,
+        0.775,
+        0.585
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VPWR",
+      "box": [
+        0.445,
+        2.135,
+        0.775,
+        2.635
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VPWR",
+      "box": [
+        0.0,
+        2.635,
+        1.84,
+        2.805
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        0.945,
+        0.495,
+        1.275,
+        0.655
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        0.945,
+        0.655,
+        1.365,
+        0.825
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        1.195,
+        0.825,
+        1.365,
+        0.995
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        1.195,
+        0.995,
+        1.67,
+        1.325
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        1.195,
+        1.325,
+        1.365,
+        1.495
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        0.945,
+        1.495,
+        1.365,
+        1.665
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        0.945,
+        1.665,
+        1.275,
+        1.825
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "A",
+      "box": [
+        0.695,
+        0.995,
+        1.025,
+        1.325
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    }
+  ],
+  "terminals": {
+    "VGND": [
+      [
+        0.61,
+        0.42
+      ],
+      [
+        0.61,
+        0.0
+      ]
+    ],
+    "Y": [
+      [
+        1.11,
+        0.66
+      ],
+      [
+        1.11,
+        1.66
+      ],
+      [
+        1.505,
+        1.16
+      ]
+    ],
+    "VPWR": [
+      [
+        0.61,
+        2.3
+      ],
+      [
+        0.61,
+        2.7199999999999998
+      ]
+    ],
+    "A": [
+      [
+        0.86,
+        1.16
+      ]
+    ]
+  },
+  "contacts": [
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        0.23,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        0.6900000000000001,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        1.1500000000000001,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        1.61,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        0.6900000000000001,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        1.1500000000000001,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        1.61,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "diffusion",
+      "net": "VGND",
+      "point_um": [
+        0.61,
+        0.42
+      ],
+      "row": "nmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "Y",
+      "point_um": [
+        1.11,
+        0.66
+      ],
+      "row": "nmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "VPWR",
+      "point_um": [
+        0.61,
+        2.3
+      ],
+      "row": "pmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "Y",
+      "point_um": [
+        1.11,
+        1.66
+      ],
+      "row": "pmos"
+    },
+    {
+      "type": "poly",
+      "net": "A",
+      "point_um": [
+        0.86,
+        1.16
+      ]
+    }
+  ],
+  "devices": [
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "VGND",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "gate_x_um": 0.86,
+      "diffusion_y_um": [
+        0.235,
+        0.885
+      ],
+      "left_net": "VGND",
+      "right_net": "Y",
+      "diffusion_edge_distances_um": {
+        "left": 0.32,
+        "right": 0.32
+      }
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "VPWR",
+      "drain": "Y",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "gate_x_um": 0.86,
+      "diffusion_y_um": [
+        1.4849999999999999,
+        2.485
+      ],
+      "left_net": "VPWR",
+      "right_net": "Y",
+      "diffusion_edge_distances_um": {
+        "left": 0.32,
+        "right": 0.32
+      }
+    }
+  ],
+  "output_pin_um": [
+    1.505,
+    1.16
+  ],
+  "gate_contact_y_um": 1.16,
+  "supply_pin_x_um": 0.23,
+  "routes": [
+    {
+      "net": "VPWR",
+      "points_um": [
+        [
+          0.6,
+          2.3
+        ],
+        [
+          0.6,
+          2.72
+        ]
+      ]
+    },
+    {
+      "net": "VGND",
+      "points_um": [
+        [
+          0.6,
+          0.42
+        ],
+        [
+          0.6,
+          0.0
+        ]
+      ]
+    },
+    {
+      "net": "Y",
+      "points_um": [
+        [
+          1.12,
+          0.66
+        ],
+        [
+          1.12,
+          0.74
+        ],
+        [
+          1.28,
+          0.74
+        ],
+        [
+          1.28,
+          1.58
+        ],
+        [
+          1.12,
+          1.58
+        ],
+        [
+          1.12,
+          1.66
+        ]
+      ]
+    },
+    {
+      "net": "Y",
+      "points_um": [
+        [
+          1.28,
+          1.16
+        ],
+        [
+          1.5,
+          1.16
+        ]
+      ]
+    }
+  ],
+  "li1_notch_fill_added_area_um2": {
+    "VGND": 0.0272,
+    "VPWR": 0.0272,
+    "Y": 0.0,
+    "A": 0.0
+  }
+}

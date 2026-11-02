@@ -50,13 +50,38 @@
     },
     "licon_diff_enclosure": {
       "value": 0.06,
-      "source": "licon.5c, applied on all four sides (conservative)",
+      "source": "licon.5c, diffusion overlap of a diffusion contact in one direction (applied above and below it)",
       "check": {"kind": "drc", "rule": "licon.5c", "message": "N-diffusion overlap of N-diffusion contact"}
+    },
+    "licon_diff_enclosure_min": {
+      "value": 0.04,
+      "source": "licon.5a, diffusion overlap of a diffusion contact on every side (licon.5c's 0.06 then holds in the other direction)",
+      "check": {"kind": "drc", "rule": "licon.5a", "message": "N-diffusion overlap of N-diffusion contact"}
     },
     "licon_poly_enclosure": {
       "value": 0.08,
-      "source": "licon.8a, applied on all four sides (conservative)",
+      "source": "licon.8a, poly overlap of a poly contact in one direction (applied above and below it)",
       "check": {"kind": "drc", "rule": "licon.8a", "message": "poly overlap of poly contact"}
+    },
+    "licon_poly_enclosure_min": {
+      "value": 0.05,
+      "source": "licon.8, poly overlap of a poly contact on every side",
+      "check": {"kind": "drc", "rule": "licon.8", "message": "poly overlap of poly contact"}
+    },
+    "poly_diff_space": {
+      "value": 0.075,
+      "source": "poly.4, poly (the gate contact pad) to diffusion",
+      "check": {"kind": "drc", "rule": "poly.4", "message": "poly spacing to Diffusion"}
+    },
+    "poly_contact_diff_space": {
+      "value": 0.19,
+      "source": "licon.14, poly contact to diffusion",
+      "check": {"kind": "drc", "rule": "licon.14", "message": "poly contact spacing to diffusion"}
+    },
+    "poly_contact_pdiff_space": {
+      "value": 0.235,
+      "source": "licon.9 + psdm.5a, poly contact to P-diffusion",
+      "check": {"kind": "drc", "rule": "licon.9 + psdm.5a", "message": "poly contact spacing to P-diffusion"}
     },
     "licon_gate_space": {
       "value": 0.05,
@@ -85,7 +110,7 @@
     },
     "li_contact_enclosure": {
       "value": 0.08,
-      "source": "li.5, applied on all four sides (conservative)",
+      "source": "li.5, li1 overlap of a contact in one direction (landings extend 0.08 um above and below; li1 covers the contact on the other two sides)",
       "check": {"kind": "drc", "rule": "li.5", "message": "Local interconnect overlap of poly contact"}
     },
     "li_min_area": {
@@ -125,11 +150,12 @@
     }
   },
   "policies": {
-    "routing_grid": 0.02,
+    "routing_grid": 0.01,
     "maximum_extra_sites": 6,
     "routing_orders": 12,
     "met1_step_cost": 4,
     "via_cost": 40,
-    "description": "Routing grid, retry budget, net orders tried, and the router's relative costs of a met1 step and of an mcon via (li1 step = 1) are implementation choices, not PDK rules."
+    "li1_pin_inset": 0.01,
+    "description": "li1_pin_inset: signal pin shapes are this much smaller than their contact on each side; Magic's resistance extraction starts a pin's net just outside the lower-left corner of its pin shape and fails ('Couldn't find wire') when the pin is flush with its li1 landing. Routing grid, retry budget, net orders tried, and the router's relative costs of a met1 step and of an mcon via (li1 step = 1) are implementation choices, not PDK rules."
   }
 }

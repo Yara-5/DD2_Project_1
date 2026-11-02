@@ -79,9 +79,11 @@ def resolve_x(value,width):
 def frame_rectangles(frame,width):
     """Yield exact frame geometry, apart from its allowed site-count width."""
     f=frame['_contract']
-    for key in ('boundary','areaid_sc','nwell','nsdm','psdm','hvtp'):
+    # The npc band covers every poly contact of the cell at once, as in HD.
+    for key,layer in (('boundary','boundary'),('areaid_sc','areaid_sc'),('nwell','nwell'),
+                      ('nsdm','nsdm'),('psdm','psdm'),('hvtp','hvtp'),('npc_band','npc')):
         item=f[key]
-        yield key,tuple(item['gds']),[
+        yield layer,tuple(item['gds']),[
             resolve_x(item['x'][0],width),item['y'][0],
             resolve_x(item['x'][1],width),item['y'][1],
         ],None
@@ -200,84 +202,199 @@ def validate(spec, frame, r, rows):
     return by_id
 
 
-def derive_dimensions(spec, frame, r, by_id, rows, channels=()):
+def contacted_nodes(spec, rows):
+    """(row, segment, node) positions that get a diffusion contact.
+
+    Supplies, the output, stage outputs that drive gates and nets that appear more
+    than once need one; a unique internal shared-diffusion node does not.
+    """
+    counts = Counter(node for segments in rows.values() for seg in segments for node in seg['nodes'])
+    exposed = {*spec['inputs'], spec['output'], 'VPWR', 'VGND'} | {d['gate'] for d in spec['devices']}
+    return {(kind, s, k) for kind, segments in rows.items() for s, seg in enumerate(segments)
+            for k, net in enumerate(seg['nodes']) if counts[net] > 1 or net in exposed}
+
+
+def derive_dimensions(spec, frame, r, by_id, rows, channels=(), policies=None, extra_sites=0):
+    """Place the gates along x and choose where each gate's poly contact sits.
+
+    In the npc band every gate has a poly contact; the frame's npc band covers them
+    all, so the openings need no spacing of their own. A contact may sit beside its
+    gate stripe (HD shifts nand2_1's outwards); its poly pad then joins the stripe.
+    A dynamic program over the gates, left to right, chooses each contact's offset
+    from its stripe and the smallest distance to the previous gate that keeps:
+      - the stripes apart (poly.2), or a diffusion contact between them (licon.11);
+      - the pads (pad + stripe hull) apart and from the next stripe (poly.2);
+      - the gate li1 landings apart (li.3);
+      - at a routing channel, a free li1 track between the two landings, so a net
+        that has no landing of its own (the output) can cross the band;
+      - across a diffusion break, both diffusion ends and the break (diff/tap.3).
+    Cell edges count half of each spacing rule: every HD neighbour keeps the other half.
+    """
     g = r['grid']
-    snap = lambda value: round(math.ceil(value / g - 1e-9) * g, 9)
-    # Even grid counts keep centered square edges on the same grid.
-    centered_size = lambda value: round(math.ceil(value / (2 * g) - 1e-9) * 2 * g, 9)
+    step = float((policies or {}).get('routing_grid', 2 * g))
+    snap = lambda value, q=g: round(math.ceil(value / q - 1e-9) * q, 9)
+    # Even grid counts keep centered shapes on the same grid.
+    centered_size = lambda value: snap(value, 2 * g)
     l = max(d['l_um'] for d in spec['devices'])
-    li_pad = centered_size(max(r['licon_size'] + 2 * r['li_contact_enclosure'], math.sqrt(r['li_min_area'])))
-    poly_pad = centered_size(r['licon_size'] + 2 * r['licon_poly_enclosure'])
-    npc_pad = centered_size(r['licon_size'] + 2 * r['licon_npc_enclosure'])
+    # Directional enclosures: li.5 and licon.8a above and below the contact,
+    # li1 covering it and licon.8 on the other two sides.
+    li_w = r['licon_size']
+    # Magic's resistance extraction starts a pin's net just outside the lower-left
+    # corner of its pin shape; a pin flush with its 0.17 um landing starts it off li1
+    # ("Couldn't find wire"). Inset pins keep that point on li1 (HD's pins sit inside
+    # wider li1 too).
+    pin = round(r['licon_size'] - 2 * float((policies or {}).get('li1_pin_inset', 0)), 9)
+    li_h = centered_size(max(r['licon_size'] + 2 * r['li_contact_enclosure'], r['li_min_area'] / li_w))
+    pad_w = centered_size(r['licon_size'] + 2 * r['licon_poly_enclosure_min'])
+    pad_h = centered_size(r['licon_size'] + 2 * r['licon_poly_enclosure'])
     m1_pad = centered_size(max(r['mcon_size'] + 2 * r['met1_contact_enclosure'], math.sqrt(r['met1_min_area'])))
+    # A contact at a diffusion end: licon.5a along the strip; licon.5c holds across
+    # it because contacts sit at least that far from the strip's top and bottom.
+    contact_inset_x = r['licon_diff_enclosure_min'] + r['licon_size'] / 2
+    end_bounds = {
+        'diffusion_extension': r['diff_end_extension'],
+        'contact_fit': r['licon_gate_space'] + r['licon_size'] + r['licon_diff_enclosure_min'],
+    }
+    end = snap(max(end_bounds.values()))
+    gap_bounds = {
+        'diffusion_spacing': r['diff_space'],
+        'end_landing_li1_spacing': li_w + r['li_space'] - 2 * contact_inset_x,
+    }
+    gap = snap(max(gap_bounds.values()))
+    margin_bounds = {'half_diffusion_spacing': r['diff_space'] / 2,
+                     'implant_enclosure': r['implant_enclosure']}
+    margin = snap(max(margin_bounds.values()))
     pitch_bounds = {
         'poly_stripe_spacing': l + r['poly_space'],
         'diffusion_contact_between_gates': l + r['licon_size'] + 2 * r['licon_gate_space'],
-        'poly_contact_landing_spacing': poly_pad + r['poly_space'],
-        'li1_pin_spacing': li_pad + r['li_space'],
-        'separate_npc_openings': npc_pad + r['npc_space'],
     }
-    pitch = snap(max(pitch_bounds.values()))
-    contact_offset = r['licon_diff_enclosure'] + r['licon_size'] / 2
-    end_bounds = {
-        'diffusion_extension': r['diff_end_extension'],
-        'contact_fit': r['licon_gate_space'] + r['licon_size'] + r['licon_diff_enclosure'],
-        # If there is only one gate, its two end-region landings must still
-        # have legal inter-net li1 spacing. Contact enclosure alone misses this.
-        'end_contact_li1_spacing': contact_offset + (li_pad + r['li_space'] - l) / 2,
-    }
-    end = snap(max(end_bounds.values()))
-    # A diffusion break between two segments: the strips, the end landings on either
-    # side, and the gates on either side must all stay legal.
-    gap_bounds = {
-        'diffusion_spacing': r['diff_space'],
-        'end_landing_li1_spacing': li_pad + r['li_space'] - 2 * contact_offset,
-        'gate_pitch_across_break': pitch - 2 * end - l,
-    }
-    gap = snap(max(gap_bounds.values()))
-    margin = snap(r['implant_enclosure'] + r['li_width'] + r['li_space'])
-    # A routing channel: one gap between two gates of a segment widened so an li1
-    # wire passes between their gate landings, across the npc band.
-    channel_pitch = snap(max(pitch, li_pad + 2 * r['li_space'] + r['li_width']))
-    x, active, gates, contacts_x = margin, [], [], []
+    track = li_w + 2 * r['li_space'] + step   # one routable li1 wire plus grid slack
+
+    contacts = contacted_nodes(spec, rows)
+    columns = [(s, i) for s, seg in enumerate(rows['nmos']) for i in range(len(seg['devices']))]
+    last_segment = len(rows['nmos']) - 1
+    # Which gap each channel (segment, node) asks for: gap j lies between columns
+    # j-1 and j; gap 0 is the left edge and gap len(columns) the right edge.
+    gap_of = {}
+    j = 0
+    for s, seg in enumerate(rows['nmos']):
+        n = len(seg['devices'])
+        for k in range(n + 1):
+            gap_of[(s, k)] = j + k
+        j += n
+    crossing = {gap_of[c] for c in channels}
+
+    offsets = [round(k * step, 9) for k in range(-round(0.3 / step), round(0.3 / step) + 1)]
+    left_ext = lambda c: min(c - pad_w / 2, -l / 2)    # pad + stripe hull, from the gate
+    right_ext = lambda c: max(c + pad_w / 2, l / 2)
+
+    def pair(j, a, b):
+        """Smallest distance from column j-1 (contact offset a) to column j (offset b)."""
+        (s0, i0), (s1, i1) = columns[j - 1], columns[j]
+        bounds = {}
+        if s0 == s1:
+            node = i0 + 1
+            contacted = any((kind, s0, node) in contacts for kind in rows)
+            key = 'diffusion_contact_between_gates' if contacted else 'poly_stripe_spacing'
+            bounds[key] = pitch_bounds[key]
+        else:
+            bounds['diffusion_break'] = 2 * end + gap + l
+        bounds['poly_pad_spacing'] = right_ext(a) - left_ext(b) + r['poly_space']
+        bounds['gate_li1_spacing'] = (a + li_w / 2) - (b - li_w / 2) + r['li_space']
+        if j in crossing:
+            bounds['li1_track_through_band'] = (a + li_w / 2) - (b - li_w / 2) + track
+        return bounds
+
+    def left_bounds(c):
+        b = {'diffusion_margin': margin + end + l / 2,
+             'poly_pad_to_edge': r['poly_space'] / 2 - left_ext(c),
+             'gate_li1_to_edge': r['li_space'] / 2 - (c - li_w / 2)}
+        if 0 in crossing:
+            b['li1_track_through_band'] = r['li_space'] / 2 + track - r['li_space'] - (c - li_w / 2)
+        return b
+
+    def right_bounds(c):
+        b = {'diffusion_margin': l / 2 + end + margin,
+             'poly_pad_to_edge': right_ext(c) + r['poly_space'] / 2,
+             'gate_li1_to_edge': c + li_w / 2 + r['li_space'] / 2}
+        if len(columns) in crossing:
+            b['li1_track_through_band'] = c + li_w / 2 + track - r['li_space'] + r['li_space'] / 2
+        return b
+
+    # Distances are rounded up to two routing steps, so contacts midway between two
+    # gates stay on the routing grid; the cost adds a small preference for contacts
+    # close to their own stripe among equally narrow solutions.
+    best = {c: ((snap(max(left_bounds(c).values()), step), abs(c)), None) for c in offsets}
+    history = [best]
+    for j in range(1, len(columns)):
+        current = {}
+        for b in offsets:
+            choice = None
+            for a, ((xa, sa), _) in history[-1].items():
+                cost = (round(xa + snap(max(pair(j, a, b).values()), 2 * step), 9), round(sa + abs(b), 9))
+                if choice is None or cost < choice[0]:
+                    choice = (cost, a)
+            current[b] = choice
+        history.append(current)
+    end_cost = {c: (snap(x + max(right_bounds(c).values()), step), s) for c, ((x, s), _) in history[-1].items()}
+    c_last = min(end_cost, key=lambda c: (end_cost[c], abs(c), c))
+    chosen = [c_last]
+    for j in range(len(columns) - 1, 0, -1):
+        chosen.append(history[j][chosen[-1]][1])
+    chosen.reverse()
+    gates = [history[0][chosen[0]][0][0]]
+    gaps = []
+    for j in range(1, len(columns)):
+        bounds = pair(j, chosen[j - 1], chosen[j])
+        d = snap(max(bounds.values()), 2 * step)
+        gates.append(round(gates[-1] + d, 9))
+        gaps.append({'between_columns': [j - 1, j], 'pitch_um': d,
+                     'binding': max(bounds, key=bounds.get),
+                     'lower_bounds_um': {k: round(v, 9) for k, v in bounds.items()}})
+    raw_width = end_cost[c_last][0]
+    sites = math.ceil(raw_width / frame['site_width'] - 1e-9) + extra_sites
+    # Centre the cell's content, so both edges keep the same room for routing.
+    shift = math.floor((sites * frame['site_width'] - raw_width) / 2 / step + 1e-9) * step
+    gates = [round(x + shift, 9) for x in gates]
+
+    active, contacts_x, column = [], [], 0
     for s, segment in enumerate(rows['nmos']):
         n = len(segment['devices'])
-        steps = [channel_pitch if (s, i) in channels else pitch for i in range(1, n)]
-        # A channel at a segment end (node 0 or n) lengthens that end instead.
-        left = end + (channel_pitch - pitch if (s, 0) in channels else 0)
-        right = end + (channel_pitch - pitch if (s, n) in channels else 0)
-        length = snap(left + right + l + sum(steps))
-        seg_gates = [round(x + left + l / 2 + sum(steps[:i]), 9) for i in range(n)]
-        seg_contacts = [round(x + contact_offset, 9)]
-        seg_contacts += [round((seg_gates[i] + seg_gates[i + 1]) / 2, 9) for i in range(n - 1)]
-        seg_contacts += [round(x + length - contact_offset, 9)]
-        active.append([round(x, 9), round(x + length, 9)])
-        gates += seg_gates
-        contacts_x.append(seg_contacts)
-        x = round(x + length + gap, 9)
-    raw_width = active[-1][1] + margin
-    sites = math.ceil(raw_width / frame['site_width'] - 1e-9)
+        seg_gates = gates[column:column + n]
+        left, right = round(seg_gates[0] - l / 2 - end, 9), round(seg_gates[-1] + l / 2 + end, 9)
+        active.append([left, right])
+        contacts_x.append([round(left + contact_inset_x, 9)]
+                          + [round((seg_gates[i] + seg_gates[i + 1]) / 2, 9) for i in range(n - 1)]
+                          + [round(right - contact_inset_x, 9)])
+        column += n
     return {
-        'gate_length_um': l, 'gate_pitch_um': pitch,
+        'gate_length_um': l,
+        'gate_pitches_um': [x['pitch_um'] for x in gaps],
+        'gate_gaps': gaps,
         'pitch_lower_bounds_um': pitch_bounds,
-        'dominant_pitch_constraint': max(pitch_bounds, key=pitch_bounds.get),
-        'li1_landing_um': li_pad, 'poly_landing_um': poly_pad,
-        'npc_landing_um': npc_pad, 'met1_landing_um': m1_pad,
-        'diffusion_end_extension_um': end, 'side_margin_um': margin,
-        'end_extension_lower_bounds_um': end_bounds,
+        'gate_contact_offset_um': chosen,
+        'li1_landing_um': [li_w, li_h], 'li1_pin_um': pin, 'poly_landing_um': [pad_w, pad_h], 'met1_landing_um': m1_pad,
+        'diffusion_end_extension_um': end, 'end_extension_lower_bounds_um': end_bounds,
         'diffusion_break_um': gap, 'diffusion_break_lower_bounds_um': gap_bounds,
-        'channel_pitch_um': channel_pitch, 'channels': sorted(channels),
+        'side_margin_um': margin, 'side_margin_lower_bounds_um': margin_bounds,
+        'left_edge_lower_bounds_um': {k: round(v, 9) for k, v in left_bounds(chosen[0]).items()},
+        'right_edge_lower_bounds_um': {k: round(v, 9) for k, v in right_bounds(chosen[-1]).items()},
+        'li1_track_um': round(track, 9), 'channels': sorted(channels),
+        'crossing_gaps': sorted(crossing),
         'diffusion_segments': len(active),
-        'active_x_um': active,
+        'active_x_um': active, 'centering_shift_um': round(shift, 9),
         'gate_x_um': gates, 'diffusion_node_x_um': contacts_x,
-        'raw_width_um': round(raw_width, 9), 'minimum_width_sites': sites,
+        'raw_width_um': round(raw_width, 9), 'minimum_width_sites': sites - extra_sites,
+        'width_sites': sites,
         'formulas': {
-            'pitch': 'snap_up(max(poly stripe, contacted diffusion gap, poly landing, li1 pin, NPC bounds))',
-            'end_extension': 'max(poly.7, contact fit, contact_offset + (li1_landing + li1_space - L)/2)',
-            'diffusion_break': 'snap_up(max(diff/tap.3, end-landing li1 spacing, gate pitch across the break))',
-            'channel_pitch': 'snap_up(max(pitch, li1 landing + 2*li1 spacing + li1 width)), only at listed channels',
-            'side_margin': 'implant enclosure + li1 wire width + li1 spacing; conservative routing policy',
-            'raw_width': '2*side_margin + sum over segments(2*end_extension + L + (gates-1)*pitch) + (segments-1)*break',
+            'pitch': 'per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, '
+                     'gate li1 spacing li.3, li1 track at a channel), 2 routing steps)',
+            'gate_contact_offset': 'chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe',
+            'li1_landing': 'licon wide (li1 covers it), licon + 2 li.5 tall, at least li.6 in area',
+            'poly_landing': 'licon + 2 licon.8 wide, licon + 2 licon.8a tall, joined to the stripe',
+            'end_extension': 'max(poly.7, licon.11 + licon + licon.5a)',
+            'diffusion_break': 'snap_up(max(diff/tap.3, end-landing li1 spacing))',
+            'side_margin': 'max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half',
             'width_sites': 'ceil(raw_width / site_width), plus explicit routing retries if required',
         },
     }
@@ -307,9 +424,15 @@ def plan_geometry(spec, frame, r, dim, by_id, sites, rows):
             contacts.append({'type':'mcon','net':net,'point_um':[(box[0]+box[2])/2,(box[1]+box[3])/2],
                              'source':'instructor frame: one rail contact per site'})
 
-    counts = Counter(node for segments in rows.values() for seg in segments for node in seg['nodes'])
-    # Stage outputs drive gates elsewhere in the cell, so they need a contact too.
-    exposed = {*spec['inputs'], spec['output'], 'VPWR', 'VGND'} | {d['gate'] for d in spec['devices']}
+    contacted = contacted_nodes(spec, rows)
+    far = rail_side_contacts(rows, contacted, dim, r)
+    pin_size = dim['li1_pin_um']
+    li_w, li_h = dim['li1_landing_um']
+    pad_w, pad_h = dim['poly_landing_um']
+    rails = frame['_contract']['rails']
+    gate_li1 = (gate_y - li_h / 2, gate_y + li_h / 2)
+    # Across a contact: licon.5c from the strip's top and bottom.
+    inset = r['licon_diff_enclosure'] + r['licon_size'] / 2
     for kind in ('nmos', 'pmos'):
         w = by_id[rows[kind][0]['devices'][0]]['w_um']
         band = frame[f'{kind}_band']
@@ -328,43 +451,74 @@ def plan_geometry(spec, frame, r, dim, by_id, sites, rows):
                                     'right': round(active_right-x-d['l_um']/2, 9),
                                 }})
             column += len(segment['devices'])
-            for x, net in zip(dim['diffusion_node_x_um'][s], segment['nodes']):
+            for k, (x, net) in enumerate(zip(dim['diffusion_node_x_um'][s], segment['nodes'])):
                 # A unique internal shared-diffusion node needs no contact or wire.
-                if counts[net] == 1 and net not in exposed:
+                if (kind, s, k) not in contacted:
                     continue
-                inset = r['licon_diff_enclosure'] + r['licon_size']/2
-                if kind == 'nmos':
-                    y = max(bottom+inset,frame['_contract']['rails']['VGND']['li1']['y'][1]+r['li_space']+dim['li1_landing_um']/2) if net == 'VGND' else min(top-inset, gate_y-dim['li1_landing_um']-r['li_space'])
+                supply = net == ('VGND' if kind == 'nmos' else 'VPWR')
+                wide = r['licon_size'] + 2 * r['li_contact_enclosure']
+                if supply:
+                    # As far from the band as licon.5c allows, its li1 merged into the
+                    # rail strip. In the 0.65 um NMOS row li.5 is met sideways (a wide
+                    # stub), which frees the row above it for a horizontal li1 track, as
+                    # in HD. In the PMOS row li.5 is met below the contact (a narrow
+                    # stub), so a rail-side landing of another net fits beside it.
+                    y = bottom + inset if kind == 'nmos' else top - inset
+                    rail = rails[net]['li1']['y']
+                    if kind == 'nmos':
+                        rect('li1', (x - wide / 2, rail[0], x + wide / 2, y + r['licon_size'] / 2), net)
+                    else:
+                        rect('li1', (x - li_w / 2, y - li_h / 2, x + li_w / 2, rail[1]), net)
+                    terminals[net].append((x, frame['ground_y'] if kind == 'nmos' else frame['power_y']))
+                elif (kind, s, k) in far:
+                    # Rail side, li.5 met sideways: the net's own wire runs along the
+                    # rail side, past the band-side landings of the nets between.
+                    y = top - inset
+                    rect('li1', (x - wide / 2, y - r['licon_size'] / 2, x + wide / 2, y + r['licon_size'] / 2), net)
+                    terminals[net].append((x, round(y, 9)))
                 else:
-                    y = min(top-inset,frame['_contract']['rails']['VPWR']['li1']['y'][0]-r['li_space']-dim['li1_landing_um']/2) if net == 'VPWR' else max(bottom+inset, gate_y+dim['li1_landing_um']+r['li_space'])
-                if y < bottom+inset-1e-9 or y > top-inset+1e-9:
+                    # As close to the band as the gate landings' li1 spacing allows.
+                    y = (min(top - inset, gate_li1[0] - r['li_space'] - li_h / 2) if kind == 'nmos'
+                         else max(bottom + inset, gate_li1[1] + r['li_space'] + li_h / 2))
+                    rect('li1', (x - li_w / 2, y - li_h / 2, x + li_w / 2, y + li_h / 2), net)
+                    terminals[net].append((x, round(y, 9)))
+                if y < bottom + inset - 1e-9 or y > top - inset + 1e-9:
                     raise ValueError(f'{kind}: contact landing cannot fit both diffusion enclosure and gate-pin clearance')
                 square('licon', x, y, r['licon_size'], net)
-                square('li1', x, y, dim['li1_landing_um'], net)
-                terminals[net].append((x, round(y, 9)))
                 contacts.append({'type': 'diffusion', 'net': net, 'point_um': [x, round(y, 9)], 'row': kind})
 
     n_bottom = next(d['diffusion_y_um'][0] for d in devices if d['type']=='nmos')
     p_top = next(d['diffusion_y_um'][1] for d in devices if d['type']=='pmos')
+    n_top = next(d['diffusion_y_um'][1] for d in devices if d['type']=='nmos')
+    p_bottom = next(d['diffusion_y_um'][0] for d in devices if d['type']=='pmos')
+    # The npc band's position decides these; check them rather than assume them.
+    for name, value, rule in (
+            ('poly pad to NMOS diffusion', gate_y - pad_h/2 - n_top, 'poly_diff_space'),
+            ('poly pad to PMOS diffusion', p_bottom - gate_y - pad_h/2, 'poly_diff_space'),
+            ('poly contact to NMOS diffusion', gate_y - r['licon_size']/2 - n_top, 'poly_contact_diff_space'),
+            ('poly contact to PMOS diffusion', p_bottom - gate_y - r['licon_size']/2, 'poly_contact_pdiff_space')):
+        if value < r[rule] - 1e-9:
+            raise ValueError(f'{name} is {value:.3f} um, below {rule} ({r[rule]} um)')
     nmos_columns = [identifier for seg in rows['nmos'] for identifier in seg['devices']]
-    for x, identifier in zip(dim['gate_x_um'], nmos_columns):
+    for x, c, identifier in zip(dim['gate_x_um'], dim['gate_contact_offset_um'], nmos_columns):
         d, net = by_id[identifier], by_id[identifier]['gate']
-        rect('poly', (x-d['l_um']/2, n_bottom-r['poly_endcap'], x+d['l_um']/2, p_top+r['poly_endcap']), net)
-        square('poly', x, gate_y, dim['poly_landing_um'], net)
-        square('licon', x, gate_y, r['licon_size'], net)
-        square('npc', x, gate_y, dim['npc_landing_um'])
-        square('li1', x, gate_y, dim['li1_landing_um'], net)
+        half = d['l_um']/2
+        rect('poly', (x-half, n_bottom-r['poly_endcap'], x+half, p_top+r['poly_endcap']), net)
+        # The pad encloses its contact and reaches its stripe.
+        rect('poly', (min(x+c-pad_w/2, x-half), gate_y-pad_h/2, max(x+c+pad_w/2, x+half), gate_y+pad_h/2), net)
+        square('licon', x+c, gate_y, r['licon_size'], net)
+        rect('li1', (x+c-li_w/2, gate_li1[0], x+c+li_w/2, gate_li1[1]), net)
         # Only primary inputs are pins; an internal stage output is wired, not exposed.
         if net in spec['inputs']:
-            square('li1_pin', x, gate_y, r['licon_size'], net)
-        terminals[net].append((x, gate_y))
-        contacts.append({'type':'poly','net':net,'point_um':[x,gate_y]})
+            square('li1_pin', x+c, gate_y, pin_size, net)
+        terminals[net].append((round(x+c, 9), gate_y))
+        contacts.append({'type':'poly','net':net,'point_um':[round(x+c, 9),gate_y],'gate_x_um':x})
 
     # The output pin sits on one of the output's own drain landings: HD only asks for
     # a li1 pin on the wire joining the drains (handout Table 2), and a separate pin at
     # the cell edge would need its own route.
     output_point = terminals[spec['output']][0]
-    square('li1_pin', *output_point, r['licon_size'], spec['output'])
+    square('li1_pin', *output_point, pin_size, spec['output'])
     # The actual frame supplies all rail mcons, one per site. Each source
     # connects to the continuous li1 rail without adding off-pattern mcons.
     for net, y in (('VGND',frame['ground_y']), ('VPWR',frame['power_y'])):
@@ -387,6 +541,41 @@ def plan_geometry(spec, frame, r, dim, by_id, sites, rows):
             'shapes':shapes,'terminals':dict(terminals),'contacts':contacts,'devices':devices,
             'output_pin_um':output_point,'gate_contact_y_um':gate_y,
             'supply_pin_x_um':pin_x,'routes':[]}
+
+
+def rail_side_contacts(rows, contacted, dim, r):
+    """PMOS-row contacts that go to the rail side of the 1.0 um row.
+
+    A net that appears again later in the row must be joined along the row. Where a
+    contact of another signal net lies between two consecutive appearances (that net
+    leaves towards the band) and no VPWR contact does, the joining wire can only pass
+    on the rail side, so both landings go there. Two such wide landings of different
+    nets need li.3 between them, so a pair stays on the band side if one of its
+    contacts would be too close to another net's rail-side contact.
+    """
+    sequence = []
+    for s, seg in enumerate(rows['pmos']):
+        for k, net in enumerate(seg['nodes']):
+            if ('pmos', s, k) in contacted:
+                sequence.append(((s, k), dim['diffusion_node_x_um'][s][k], net))
+    # Two wide landings side by side: li.3 between them.
+    apart = r['licon_size'] + 2 * r['li_contact_enclosure'] + r['li_space']
+    chosen = {}
+    for i, (place, x, net) in enumerate(sequence):
+        if net == 'VPWR':
+            continue
+        j = next((j for j in range(i + 1, len(sequence)) if sequence[j][2] == net), None)
+        if j is None:
+            continue
+        between = {n for _, _, n in sequence[i + 1:j]}
+        if not between or 'VPWR' in between:
+            continue
+        pair = [(place, x), sequence[j][:2]]
+        if all(abs(px - qx) >= apart - 1e-9 for _, px in pair for q, (qx, qnet) in chosen.items()
+               if qnet != net):
+            for p, px in pair:
+                chosen[p] = (px, net)
+    return {('pmos', s, k) for s, k in chosen}
 
 
 def channel_candidates(spec, rows):
@@ -432,6 +621,7 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
             raise ValueError('Centered wire widths must be multiples of twice the manufacturing grid')
     width_um, ny = plan['width_um'], round(frame['height'] / step)
     nx = math.floor(width_um / step)
+    columns = nx + 1
     occupied = {layer: [(s['net'], s['box']) for s in plan['shapes'] if s['layer'] == layer]
                 for layer in ('li1', 'met1')}
     mcons = [s['box'] for s in plan['shapes'] if s['layer'] == 'mcon']
@@ -441,26 +631,30 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
         return tuple(round(v/step) for v in point)
 
     def raster(boxes, margin):
-        """Grid points strictly closer than `margin` to any of the boxes."""
-        points = set()
+        """Grid points strictly closer than `margin` to any of the boxes, as a byte grid."""
+        grid = bytearray(columns * (ny + 1))
         for b in boxes:
-            x0 = math.floor((b[0] - margin) / step + 1e-9) + 1
-            x1 = math.ceil((b[2] + margin) / step - 1e-9) - 1
-            y0 = math.floor((b[1] - margin) / step + 1e-9) + 1
-            y1 = math.ceil((b[3] + margin) / step - 1e-9) - 1
-            for ix in range(x0, x1 + 1):
-                for iy in range(y0, y1 + 1):
-                    points.add((ix, iy))
-        return points
+            x0 = max(0, math.floor((b[0] - margin) / step + 1e-9) + 1)
+            x1 = min(nx, math.ceil((b[2] + margin) / step - 1e-9) - 1)
+            y0 = max(0, math.floor((b[1] - margin) / step + 1e-9) + 1)
+            y1 = min(ny, math.ceil((b[3] + margin) / step - 1e-9) - 1)
+            if x1 < x0:
+                continue
+            ones = b'\x01' * (x1 - x0 + 1)
+            for iy in range(y0, y1 + 1):
+                grid[iy * columns + x0:iy * columns + x1 + 1] = ones
+        return grid
 
     def search(start, goal, net, allow_met1):
         others = {layer: [b for owner, b in occupied[layer] if owner != net] for layer in occupied}
         blocked = {'li1': raster(others['li1'], space['li1'] + wire['li1'] / 2),
                    'met1': raster(others['met1'], space['met1'] + wire['met1'] / 2)}
-        pad_blocked = raster(others['met1'], space['met1'] + met1_pad / 2)
-        via_blocked = raster(mcons, r['mcon_space'] + r['mcon_size'] / 2)
-        edge = r['li_space'] if net not in rail_y else 0
         layers = ('li1', 'met1') if allow_met1 and net not in rail_y else ('li1',)
+        if len(layers) == 2:
+            pad_blocked = raster(others['met1'], space['met1'] + met1_pad / 2)
+            via_blocked = raster(mcons, r['mcon_space'] + r['mcon_size'] / 2)
+        # Half the spacing at the cell edge: every HD neighbour keeps the other half.
+        edge = r['li_space'] / 2 if net not in rail_y else 0
 
         def inside(ix, iy, layer):
             x = ix * step
@@ -468,11 +662,11 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
                     and 0 <= iy <= ny)
 
         def allowed(ix, iy, layer):
-            return inside(ix, iy, layer) and (ix, iy) not in blocked[layer]
+            return inside(ix, iy, layer) and not blocked[layer][iy * columns + ix]
 
         def via_ok(ix, iy):
             return (allowed(ix, iy, 'li1') and inside(ix, iy, 'met1')
-                    and (ix, iy) not in pad_blocked and (ix, iy) not in via_blocked)
+                    and not pad_blocked[iy * columns + ix] and not via_blocked[iy * columns + ix])
 
         start3, goal3 = (*start, 'li1'), (*goal, 'li1')
         if not allowed(*start3) or not allowed(*goal3):
@@ -709,8 +903,8 @@ def prepare_layout(spec,rules_document,frame):
                     yield index,euler_paths,rows,channels,True,extra
     for index,euler_paths,rows,channels,allow_met1,extra in attempts():
         by_id=validate(spec,frame,r,rows)
-        dimensions=derive_dimensions(spec,frame,r,by_id,rows,channels)
-        plan=plan_geometry(spec,frame,r,dimensions,by_id,dimensions['minimum_width_sites']+extra,rows)
+        dimensions=derive_dimensions(spec,frame,r,by_id,rows,channels,policies,extra)
+        plan=plan_geometry(spec,frame,r,dimensions,by_id,dimensions['width_sites'],rows)
         try:
             route_li1(plan,spec,frame,r,policies,allow_met1)
             fill_li1_notches(plan,r)

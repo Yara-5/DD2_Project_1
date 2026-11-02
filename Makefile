@@ -5,6 +5,8 @@
 #   make all       the whole flow for every cell in CELLS
 #   make test      make all, then every broken case in tests/broken/ must be rejected
 #   make demo IN=tests/requests/<cell>.json
+#   make char_hd   characterize the six installed reference cells (section 5.1)
+#   make char      characterize the generated cells in CELLS (section 5)
 #
 # Steps that need GDSfactory/KLayout run with PYTHON. Magic, Netgen and ngspice run in
 # the course container through Tutorial 3's tools.sh, and Icarus on Linux; on a Linux
@@ -36,6 +38,9 @@ HD_GDS    = $(PDK_HOST)/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
 HD_SPICE  = $(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 HD_SPICE_HOST = $(PDK_HOST)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 TECH      = $(PDK)/libs.tech/magic/sky130A.tech
+HD_LIB    = $(PDK)/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+HD_GDS_LINUX = $(PDK)/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
+REFERENCE_CELLS = inv_1 nand2_1 nor2_1 nand3_1 a21oi_1 o21ai_1
 
 # A broken case passes only when its check exits non-zero.
 define expect_fail
@@ -44,7 +49,7 @@ define expect_fail
 	 else echo "ok   broken case $(1) rejected"; fi
 endef
 
-.PHONY: setup check test all demo clean network layout drc lvs compare sim model
+.PHONY: setup check test all demo clean network layout drc lvs compare sim model char_hd char
 
 setup:            ## Tutorial 3's pdk link, which its tools.sh mounts into the container
 	$(LINUX) ln -sfn $(PDK) $(TUT3)/pdk
@@ -105,6 +110,17 @@ model:            ## section 4.2 level 3: Verilog model and Liberty function
 	  broken=""; for f in tests/broken/$${c}_*.v; do [ -f "$$f" ] && broken="$$broken --broken $$f"; done; \
 	  $(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$$c/request.json \
 	    --outdir cells/$(PREFIX)$$c --report results/model_level/$$c.json $$broken || exit 1; done
+
+char_hd:          ## section 5.1: characterize the six installed reference cells
+	@for c in $(REFERENCE_CELLS); do \
+	  $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(IMAGE) \
+	    --hd-cell sky130_fd_sc_hd__$$c --hd-gds $(HD_GDS_LINUX) --pdk-spice $(HD_SPICE) \
+	    --out results/characterization/hd/$$c || exit 1; done
+
+char:             ## section 5: characterize the generated cells (only after char_hd is validated)
+	@for c in $(CELLS); do \
+	  $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(IMAGE) \
+	    --cell-dir cells/$(PREFIX)$$c --out cells/$(PREFIX)$$c/characterized || exit 1; done
 
 all: network layout drc lvs compare sim model
 

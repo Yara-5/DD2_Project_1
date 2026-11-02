@@ -22,12 +22,16 @@ splits it into static CMOS stages of at most 3 series transistors with the fewes
 `euler.py` orders each stage's transistors as dual trails (after Maziasz and Hayes, DAC 1991)
 and places the stages side by side, abutting on the supplies. `prepare_layout.py` places the
 gates in the HD frame of `given/plan_hd.json`, sizes every contact, pitch and diffusion break
-from `src/rules.json` and routes on li1 (met1 only inside multi-stage cells, or as a recorded
-last resort); `generate_gds.py` draws that plan with GDSfactory. The cell is then checked:
+from `src/rules.json` (HD-style: one npc band, directional landings, poly contacts beside
+their gates, 0.42 um minimum gate pitch) and routes on li1 (met1 only inside multi-stage
+cells, or as a recorded last resort); `generate_gds.py` draws that plan with GDSfactory. The cell is then checked:
 switch level (network and reordered network), DRC in tapped rows with abutment, the
 implant/npc layer check, LVS, RC-LVS and LVS against the installed HD cell where one exists,
 the frame comparison with HD, a transistor-level simulation of the RC netlist, and the
-Verilog/Liberty model check.
+Verilog/Liberty model check. `characterize.py` (section 5) measures delay, transition and
+input capacitance tables on the RC netlist with SA/SB on every transistor, and writes a
+Liberty cell; it runs on the installed reference cells (`make char_hd`) and, once that is
+validated, on the generated cells (`make char`).
 
 ## 4. Commands
 | Command | Input | Output |
@@ -40,6 +44,8 @@ Verilog/Liberty model check.
 | `make compare` | `cells/*/cell.gds`, PDK GDS | `results/hd_comparison/comparison.json`, `<cell>_side_by_side.png` |
 | `make sim` | `cells/<name>/<name>_pex.spice` | `results/transistor_level/<cell>.json` |
 | `make model` | `cells/<name>/request.json` | `cells/<name>/cell.v`, `cell.lib`, `results/model_level/<cell>.json` |
+| `make char_hd` | the six installed reference cells, the shipped HD Liberty | `results/characterization/hd/<cell>.{json,lib}` |
+| `make char` | `cells/<name>/cell.gds`, `layout_plan.json` | `cells/<name>/characterized.{json,lib}` |
 | `make demo IN=tests/requests/<cell>.json` | one request | the whole flow for that cell |
 
 ## 5. Layout
@@ -53,13 +59,15 @@ Verilog/Liberty model check.
 ## 6. Results
 These files are not in the repository; `make all` writes them (about 70 minutes for the 18
 requests in `tests/requests/`, most of it transistor-level simulation).
-- `results/pdk_rules/report.json`: all 24 rule values match the installed sky130A.tech
+- `results/pdk_rules/report.json`: all 29 rule values match the installed sky130A.tech
 - `results/switch_level/`: every synthesized network and every reordered (Euler) network passes
 - `results/drc/verification.json`: 432 abutment contexts (18 cells x 24) with 0 DRC errors; layer check passes on all generated cells and on installed inv_1 and nand2_1
 - `results/lvs/verification.json`: LVS and RC-LVS match for all 18 cells; LVS against the installed HD cell matches for inv_1, nand2_1, nand3_1, nor2_1, nor3_1 (the cells whose HD ports have our names)
 - `results/hd_comparison/comparison.json`: frame XOR clean for those five
 - `results/transistor_level/`: every DC row and every single-input edge passes for all 18 cells
 - `results/model_level/`: Verilog and Liberty function match the request for all 18; broken models rejected
+- Cell widths (from each `layout_plan.json`): inv_1, nand2_1, nor2_1 3 sites and nand3_1, nor3_1 4 sites, the widths `compare_hd.py` measures for the installed cells; a21oi_1 4, o21ai_1 5; the largest is maj4_1 at 13. Only maj4n_1 among the single-stage cells still uses met1
+- `results/characterization/hd/` (`make char_hd`, about 8 minutes, not part of `make all`): the six reference cells over the full 7 x 7 tables. Against the shipped Liberty (scratch comparison, not a flow check), the median error of delay and transition is 2.1 % to 4.3 % per cell, and every input capacitance is within 6 %. The largest errors are all cell_fall at 1.5 ns and 0.5 fF, where the delay is only a few ps (see docs/TECHNICAL.md, section 13.6)
 
 ## 7. Tests
 `make test` runs the whole flow and then each broken case in `tests/broken/` against its check
@@ -71,15 +79,17 @@ AGENTS.md · ai/use_log.md · ai/mistakes_log.md · report/ai_report.pdf
 ## 9. Limitations
 - 'stack' sizing (transistors folded into fingers) is refused by the layout step, so only the
   'hd' sizing reaches GDS; the NOR3 sizing comparison of section 8.2 is not done.
-- The cells are wider than HD (gate pitch 0.64 um against 0.42 um): each poly contact has its
-  own NPC opening, and contacts use square landings with the larger enclosure on all sides.
-  Those landings also leave no li1 track inside the 0.65 um NMOS row, so some single-stage
-  cells (o22ai_1, f14_1 at the time of writing) need met1, which handout Table 3 reserves for
-  multi-stage cells; the plan records `met1_in_single_stage_cell`.
+- One single-stage cell, maj4n_1 (12 transistors, two inputs on two gates each), still needs
+  met1, which handout Table 3 reserves for multi-stage cells; the plan records
+  `met1_in_single_stage_cell`. Some cells are still wider than HD where the output has to
+  cross the npc band through a routing channel (a 0.68-0.70 um gap). One licon per diffusion
+  contact (HD uses two or three).
 - `synthesize.py` does not share identical sub-stages, and only considers algebraic
   factorings of minimum SOP/POS covers.
-- No characterization (section 5): the Liberty cell is functional only, no SA/SB on the
-  extracted transistors, no response file. The round trip of section 3.3, the Yosys/ABC `cec`
+- The characterizer is not yet validated as Table 5 asks (six cells, full tables, both
+  ngspice builds, Yosys/OpenSTA syntax, SPM, the full-ramp broken case), so no generated
+  cell is characterized in `make all`; the Liberty cell `make model` writes is functional
+  only, and there is no response file. The round trip of section 3.3, the Yosys/ABC `cec`
   check and the a21o_1/mux2_1 comparison are not done.
 - Parasitic and timing comparisons with HD (Table 4) are not done.
 

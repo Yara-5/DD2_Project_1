@@ -15,3 +15,4 @@ build/
 __pycache__/
 *.pyc
 # never commit files over 50 MB (overview, section 5.1)
+docs/TECHNICAL.md

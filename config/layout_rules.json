@@ -1,0 +1,97 @@
+{
+  "units": "um",
+  "scope": "Installed course PDK / Tutorial 3 rule subset, with explicit manual-only NPC/implant coverage rules. Not a complete DRC rule deck.",
+  "source_url": "https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html",
+  "rules": {
+    "grid": {
+      "value": 0.005,
+      "source": "Instructor given/plan_hd.json grid; Tutorial 3 section 4.1 and cells.py GRID"
+    },
+    "poly_min_width": {
+      "value": 0.15,
+      "source": "poly.1a; installed sky130A.tech line 4094, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "poly_space": {
+      "value": 0.21,
+      "source": "poly.2; installed sky130A.tech line 4095, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "diff_end_extension": {
+      "value": 0.25,
+      "source": "poly.7; installed sky130A.tech line 4103, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "poly_endcap": {
+      "value": 0.13,
+      "source": "poly.8; installed sky130A.tech line 4108, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "channel_min_width": {
+      "value": 0.36,
+      "source": "difftap.2b inside areaid.sc; installed sky130A.tech line 4513, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "implant_enclosure": {
+      "value": 0.125,
+      "source": "Tutorial 3 cells.py implant expansion 0.125; SKY130 n/psd.5a; Magic does not verify these shapes as drawn"
+    },
+    "licon_size": {
+      "value": 0.17,
+      "source": "licon.1; installed sky130A.tech line 4181, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "licon_diff_enclosure": {
+      "value": 0.06,
+      "source": "licon.5c; use this on all four sides conservatively; installed sky130A.tech line 4244, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "licon_poly_enclosure": {
+      "value": 0.08,
+      "source": "licon.8a; use this on all four sides conservatively; installed sky130A.tech line 4289, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "licon_gate_space": {
+      "value": 0.05,
+      "source": "Installed sky130A.tech lines 4215-4216: standard-cell contact-to-gate spacing 50 nm"
+    },
+    "licon_npc_enclosure": {
+      "value": 0.1,
+      "source": "Installed sky130A.tech line 4175: NPC generated around poly contacts with 0.1 um growth; explicit coverage required by project"
+    },
+    "npc_space": {
+      "value": 0.27,
+      "source": "SKY130 manual npc.2 = 0.27 um; Tutorial 3 section 4.1 explains drawn NPC is not checked by Magic"
+    },
+    "li_width": {
+      "value": 0.17,
+      "source": "li.1; installed sky130A.tech line 4299, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "li_space": {
+      "value": 0.17,
+      "source": "li.3; installed sky130A.tech line 4303, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "li_contact_enclosure": {
+      "value": 0.08,
+      "source": "li.5; use this on all four sides conservatively; installed sky130A.tech line 4315, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "li_min_area": {
+      "value": 0.0561,
+      "source": "li.6; value in um^2; installed sky130A.tech line 4321, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "mcon_size": {
+      "value": 0.17,
+      "source": "ct.1; installed sky130A.tech line 4331, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "met1_contact_enclosure": {
+      "value": 0.06,
+      "source": "m1.5; conservative on all four sides; installed sky130A.tech line 4347, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    },
+    "met1_min_area": {
+      "value": 0.083,
+      "source": "m1.6; value in um^2; installed sky130A.tech line 4342, sha256 94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56"
+    }
+  },
+  "policies": {
+    "routing_grid": 0.02,
+    "maximum_extra_sites": 6,
+    "description": "Routing grid and retry budget are implementation choices, not PDK minimum rules."
+  },
+  "pdk_technology_source": {
+    "path": "/home/hassan/work/pdks/ciel/sky130/versions/dd7771c384ed36b91a25e9f8b314355fc26561be/sky130A/libs.tech/magic/sky130A.tech",
+    "sha256": "94e839cfdb4f6c25f6439399020fa49ebf7908f8b643e43f897b12ba4ed64d56",
+    "evidence": "results/pdk_rule_evidence.json"
+  }
+}

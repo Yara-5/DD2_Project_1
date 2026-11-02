@@ -184,10 +184,12 @@ def min_dual_trail_cover(n_edges, p_edges, max_covers=64):
 def row_repeats(nodes_by_row, signals=frozenset()):
     """Routing difficulty of a diffusion order: a net that appears again later in the
     same row must be joined by an li1 wire along that row. That wire is cheap if
-    nothing between the two appearances has a contact (1); in the 0.65 um NMOS row a
-    contact of another net in between blocks it (4); in the 1.0 um PMOS row a wire can
-    pass a low signal contact or a high VPWR contact, but not both (4 if both lie
-    between, else 1). `signals` are the nets that get contacts besides the supplies
+    nothing between the two appearances has a contact (1). A supply contact in between
+    is merged into its rail away from the band, so the wire passes on the band side
+    (1). In the 0.65 um NMOS row a signal contact in between blocks it (4): that net
+    leaves the row upwards and no track fits below its landing. In the 1.0 um PMOS row
+    a wire can pass a signal contact on the rail side, but not if a VPWR contact also
+    lies between (4). `signals` are the nets that get contacts besides the supplies
     and the repeated nets themselves (stage outputs and the cell output).
     """
     total = 0
@@ -200,13 +202,11 @@ def row_repeats(nodes_by_row, signals=frozenset()):
         for i, n in enumerate(nodes):
             if n != SUPPLY[kind] and n in last:
                 between = [m for m in nodes[last[n] + 1:i] if m in contacted and m != n]
-                if not between:
-                    total += 1
-                elif kind == 'nmos':
-                    total += 4
+                supply = SUPPLY[kind] in between
+                other = any(m != SUPPLY[kind] for m in between)
+                if kind == 'nmos':
+                    total += 4 if other else 1
                 else:
-                    supply = SUPPLY[kind] in between
-                    other = any(m != SUPPLY[kind] for m in between)
                     total += 4 if supply and other else 1
             last[n] = i
     return total
