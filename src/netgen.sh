@@ -21,5 +21,5 @@ exec ${DOCKER:-docker} run --rm -i \
     -v "$ROOT:$ROOT" \
     -v "$SKY130:$PDK_MOUNT:ro" \
     -w "$(pwd)" \
-    --entrypoint netgen \
-    "${LAYOUT_IMAGE:-dd2-layout-tools}" "$@"
+    --entrypoint /usr/lib/netgen/tcl/netgenexec \
+    "${LAYOUT_IMAGE:-dd2-layout-tools}" -- "$@"

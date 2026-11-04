@@ -350,16 +350,94 @@ def euler_paths(segments, device_id):
     return rows
 
 
+HD_SIGNAL_PINS = {
+    'inv_1':   (['A'], ['Y']),
+    'nand2_1': (['A', 'B'], ['Y']),
+    'nor2_1':  (['A', 'B'], ['Y']),
+    'nand3_1': (['A', 'B', 'C'], ['Y']),
+    'a21oi_1': (['A1', 'A2', 'B1'], ['Y']),
+    'o21ai_1': (['A1', 'A2', 'B1'], ['Y']),
+    'a21o_1':  (['A1', 'A2', 'B1'], ['X']),
+    'mux2_1':  (['A0', 'A1', 'S'], ['X']),
+}
+
+
 def hd_reference(name, ports, spice_path):
-    """The installed HD cell with this cell's function name and exactly its ports, if any."""
+    """Return the installed HD reference and logical-to-physical pin mapping."""
     if not spice_path:
         return None
+
     short = name.split('__', 1)[-1]
-    match = re.search(rf'(?im)^\.subckt\s+sky130_fd_sc_hd__{re.escape(short)}\s+(.*)$',
-                      Path(spice_path).read_text(encoding='utf-8', errors='replace'))
-    if match and match[1].split() == ports:
-        return f'sky130_fd_sc_hd__{short}'
-    return None
+
+    if short not in HD_SIGNAL_PINS:
+        return None
+
+    match = re.search(
+        rf'(?im)^\.subckt\s+sky130_fd_sc_hd__{re.escape(short)}\s+(.*)$',
+        Path(spice_path).read_text(encoding='utf-8', errors='replace')
+    )
+
+    if not match:
+        return None
+
+    hd_ports = match[1].split()
+    hd_inputs, hd_outputs = HD_SIGNAL_PINS[short]
+
+    expected_ports = hd_inputs + ['VGND', 'VNB', 'VPB', 'VPWR'] + hd_outputs
+
+    # Dont unexpected PDK pin interface
+    if hd_ports != expected_ports:
+        raise ValueError(
+            f'Unexpected HD pin order for {short}: '
+            f'expected {expected_ports}, found {hd_ports}'
+        )
+
+    logical_inputs = ports[:-5]
+    logical_output = ports[-1]
+
+    if len(logical_inputs) != len(hd_inputs):
+        return None
+
+    # Map each logical input to its corresponding HD input by position.
+    pin_map = dict(zip(logical_inputs, hd_inputs))
+    pin_map[logical_output] = hd_outputs[0]
+
+    return f'sky130_fd_sc_hd__{short}', pin_map
+
+
+def rename_layout_pins(spec, pin_map):
+    """Rename logical signal nets to the installed HD cell's physical pin names."""
+
+    # External input and output names.
+    spec['inputs'] = [pin_map.get(pin, pin) for pin in spec['inputs']]
+    spec['output'] = pin_map.get(spec['output'], spec['output'])
+
+    # Transistor connectivity.
+    for device in spec['devices']:
+        for field in ('drain', 'source', 'gate', 'bulk'):
+            device[field] = pin_map.get(device[field], device[field])
+
+    # Euler paths contain diffusion-node names.
+    def rename_paths(paths):
+        for row in paths.values():
+            for path in row:
+                path['nodes'] = [
+                    pin_map.get(node, node) for node in path['nodes']
+                ]
+
+    rename_paths(spec['euler_paths'])
+
+    for paths in spec['alternative_euler_paths']:
+        rename_paths(paths)
+
+    # Placement metadata can also contain the output net name.
+    placement = spec['placement']
+    placement['stage_order'] = [
+        pin_map.get(net, net) for net in placement['stage_order']
+    ]
+    placement['mirrored'] = [
+        pin_map.get(net, net) for net in placement['mirrored']
+    ]
 
 
 def build_layout_spec(network, hd_spice=None):
@@ -409,8 +487,15 @@ def build_layout_spec(network, hd_spice=None):
         },
     }
     reference = hd_reference(network['name'], ports, hd_spice)
+
     if reference:
-        spec['hd_reference'] = reference
+        reference_name, pin_map = reference
+
+        #rename_layout_pins(spec, pin_map)
+
+        spec['hd_reference'] = reference_name
+        spec['hd_pin_mapping'] = pin_map
+
     return spec
 
 

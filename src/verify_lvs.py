@@ -56,6 +56,20 @@ def subckt(text, name):
     return match[0]
 
 
+def remap_spice_pins(text, pin_mapping):
+    """Rename logical signal nodes to their physical HD pin names."""
+    if not pin_mapping:
+        raise ValueError('HD reference requires a non-empty hd_pin_mapping')
+
+    pattern = re.compile(
+        r'(?<![A-Za-z0-9_.$#])('
+        + '|'.join(re.escape(pin) for pin in sorted(pin_mapping, key=len, reverse=True))
+        + r')(?![A-Za-z0-9_.$#])'
+    )
+
+    return pattern.sub(lambda match: pin_mapping[match.group(1)], text)
+
+
 def verify_cell(folder, root, flow, ns, pdk_spice, outdir):
     spec = json.loads((folder / 'input.json').read_text())
     name = spec['name']
@@ -87,17 +101,63 @@ def verify_cell(folder, root, flow, ns, pdk_spice, outdir):
         r, c = ns['collapse_rc'](build, name)
         result['rc'] = {'resistors': r, 'capacitors': c,
                         'collapsed_lvs_passed': ns['lvs'](build, rpt, name, f'{name}_rc_collapsed')}
-        reference = spec.get('hd_reference')
+
+
+        layout_spec_path = folder / 'layout_spec.json'
+
+        if layout_spec_path.is_file():
+            layout_spec = json.loads(layout_spec_path.read_text())
+        else:
+            layout_spec = {}
+
+        reference = layout_spec.get('hd_reference') or spec.get('hd_reference')
+
         if reference:
-            # lvs() compares '<layout>.spice <cell>' with '<cell>.spice <cell>', so give the
-            # extracted netlist the reference cell's name and the reference its own file.
-            (build / f'{reference}.spice').write_text(subckt(pdk_spice.read_text(), reference))
+            pin_mapping = layout_spec.get('hd_pin_mapping')
+
+            if not pin_mapping:
+                raise RuntimeError(
+                    f'{name}: missing hd_pin_mapping in layout_spec.json'
+                )
+
+            logical_ports = list(spec['inputs']) + [spec['output']]
+
+            missing = [pin for pin in logical_ports if pin not in pin_mapping]
+            if missing:
+                raise RuntimeError(
+                    f'{name}: hd_pin_mapping is missing logical pins: {missing}'
+                )
+
+            # Extract the installed HD reference subcircuit.
+            (build / f'{reference}.spice').write_text(
+                subckt(pdk_spice.read_text(), reference)
+            )
+
+            # Start from the original extracted layout netlist.
             layout = (build / f'{name}_lvs.spice').read_text()
-            layout = re.sub(rf'(?im)^(\.subckt\s+){re.escape(name)}\b', rf'\g<1>{reference}', layout)
-            layout = re.sub(rf'(?im)^(\.ends\s+){re.escape(name)}\b', rf'\g<1>{reference}', layout)
+
+            # Map logical signal names to the installed HD cell's physical pins.
+            layout = remap_spice_pins(layout, pin_mapping)
+
+            # Rename the extracted subcircuit to match the HD reference.
+            layout = re.sub(
+                rf'(?im)^(\.subckt\s+){re.escape(name)}\b',
+                rf'\g<1>{reference}',
+                layout
+            )
+            layout = re.sub(
+                rf'(?im)^(\.ends\s+){re.escape(name)}\b',
+                rf'\g<1>{reference}',
+                layout
+            )
+
             (build / f'{name}_as_hd.spice').write_text(layout)
+
             result['hd_reference'] = reference
-            result['hd_reference_lvs_passed'] = ns['lvs'](build, rpt, reference, f'{name}_as_hd')
+            result['hd_pin_mapping'] = pin_mapping
+            result['hd_reference_lvs_passed'] = ns['lvs'](
+                build, rpt, reference, f'{name}_as_hd'
+            )
         result['passed'] = (result['lvs_passed'] and result['rc']['collapsed_lvs_passed']
                             and result.get('hd_reference_lvs_passed', True))
     except (RuntimeError, OSError) as exc:

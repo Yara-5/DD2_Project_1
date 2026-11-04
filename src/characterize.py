@@ -284,9 +284,12 @@ class Bench:
         self.flow, self.setup, self.name, self.ports = flow, setup, name, ports
         self.inputs, self.output, self.netlist, self.build = inputs, output, netlist, args.build
         self.vdd = setup['nom_voltage']
+        self.index_by_ramp = args.index_by_ramp
 
     def ramp(self, slew):
         """Full 0-100% ramp of a table slew: the tables are indexed by the 20-80% time."""
+        if self.index_by_ramp:      # BROKEN CASE (Table 5): the index is taken as the full ramp
+            return slew
         rise = (self.setup['slew_upper_threshold_pct_rise'] - self.setup['slew_lower_threshold_pct_rise']) / 100
         return slew * self.setup['slew_derate_from_library'] / rise
 
@@ -486,6 +489,8 @@ def main():
     ap.add_argument('--table-size', type=int, default=7, help='Indices per axis (handout: all, or at least 5)')
     ap.add_argument('--image', default='dd2-layout-tools')
     ap.add_argument('--jobs', type=int, default=6)
+    ap.add_argument('--index-by-ramp', action='store_true',
+                    help='BROKEN CASE of Table 5: use the table slew as the full ramp time (validation must flag it)')
     ap.add_argument('--out', type=Path, required=True, help='Output stem: writes <out>.json and <out>.lib')
     args = ap.parse_args()
 
@@ -518,7 +523,8 @@ def main():
             gds_path = args.cell_dir / 'cell.gds'
         setup['slews_ns'] = subset(setup['slews_ns'], args.table_size)
         setup['loads_pf'] = subset(setup['loads_pf'], args.table_size)
-        report.update(cell=name, inputs=inputs, output=output, function=function, setup=setup)
+        report.update(cell=name, inputs=inputs, output=output, function=function, setup=setup,
+                      index_by_ramp=args.index_by_ramp)
 
         # 1. Extraction with Tutorial 3's Magic script, in a folder two levels below its
         #    root, where its relative TECH and MODELS paths point at the PDK.
