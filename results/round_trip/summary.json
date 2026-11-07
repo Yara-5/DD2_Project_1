@@ -1,0 +1,27 @@
+{
+  "check": "round_trip",
+  "cells": 20,
+  "passed": true,
+  "failing": [],
+  "our_cell_required": [
+    "dd2_g5__f14_1",
+    "dd2_g5__f15_1",
+    "dd2_g5__maj4_1",
+    "dd2_g5__maj4n_1"
+  ],
+  "our_cell_used": [
+    "dd2_g5__a21o_1",
+    "dd2_g5__a22oi_1",
+    "dd2_g5__and2_1",
+    "dd2_g5__f14_1",
+    "dd2_g5__f15_1",
+    "dd2_g5__inv_1",
+    "dd2_g5__maj4_1",
+    "dd2_g5__maj4n_1",
+    "dd2_g5__nand2_1",
+    "dd2_g5__nand3_1",
+    "dd2_g5__nor2_1",
+    "dd2_g5__nor3_1",
+    "dd2_g5__xor2_1"
+  ]
+}

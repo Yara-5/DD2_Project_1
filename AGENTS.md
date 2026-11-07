@@ -18,15 +18,28 @@ and run the Yosys round trip. Code is Python 3.12 (gdsfactory 9.51.0, klayout 0.
 matplotlib 3.11.2, otherwise the standard library); Magic 8.3.684, Netgen 1.5.133 and
 ngspice 47 with the BSIM4 stress fix run from the course `dd2-layout-tools` container
 (built from the student pack's `container/`) through Tutorial 3's unchanged `tools.sh` and
-`flow.py`; Icarus Verilog, Yosys/ABC and OpenSTA run on Linux.
+`flow.py`; Icarus Verilog, Yosys/ABC and OpenSTA run on Linux. A machine that keeps Tutorial
+3's stock image (ngspice-42) under that name builds the course image under another name and
+sets `IMAGE` (course image) and `STOCK_IMAGE` (stock image, used only for Table 5's simulator
+row) in `local.mk`.
 
-Current state: steps 1 to 7 run from any request to a checked GDS: `synthesize.py`
-(Quine-McCluskey, decomposition into stages of at most 3 series transistors, fewest
-inverters, sizing), `euler.py` (dual-trail Euler paths after Maziasz and Hayes, DAC 1991),
-`prepare_layout.py` (multi-stage placement, li1 routing, met1 inside multi-stage cells),
-`generate_gds.py`, then the checks. 'stack' sizing (folded fingers) is refused by the layout
-step. Characterization (section 5) and the round trip (section 3.3) are not written yet.
-The README's Limitations section is the up-to-date list.
+Current state (7 November 2026): milestone 2 is complete. Steps 1 to 7 run from any
+request to a checked GDS: `request_reader.py`; `reference_cell.py` (the section 4.1 reference
+cells take HD's pin names and transistor sizes from the installed SPICE netlist);
+`synthesize.py` (Quine-McCluskey, factored stages of at most 3 series transistors, simple
+disjoint decomposition, objective fewest transistors, 'hd' or 'stack' sizing); `euler.py`
+(dual-trail Euler paths after Maziasz and Hayes, folding of wide devices into fingers);
+`prepare_layout.py` (multi-stage placement, li1 routing, met1 inside a multi-stage cell only
+after every li1-only attempt failed, rip-up and reroute); `generate_gds.py`; then the checks
+and the comparison with HD (Table 4). The characterizer (`characterize.py`) passes Table 5
+(`validate_characterizer.py`, `design_level.py`) and characterizes every generated cell
+(`make char`); `compare_sizing.py` compares 'hd' and 'stack' sizing on NOR3.
+`liberty_view.py` checks and writes each cell's Liberty view, `write_response.py` the
+response and report, and `round_trip.py` runs section 3.3's round trip (`make views
+roundtrip test_views`). Not written yet (milestone 3): the design mapped onto HD plus our
+cells (step 9), `make all` running characterization onwards, the HD comparison of the
+Table 6 cells that have no `hd_reference` yet, and the report. The README's Limitations
+section is the up-to-date list.
 
 ## How this project is checked
 Pass or fail is the exit status of these commands (0 = pass). Each check also writes a JSON
@@ -35,7 +48,13 @@ report with a top-level `"passed"` field under `results/`.
 | Command | What it runs |
 |---|---|
 | `make check` | Python package pins; tool versions; the PDK and `given/` files are present; the ngspice stress test inside the course image (`/opt/dd2/stress_test/check_stress.sh`, must PASS); `src/pdk_rules.py`, which checks every value in `src/rules.json` against the installed `sky130A.tech` |
-| `make all` | For every request in `tests/requests/`: `request_reader.py` -> `synthesize.py` -> `switch_level_check.py` (network) -> `euler.py` -> `switch_level_check.py` (reordered network) -> `prepare_layout.py` -> `generate_gds.py` -> `verify_drc.py` (Magic full DRC in tapped rows, 48 abutment contexts, layer check) -> `verify_lvs.py` (extraction, Netgen LVS against the schematic and against the installed HD subcircuit, RC-LVS) -> `compare_hd.py` -> `transistor_level_check.py` -> `model_level_check.py` |
+| `make reference` | The six section 4.1 cells alone, before anything else: network, layout, DRC, LVS (against HD required), Table 4 comparison |
+| `make all` | `make reference`, then for every request in `tests/requests/`: `request_reader.py` -> `reference_cell.py` -> `synthesize.py` -> `switch_level_check.py` (network) -> `euler.py` -> `switch_level_check.py` (reordered network) -> `prepare_layout.py` -> `generate_gds.py` -> `verify_drc.py` (Magic full DRC in tapped rows, 24 abutment contexts per cell, layer check) -> `verify_lvs.py` (extraction, Netgen LVS against the schematic and against the installed HD subcircuit, RC-LVS) -> `compare_hd.py` -> `transistor_level_check.py` -> `model_level_check.py` |
+| `make char_validate` | Table 5: the six installed reference cells characterized with the fixed ngspice (and, with `STOCK_IMAGE`, the stock one), the full-ramp broken case, Yosys and OpenSTA syntax, the SPM design-level run (`TUT4`) |
+| `make char` | After `make char_validate`: installed nor3_1, a21o_1, mux2_1 and every generated cell characterized, the NOR3 sizing comparison, `compare_hd.py` with parasitics and timing |
+| `make views` | After `make char`: `liberty_view.py` (the Liberty view), `model_level_check.py --liberty`, `write_response.py` (response and report), the merged library in `libs/` |
+| `make roundtrip` | After `make views`: `round_trip.py` (each cell inside `hd_reduced.lib`, map.sh's ABC scripts A and B, ABC `cec`) |
+| `make test_views` | After `make roundtrip`: the broken cases of the three steps above |
 | `make test` | `make all`, then every broken case in `tests/broken/` against its check; each must be rejected (non-zero exit) |
 | `make demo IN=<request>` | The flow on one request, as at the interview |
 
@@ -82,17 +101,20 @@ report with a top-level `"passed"` field under `results/`.
 - **Folders.** `src/` code only, plus `src/rules.json`. `tests/` the flow's inputs: requests
   (`tests/requests/<cell>.json`) and broken cases (`tests/broken/`, listed in
   `tests/broken/README.md`). `cells/<cell name>/` every view of one cell (request,
-  plan, schematic, GDS, picture, extracted netlists, Verilog, Liberty). `results/<check>/`
-  check reports. `cells/*` and `results/*` are generated, git-ignored, and rebuilt by
-  `make all`. `libs/` merged Liberty files. `report/` the report. `ai/` the AI logs.
+  plan, schematic, GDS, picture, extracted netlists, Verilog, Liberty, response, report).
+  `results/<check>/` check reports. `cells/*`, `results/*` and `libs/*` are generated by the
+  scripts `make` runs and committed as the data deliverable (handout section 8.2); `make`
+  rebuilds them, and they are never edited by hand (rule 11). `libs/` merged Liberty
+  files. `report/` the report. `ai/` the AI logs.
   `build/` scratch, never committed. Tools that run in the container work inside Tutorial 3's
   `build/` folder, because its `tools.sh` only mounts that folder and the PDK.
 - **Code.** Each script is a command-line tool with `argparse`, a `main()` that returns the
   exit status, and a module docstring that says its step of the handout, its inputs and its
   outputs. Standard library plus the three pinned packages. Paths are relative to the repo
   root. Units: um, um2, ns, pF, V. GDS layer pairs are named once per script.
-- **Names.** Cells `dd2_g5__<function>_1`; ports in the order inputs, VGND, VNB, VPB, VPWR, Y;
-  NMOS `sky130_fd_pr__nfet_01v8`, PMOS `sky130_fd_pr__pfet_01v8_hvt`.
+- **Names.** Cells `dd2_g5__<function>_1`; ports in the order inputs, VGND, VNB, VPB, VPWR,
+  output (Y, or the installed cell's name, such as X, for a reference cell); NMOS
+  `sky130_fd_pr__nfet_01v8`, PMOS `sky130_fd_pr__pfet_01v8_hvt`.
 - **Commits.** Imperative summary of at most 72 characters; a body that says what changed, why,
   and which `make` targets were run with what result. A commit the assistant helped with ends
   with the trailer `AI-assisted: <tool> (<model>)`, for example

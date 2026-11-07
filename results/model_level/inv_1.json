@@ -4,7 +4,7 @@
   "truth_table": "0x1",
   "generated": [
     "cell.v",
-    "cell.lib"
+    "functional.lib"
   ],
   "verilog": {
     "passed": true,
@@ -31,7 +31,8 @@
     "passed": true,
     "function": "!A",
     "function_truth_table": "0x1",
-    "expected_truth_table": "0x1"
+    "expected_truth_table": "0x1",
+    "file": "cell.lib"
   },
   "broken_cases": [
     {
@@ -44,6 +45,6 @@
       ]
     }
   ],
-  "liberty_status": "functional_only_uncharacterized",
+  "liberty_status": "characterized",
   "passed": true
 }

@@ -10,6 +10,11 @@
 #   make char_validate  Table 5: char_hd, the full-ramp broken case, the stock build, syntax, SPM
 #   make char      after char_validate: installed a21o_1/mux2_1/nor3_1, then the generated cells in
 #                  CELLS (section 5); the NOR3 sizing comparison (8.2); Table 4 again with timing
+#   make views     after char: each cell's final Liberty view (cell.lib), the model-level check on
+#                  it, the response and report (section 3.3); the merged library in libs/
+#   make roundtrip after views: section 3.3's round trip with hd_reduced.lib, map.sh's two ABC
+#                  scripts and ABC cec
+#   make test_views after roundtrip: the broken cases of the three steps above
 #
 # Steps that need GDSfactory/KLayout run with PYTHON. Magic, Netgen and ngspice run in
 # the course container through Tutorial 3's tools.sh, and Icarus on Linux; on a Linux
@@ -62,7 +67,8 @@ define expect_fail
 	 else echo "ok   broken case $(1) rejected"; fi
 endef
 
-.PHONY: setup check test all demo clean reference network layout drc lvs compare sim model char_hd char_validate char
+.PHONY: setup check test all demo clean reference network layout drc lvs compare sim model char_hd char_validate char \
+	views roundtrip test_views
 
 setup:            ## Tutorial 3's pdk link, which its tools.sh mounts into the container
 	$(LINUX) ln -sfn $(PDK) $(TUT3)/pdk
@@ -86,7 +92,8 @@ check:            ## tool versions, PDK, and the ngspice stress test for Option 
 network:          ## steps 1-3: read (reference cells: HD pins, section 4.1), minimize, decompose, size; switch level
 	@mkdir -p build
 	@for c in $(NETWORK_CELLS); do \
-	  $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request_original.json > /dev/null && \
+	  { $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request_original.json > /dev/null || \
+	    { $(PYTHON) src/write_response.py --cell-dir cells/$(PREFIX)$$c --raw-request tests/requests/$$c.json; exit 1; }; } && \
 	  $(PYTHON) src/reference_cell.py cells/$(PREFIX)$$c/request_original.json --hd-liberty $(HD_LIB_HOST) \
 	    --hd-spice $(HD_SPICE_HOST) --out cells/$(PREFIX)$$c/request.json --reference-out cells/$(PREFIX)$$c/hd_reference.json && \
 	  $(PYTHON) src/synthesize.py --request cells/$(PREFIX)$$c/request.json --frame $(FRAME) \
@@ -157,6 +164,25 @@ char: char_validate   ## section 5: characterize the generated cells (only after
 	    --cell-dir cells/$(PREFIX)$$c --out cells/$(PREFIX)$$c/characterized || exit 1; done
 	$(PYTHON) src/compare_sizing.py --hd cells/$(PREFIX)nor3_1 --stack cells/$(PREFIX)nor3_stack_1 --out results/sizing/nor3.json
 	$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME)
+
+views:            ## step 8: final Liberty view, model level on it, response and report; libs/ (after char)
+	@for c in $(CELLS); do \
+	  broken=""; for f in tests/broken/$${c}_*.v; do [ -f "$$f" ] && broken="$$broken --broken $$f"; done; \
+	  $(PYTHON) src/liberty_view.py --cell-dir cells/$(PREFIX)$$c && \
+	  $(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$$c/request.json \
+	    --outdir cells/$(PREFIX)$$c --report results/model_level/$$c.json --liberty cells/$(PREFIX)$$c/cell.lib $$broken && \
+	  $(PYTHON) src/write_response.py --cell-dir cells/$(PREFIX)$$c || exit 1; done
+	$(PYTHON) src/liberty_view.py --merge $(foreach c,$(CELLS),cells/$(PREFIX)$(c)/cell.lib) --out libs/$(PREFIX)tt_025C_1v80.lib
+
+roundtrip: views  ## section 3.3: each cell inside hd_reduced.lib, map.sh's scripts A and B, ABC cec
+	$(LINUX) python3 src/round_trip.py --cell-dir $(foreach c,$(CELLS),cells/$(PREFIX)$(c)) \
+	  --reduced $(GIVEN)/hd_reduced.lib --map-script $(GIVEN)/scripts/map.sh
+
+test_views: roundtrip  ## the broken cases of views and roundtrip (they need characterized cells)
+	$(call expect_fail,nand2_1_missing_arc,$(PYTHON) src/liberty_view.py --cell-dir cells/$(PREFIX)nand2_1 --liberty tests/broken/nand2_1_missing_arc.lib --no-write --report build/broken/liberty_view.json)
+	$(call expect_fail,nand2_1_wrong_function,$(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)nand2_1/request.json --outdir build/broken/model_lib --report build/broken/model_lib.json --liberty tests/broken/nand2_1_wrong_function.lib)
+	$(call expect_fail,f14_1_wrong_function,$(LINUX) python3 src/round_trip.py --cell-dir cells/$(PREFIX)f14_1 --reduced $(GIVEN)/hd_reduced.lib --map-script $(GIVEN)/scripts/map.sh --liberty tests/broken/f14_1_wrong_function.lib --outdir build/broken/round_trip --workdir build/broken/round_trip_work)
+	@echo "PASS: every broken case of views and roundtrip was rejected"
 
 # Handout section 4: steps 1 to 7 on the reference cells first; new functions only after the
 # Table 4 comparison (DRC with abutment, LVS against HD, frame and pins) passes.

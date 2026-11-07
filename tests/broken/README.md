@@ -1,7 +1,9 @@
 # Broken cases
 
 Every check has at least one input here that it must reject (AGENTS.md, rule 3).
-`make test` runs each one and fails if any is accepted. Never edit these to make a
+`make test` runs each one and fails if any is accepted; the three cases of the
+characterized views (`*.lib`) run in `make test_views`, after `make char`, because they
+need characterized cells. Never edit these to make a
 check pass (AGENTS.md, rule 4).
 
 | Check | Broken case | What is wrong |
@@ -17,6 +19,9 @@ check pass (AGENTS.md, rule 4).
 | `compare_hd.py` (pins) | `pins/dd2_g5__inv_1_pin_off_band/` | the inverter with its input pin shape and label moved 0.6 um up, out of the npc band (Table 4 "Pins") |
 | `transistor_level_check.py` | `nand2_1_pex_missing_pullup.spice` | RC-extracted NAND2 with the A pull-up deleted |
 | `model_level_check.py` | `nand2_1_wrong_row.v` | Verilog NAND2 that outputs 1 for A=1, B=1 |
+| `model_level_check.py --liberty` (characterized Liberty) | `nand2_1_wrong_function.lib` | NAND2's characterized Liberty view with NOR2's function, `!(A \| B)` |
+| `liberty_view.py` (Liberty view) | `nand2_1_missing_arc.lib` | NAND2's characterized Liberty view without the timing arc of B |
+| `round_trip.py` (section 3.3) | `f14_1_wrong_function.lib` | f14_1's Liberty view whose function has A and B swapped, `!(B & (A \| (C & D)))`: ABC wires the cell by it and cec against the cell's model fails |
 | `verify_drc.py` (DRC) | derived in the run: `cp1_broken_met1_width` | a 0.05 um met1 stripe in a tapped row |
 | `verify_drc.py` (layer check) | derived in the run: `<cell>_missing_{nsdm,psdm,hvtp,npc}.gds` | each required layer removed from each generated cell |
 | `model_level_check.py` | derived in the run: the model with row 0 flipped | one wrong truth-table row |

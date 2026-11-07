@@ -1,0 +1,167 @@
+{
+  "cell": "dd2_g5__and2_1",
+  "response": {
+    "request_id": "T6-08",
+    "status": "pass",
+    "reason": null,
+    "cell": "dd2_g5__and2_1",
+    "stages": 2,
+    "transistors": 6,
+    "width_sites": 5,
+    "area_um2": 6.256,
+    "files": {
+      "gds": "cells/dd2_g5__and2_1/cell.gds",
+      "liberty": "cells/dd2_g5__and2_1/cell.lib",
+      "verilog": "cells/dd2_g5__and2_1/cell.v",
+      "report": "cells/dd2_g5__and2_1/report.json"
+    },
+    "checks": {
+      "drc": 0,
+      "lvs": "match",
+      "rc_lvs": "match",
+      "truth_table": "pass",
+      "abutment": 0,
+      "layers": "pass"
+    },
+    "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
+    "tool_version": "git:2f91bb9-dirty"
+  },
+  "request": {
+    "request_id": "T6-08",
+    "name": "dd2_g5__and2_1",
+    "inputs": [
+      "A",
+      "B"
+    ],
+    "output": "Y",
+    "expression": "A & B",
+    "sizing": "hd",
+    "truth_table": "0x8",
+    "truth_table_value": 8,
+    "recognized": null,
+    "supported_by_prototype": false
+  },
+  "network": {
+    "formula": "Y = A & B",
+    "formula_source": "SOP of f",
+    "objective": "transistors",
+    "sizing": "hd",
+    "cost": {
+      "inverters": 1,
+      "input_inverters": 0,
+      "output_inverter": true,
+      "stages": 2,
+      "complex_stages": 1,
+      "transistors": 6,
+      "max_series_pull_down": 2,
+      "max_series_pull_up": 1
+    },
+    "sizes_from": {
+      "source": null
+    },
+    "stages": [
+      {
+        "output": "n1",
+        "kind": "complex",
+        "function": "n1 = !(A & B)",
+        "pull_down_series": 2,
+        "pull_up_series": 1
+      },
+      {
+        "output": "Y",
+        "kind": "inverter",
+        "function": "Y = !(n1)",
+        "pull_down_series": 1,
+        "pull_up_series": 1
+      }
+    ]
+  },
+  "layout": {
+    "width_sites": 5,
+    "width_um": 2.3,
+    "height_um": 2.72,
+    "area_um2": 6.256,
+    "devices": 6,
+    "euler": {
+      "stage_order": [
+        "n1",
+        "Y"
+      ],
+      "mirrored": [
+        "n1"
+      ],
+      "dual_trails_per_stage": {
+        "n1": 1,
+        "Y": 1
+      },
+      "diffusion_segments": 1,
+      "diffusion_breaks": 0,
+      "columns": 3,
+      "repeated_nets_in_rows": 0,
+      "folded": false,
+      "wiring_slots": 5,
+      "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+    },
+    "met1_vias": 0,
+    "met1_in_single_stage_cell": false,
+    "routing_attempts_failed": 6
+  },
+  "verification": {
+    "drc_contexts": 24,
+    "drc_errors_tapped_row": 0,
+    "drc_errors_all_contexts": 0,
+    "layer_check": "pass",
+    "lvs": "match",
+    "rc_lvs": "match",
+    "rc_elements": {
+      "resistors": 40,
+      "capacitors": 50,
+      "collapsed_lvs_passed": true
+    },
+    "hd_reference_lvs": null
+  },
+  "simulation": {
+    "switch_level_network": true,
+    "switch_level_reordered": true,
+    "transistor_level": true,
+    "model_level": true,
+    "transistor_level_dc_rows": 4,
+    "transistor_level_edges": 8
+  },
+  "characterization": {
+    "simulator": {
+      "image": "dd2-project1-tools",
+      "version": "ngspice-47",
+      "sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660"
+    },
+    "nominal_point": {
+      "slew_ns": 0.122474,
+      "load_pf": 0.00912787
+    },
+    "arcs_at_nominal_point_ns": [
+      {
+        "pin": "A",
+        "sense": "positive_unate",
+        "cell_rise": 0.16015000000000001,
+        "rise_transition": 0.10971500000000001,
+        "cell_fall": 0.158753,
+        "fall_transition": 0.0517935
+      },
+      {
+        "pin": "B",
+        "sense": "positive_unate",
+        "cell_rise": 0.158437,
+        "rise_transition": 0.10978299999999999,
+        "cell_fall": 0.147059,
+        "fall_transition": 0.05119
+      }
+    ],
+    "input_capacitance_pf": {
+      "A": 0.0022587611111111114,
+      "B": 0.0023198444444444445
+    },
+    "extended_windows_ns": {}
+  },
+  "liberty_view": true,
+  "hd_comparison": null
+}

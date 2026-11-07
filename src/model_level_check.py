@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Step 8 views and section 4.2 level 3: model-level check.
 
-Writes the cell's Verilog model (cell.v) and a functional Liberty cell (cell.lib)
-from the request, then checks both against the request's truth table:
+Writes the cell's Verilog model (cell.v) and a functional Liberty cell
+(functional.lib, no timing, area 0) from the request, then checks the model and a
+Liberty file against the request's truth table:
   * Verilog: Icarus simulates every input combination;
-  * Liberty: the output pin's 'function' is parsed and its truth table compared.
+  * Liberty: the output pin's 'function' is parsed and its truth table compared. The
+    file checked is functional.lib or, with --liberty, the characterized view that
+    liberty_view.py wrote (cell.lib), once the cell has been characterized.
 A copy of the model with one wrong row is written and must be rejected, and so
-must every --broken Verilog file (tests/broken/). The Liberty cell is functional
-only (no timing, area 0) until the characterizer of section 5 exists.
+must every --broken Verilog file (tests/broken/).
 Exits 0 only if the good views pass and every broken model is rejected; a
 missing Icarus is a failure.
 """
@@ -74,13 +76,13 @@ def generate_views(request, outdir):
         liberty += [f'    pin ({pin}) {{', '      direction : input;', '    }']
     liberty += [f'    pin ({output}) {{', '      direction : output;',
                 f'      function : "{liberty_function(request)}";', '    }', '  }', '}', '']
-    (outdir / 'cell.lib').write_text('\n'.join(liberty), encoding='utf-8')
+    (outdir / 'functional.lib').write_text('\n'.join(liberty), encoding='utf-8')
 
 
 def check_liberty(request, lib_path):
     text = Path(lib_path).read_text(encoding='utf-8')
     output, inputs = request['output'], request['inputs']
-    pin = re.search(r'\bpin\s*\(\s*' + re.escape(output) + r'\s*\)\s*\{([^}]*)\}', text, re.S)
+    pin = re.search(r'\bpin\s*\(\s*"?' + re.escape(output) + r'"?\s*\)\s*\{([^}]*)\}', text, re.S)
     if not pin:
         return {'passed': False, 'error': f'Output pin {output} not found in Liberty.'}
     function = re.search(r'\bfunction\s*:\s*"([^"]+)"\s*;', pin[1])
@@ -156,6 +158,8 @@ def main():
     parser.add_argument('--request', required=True, type=Path, help='Output of request_reader.py')
     parser.add_argument('--outdir', required=True, type=Path, help='cells/<name>/')
     parser.add_argument('--report', type=Path, help='JSON report path (default: <outdir>/model_level_report.json)')
+    parser.add_argument('--liberty', type=Path,
+                        help='Check this Liberty file (the characterized cell.lib) instead of functional.lib')
     parser.add_argument('--broken', type=Path, action='append', default=[],
                         help='A Verilog model with a wrong row; it must be rejected')
     args = parser.parse_args()
@@ -165,7 +169,9 @@ def main():
         outdir = args.outdir.resolve()
         generate_views(request, outdir)
         verilog = check_verilog(request, outdir / 'cell.v')
-        liberty = check_liberty(request, outdir / 'cell.lib')
+        liberty_path = args.liberty.resolve() if args.liberty else outdir / 'functional.lib'
+        liberty = check_liberty(request, liberty_path)
+        liberty['file'] = liberty_path.name
         broken_cases = []
         with tempfile.TemporaryDirectory() as temp_dir:
             generated_broken = Path(temp_dir) / 'cell_broken.v'
@@ -179,8 +185,9 @@ def main():
                 broken_cases.append({'case': label, 'rejected': caught,
                                      'failing_rows': [r['inputs'] for r in result['rows'] if not r['passed']]})
         report = {'check': 'model_level', 'cell': request['name'], 'truth_table': request['truth_table'],
-                  'generated': ['cell.v', 'cell.lib'], 'verilog': verilog, 'liberty': liberty,
-                  'broken_cases': broken_cases, 'liberty_status': 'functional_only_uncharacterized'}
+                  'generated': ['cell.v', 'functional.lib'], 'verilog': verilog, 'liberty': liberty,
+                  'broken_cases': broken_cases,
+                  'liberty_status': 'characterized' if args.liberty else 'functional_only_uncharacterized'}
         report['passed'] = verilog['passed'] and liberty['passed'] and all(b['rejected'] for b in broken_cases)
     except (OSError, KeyError, ValueError) as exc:
         report = {'check': 'model_level', 'passed': False, 'error': str(exc)}

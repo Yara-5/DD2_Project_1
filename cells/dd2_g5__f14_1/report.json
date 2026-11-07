@@ -1,0 +1,182 @@
+{
+  "cell": "dd2_g5__f14_1",
+  "response": {
+    "request_id": "T6-13",
+    "status": "pass",
+    "reason": null,
+    "cell": "dd2_g5__f14_1",
+    "stages": 1,
+    "transistors": 8,
+    "width_sites": 6,
+    "area_um2": 7.5072,
+    "files": {
+      "gds": "cells/dd2_g5__f14_1/cell.gds",
+      "liberty": "cells/dd2_g5__f14_1/cell.lib",
+      "verilog": "cells/dd2_g5__f14_1/cell.v",
+      "report": "cells/dd2_g5__f14_1/report.json"
+    },
+    "checks": {
+      "drc": 0,
+      "lvs": "match",
+      "rc_lvs": "match",
+      "truth_table": "pass",
+      "abutment": 0,
+      "layers": "pass"
+    },
+    "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
+    "tool_version": "git:2f91bb9-dirty"
+  },
+  "request": {
+    "request_id": "T6-13",
+    "name": "dd2_g5__f14_1",
+    "inputs": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "output": "Y",
+    "expression": "!(A & (B | (C & D)))",
+    "sizing": "hd",
+    "truth_table": "0x5777",
+    "truth_table_value": 22391,
+    "recognized": null,
+    "supported_by_prototype": false
+  },
+  "network": {
+    "formula": "Y = (!B & (!C | !D)) | !A",
+    "formula_source": "SOP of f",
+    "objective": "transistors",
+    "sizing": "hd",
+    "cost": {
+      "inverters": 0,
+      "input_inverters": 0,
+      "output_inverter": false,
+      "stages": 1,
+      "complex_stages": 1,
+      "transistors": 8,
+      "max_series_pull_down": 3,
+      "max_series_pull_up": 2
+    },
+    "sizes_from": {
+      "source": null
+    },
+    "stages": [
+      {
+        "output": "Y",
+        "kind": "complex",
+        "function": "Y = !((B | (C & D)) & A)",
+        "pull_down_series": 3,
+        "pull_up_series": 2
+      }
+    ]
+  },
+  "layout": {
+    "width_sites": 6,
+    "width_um": 2.76,
+    "height_um": 2.72,
+    "area_um2": 7.5072,
+    "devices": 8,
+    "euler": {
+      "stage_order": [
+        "Y"
+      ],
+      "mirrored": [],
+      "dual_trails_per_stage": {
+        "Y": 1
+      },
+      "diffusion_segments": 1,
+      "diffusion_breaks": 0,
+      "columns": 4,
+      "repeated_nets_in_rows": 2,
+      "folded": false,
+      "wiring_slots": 12,
+      "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+    },
+    "met1_vias": 0,
+    "met1_in_single_stage_cell": false,
+    "routing_attempts_failed": 6
+  },
+  "verification": {
+    "drc_contexts": 24,
+    "drc_errors_tapped_row": 0,
+    "drc_errors_all_contexts": 0,
+    "layer_check": "pass",
+    "lvs": "match",
+    "rc_lvs": "match",
+    "rc_elements": {
+      "resistors": 52,
+      "capacitors": 71,
+      "collapsed_lvs_passed": true
+    },
+    "hd_reference_lvs": null
+  },
+  "simulation": {
+    "switch_level_network": true,
+    "switch_level_reordered": true,
+    "transistor_level": true,
+    "model_level": true,
+    "transistor_level_dc_rows": 16,
+    "transistor_level_edges": 64
+  },
+  "characterization": {
+    "simulator": {
+      "image": "dd2-project1-tools",
+      "version": "ngspice-47",
+      "sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660"
+    },
+    "nominal_point": {
+      "slew_ns": 0.122474,
+      "load_pf": 0.00912787
+    },
+    "arcs_at_nominal_point_ns": [
+      {
+        "pin": "A",
+        "sense": "negative_unate",
+        "cell_rise": 0.145275,
+        "rise_transition": 0.11870599999999999,
+        "cell_fall": 0.14482499999999998,
+        "fall_transition": 0.125994
+      },
+      {
+        "pin": "B",
+        "sense": "negative_unate",
+        "cell_rise": 0.272094,
+        "rise_transition": 0.277999,
+        "cell_fall": 0.114438,
+        "fall_transition": 0.0779116
+      },
+      {
+        "pin": "C",
+        "sense": "negative_unate",
+        "cell_rise": 0.29411400000000004,
+        "rise_transition": 0.278005,
+        "cell_fall": 0.153993,
+        "fall_transition": 0.126647
+      },
+      {
+        "pin": "D",
+        "sense": "negative_unate",
+        "cell_rise": 0.297656,
+        "rise_transition": 0.268936,
+        "cell_fall": 0.15371,
+        "fall_transition": 0.126528
+      }
+    ],
+    "input_capacitance_pf": {
+      "A": 0.0022051194444444445,
+      "B": 0.0021510722222222224,
+      "C": 0.002169363888888889,
+      "D": 0.0022059222222222223
+    },
+    "extended_windows_ns": {
+      "arc5_B": 8.0,
+      "arc6_B": 8.0,
+      "arc7_B": 8.0,
+      "arc8_C": 8.0,
+      "arc9_D": 8.0
+    }
+  },
+  "liberty_view": true,
+  "hd_comparison": null
+}

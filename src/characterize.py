@@ -439,10 +439,12 @@ def liberty_text(name, setup, simulator, area, inputs, output, function, caps, t
         for key in ('input_threshold_pct', 'output_threshold_pct', 'slew_lower_threshold_pct',
                     'slew_upper_threshold_pct'):
             lines.append(f'    {key}_{edge} : {s[f"{key}_{edge}"]:.10f};')
-    lines += [f'    default_operating_conditions : "{s["operating_conditions"]}";',
-              f'    operating_conditions ("{s["operating_conditions"]}") {{',
+    # The operating conditions group comes before the attribute that names it (OpenSTA
+    # warns "default_operating_condition ... not found" otherwise).
+    lines += [f'    operating_conditions ("{s["operating_conditions"]}") {{',
               f'        voltage : {s["nom_voltage"]:.10f};', f'        process : {s["nom_process"]:.10f};',
               f'        temperature : {s["nom_temperature"]:.10f};', '    }',
+              f'    default_operating_conditions : "{s["operating_conditions"]}";',
               f'    lu_table_template ("{s["table_template"]}") {{',
               '        variable_1 : "input_net_transition";',
               '        variable_2 : "total_output_net_capacitance";',

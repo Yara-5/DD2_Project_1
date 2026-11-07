@@ -4,7 +4,7 @@
   "truth_table": "0x5777",
   "generated": [
     "cell.v",
-    "cell.lib"
+    "functional.lib"
   ],
   "verilog": {
     "passed": true,
@@ -191,7 +191,8 @@
     "passed": true,
     "function": "!(A & (B | (C & D)))",
     "function_truth_table": "0x5777",
-    "expected_truth_table": "0x5777"
+    "expected_truth_table": "0x5777",
+    "file": "cell.lib"
   },
   "broken_cases": [
     {
@@ -207,6 +208,6 @@
       ]
     }
   ],
-  "liberty_status": "functional_only_uncharacterized",
+  "liberty_status": "characterized",
   "passed": true
 }
