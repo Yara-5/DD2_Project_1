@@ -1,0 +1,461 @@
+{
+  "schema": "dd2.layout-spec.v1",
+  "name": "dd2_g5__mux2_1",
+  "request_id": "T6-10",
+  "inputs": [
+    "A0",
+    "A1",
+    "S"
+  ],
+  "output": "X",
+  "truth_table": "0xCA",
+  "sizing": "hd",
+  "devices": [
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A1",
+      "source": "VGND",
+      "drain": "A1_N",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "A1_N",
+      "leaf": 0,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A1",
+      "source": "A1_N",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "A1_N",
+      "leaf": 0,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "N2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A0",
+      "source": "VGND",
+      "drain": "n1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "n1",
+      "leaf": 0,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "N3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "S",
+      "source": "VGND",
+      "drain": "n1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "n1",
+      "leaf": 1,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P2",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A0",
+      "source": "n1",
+      "drain": "n1_u1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "n1",
+      "leaf": 0,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "P3",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "S",
+      "source": "n1_u1",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "n1",
+      "leaf": 1,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "N4",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "n1",
+      "source": "VGND",
+      "drain": "X",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "X",
+      "leaf": 0,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "N5",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A1_N",
+      "source": "VGND",
+      "drain": "X_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "X",
+      "leaf": 1,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "N6",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "S",
+      "source": "X_d1",
+      "drain": "X",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "X",
+      "leaf": 2,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "P4",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "n1",
+      "source": "X_u1",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "X",
+      "leaf": 0,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "P5",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A1_N",
+      "source": "X",
+      "drain": "X_u1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "X",
+      "leaf": 1,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "P6",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "S",
+      "source": "X",
+      "drain": "X_u1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "X",
+      "leaf": 2,
+      "stack_depth": 2,
+      "fingers": 1
+    }
+  ],
+  "euler_paths": {
+    "nmos": [
+      {
+        "devices": [
+          "N1"
+        ],
+        "nodes": [
+          "VGND",
+          "A1_N"
+        ]
+      },
+      {
+        "devices": [
+          "N5",
+          "N6",
+          "N4",
+          "N3",
+          "N2"
+        ],
+        "nodes": [
+          "VGND",
+          "X_d1",
+          "X",
+          "VGND",
+          "n1",
+          "VGND"
+        ]
+      }
+    ],
+    "pmos": [
+      {
+        "devices": [
+          "P1"
+        ],
+        "nodes": [
+          "VPWR",
+          "A1_N"
+        ]
+      },
+      {
+        "devices": [
+          "P5",
+          "P6",
+          "P4",
+          "P3",
+          "P2"
+        ],
+        "nodes": [
+          "X_u1",
+          "X",
+          "X_u1",
+          "VPWR",
+          "n1_u1",
+          "n1"
+        ]
+      }
+    ]
+  },
+  "alternative_euler_paths": [
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N2",
+            "N3",
+            "N4",
+            "N6",
+            "N5"
+          ],
+          "nodes": [
+            "VGND",
+            "n1",
+            "VGND",
+            "X",
+            "X_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N1"
+          ],
+          "nodes": [
+            "A1_N",
+            "VGND"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P2",
+            "P3",
+            "P4",
+            "P6",
+            "P5"
+          ],
+          "nodes": [
+            "n1",
+            "n1_u1",
+            "VPWR",
+            "X_u1",
+            "X",
+            "X_u1"
+          ]
+        },
+        {
+          "devices": [
+            "P1"
+          ],
+          "nodes": [
+            "A1_N",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N1"
+          ],
+          "nodes": [
+            "A1_N",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N5",
+            "N6",
+            "N4",
+            "N3",
+            "N2"
+          ],
+          "nodes": [
+            "VGND",
+            "X_d1",
+            "X",
+            "VGND",
+            "n1",
+            "VGND"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P1"
+          ],
+          "nodes": [
+            "A1_N",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P5",
+            "P6",
+            "P4",
+            "P3",
+            "P2"
+          ],
+          "nodes": [
+            "X_u1",
+            "X",
+            "X_u1",
+            "VPWR",
+            "n1_u1",
+            "n1"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N2",
+            "N3",
+            "N4",
+            "N6",
+            "N5"
+          ],
+          "nodes": [
+            "VGND",
+            "n1",
+            "VGND",
+            "X",
+            "X_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N1"
+          ],
+          "nodes": [
+            "VGND",
+            "A1_N"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P2",
+            "P3",
+            "P4",
+            "P6",
+            "P5"
+          ],
+          "nodes": [
+            "n1",
+            "n1_u1",
+            "VPWR",
+            "X_u1",
+            "X",
+            "X_u1"
+          ]
+        },
+        {
+          "devices": [
+            "P1"
+          ],
+          "nodes": [
+            "VPWR",
+            "A1_N"
+          ]
+        }
+      ]
+    }
+  ],
+  "placement": {
+    "stage_order": [
+      "A1_N",
+      "X",
+      "n1"
+    ],
+    "mirrored": [
+      "A1_N",
+      "X",
+      "n1"
+    ],
+    "dual_trails_per_stage": {
+      "A1_N": 1,
+      "n1": 1,
+      "X": 1
+    },
+    "diffusion_segments": 2,
+    "diffusion_breaks": 1,
+    "columns": 6,
+    "repeated_nets_in_rows": 1,
+    "folded": false,
+    "wiring_slots": 18,
+    "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+  },
+  "hd_reference": "sky130_fd_sc_hd__mux2_1",
+  "hd_pin_mapping": {
+    "A0": "A0",
+    "A1": "A1",
+    "S": "S",
+    "X": "X"
+  },
+  "hd_same_circuit": false
+}

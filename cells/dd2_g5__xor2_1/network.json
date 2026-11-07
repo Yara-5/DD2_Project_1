@@ -1,0 +1,354 @@
+{
+  "schema": "dd2.network.v1",
+  "name": "dd2_g5__xor2_1",
+  "request_id": "T6-12",
+  "inputs": [
+    "A",
+    "B"
+  ],
+  "output": "Y",
+  "truth_table": "0x6",
+  "sizing": "hd",
+  "objective": "transistors",
+  "unateness": {
+    "A": "binate",
+    "B": "binate"
+  },
+  "minimization": {
+    "f": {
+      "minterms": [
+        1,
+        2
+      ],
+      "prime_implicants": [
+        "A & !B",
+        "!A & B"
+      ],
+      "essential_prime_implicants": [
+        "A & !B",
+        "!A & B"
+      ],
+      "minimum_covers": [
+        "(A & !B) | (!A & B)"
+      ],
+      "terms": 2,
+      "literals": 4
+    },
+    "not_f": {
+      "minterms": [
+        0,
+        3
+      ],
+      "prime_implicants": [
+        "!A & !B",
+        "A & B"
+      ],
+      "essential_prime_implicants": [
+        "!A & !B",
+        "A & B"
+      ],
+      "minimum_covers": [
+        "(!A & !B) | (A & B)"
+      ],
+      "terms": 2,
+      "literals": 4
+    }
+  },
+  "formula": "Y = (!A | !B) & (A | B)",
+  "formula_source": "POS of f (De Morgan of the SOP of !f)",
+  "formulas_considered": 2,
+  "cost": {
+    "inverters": 0,
+    "input_inverters": 0,
+    "output_inverter": false,
+    "stages": 2,
+    "complex_stages": 2,
+    "transistors": 10,
+    "max_series_pull_down": 2,
+    "max_series_pull_up": 2
+  },
+  "stages": [
+    {
+      "output": "n1",
+      "kind": "complex",
+      "form": "written",
+      "function": "n1 = !(A | B)",
+      "pull_down": {
+        "op": "parallel",
+        "children": [
+          {
+            "gate": "A"
+          },
+          {
+            "gate": "B"
+          }
+        ]
+      },
+      "pull_up": {
+        "op": "series",
+        "children": [
+          {
+            "gate": "A"
+          },
+          {
+            "gate": "B"
+          }
+        ]
+      },
+      "pull_down_series": 1,
+      "pull_up_series": 2,
+      "transistors": 4
+    },
+    {
+      "output": "Y",
+      "kind": "complex",
+      "form": "dual",
+      "function": "Y = !((A & B) | n1)",
+      "pull_down": {
+        "op": "parallel",
+        "children": [
+          {
+            "op": "series",
+            "children": [
+              {
+                "gate": "A"
+              },
+              {
+                "gate": "B"
+              }
+            ]
+          },
+          {
+            "gate": "n1"
+          }
+        ]
+      },
+      "pull_up": {
+        "op": "series",
+        "children": [
+          {
+            "op": "parallel",
+            "children": [
+              {
+                "gate": "A"
+              },
+              {
+                "gate": "B"
+              }
+            ]
+          },
+          {
+            "gate": "n1"
+          }
+        ]
+      },
+      "pull_down_series": 2,
+      "pull_up_series": 2,
+      "transistors": 6
+    }
+  ],
+  "devices": [
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "VGND",
+      "drain": "n1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "n1",
+      "leaf": 0,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "N2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "VGND",
+      "drain": "n1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "n1",
+      "leaf": 1,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "VPWR",
+      "drain": "n1_u1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "n1",
+      "leaf": 0,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "P2",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "B",
+      "source": "n1_u1",
+      "drain": "n1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "n1",
+      "leaf": 1,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "N3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "Y_d1",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "N4",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "VGND",
+      "drain": "Y_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "N5",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "n1",
+      "source": "VGND",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P3",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "VPWR",
+      "drain": "Y_u1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "P4",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "B",
+      "source": "VPWR",
+      "drain": "Y_u1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 2,
+      "fingers": 1
+    },
+    {
+      "id": "P5",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "n1",
+      "source": "Y_u1",
+      "drain": "Y",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 2,
+      "fingers": 1
+    }
+  ],
+  "decomposition_tree": {
+    "kind": "op",
+    "op": "and",
+    "stage": "Y",
+    "pull_down": "parallel",
+    "children": [
+      {
+        "kind": "op",
+        "op": "or",
+        "stage": "Y",
+        "pull_down": "series",
+        "children": [
+          {
+            "kind": "lit",
+            "stage": "Y",
+            "gate": "A",
+            "text": "!A"
+          },
+          {
+            "kind": "lit",
+            "stage": "Y",
+            "gate": "B",
+            "text": "!B"
+          }
+        ]
+      },
+      {
+        "kind": "op",
+        "op": "or",
+        "stage": "n1",
+        "pull_down": "parallel",
+        "children": [
+          {
+            "kind": "lit",
+            "stage": "n1",
+            "gate": "A",
+            "text": "A"
+          },
+          {
+            "kind": "lit",
+            "stage": "n1",
+            "gate": "B",
+            "text": "B"
+          }
+        ],
+        "cut": "flip"
+      }
+    ]
+  },
+  "sizes_from": {
+    "source": null
+  }
+}

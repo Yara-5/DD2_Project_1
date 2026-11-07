@@ -156,6 +156,8 @@
     "met1_step_cost": 4,
     "via_cost": 40,
     "li1_pin_inset": 0.01,
-    "description": "li1_pin_inset: signal pin shapes are this much smaller than their contact on each side; Magic's resistance extraction starts a pin's net just outside the lower-left corner of its pin shape and fails ('Couldn't find wire') when the pin is flush with its li1 landing. Routing grid, retry budget, net orders tried, and the router's relative costs of a met1 step and of an mcon via (li1 step = 1) are implementation choices, not PDK rules."
+    "rip_up_limit": 80,
+    "rip_up_penalty": 50,
+    "description": "li1_pin_inset: signal pin shapes are this much smaller than their contact on each side; Magic's resistance extraction starts a pin's net just outside the lower-left corner of its pin shape and fails ('Couldn't find wire') when the pin is flush with its li1 landing. Routing grid, retry budget, net orders tried, and the router's relative costs of a met1 step and of an mcon via (li1 step = 1) are implementation choices, not PDK rules. rip_up_limit, rip_up_penalty: when every net order fails, the router retries with rip-up and reroute; a path may cross another signal net's wire at rip_up_penalty x (1 + rip-ups so far) per grid step, and it gives up after rip_up_limit rip-ups."
   }
 }

@@ -16,16 +16,30 @@
      the same form followed by an inverter. A literal needed in its complemented
      form costs one shared input inverter per input. The root stage is built so it
      outputs f directly, or outputs !f followed by an output inverter.
-  4. Choice: fewest inverters, then fewest transistors, then fewest stages, over
-     all formulas (--objective transistors puts transistors first).
+  4. Choice: fewest transistors (handout step 2: "keep the decomposition with the
+     fewest transistors"), then fewest inverters, then fewest stages, over all
+     formulas (--objective inverters puts inverters first).
+  4b. Disjoint decomposition: algebraic factoring of a minimum cover cannot find
+     f = F(h(bound inputs), other inputs) (XOR3 = (A ^ B) ^ C is the usual case). For
+     every bound set of two or more inputs whose decomposition chart has exactly two
+     distinct columns (Ashenhurst's simple disjoint decomposition), h and F are built
+     the same way (recursively) and joined, F's input being h's output net; the
+     result is kept when it costs less than the direct network.
   5. Sizing: 'hd' gives every NMOS the frame's x1 width (0.65 um) and every PMOS
      1.00 um; 'stack' multiplies the output stage's widths by each transistor's
      series depth (inner stages and inverters stay x1). Widths, L and models come
-     from plan_hd.json; fingers = ceil(W / the frame's diffusion height).
+     from plan_hd.json; fingers = ceil(W / the frame's diffusion height). With
+     --hd-reference (reference_cell.py) a reference cell under 'hd' takes every W
+     and L from the installed cell's SPICE netlist instead (handout step 3: "for the
+     reference cells of section 4.1, also accept sizes read from the installed cell's
+     SPICE netlist"): each transistor gets the size of the installed transistor of
+     the same type on the same gate pin; if one is missing or ambiguous, the x1
+     sizes stay and network.json says why.
 Writes network.json (devices in the stage-spec format switch_level_check.py
 reads), network.spice and network_schematic.png into --outdir.
 """
 import argparse
+import itertools
 import json
 import math
 import sys
@@ -33,7 +47,7 @@ from collections import Counter
 from pathlib import Path
 
 from qm import minimize
-from request_reader import RequestError, validate_request
+from request_reader import RequestError, format_truth_table, validate_request
 
 LIMIT_SERIES = 3
 SUPPLIES = ('VGND', 'VNB', 'VPB', 'VPWR')
@@ -432,7 +446,7 @@ def write_spice(network, path):
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
-def synthesize(request, frame, objective='inverters'):
+def synthesize(request, frame, objective='transistors'):
     names, n = request['inputs'], len(request['inputs'])
     table = request['truth_table_value']
     full = (1 << (1 << n)) - 1
@@ -504,13 +518,217 @@ def synthesize(request, frame, objective='inverters'):
     return network
 
 
+def stage_tree_text(t):
+    if 'gate' in t:
+        return t['gate']
+    parts = [stage_tree_text(c) if 'gate' in c else f'({stage_tree_text(c)})' for c in t['children']]
+    return (' & ' if t['op'] == 'series' else ' | ').join(parts)
+
+
+def network_table(stages, inputs):
+    """Truth table of every net, evaluating the stages' pull-down trees in order."""
+    def value(tree, env):
+        if 'gate' in tree:
+            return env[tree['gate']]
+        vals = [value(c, env) for c in tree['children']]
+        return all(vals) if tree['op'] == 'series' else any(vals)
+    tables = {}
+    for row in range(1 << len(inputs)):
+        env = {name: bool((row >> i) & 1) for i, name in enumerate(inputs)}
+        for st in stages:
+            env[st['output']] = not value(st['pull_down'], env)
+        for net, v in env.items():
+            tables[net] = tables.get(net, 0) | (int(v) << row)
+    return tables
+
+
+def simple_decompositions(table, n, bound):
+    """(h table over the bound inputs, F table over [h] + the free inputs) for every simple
+    disjoint decomposition f = F(h(bound), free): the decomposition chart has exactly two
+    distinct columns. Both labellings of h are returned (h and !h)."""
+    free = [v for v in range(n) if v not in bound]
+    columns = {}
+    for b in range(1 << len(bound)):
+        pattern = []
+        for fr in range(1 << len(free)):
+            row = sum(((b >> i) & 1) << v for i, v in enumerate(bound)) + \
+                sum(((fr >> i) & 1) << v for i, v in enumerate(free))
+            pattern.append((table >> row) & 1)
+        columns[b] = tuple(pattern)
+    distinct = sorted(set(columns.values()))
+    if len(distinct) != 2:
+        return []
+    out = []
+    for one in distinct:
+        h = sum(1 << b for b, pat in columns.items() if pat == one)
+        zero = distinct[0] if one == distinct[1] else distinct[1]
+        f = 0
+        for hv in (0, 1):
+            pat = one if hv else zero
+            for fr in range(1 << len(free)):
+                f |= pat[fr] << (hv | (fr << 1))
+        out.append((h, f))
+    return out
+
+
+def joined(h_net, f_net, request, bound, h_name, objective):
+    """F's network after h's, F's input h_name driven by h's output; nets renamed so
+    the two cannot clash, devices numbered again in order."""
+    taken = set(request['inputs']) | {request['output'], 'VPWR', 'VGND', 'VPB', 'VNB'}
+    rename = {}
+    for st in h_net['stages']:
+        out = st['output']
+        if out != h_name and not out.endswith('_N'):
+            rename[out] = f'{h_name}_{out}'
+    for st in f_net['stages']:
+        if st['output'] in rename.values() or st['output'] in taken - {request['output']}:
+            raise ValueError(f"net {st['output']} would clash")
+
+    def net(name):
+        if name in rename:
+            return rename[name]
+        stage, _, rest = name.rpartition('_')
+        if stage in rename and rest[:1] in 'du' and rest[1:].isdigit():
+            return f'{rename[stage]}_{rest}'
+        return name
+
+    def same(name):
+        return name
+
+    def tree(x, r):
+        return {'gate': r(x['gate'])} if 'gate' in x else {'op': x['op'], 'children': [tree(c, r) for c in x['children']]}
+
+    # Only h's nets are renamed; F keeps its own (its input h_name is h's output net).
+    parts = [(h_net, net), (f_net, same)]
+    stages = []
+    for part, r in parts:
+        for st in part['stages']:
+            pd, pu = tree(st['pull_down'], r), tree(st['pull_up'], r)
+            stages.append(dict(st, output=r(st['output']), pull_down=pd, pull_up=pu,
+                               function=f"{r(st['output'])} = !({stage_tree_text(pd)})"))
+    outputs = [st['output'] for st in stages]
+    if len(set(outputs)) != len(outputs):
+        raise ValueError(f'two stages would drive one net: {outputs}')
+    devices, serial = [], Counter()
+    for part, r in parts:
+        for d in part['devices']:
+            serial[d['type']] += 1
+            devices.append(dict(d, id=f"{'N' if d['type'] == 'nmos' else 'P'}{serial[d['type']]}",
+                                gate=r(d['gate']), source=r(d['source']), drain=r(d['drain']),
+                                stage=r(d['stage'])))
+    for part, r in parts:
+        own = {r(n) for d in part['devices'] for n in (d['source'], d['drain'])}
+        other = {n for p2, r2 in parts if p2 is not part for d in p2['devices'] for n in (r2(d['source']), r2(d['drain']))}
+        shared = (own & other) - {'VPWR', 'VGND', h_name}
+        if shared:
+            raise ValueError(f'h and F would share nets {sorted(shared)}')
+    if network_table(stages, request['inputs'])[request['output']] != request['truth_table_value']:
+        raise AssertionError('the decomposed network does not compute the function')
+
+    def viz(v):
+        """F's tree view with h's in place of the literal on h (or on its inverter)."""
+        v = dict(v)
+        if v.get('kind') == 'lit' and v['gate'] in (h_name, f'{h_name}_N'):
+            hv = rename_viz(h_net['decomposition_tree'])
+            if v['gate'] == h_name:
+                return dict(hv, cut='decomposition')
+            return {'kind': 'inv', 'stage': v['gate'], 'gate': h_name, 'cut': 'decomposition', 'children': [hv]}
+        if 'children' in v:
+            v['children'] = [viz(c) for c in v['children']]
+        return v
+
+    def rename_viz(v):
+        v = dict(v, stage=net(v['stage']))
+        if 'gate' in v:
+            v['gate'] = net(v['gate'])
+        if 'children' in v:
+            v['children'] = [rename_viz(c) for c in v['children']]
+        return v
+
+    a, b = h_net['cost'], f_net['cost']
+    cost = {k: a[k] + b[k] for k in ('inverters', 'input_inverters', 'stages', 'complex_stages', 'transistors')}
+    cost.update(output_inverter=b['output_inverter'],
+                max_series_pull_down=max(a['max_series_pull_down'], b['max_series_pull_down']),
+                max_series_pull_up=max(a['max_series_pull_up'], b['max_series_pull_up']))
+    names = request['inputs']
+    return {
+        'formula': f"{f_net['formula']}, {h_name} = {h_net['formula'].split(' = ', 1)[1]}",
+        'formula_source': f"disjoint decomposition: {request['output']} = F({h_name}, "
+                          f"{', '.join(names[v] for v in range(len(names)) if v not in bound)}), "
+                          f"{h_name} = h({', '.join(names[v] for v in bound)})",
+        'decomposition': {'bound_inputs': [names[v] for v in bound], 'h_net': h_name,
+                          'h_truth_table': h_net['truth_table'], 'F_inputs': f_net['inputs'],
+                          'F_truth_table': f_net['truth_table']},
+        'cost': cost, 'stages': stages, 'devices': devices,
+        'decomposition_tree': viz(f_net['decomposition_tree'])}
+
+
+def synthesize_best(request, frame, objective='transistors', depth=0, counter=None):
+    """The direct network (steps 1-4), or a disjoint decomposition of it (4b) if cheaper."""
+    best = synthesize(request, frame, objective)
+    n = len(request['inputs'])
+    counter = counter if counter is not None else [0]
+    if n < 3 or depth >= 2:
+        return best
+    order = (lambda c: (c['inverters'], c['transistors'], c['stages'])) if objective == 'inverters' else \
+        (lambda c: (c['transistors'], c['inverters'], c['stages']))
+    taken = set(request['inputs']) | {request['output']}
+    for size in range(2, n):
+        for bound in itertools.combinations(range(n), size):
+            for h_table, f_table in simple_decompositions(request['truth_table_value'], n, bound):
+                counter[0] += 1
+                h_name = f'x{counter[0]}'
+                while h_name in taken:
+                    counter[0] += 1
+                    h_name = f'x{counter[0]}'
+                free = [request['inputs'][v] for v in range(n) if v not in bound]
+                sub_h = dict(request, inputs=[request['inputs'][v] for v in bound], output=h_name,
+                             sizing='hd', truth_table_value=h_table,
+                             truth_table=format_truth_table(h_table, len(bound)))
+                sub_f = dict(request, inputs=[h_name] + free, truth_table_value=f_table,
+                             truth_table=format_truth_table(f_table, len(free) + 1))
+                try:
+                    h_net = synthesize_best(sub_h, frame, objective, depth + 1, counter)
+                    f_net = synthesize_best(sub_f, frame, objective, depth + 1, counter)
+                    part = joined(h_net, f_net, request, bound, h_name, objective)
+                except ValueError:
+                    continue
+                if order(part['cost']) < order(best['cost']):
+                    best = dict(best, **part)
+    return best
+
+
+def sizes_from_reference(network, reference, finger_max):
+    """Apply the installed cell's W and L (reference_cell.py's hd_reference.json)."""
+    if not reference.get('reference'):
+        return {'source': None}
+    if network['sizing'] != 'hd':
+        return {'source': None, 'reason': f"sizing is {network['sizing']}, not hd"}
+    sizes = {}
+    for d in network['devices']:
+        found = {(round(h['w'], 6), round(h['l'], 6)) for h in reference['devices']
+                 if h['model'] == d['model'] and h['gate'] == d['gate']}
+        if len(found) != 1:
+            return {'source': None, 'reason': f"{d['id']} ({d['type']}, gate {d['gate']}): "
+                    f"{'no' if not found else 'several sizes of'} {reference['reference']} transistor"
+                    f"{'' if not found else 's'} on that gate"}
+        sizes[d['id']] = found.pop()
+    for d in network['devices']:
+        d['w_um'], d['l_um'] = sizes[d['id']]
+        d['fingers'] = math.ceil(d['w_um'] / finger_max[d['type']] - 1e-9)
+    return {'source': reference['reference'],
+            'note': 'every W and L from the installed cell, matched by type and gate pin'}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--request', required=True, type=Path,
                     help='A cell request, or the output of request_reader.py')
     ap.add_argument('--frame', required=True, type=Path, help='given/plan_hd.json')
     ap.add_argument('--outdir', required=True, type=Path, help='cells/<name>/')
-    ap.add_argument('--objective', choices=('inverters', 'transistors'), default='inverters')
+    ap.add_argument('--objective', choices=('inverters', 'transistors'), default='transistors')
+    ap.add_argument('--hd-reference', type=Path,
+                    help="reference_cell.py's hd_reference.json: sizes of the installed cell")
     ap.add_argument('--no-picture', action='store_true')
     args = ap.parse_args()
     try:
@@ -521,8 +739,14 @@ def main():
             raw = raw['request']
         request = validate_request(raw)
         frame = json.loads(args.frame.read_text(encoding='utf-8'))
-        network = synthesize(request, frame, args.objective)
-    except (OSError, ValueError, RequestError) as exc:
+        network = synthesize_best(request, frame, args.objective)
+        if args.hd_reference:
+            reference = json.loads(args.hd_reference.read_text(encoding='utf-8'))
+            ref = frame['reference']
+            band = {'nmos': ref['nmos_diffusion_y'], 'pmos': ref['pmos_diffusion_y']}
+            network['sizes_from'] = sizes_from_reference(
+                network, reference, {k: round(v[1] - v[0], 9) for k, v in band.items()})
+    except (OSError, ValueError, KeyError, RequestError) as exc:
         print(f'FAIL: {exc}')
         return 1
     args.outdir.mkdir(parents=True, exist_ok=True)

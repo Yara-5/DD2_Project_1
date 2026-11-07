@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "reason": null,
+  "request": {
+    "request_id": "T6-01",
+    "name": "dd2_g5__nor2_1",
+    "inputs": [
+      "A",
+      "B"
+    ],
+    "output": "Y",
+    "expression": "!(A | B)",
+    "sizing": "hd",
+    "truth_table": "0x1",
+    "truth_table_value": 1,
+    "recognized": null,
+    "supported_by_prototype": false
+  }
+}

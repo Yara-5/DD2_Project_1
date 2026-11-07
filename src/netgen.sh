@@ -6,7 +6,8 @@
 # so tools.sh cannot start it there. flow.py runs the command named by $NETGEN
 # instead of tools.sh, so this runs the same container with the same mounts as
 # tools.sh: the Tutorial 3 folder ($TUT3_ROOT) at its own path, and the PDK that its
-# pdk link points to, read-only, at the link's target.
+# pdk link points to, read-only, at the link's target. NETGEN_ENTRYPOINT names Netgen
+# in another image (default: the course image's "netgen"); set it in local.mk.
 set -e
 ROOT=$(cd "${TUT3_ROOT:?set TUT3_ROOT to the Tutorial 3 folder}" && pwd)
 SKY130=$(cd "$ROOT/pdk" && pwd -P)
@@ -21,5 +22,5 @@ exec ${DOCKER:-docker} run --rm -i \
     -v "$ROOT:$ROOT" \
     -v "$SKY130:$PDK_MOUNT:ro" \
     -w "$(pwd)" \
-    --entrypoint /usr/lib/netgen/tcl/netgenexec \
-    "${LAYOUT_IMAGE:-dd2-layout-tools}" -- "$@"
+    --entrypoint "${NETGEN_ENTRYPOINT:-netgen}" \
+    "${LAYOUT_IMAGE:-dd2-layout-tools}" "$@"

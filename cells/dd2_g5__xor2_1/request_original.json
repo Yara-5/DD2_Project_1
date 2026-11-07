@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "reason": null,
+  "request": {
+    "request_id": "T6-12",
+    "name": "dd2_g5__xor2_1",
+    "inputs": [
+      "A",
+      "B"
+    ],
+    "output": "Y",
+    "expression": "A ^ B",
+    "sizing": "hd",
+    "truth_table": "0x6",
+    "truth_table_value": 6,
+    "recognized": null,
+    "supported_by_prototype": false
+  }
+}

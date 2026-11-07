@@ -26,17 +26,31 @@ minimization of CMOS cells", DAC 1991 (cited as [MH91] below):
     sharing diffusion when they end and start on the same nodes in both rows
     (typically VGND and VPWR). Stage order and orientation are searched to minimize
     breaks, then wire length.
+  * HD reference (handout Table 4): for a cell in hd_reference.REFERENCE_CELLS whose
+    function equals the installed HD cell's under some pin map, the spec names that cell
+    and the map; among placements as good as the best in breaks and repeated nets, the
+    first whose circuit is exactly HD's (series order included) is taken.
+  * Folded transistors ('stack' sizing, handout step 4: "order folded fingers to share
+    diffusion as well (Tutorial 3, section 8)"): a transistor of f fingers is f
+    parallel copies of its edge. Where a leaf has more fingers in one network than in
+    the other (NOR3 under 'stack': one NMOS and three PMOS fingers per input), a
+    column holds a finger in one row only. Inside that row's diffusion strip the
+    column carries the node on (its poly stops at the contact pad, as in Tutorial 3's
+    folded NOR3, whose NMOS row is stretched under the PMOS fingers); outside it the
+    row has no diffusion. finger_cover() is the exact search for such columns: fewest
+    columns plus breaks, then the least diffusion under one-row columns, then the
+    fewest strip ends off the supplies.
 [MH91]'s height minimization (routing rows U and L) is not used: the HD frame fixes
 the height, and prepare_layout.py routes inside it on li1.
-Only one finger per transistor ('hd' sizing) is supported for now.
 """
 import argparse
 import itertools
 import json
-import re
 import sys
 from functools import lru_cache
 from pathlib import Path
+
+import hd_reference
 
 SUPPLY = {'nmos': 'VGND', 'pmos': 'VPWR'}
 MAX_REORDERINGS = 512     # per network of one stage; far above what 4 inputs need
@@ -172,13 +186,88 @@ def min_dual_trail_cover(n_edges, p_edges, max_covers=64):
         for leaf, sn, en, sp, ep, new in plan:
             if new:
                 trails.append([])
-            trails[-1].append((leaf, sn, en, sp, ep))
+            trails[-1].append((leaf, sn, en, sp, ep, True, True))
         return trails
 
     cost = go(0, None, None)[0]
     # [MH91] keeps every cover type that can lead to an optimal layout; likewise every
     # minimum cover is returned here, so routability can choose among them.
     return cost, [as_trails(plan) for plan in all_best(0, None, None, [max_covers])]
+
+
+def finger_cover(n_edges, p_edges, fn, fp, max_covers=16):
+    """Columns for a stage whose leaves have fn[leaf] NMOS and fp[leaf] PMOS fingers.
+
+    A column places one finger of a leaf in both rows, or in one row only. A row's
+    state in the current segment is: not started (None), open on a node, or closed
+    ('#'). Inside an open strip a one-row column leaves the other row's node as it is
+    (diffusion runs under it); before or after the strip that row has no diffusion
+    there. A new segment (a diffusion break) restarts both rows. Cost: (columns +
+    breaks, one-row columns inside a strip, strip ends off the supplies).
+    """
+    leaves = sorted(n_edges)
+    start = tuple((fn[l], fp[l]) for l in leaves)
+    CLOSED = '#'
+
+    def off(node, kind):
+        return (0, 0, 0 if node in (None, CLOSED, SUPPLY[kind]) else 1)
+
+    def row_step(state, edge, take, kind):
+        """(record, new state, extra cost) options for one row at one column."""
+        if take:
+            a, b = edge
+            if state == CLOSED:
+                return []
+            if state is None:
+                return [((a, b, True), b, off(a, kind)), ((b, a, True), a, off(b, kind))]
+            if state in (a, b):
+                other = b if state == a else a
+                return [((state, other, True), other, (0, 0, 0))]
+            return []
+        if state is None or state == CLOSED:
+            return [((None, None, False), state, (0, 0, 0))]
+        # Open strip: carry the node on under this column, or end the strip before it.
+        return [((state, state, False), state, (0, 1, 0)), ((None, None, False), CLOSED, off(state, kind))]
+
+    def add(*costs):
+        return tuple(map(sum, zip(*costs)))
+
+    @lru_cache(maxsize=None)
+    def go(rem, ns, ps, used):
+        if all(r == (0, 0) for r in rem):
+            return add(off(ns, 'nmos'), off(ps, 'pmos')), ()
+        best = None
+        for i, leaf in enumerate(leaves):
+            rn, rp = rem[i]
+            for take_n, take_p in ((True, True), (True, False), (False, True)):
+                if (take_n and rn == 0) or (take_p and rp == 0):
+                    continue
+                left = rem[:i] + ((rn - take_n, rp - take_p),) + rem[i + 1:]
+                for rec_n, nxt_n, cn in row_step(ns, n_edges[leaf], take_n, 'nmos'):
+                    for rec_p, nxt_p, cp in row_step(ps, p_edges[leaf], take_p, 'pmos'):
+                        cost, plan = go(left, nxt_n, nxt_p, True)
+                        total = add(cost, (1, 0, 0), cn, cp)
+                        col = (leaf, rec_n[0], rec_n[1], rec_p[0], rec_p[1], rec_n[2], rec_p[2])
+                        cand = (total, ((col, False),) + plan)
+                        if best is None or cand[0] < best[0]:
+                            best = cand
+        if used:
+            # A diffusion break: both rows start again.
+            cost, plan = go(rem, None, None, False)
+            total = add(cost, (1, 0, 0), off(ns, 'nmos'), off(ps, 'pmos'))
+            if plan:
+                cand = (total, ((plan[0][0], True),) + plan[1:])
+                if best is None or cand[0] < best[0]:
+                    best = cand
+        return best
+
+    cost, plan = go(start, None, None, False)
+    trails = []
+    for col, new in plan:
+        if new or not trails:
+            trails.append([])
+        trails[-1].append(col)
+    return cost, [trails]
 
 
 def row_repeats(nodes_by_row, signals=frozenset()):
@@ -194,6 +283,7 @@ def row_repeats(nodes_by_row, signals=frozenset()):
     """
     total = 0
     for kind, nodes in nodes_by_row.items():
+        nodes = [n for n in nodes if n is not None]
         counts = {}
         for n in nodes:
             counts[n] = counts.get(n, 0) + 1
@@ -221,8 +311,15 @@ def cover_nodes(trails):
     return rows
 
 
-def stage_options(stage, keep=6):
-    """The best dual-trail covers of one stage over all its reorderings."""
+def joins(left, right, from_index, to_index):
+    """Whether one row lets two columns share diffusion: the same node on both sides,
+    or no diffusion on either (a strip is never reopened inside a segment)."""
+    return left[to_index] == right[from_index]
+
+
+def stage_options(stage, keep=6, fingers=None):
+    """The best dual-trail covers of one stage over all its reorderings. fingers:
+    {leaf: (NMOS fingers, PMOS fingers)} when the stage has folded transistors."""
     counter = [0]
     pdn = leaf_tree(stage['pull_down'], counter)
     pun = dual(pdn)
@@ -234,7 +331,11 @@ def stage_options(stage, keep=6):
         n_edges = edges(nt, out, 'VGND', f'{out}_d', [0], {})
         for pt in p_variants:
             p_edges = edges(pt, 'VPWR', out, f'{out}_u', [0], {})
-            cost, covers = min_dual_trail_cover(n_edges, p_edges)
+            if fingers:
+                cost, covers = finger_cover(n_edges, p_edges, {k: v[0] for k, v in fingers.items()},
+                                            {k: v[1] for k, v in fingers.items()})
+            else:
+                cost, covers = min_dual_trail_cover(n_edges, p_edges)
             for trails in covers:
                 key = tuple(tuple(t) for t in trails)
                 if key not in found:
@@ -254,7 +355,7 @@ def oriented(option, reverse):
     trails = option[1]
     if not reverse:
         return [list(t) for t in trails]
-    return [[(l, en, sn, ep, sp) for l, sn, en, sp, ep in reversed(t)] for t in reversed(trails)]
+    return [[(l, en, sn, ep, sp, hn, hp) for l, sn, en, sp, ep, hn, hp in reversed(t)] for t in reversed(trails)]
 
 
 def assemble(sequence, stages):
@@ -270,7 +371,7 @@ def assemble(sequence, stages):
             cols = [(stages[s]['output'], col) for col in trail]
             if segments:
                 last = segments[-1][-1][1]
-                if last[2] == trail[0][1] and last[4] == trail[0][3]:
+                if joins(last, trail[0], 1, 2) and joins(last, trail[0], 3, 4):
                     segments[-1].extend(cols)
                     continue
             segments.append(cols)
@@ -281,13 +382,15 @@ def wiring(segments, stages, gate_of, cell_output):
     """Total horizontal span of every net's pins, in half-column slots."""
     pins, slot = {}, 0
     for seg in segments:
-        for i, (stage, (leaf, sn, en, sp, ep)) in enumerate(seg):
+        for i, (stage, (leaf, sn, en, sp, ep, *_)) in enumerate(seg):
             if i == 0:
                 for net in (sn, sp):
-                    pins.setdefault(net, []).append(slot)
+                    if net is not None:
+                        pins.setdefault(net, []).append(slot)
             pins.setdefault(gate_of[stage, leaf], []).append(slot + 1)
             for net in (en, ep):
-                pins.setdefault(net, []).append(slot + 2)
+                if net is not None:
+                    pins.setdefault(net, []).append(slot + 2)
             slot += 2
         slot += 2                              # a diffusion break
     return sum(max(v) - min(v) for net, v in pins.items() if net not in ('VGND', 'VPWR'))
@@ -339,134 +442,107 @@ def place_stages(stages, options, gate_of, cell_output, beam=400, keep=8):
 # ---------------------------------------------------------------- output
 
 def euler_paths(segments, device_id):
+    """Rows as diffusion segments. A column without a transistor in a row has None for
+    its device; its nodes on both sides are equal (diffusion carried on) or None (no
+    diffusion there). Fingers of one transistor get the ids of its finger devices in
+    column order."""
     rows = {'nmos': [], 'pmos': []}
+    used = {}
     for seg in segments:
-        for kind, (fi, ti) in (('nmos', (1, 2)), ('pmos', (3, 4))):
+        for kind, (fi, ti, hi) in (('nmos', (1, 2, 5)), ('pmos', (3, 4, 6))):
             cols = [col for _, col in seg]
-            rows[kind].append({
-                'devices': [device_id[stage, leaf, kind] for stage, (leaf, *_ ) in seg],
-                'nodes': [cols[0][fi]] + [c[ti] for c in cols],
-            })
+            devices = []
+            for stage, col in seg:
+                if not col[hi]:
+                    devices.append(None)
+                    continue
+                ids = device_id[stage, col[0], kind]
+                n = used.get(ids[0], 0)
+                used[ids[0]] = n + 1
+                devices.append(ids[n])
+            # The node between columns i-1 and i: whichever side has diffusion there
+            # (both agree when both do); None where neither has.
+            nodes = []
+            for i in range(len(cols) + 1):
+                left = cols[i - 1][ti] if i > 0 else None
+                right = cols[i][fi] if i < len(cols) else None
+                nodes.append(left if left is not None else right)
+            rows[kind].append({'devices': devices, 'nodes': nodes})
     return rows
 
 
-HD_SIGNAL_PINS = {
-    'inv_1':   (['A'], ['Y']),
-    'nand2_1': (['A', 'B'], ['Y']),
-    'nor2_1':  (['A', 'B'], ['Y']),
-    'nand3_1': (['A', 'B', 'C'], ['Y']),
-    'a21oi_1': (['A1', 'A2', 'B1'], ['Y']),
-    'o21ai_1': (['A1', 'A2', 'B1'], ['Y']),
-    'a21o_1':  (['A1', 'A2', 'B1'], ['X']),
-    'mux2_1':  (['A0', 'A1', 'S'], ['X']),
-}
-
-
-def hd_reference(name, ports, spice_path):
-    """Return the installed HD reference and logical-to-physical pin mapping."""
-    if not spice_path:
-        return None
-
-    short = name.split('__', 1)[-1]
-
-    if short not in HD_SIGNAL_PINS:
-        return None
-
-    match = re.search(
-        rf'(?im)^\.subckt\s+sky130_fd_sc_hd__{re.escape(short)}\s+(.*)$',
-        Path(spice_path).read_text(encoding='utf-8', errors='replace')
-    )
-
-    if not match:
-        return None
-
-    hd_ports = match[1].split()
-    hd_inputs, hd_outputs = HD_SIGNAL_PINS[short]
-
-    expected_ports = hd_inputs + ['VGND', 'VNB', 'VPB', 'VPWR'] + hd_outputs
-
-    # Dont unexpected PDK pin interface
-    if hd_ports != expected_ports:
-        raise ValueError(
-            f'Unexpected HD pin order for {short}: '
-            f'expected {expected_ports}, found {hd_ports}'
-        )
-
-    logical_inputs = ports[:-5]
-    logical_output = ports[-1]
-
-    if len(logical_inputs) != len(hd_inputs):
-        return None
-
-    # Map each logical input to its corresponding HD input by position.
-    pin_map = dict(zip(logical_inputs, hd_inputs))
-    pin_map[logical_output] = hd_outputs[0]
-
-    return f'sky130_fd_sc_hd__{short}', pin_map
-
-
-def rename_layout_pins(spec, pin_map):
-    """Rename logical signal nets to the installed HD cell's physical pin names."""
-
-    # External input and output names.
-    spec['inputs'] = [pin_map.get(pin, pin) for pin in spec['inputs']]
-    spec['output'] = pin_map.get(spec['output'], spec['output'])
-
-    # Transistor connectivity.
-    for device in spec['devices']:
-        for field in ('drain', 'source', 'gate', 'bulk'):
-            device[field] = pin_map.get(device[field], device[field])
-
-    # Euler paths contain diffusion-node names.
-    def rename_paths(paths):
-        for row in paths.values():
-            for path in row:
-                path['nodes'] = [
-                    pin_map.get(node, node) for node in path['nodes']
-                ]
-
-    rename_paths(spec['euler_paths'])
-
-    for paths in spec['alternative_euler_paths']:
-        rename_paths(paths)
-
-    # Placement metadata can also contain the output net name.
-    placement = spec['placement']
-    placement['stage_order'] = [
-        pin_map.get(net, net) for net in placement['stage_order']
-    ]
-    placement['mirrored'] = [
-        pin_map.get(net, net) for net in placement['mirrored']
-    ]
-
-
-def build_layout_spec(network, hd_spice=None):
-    if any(d['fingers'] != 1 for d in network['devices']):
-        raise ValueError("folded transistors (sizing 'stack') are not supported by the layout step yet")
+def build_layout_spec(network, hd=None):
+    """The layout spec; hd is {'liberty': text, 'spice': text} of the installed HD library,
+    or None to name no reference."""
     stages = network['stages']
     by_stage = {}
     for d in network['devices']:
         by_stage.setdefault(d['stage'], []).append(d)
     gate_of = {(st['output'], d['leaf']): d['gate'] for st in stages for d in by_stage[st['output']]}
-    device_id = {(d['stage'], d['leaf'], d['type']): d['id'] for d in network['devices']}
-    options = [stage_options(st) for st in stages]
+    # A transistor of f fingers is f devices of W/f in parallel (ids <id>_f1 ... <id>_ff).
+    finger_ids = {d['id']: [d['id']] if d['fingers'] == 1 else [f"{d['id']}_f{j + 1}" for j in range(d['fingers'])]
+                  for d in network['devices']}
+    device_id = {(d['stage'], d['leaf'], d['type']): finger_ids[d['id']] for d in network['devices']}
+
+    def stage_fingers(st):
+        ds = by_stage[st['output']]
+        if all(d['fingers'] == 1 for d in ds):
+            return None
+        count = {(d['leaf'], d['type']): d['fingers'] for d in ds}
+        return {leaf: (count[leaf, 'nmos'], count[leaf, 'pmos']) for leaf, _ in count}
+    options = [stage_options(st, fingers=stage_fingers(st)) for st in stages]
     placements = place_stages(stages, options, gate_of, network['output'])
     if not placements:
         raise ValueError('no placement found')
 
-    # Devices of the first placement's reorderings: nodes come from its graphs.
-    (gaps, repeats, wire), seq, segments = placements[0]
+    def devices_of(seq):
+        """The devices with the nodes of this placement's reorderings."""
+        chosen = {stages[s]['output']: option for s, option, _ in seq}
+        out = []
+        for d in network['devices']:
+            _, _, n_edges, p_edges = chosen[d['stage']]
+            a, b = (n_edges if d['type'] == 'nmos' else p_edges)[d['leaf']]
+            if d['fingers'] == 1:
+                out.append(dict(d, drain=a, source=b))
+                continue
+            w = round(d['w_um'] / d['fingers'], 6)
+            for fid in finger_ids[d['id']]:
+                out.append(dict(d, id=fid, drain=a, source=b, w_um=w, fingers=1, finger_of=d['id']))
+        return out
+
+    # The installed HD cell of the same name, when its function equals the request's under
+    # some map of the pins (hd_reference.py). Maps that keep the most pin names are tried
+    # first; for each, the first placement as good as the best in breaks and repeated
+    # nets whose circuit is exactly HD's (series order included) is taken, so that LVS
+    # against the HD cell can match. Otherwise the best placement and the first map stay.
+    ports = [*network['inputs'], 'VGND', 'VNB', 'VPB', 'VPWR', network['output']]
+    short = network['name'].split('__', 1)[-1]
+    reference, maps, pick, same = None, [], 0, False
+    if hd and short in hd_reference.REFERENCE_CELLS:
+        reference = hd_reference.hd_cell(hd['liberty'], hd['spice'], short)
+        if reference:
+            maps = hd_reference.pin_maps(network['inputs'], network['output'],
+                                         int(network['truth_table'], 16), reference)
+            maps.sort(key=lambda m: -sum(k == v for k, v in m.items()))
+        if not maps:
+            reference = None
+    if reference:
+        best = placements[0][0][:2]
+        equal = [i for i, (cost, _, _) in enumerate(placements) if cost[:2] == best]
+        for m in maps:
+            found = next((i for i in equal if hd_reference.same_circuit(
+                hd_reference.renamed([dict(d, w=d['w_um'], l=d['l_um']) for d in devices_of(placements[i][1])], m),
+                reference['devices'], reference['ports'])), None)
+            if found is not None:
+                pick, same, maps = found, True, [m]
+                break
+    (gaps, repeats, wire), seq, segments = placements[pick]
+    devices = devices_of(seq)
     chosen = {stages[s]['output']: option for s, option, _ in seq}
-    devices = []
-    for d in network['devices']:
-        _, _, n_edges, p_edges = chosen[d['stage']]
-        a, b = (n_edges if d['type'] == 'nmos' else p_edges)[d['leaf']]
-        devices.append(dict(d, drain=a, source=b))
 
     def same_graphs(seq_other):
         return all(chosen[stages[s]['output']] is o for s, o, _ in seq_other)
 
-    ports = [*network['inputs'], 'VGND', 'VNB', 'VPB', 'VPWR', network['output']]
     spec = {
         'schema': 'dd2.layout-spec.v1', 'name': network['name'], 'request_id': network['request_id'],
         'inputs': network['inputs'], 'output': network['output'], 'truth_table': network['truth_table'],
@@ -474,28 +550,24 @@ def build_layout_spec(network, hd_spice=None):
         'euler_paths': euler_paths(segments, device_id),
         # Other placements with the same transistor graphs, for prepare_layout.py to try
         # in order when li1 routing fails on the first.
-        'alternative_euler_paths': [euler_paths(segs, device_id) for _, sq, segs in placements[1:]
-                                    if same_graphs(sq)],
+        'alternative_euler_paths': [euler_paths(segs, device_id) for i, (_, sq, segs) in enumerate(placements)
+                                    if i != pick and same_graphs(sq)],
         'placement': {
             'stage_order': [stages[s]['output'] for s, _, _ in seq],
             'mirrored': [stages[s]['output'] for s, _, r in seq if r],
             'dual_trails_per_stage': {st['output']: len(o[0][1]) for st, o in zip(stages, options)},
             'diffusion_segments': len(segments), 'diffusion_breaks': gaps,
             'columns': sum(len(s) for s in segments), 'repeated_nets_in_rows': repeats,
+            'folded': any(d['fingers'] != 1 for d in network['devices']),
             'wiring_slots': wire,
             'method': 'dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991',
         },
     }
-    reference = hd_reference(network['name'], ports, hd_spice)
-
     if reference:
-        reference_name, pin_map = reference
-
-        #rename_layout_pins(spec, pin_map)
-
-        spec['hd_reference'] = reference_name
-        spec['hd_pin_mapping'] = pin_map
-
+        # Layout pins keep the request's names; verify_lvs.py renames them for LVS against HD.
+        spec['hd_reference'] = reference['name']
+        spec['hd_pin_mapping'] = maps[0]
+        spec['hd_same_circuit'] = same
     return spec
 
 
@@ -503,12 +575,18 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('network', type=Path, help='cells/<name>/network.json')
     ap.add_argument('--out', type=Path, help='default: layout_spec.json beside the network')
-    ap.add_argument('--hd-spice', type=Path,
-                    help='PDK sky130_fd_sc_hd.spice: names the installed cell to compare with, if its ports match')
+    ap.add_argument('--hd-spice', type=Path, help='PDK sky130_fd_sc_hd.spice (with --hd-liberty)')
+    ap.add_argument('--hd-liberty', type=Path,
+                    help='PDK sky130_fd_sc_hd__tt_025C_1v80.lib: with --hd-spice, names the installed '
+                         'cell to compare with when its function matches the request')
     args = ap.parse_args()
     try:
+        if bool(args.hd_spice) != bool(args.hd_liberty):
+            raise ValueError('--hd-spice and --hd-liberty go together')
+        hd = args.hd_spice and {'spice': args.hd_spice.read_text(encoding='utf-8', errors='replace'),
+                                'liberty': args.hd_liberty.read_text(encoding='utf-8', errors='replace')}
         network = json.loads(args.network.read_text(encoding='utf-8'))
-        spec = build_layout_spec(network, args.hd_spice)
+        spec = build_layout_spec(network, hd)
     except (OSError, KeyError, ValueError) as exc:
         print(f'FAIL: {exc}')
         return 1
@@ -519,8 +597,8 @@ def main():
           f"{'s' if p['diffusion_segments'] != 1 else ''} ({p['diffusion_breaks']} breaks), "
           f"stage order {' '.join(p['stage_order'])}")
     for kind in ('nmos', 'pmos'):
-        print(f"    {kind}: " + ' | '.join(' '.join(f"{n} [{d}]" for n, d in zip(seg['nodes'], seg['devices']))
-                                           + ' ' + seg['nodes'][-1] for seg in spec['euler_paths'][kind]))
+        print(f"    {kind}: " + ' | '.join(' '.join(f"{n or '-'} [{d or '-'}]" for n, d in zip(seg['nodes'], seg['devices']))
+                                           + ' ' + (seg['nodes'][-1] or '-') for seg in spec['euler_paths'][kind]))
     return 0
 
 

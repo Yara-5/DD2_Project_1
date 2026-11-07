@@ -1,0 +1,109 @@
+{
+  "reference": "sky130_fd_sc_hd__a21o_1",
+  "pin_map": {
+    "A": "A1",
+    "B": "A2",
+    "C": "B1",
+    "Y": "X"
+  },
+  "valid_pin_maps": [
+    {
+      "A": "A1",
+      "B": "A2",
+      "C": "B1",
+      "Y": "X"
+    },
+    {
+      "A": "A2",
+      "B": "A1",
+      "C": "B1",
+      "Y": "X"
+    }
+  ],
+  "ports": [
+    "A1",
+    "A2",
+    "B1",
+    "VGND",
+    "VNB",
+    "VPB",
+    "VPWR",
+    "X"
+  ],
+  "function": "(A1&A2) | (B1)",
+  "devices": [
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "drain": "a_384_47#",
+      "gate": "A2",
+      "source": "VGND",
+      "bulk": "VNB",
+      "w": 0.65,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "drain": "X",
+      "gate": "a_81_21#",
+      "source": "VPWR",
+      "bulk": "VPB",
+      "w": 1.0,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "drain": "a_81_21#",
+      "gate": "B1",
+      "source": "a_299_297#",
+      "bulk": "VPB",
+      "w": 1.0,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "drain": "VGND",
+      "gate": "B1",
+      "source": "a_81_21#",
+      "bulk": "VNB",
+      "w": 0.65,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "drain": "a_299_297#",
+      "gate": "A1",
+      "source": "VPWR",
+      "bulk": "VPB",
+      "w": 1.0,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "drain": "VPWR",
+      "gate": "A2",
+      "source": "a_299_297#",
+      "bulk": "VPB",
+      "w": 1.0,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "drain": "X",
+      "gate": "a_81_21#",
+      "source": "VGND",
+      "bulk": "VNB",
+      "w": 0.65,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "drain": "a_81_21#",
+      "gate": "A1",
+      "source": "a_384_47#",
+      "bulk": "VNB",
+      "w": 0.65,
+      "l": 0.15
+    }
+  ],
+  "source": "PDK SPICE library (ports, W, L) and HD Liberty (directions, function)"
+}

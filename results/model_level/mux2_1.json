@@ -1,0 +1,115 @@
+{
+  "check": "model_level",
+  "cell": "dd2_g5__mux2_1",
+  "truth_table": "0xCA",
+  "generated": [
+    "cell.v",
+    "cell.lib"
+  ],
+  "verilog": {
+    "passed": true,
+    "rows": [
+      {
+        "inputs": {
+          "A0": 0,
+          "A1": 0,
+          "S": 0
+        },
+        "expected": 0,
+        "actual": "0",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A0": 0,
+          "A1": 0,
+          "S": 1
+        },
+        "expected": 0,
+        "actual": "0",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A0": 0,
+          "A1": 1,
+          "S": 0
+        },
+        "expected": 0,
+        "actual": "0",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A0": 0,
+          "A1": 1,
+          "S": 1
+        },
+        "expected": 1,
+        "actual": "1",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A0": 1,
+          "A1": 0,
+          "S": 0
+        },
+        "expected": 1,
+        "actual": "1",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A0": 1,
+          "A1": 0,
+          "S": 1
+        },
+        "expected": 0,
+        "actual": "0",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A0": 1,
+          "A1": 1,
+          "S": 0
+        },
+        "expected": 1,
+        "actual": "1",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A0": 1,
+          "A1": 1,
+          "S": 1
+        },
+        "expected": 1,
+        "actual": "1",
+        "passed": true
+      }
+    ]
+  },
+  "liberty": {
+    "passed": true,
+    "function": "(A0 & !S) | (A1 & S)",
+    "function_truth_table": "0xCA",
+    "expected_truth_table": "0xCA"
+  },
+  "broken_cases": [
+    {
+      "case": "generated: row 0 flipped",
+      "rejected": true,
+      "failing_rows": [
+        {
+          "A0": 0,
+          "A1": 0,
+          "S": 0
+        }
+      ]
+    }
+  ],
+  "liberty_status": "functional_only_uncharacterized",
+  "passed": true
+}

@@ -1,0 +1,671 @@
+{
+  "check": "lvs",
+  "image": "dd2-project1-tools",
+  "source_verify_sha256": "86af6b7054586a23eae4b39d3b38fd6c996fdf886c4053ad5cac09853757198e",
+  "instructor_checks_modified": false,
+  "cells": {
+    "dd2_g5__a21o_1": {
+      "cell": "dd2_g5__a21o_1",
+      "ports": [
+        "A1",
+        "A2",
+        "B1",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "X"
+      ],
+      "gds_sha256": "ae941e5ba5c78c71f778222873e1c28189f72f0ade9a67f0723dca59d7bddbb0",
+      "isolated_drc_count": 6,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 52,
+        "capacitors": 64,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__a21o_1",
+      "hd_pin_mapping": {
+        "A1": "A1",
+        "A2": "A2",
+        "B1": "B1",
+        "X": "X"
+      },
+      "hd_schematic_same_circuit": false,
+      "hd_reference_lvs_required": false,
+      "hd_reference_lvs_passed": false,
+      "hd_transistors": {
+        "generated": 8,
+        "installed": 8
+      },
+      "passed": true
+    },
+    "dd2_g5__a21oi_1": {
+      "cell": "dd2_g5__a21oi_1",
+      "ports": [
+        "A1",
+        "A2",
+        "B1",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "eec2025e5a34151642fe606f7282e9ce4e795e54729578c5e9bd089d16961f46",
+      "isolated_drc_count": 5,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 37,
+        "capacitors": 54,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__a21oi_1",
+      "hd_pin_mapping": {
+        "A1": "A1",
+        "A2": "A2",
+        "B1": "B1",
+        "Y": "Y"
+      },
+      "hd_schematic_same_circuit": true,
+      "hd_reference_lvs_required": true,
+      "hd_reference_lvs_passed": true,
+      "hd_transistors": {
+        "generated": 6,
+        "installed": 6
+      },
+      "passed": true
+    },
+    "dd2_g5__a22oi_1": {
+      "cell": "dd2_g5__a22oi_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "5d84b63077e4a7c8e444aaff8225072ade19546d19382cff47e3d99d45ac31f9",
+      "isolated_drc_count": 6,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 44,
+        "capacitors": 66,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__and2_1": {
+      "cell": "dd2_g5__and2_1",
+      "ports": [
+        "A",
+        "B",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "2479ec53ade562fc319ac07f0ce9a38c5a108dff8e5f0d7479a67f8a03975649",
+      "isolated_drc_count": 5,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 40,
+        "capacitors": 50,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__f14_1": {
+      "cell": "dd2_g5__f14_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "8332f0d3226a04ab6a864011dc4708de54cbcc0770f6f420a8a4fdf9090e6dc9",
+      "isolated_drc_count": 6,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 52,
+        "capacitors": 71,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__f15_1": {
+      "cell": "dd2_g5__f15_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "69895417a3fb8fd8c5956c6be586690216d10d41781ebe1f316e688ef60ff8e8",
+      "isolated_drc_count": 6,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 47,
+        "capacitors": 67,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__inv_1": {
+      "cell": "dd2_g5__inv_1",
+      "ports": [
+        "A",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "834ddb2441bdafca79bb5c0b948c8e4cd3b3ff557537c80d1d89487883b8f6ad",
+      "isolated_drc_count": 3,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 16,
+        "capacitors": 25,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__inv_1",
+      "hd_pin_mapping": {
+        "A": "A",
+        "Y": "Y"
+      },
+      "hd_schematic_same_circuit": true,
+      "hd_reference_lvs_required": true,
+      "hd_reference_lvs_passed": true,
+      "hd_transistors": {
+        "generated": 2,
+        "installed": 2
+      },
+      "passed": true
+    },
+    "dd2_g5__maj3_1": {
+      "cell": "dd2_g5__maj3_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "f8389d2bbd3a9078740b88cc8471d71b8f017adc8a840cb56337eabf650d90dc",
+      "isolated_drc_count": 9,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 107,
+        "capacitors": 106,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__maj4_1": {
+      "cell": "dd2_g5__maj4_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "d4b56f7b1b00c31ff2b05e8c70f4433a1249c4bde1c45043877e3b806df7619a",
+      "isolated_drc_count": 10,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 103,
+        "capacitors": 111,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__maj4n_1": {
+      "cell": "dd2_g5__maj4n_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "34084e691defac0d5385612e17e34ab05db3b55239247817c2ed901c292cfb6f",
+      "isolated_drc_count": 8,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 71,
+        "capacitors": 90,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__mux2_1": {
+      "cell": "dd2_g5__mux2_1",
+      "ports": [
+        "A0",
+        "A1",
+        "S",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "X"
+      ],
+      "gds_sha256": "195feac8c6ca80ba631ea7fe29527ec879b2e15d88c21fa5d5443b773d0b342c",
+      "isolated_drc_count": 9,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 87,
+        "capacitors": 88,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__mux2_1",
+      "hd_pin_mapping": {
+        "A0": "A0",
+        "A1": "A1",
+        "S": "S",
+        "X": "X"
+      },
+      "hd_schematic_same_circuit": false,
+      "hd_reference_lvs_required": false,
+      "hd_reference_lvs_passed": false,
+      "hd_transistors": {
+        "generated": 12,
+        "installed": 12
+      },
+      "passed": true
+    },
+    "dd2_g5__nand2_1": {
+      "cell": "dd2_g5__nand2_1",
+      "ports": [
+        "A",
+        "B",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "10264846723ccd623b6956fbd590299826e28b550c6f1f00d51011b52bfe8cfa",
+      "isolated_drc_count": 4,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 28,
+        "capacitors": 40,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__nand2_1",
+      "hd_pin_mapping": {
+        "A": "A",
+        "B": "B",
+        "Y": "Y"
+      },
+      "hd_schematic_same_circuit": true,
+      "hd_reference_lvs_required": true,
+      "hd_reference_lvs_passed": true,
+      "hd_transistors": {
+        "generated": 4,
+        "installed": 4
+      },
+      "passed": true
+    },
+    "dd2_g5__nand3_1": {
+      "cell": "dd2_g5__nand3_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "45d33a9c71ac1323ee7d9d77631cd705be747a85efe0b66c5c143973141723e2",
+      "isolated_drc_count": 5,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 38,
+        "capacitors": 54,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__nand3_1",
+      "hd_pin_mapping": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "Y": "Y"
+      },
+      "hd_schematic_same_circuit": true,
+      "hd_reference_lvs_required": true,
+      "hd_reference_lvs_passed": true,
+      "hd_transistors": {
+        "generated": 6,
+        "installed": 6
+      },
+      "passed": true
+    },
+    "dd2_g5__nor2_1": {
+      "cell": "dd2_g5__nor2_1",
+      "ports": [
+        "A",
+        "B",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "078e64708d780e22ab1c120249ede72aedd511cfa6691919ec6200b664672325",
+      "isolated_drc_count": 4,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 27,
+        "capacitors": 39,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__nor2_1",
+      "hd_pin_mapping": {
+        "A": "A",
+        "B": "B",
+        "Y": "Y"
+      },
+      "hd_schematic_same_circuit": true,
+      "hd_reference_lvs_required": true,
+      "hd_reference_lvs_passed": true,
+      "hd_transistors": {
+        "generated": 4,
+        "installed": 4
+      },
+      "passed": true
+    },
+    "dd2_g5__nor3_1": {
+      "cell": "dd2_g5__nor3_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "c512a8ea81ccc7cfd8e832c0d7b927bdbb9428421f1b890bd332de1ce5b0a012",
+      "isolated_drc_count": 5,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 37,
+        "capacitors": 53,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__nor3_1",
+      "hd_pin_mapping": {
+        "A": "A",
+        "B": "B",
+        "C": "C",
+        "Y": "Y"
+      },
+      "hd_schematic_same_circuit": true,
+      "hd_reference_lvs_required": true,
+      "hd_reference_lvs_passed": true,
+      "hd_transistors": {
+        "generated": 6,
+        "installed": 6
+      },
+      "passed": true
+    },
+    "dd2_g5__nor3_stack_1": {
+      "cell": "dd2_g5__nor3_stack_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "04a7e64f797c77e191c9ca3e23510bb302efb14d8feb2a89d2ca1b221faf6a5e",
+      "isolated_drc_count": 5,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 98,
+        "capacitors": 103,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__o21ai_1": {
+      "cell": "dd2_g5__o21ai_1",
+      "ports": [
+        "A1",
+        "A2",
+        "B1",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "cf052b31d1553374e068f569f13b4d02414b46e53e8e5f0ddbd1e8aa7ace83bb",
+      "isolated_drc_count": 5,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 39,
+        "capacitors": 55,
+        "collapsed_lvs_passed": true
+      },
+      "hd_reference": "sky130_fd_sc_hd__o21ai_1",
+      "hd_pin_mapping": {
+        "A1": "A1",
+        "A2": "A2",
+        "B1": "B1",
+        "Y": "Y"
+      },
+      "hd_schematic_same_circuit": true,
+      "hd_reference_lvs_required": true,
+      "hd_reference_lvs_passed": true,
+      "hd_transistors": {
+        "generated": 6,
+        "installed": 6
+      },
+      "passed": true
+    },
+    "dd2_g5__o22ai_1": {
+      "cell": "dd2_g5__o22ai_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "1b79e21b6801349b1e0ff9ea97fce03506cc1efe6dfd963587026291ef84b957",
+      "isolated_drc_count": 6,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 48,
+        "capacitors": 67,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__xor2_1": {
+      "cell": "dd2_g5__xor2_1",
+      "ports": [
+        "A",
+        "B",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "c73e0a6cf8c037a2a8d35dc5cb6a24e879d1ebd1e05afd9ffca2736b7fb1716e",
+      "isolated_drc_count": 7,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 62,
+        "capacitors": 68,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__xor3_1": {
+      "cell": "dd2_g5__xor3_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "5c8c3703dcc69d554ed1933a52d13bc488baeb0c8105fff658f2ba91b5e6e33d",
+      "isolated_drc_count": 14,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 174,
+        "capacitors": 156,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    }
+  },
+  "passed": true
+}

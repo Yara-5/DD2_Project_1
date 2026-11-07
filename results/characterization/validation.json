@@ -1,0 +1,652 @@
+{
+  "check": "characterizer_validation",
+  "shipped_liberty": "/home/youssef/work/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+  "limits": {
+    "median_error": 0.05,
+    "input_capacitance": 0.1
+  },
+  "fixed": {
+    "directory": "results/characterization/hd",
+    "cells": [
+      "sky130_fd_sc_hd__a21oi_1",
+      "sky130_fd_sc_hd__inv_1",
+      "sky130_fd_sc_hd__nand2_1",
+      "sky130_fd_sc_hd__nand3_1",
+      "sky130_fd_sc_hd__nor2_1",
+      "sky130_fd_sc_hd__o21ai_1"
+    ],
+    "simulator": {
+      "version": "ngspice-47",
+      "sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660"
+    },
+    "index_by_ramp": false,
+    "entries": 2744,
+    "median_error": 0.03357641079773409,
+    "median_error_per_cell": {
+      "sky130_fd_sc_hd__a21oi_1": 0.028875948771128444,
+      "sky130_fd_sc_hd__inv_1": 0.02120802988058829,
+      "sky130_fd_sc_hd__nand2_1": 0.033692102701915264,
+      "sky130_fd_sc_hd__nand3_1": 0.043158265329273145,
+      "sky130_fd_sc_hd__nor2_1": 0.029394633325841357,
+      "sky130_fd_sc_hd__o21ai_1": 0.035604818389975465
+    },
+    "median_error_per_table": {
+      "cell_rise": 0.024810579339686535,
+      "cell_fall": 0.0382387860399771,
+      "rise_transition": 0.033944708021671204,
+      "fall_transition": 0.03458710248068436
+    },
+    "max_error": 3.4134704180262263,
+    "max_error_at": {
+      "cell": "sky130_fd_sc_hd__a21oi_1",
+      "pin": "B1",
+      "table": "cell_fall",
+      "slew_ns": 1.5,
+      "load_pf": 0.0005,
+      "shipped": 0.0032486,
+      "measured": 0.014337599999999999
+    },
+    "input_capacitance": [
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "A1",
+        "shipped": 0.002352,
+        "measured": 0.002334633333333333,
+        "error": 0.007383786848072596
+      },
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "A2",
+        "shipped": 0.002321,
+        "measured": 0.002298763888888889,
+        "error": 0.009580401168078985
+      },
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "B1",
+        "shipped": 0.002323,
+        "measured": 0.0024168416666666666,
+        "error": 0.04039675706701104
+      },
+      {
+        "cell": "sky130_fd_sc_hd__inv_1",
+        "pin": "A",
+        "shipped": 0.002302,
+        "measured": 0.0023669999999999997,
+        "error": 0.028236316246741947
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "pin": "A",
+        "shipped": 0.002315,
+        "measured": 0.0022975416666666665,
+        "error": 0.007541396688264926
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "pin": "B",
+        "shipped": 0.002324,
+        "measured": 0.002369886111111111,
+        "error": 0.01974445400650213
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "A",
+        "shipped": 0.002301,
+        "measured": 0.002252469444444445,
+        "error": 0.02109107151480022
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "B",
+        "shipped": 0.002395,
+        "measured": 0.002335211111111111,
+        "error": 0.024964045465089353
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "C",
+        "shipped": 0.002355,
+        "measured": 0.002373138888888889,
+        "error": 0.0077022882755367955
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "pin": "A",
+        "shipped": 0.002373,
+        "measured": 0.002407188888888889,
+        "error": 0.014407454230463046
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "pin": "B",
+        "shipped": 0.002353,
+        "measured": 0.0023410111111111112,
+        "error": 0.00509515039901777
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "A1",
+        "shipped": 0.002335,
+        "measured": 0.0023008777777777777,
+        "error": 0.014613371401379917
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "A2",
+        "shipped": 0.002459,
+        "measured": 0.0024267694444444444,
+        "error": 0.013107179973792354
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "B1",
+        "shipped": 0.001996,
+        "measured": 0.002105075,
+        "error": 0.05464679358717442
+      }
+    ],
+    "max_capacitance_error": 0.05464679358717442,
+    "setup": [
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__inv_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      }
+    ],
+    "syntax": {
+      "sky130_fd_sc_hd__a21oi_1": {
+        "yosys": {
+          "ran": true,
+          "passed": true,
+          "tail": ""
+        },
+        "opensta": {
+          "ran": true,
+          "passed": true,
+          "tail": "etails. \nThis program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.\nOpenSTA> read_liberty results/characterization/hd/a21oi_1.lib\nWarning: results/characterization/hd/a21oi_1.lib, line 24 default_operating_condition tt_025C_1v80 not found.\nOpenSTA> exit\nSaving command history\n"
+        }
+      },
+      "sky130_fd_sc_hd__inv_1": {
+        "yosys": {
+          "ran": true,
+          "passed": true,
+          "tail": ""
+        },
+        "opensta": {
+          "ran": true,
+          "passed": true,
+          "tail": "or details. \nThis program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.\nOpenSTA> read_liberty results/characterization/hd/inv_1.lib\nWarning: results/characterization/hd/inv_1.lib, line 24 default_operating_condition tt_025C_1v80 not found.\nOpenSTA> exit\nSaving command history\n"
+        }
+      },
+      "sky130_fd_sc_hd__nand2_1": {
+        "yosys": {
+          "ran": true,
+          "passed": true,
+          "tail": ""
+        },
+        "opensta": {
+          "ran": true,
+          "passed": true,
+          "tail": "etails. \nThis program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.\nOpenSTA> read_liberty results/characterization/hd/nand2_1.lib\nWarning: results/characterization/hd/nand2_1.lib, line 24 default_operating_condition tt_025C_1v80 not found.\nOpenSTA> exit\nSaving command history\n"
+        }
+      },
+      "sky130_fd_sc_hd__nand3_1": {
+        "yosys": {
+          "ran": true,
+          "passed": true,
+          "tail": ""
+        },
+        "opensta": {
+          "ran": true,
+          "passed": true,
+          "tail": "etails. \nThis program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.\nOpenSTA> read_liberty results/characterization/hd/nand3_1.lib\nWarning: results/characterization/hd/nand3_1.lib, line 24 default_operating_condition tt_025C_1v80 not found.\nOpenSTA> exit\nSaving command history\n"
+        }
+      },
+      "sky130_fd_sc_hd__nor2_1": {
+        "yosys": {
+          "ran": true,
+          "passed": true,
+          "tail": ""
+        },
+        "opensta": {
+          "ran": true,
+          "passed": true,
+          "tail": " details. \nThis program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.\nOpenSTA> read_liberty results/characterization/hd/nor2_1.lib\nWarning: results/characterization/hd/nor2_1.lib, line 24 default_operating_condition tt_025C_1v80 not found.\nOpenSTA> exit\nSaving command history\n"
+        }
+      },
+      "sky130_fd_sc_hd__o21ai_1": {
+        "yosys": {
+          "ran": true,
+          "passed": true,
+          "tail": ""
+        },
+        "opensta": {
+          "ran": true,
+          "passed": true,
+          "tail": "etails. \nThis program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.\nOpenSTA> read_liberty results/characterization/hd/o21ai_1.lib\nWarning: results/characterization/hd/o21ai_1.lib, line 24 default_operating_condition tt_025C_1v80 not found.\nOpenSTA> exit\nSaving command history\n"
+        }
+      }
+    },
+    "notes": []
+  },
+  "stock": {
+    "directory": "results/characterization/hd_stock",
+    "cells": [
+      "sky130_fd_sc_hd__a21oi_1",
+      "sky130_fd_sc_hd__inv_1",
+      "sky130_fd_sc_hd__nand2_1",
+      "sky130_fd_sc_hd__nand3_1",
+      "sky130_fd_sc_hd__nor2_1",
+      "sky130_fd_sc_hd__o21ai_1"
+    ],
+    "simulator": {
+      "version": "ngspice-42",
+      "sha256": "820658317b0b54035208da41936fd6871ce924036e5ea4113a4168b821b7fc45"
+    },
+    "index_by_ramp": false,
+    "entries": 2744,
+    "median_error": 0.048345953137475126,
+    "median_error_per_cell": {
+      "sky130_fd_sc_hd__a21oi_1": 0.03609488909527457,
+      "sky130_fd_sc_hd__inv_1": 0.052627589912431966,
+      "sky130_fd_sc_hd__nand2_1": 0.06037045193229766,
+      "sky130_fd_sc_hd__nand3_1": 0.05088503110581721,
+      "sky130_fd_sc_hd__nor2_1": 0.05404545615997446,
+      "sky130_fd_sc_hd__o21ai_1": 0.045602795875074695
+    },
+    "median_error_per_table": {
+      "cell_rise": 0.06851467046390144,
+      "cell_fall": 0.0166919447193212,
+      "rise_transition": 0.0752308858839357,
+      "fall_transition": 0.020661305916308756
+    },
+    "max_error": 1.16261989780213,
+    "max_error_at": {
+      "cell": "sky130_fd_sc_hd__a21oi_1",
+      "pin": "B1",
+      "table": "cell_fall",
+      "slew_ns": 1.5,
+      "load_pf": 0.0005,
+      "shipped": 0.0032486,
+      "measured": 0.0070254869999999995
+    },
+    "input_capacitance": [
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "A1",
+        "shipped": 0.002352,
+        "measured": 0.0023375277777777778,
+        "error": 0.006153155706727102
+      },
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "A2",
+        "shipped": 0.002321,
+        "measured": 0.002298941666666667,
+        "error": 0.009503805830820037
+      },
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "B1",
+        "shipped": 0.002323,
+        "measured": 0.002420258333333334,
+        "error": 0.041867556320849694
+      },
+      {
+        "cell": "sky130_fd_sc_hd__inv_1",
+        "pin": "A",
+        "shipped": 0.002302,
+        "measured": 0.0023695166666666666,
+        "error": 0.029329568491167184
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "pin": "A",
+        "shipped": 0.002315,
+        "measured": 0.0022995916666666665,
+        "error": 0.006655867530597552
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "pin": "B",
+        "shipped": 0.002324,
+        "measured": 0.002370227777777778,
+        "error": 0.019891470644482684
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "A",
+        "shipped": 0.002301,
+        "measured": 0.0022528333333333333,
+        "error": 0.020932927712588804
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "B",
+        "shipped": 0.002395,
+        "measured": 0.002336191666666667,
+        "error": 0.024554627696590062
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "C",
+        "shipped": 0.002355,
+        "measured": 0.0023732833333333335,
+        "error": 0.007763623496107689
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "pin": "A",
+        "shipped": 0.002373,
+        "measured": 0.0024102666666666666,
+        "error": 0.015704452872594404
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "pin": "B",
+        "shipped": 0.002353,
+        "measured": 0.002344672222222222,
+        "error": 0.003539217075128854
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "A1",
+        "shipped": 0.002335,
+        "measured": 0.0023003194444444447,
+        "error": 0.014852486319295572
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "A2",
+        "shipped": 0.002459,
+        "measured": 0.0024255194444444445,
+        "error": 0.01361551669603715
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "B1",
+        "shipped": 0.001996,
+        "measured": 0.0021079416666666666,
+        "error": 0.05608299933199735
+      }
+    ],
+    "max_capacitance_error": 0.05608299933199735,
+    "setup": [
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__inv_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      }
+    ],
+    "syntax": {},
+    "notes": []
+  },
+  "design_level": {
+    "clock_period_ns": 1.25,
+    "worst_delay_change_ns": 0.0007,
+    "worst_delay_change_percent": 0.102,
+    "same_netlist_change_percent": 0.102,
+    "worst_delay_ns": {
+      "shipped": 0.6883,
+      "ours": 0.689,
+      "shipped_netlist_ours_timing": 0.689
+    }
+  },
+  "broken": {
+    "directory": "results/characterization/hd_broken",
+    "cells": [
+      "sky130_fd_sc_hd__a21oi_1",
+      "sky130_fd_sc_hd__inv_1",
+      "sky130_fd_sc_hd__nand2_1",
+      "sky130_fd_sc_hd__nand3_1",
+      "sky130_fd_sc_hd__nor2_1",
+      "sky130_fd_sc_hd__o21ai_1"
+    ],
+    "simulator": {
+      "version": "ngspice-47",
+      "sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660"
+    },
+    "index_by_ramp": true,
+    "entries": 2744,
+    "median_error": 0.07458207124322286,
+    "median_error_per_cell": {
+      "sky130_fd_sc_hd__a21oi_1": 0.07476956764783255,
+      "sky130_fd_sc_hd__inv_1": 0.09697938185252566,
+      "sky130_fd_sc_hd__nand2_1": 0.07252005528391472,
+      "sky130_fd_sc_hd__nand3_1": 0.06699316057477495,
+      "sky130_fd_sc_hd__nor2_1": 0.08603658834043948,
+      "sky130_fd_sc_hd__o21ai_1": 0.06925162000857346
+    },
+    "median_error_per_table": {
+      "cell_rise": 0.07610222538482087,
+      "cell_fall": 0.06473095373082124,
+      "rise_transition": 0.06345681980400644,
+      "fall_transition": 0.09486068333922848
+    },
+    "max_error": 11.54395739703257,
+    "max_error_at": {
+      "cell": "sky130_fd_sc_hd__a21oi_1",
+      "pin": "B1",
+      "table": "cell_fall",
+      "slew_ns": 1.5,
+      "load_pf": 0.0005,
+      "shipped": 0.0032486,
+      "measured": 0.0407503
+    },
+    "input_capacitance": [
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "A1",
+        "shipped": 0.002352,
+        "measured": 0.002282538888888889,
+        "error": 0.02953278533635673
+      },
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "A2",
+        "shipped": 0.002321,
+        "measured": 0.0022718416666666665,
+        "error": 0.02117980755421529
+      },
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "pin": "B1",
+        "shipped": 0.002323,
+        "measured": 0.002327830555555555,
+        "error": 0.002079447075142082
+      },
+      {
+        "cell": "sky130_fd_sc_hd__inv_1",
+        "pin": "A",
+        "shipped": 0.002302,
+        "measured": 0.0023062555555555557,
+        "error": 0.001848634038034696
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "pin": "A",
+        "shipped": 0.002315,
+        "measured": 0.002242022222222222,
+        "error": 0.03152387808975276
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "pin": "B",
+        "shipped": 0.002324,
+        "measured": 0.002336144444444445,
+        "error": 0.00522566456301409
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "A",
+        "shipped": 0.002301,
+        "measured": 0.0022062194444444445,
+        "error": 0.04119102805543485
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "B",
+        "shipped": 0.002395,
+        "measured": 0.0022981166666666665,
+        "error": 0.040452331245650716
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "pin": "C",
+        "shipped": 0.002355,
+        "measured": 0.002343858333333333,
+        "error": 0.004731068648266179
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "pin": "A",
+        "shipped": 0.002373,
+        "measured": 0.0023457555555555553,
+        "error": 0.011481013250924921
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "pin": "B",
+        "shipped": 0.002353,
+        "measured": 0.0022611666666666665,
+        "error": 0.0390281909618927
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "A1",
+        "shipped": 0.002335,
+        "measured": 0.002277525,
+        "error": 0.02461456102783725
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "A2",
+        "shipped": 0.002459,
+        "measured": 0.002386172222222222,
+        "error": 0.029616827075143414
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "pin": "B1",
+        "shipped": 0.001996,
+        "measured": 0.002035025,
+        "error": 0.019551603206412953
+      }
+    ],
+    "max_capacitance_error": 0.04119102805543485,
+    "setup": [
+      {
+        "cell": "sky130_fd_sc_hd__a21oi_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__inv_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand2_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nand3_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__nor2_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      },
+      {
+        "cell": "sky130_fd_sc_hd__o21ai_1",
+        "mismatched": [],
+        "indices_subset_of_shipped": true,
+        "passed": true
+      }
+    ],
+    "syntax": {},
+    "notes": []
+  },
+  "checks": {
+    "setup_exact": true,
+    "median_error_within_5_percent": true,
+    "input_capacitance_within_10_percent": true,
+    "cells_are_the_six": true,
+    "liberty_loads_in_yosys": true,
+    "liberty_loads_in_opensta": true,
+    "broken_case_flagged": true
+  },
+  "not_run": [],
+  "passed": true
+}

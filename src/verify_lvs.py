@@ -6,8 +6,12 @@ For every cells/<name>/ with cell.gds, schematic.spice and input.json:
      magic_script(), ports in the HD order: inputs, VGND, VNB, VPB, VPWR, outputs;
   2. Netgen compares the device netlist with schematic.spice (Tutorial 3's lvs());
   3. the RC netlist is collapsed and compared again (Tutorial 3's collapse_rc());
-  4. if the spec names an 'hd_reference', the device netlist is compared with that
-     cell's subcircuit in the PDK SPICE library, W and L included (Table 4).
+  4. if the spec names an 'hd_reference', its pin map is checked against the HD Liberty
+     function, and both schematic.spice and the device netlist, with the request's pins
+     renamed to HD's, are compared with that cell's subcircuit in the PDK SPICE library,
+     W and L included (Table 4). LVS against HD must match for the six cells of section
+     4.1 (hd_reference.MUST_MATCH) and whenever the schematic is HD's circuit; otherwise
+     (a21o_1, mux2_1) it is reported, with the transistor counts.
 The instructor functions are read from Tutorial 3's verify.py and used unchanged;
 tools run in the course container through its flow.py and tools.sh, so the work
 folder is <tutorial-root>/build/dd2_<name>/. The DRC count of the isolated cell is
@@ -25,6 +29,8 @@ import re
 import shutil
 import sys
 from pathlib import Path
+
+import hd_reference
 
 INSTRUCTOR_NAMES = ('MAGIC_ERRORS', 'magic_script', 'lvs', 'collapse_rc')
 
@@ -70,7 +76,48 @@ def remap_spice_pins(text, pin_mapping):
     return pattern.sub(lambda match: pin_mapping[match.group(1)], text)
 
 
-def verify_cell(folder, root, flow, ns, pdk_spice, outdir):
+def as_reference(text, name, reference, pin_mapping):
+    """A netlist of the generated cell with HD's pin names and the HD cell's name."""
+    text = remap_spice_pins(text, pin_mapping)
+    text = re.sub(rf'(?im)^(\.subckt\s+){re.escape(name)}\b', rf'\g<1>{reference}', text)
+    return re.sub(rf'(?im)^(\.ends\s+){re.escape(name)}\b', rf'\g<1>{reference}', text)
+
+
+def compare_with_hd(spec, folder, build, rpt, ns, hd_library):
+    """Table 4: the schematic and the extracted layout against the installed HD cell.
+
+    The pin map in the spec is checked again here: it must be one under which the HD
+    Liberty function equals the request's truth table (hd_reference.py)."""
+    name, reference = spec['name'], spec['hd_reference']
+    if not hd_library:
+        raise RuntimeError(f'{name}: names {reference}; LVS against it needs --hd-liberty')
+    pin_mapping = spec.get('hd_pin_mapping')
+    if not pin_mapping:
+        raise RuntimeError(f'{name}: hd_reference without hd_pin_mapping')
+    hd = hd_reference.hd_cell(hd_library['liberty'], hd_library['spice'],
+                              reference.removeprefix('sky130_fd_sc_hd__'))
+    if not hd:
+        raise RuntimeError(f'{reference} is not in the PDK SPICE library')
+    valid = hd_reference.pin_maps(spec['inputs'], spec['output'], int(spec['truth_table'], 16), hd)
+    if pin_mapping not in valid:
+        raise RuntimeError(f"{name}: hd_pin_mapping {pin_mapping} does not give {reference}'s function "
+                           f"(valid maps: {valid})")
+    (build / f'{reference}.spice').write_text(subckt(hd_library['spice'], reference))
+    (build / f'{name}_schematic_as_hd.spice').write_text(
+        as_reference((folder / 'schematic.spice').read_text(), name, reference, pin_mapping))
+    (build / f'{name}_as_hd.spice').write_text(
+        as_reference((build / f'{name}_lvs.spice').read_text(), name, reference, pin_mapping))
+    same = ns['lvs'](build, rpt, reference, f'{name}_schematic_as_hd')
+    # Required for the six cells of section 4.1 whatever the schematic, and for any other
+    # cell whose schematic is HD's circuit; reported otherwise (a21o_1, mux2_1).
+    required = same or reference.removeprefix('sky130_fd_sc_hd__') in hd_reference.MUST_MATCH
+    return {'hd_reference': reference, 'hd_pin_mapping': pin_mapping,
+            'hd_schematic_same_circuit': same, 'hd_reference_lvs_required': required,
+            'hd_reference_lvs_passed': ns['lvs'](build, rpt, reference, f'{name}_as_hd'),
+            'hd_transistors': {'generated': len(spec['devices']), 'installed': len(hd['devices'])}}
+
+
+def verify_cell(folder, root, flow, ns, hd_library, outdir):
     spec = json.loads((folder / 'input.json').read_text())
     name = spec['name']
     ports = list(spec['inputs']) + ['VGND', 'VNB', 'VPB', 'VPWR', spec['output']]
@@ -103,64 +150,16 @@ def verify_cell(folder, root, flow, ns, pdk_spice, outdir):
                         'collapsed_lvs_passed': ns['lvs'](build, rpt, name, f'{name}_rc_collapsed')}
 
 
-        layout_spec_path = folder / 'layout_spec.json'
-
-        if layout_spec_path.is_file():
-            layout_spec = json.loads(layout_spec_path.read_text())
-        else:
-            layout_spec = {}
-
-        reference = layout_spec.get('hd_reference') or spec.get('hd_reference')
-
+        reference = spec.get('hd_reference')
         if reference:
-            pin_mapping = layout_spec.get('hd_pin_mapping')
-
-            if not pin_mapping:
-                raise RuntimeError(
-                    f'{name}: missing hd_pin_mapping in layout_spec.json'
-                )
-
-            logical_ports = list(spec['inputs']) + [spec['output']]
-
-            missing = [pin for pin in logical_ports if pin not in pin_mapping]
-            if missing:
-                raise RuntimeError(
-                    f'{name}: hd_pin_mapping is missing logical pins: {missing}'
-                )
-
-            # Extract the installed HD reference subcircuit.
-            (build / f'{reference}.spice').write_text(
-                subckt(pdk_spice.read_text(), reference)
-            )
-
-            # Start from the original extracted layout netlist.
-            layout = (build / f'{name}_lvs.spice').read_text()
-
-            # Map logical signal names to the installed HD cell's physical pins.
-            layout = remap_spice_pins(layout, pin_mapping)
-
-            # Rename the extracted subcircuit to match the HD reference.
-            layout = re.sub(
-                rf'(?im)^(\.subckt\s+){re.escape(name)}\b',
-                rf'\g<1>{reference}',
-                layout
-            )
-            layout = re.sub(
-                rf'(?im)^(\.ends\s+){re.escape(name)}\b',
-                rf'\g<1>{reference}',
-                layout
-            )
-
-            (build / f'{name}_as_hd.spice').write_text(layout)
-
-            result['hd_reference'] = reference
-            result['hd_pin_mapping'] = pin_mapping
-            result['hd_reference_lvs_passed'] = ns['lvs'](
-                build, rpt, reference, f'{name}_as_hd'
-            )
+            result.update(compare_with_hd(spec, folder, build, rpt, ns, hd_library))
+        # LVS against HD decides only when the schematic itself is HD's circuit (Netgen
+        # says so); otherwise the cell is a different design of HD's function, and the
+        # comparison is reported.
         result['passed'] = (result['lvs_passed'] and result['rc']['collapsed_lvs_passed']
-                            and result.get('hd_reference_lvs_passed', True))
-    except (RuntimeError, OSError) as exc:
+                            and (result.get('hd_reference_lvs_passed', True)
+                                 or not result.get('hd_reference_lvs_required', False)))
+    except (RuntimeError, OSError, ValueError) as exc:
         result['error'] = str(exc)
         result['passed'] = False
     finally:
@@ -174,12 +173,24 @@ def verify_cell(folder, root, flow, ns, pdk_spice, outdir):
     return result
 
 
+def hd_note(result):
+    if 'hd_reference' not in result:
+        return ''
+    if result.get('hd_reference_lvs_required'):
+        return ' (required)'
+    n = result.get('hd_transistors', {})
+    return f" (reported: not HD's circuit, {n.get('generated')} vs {n.get('installed')} transistors)"
+
+
 def main():
     base = Path(__file__).resolve().parent
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--tutorial-root', type=Path, required=True)
     ap.add_argument('--pdk-spice', type=Path, required=True,
                     help='<PDK>/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice')
+    ap.add_argument('--hd-liberty', type=Path,
+                    help='<PDK>/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib; '
+                         'needed when a cell names an hd_reference')
     ap.add_argument('--cells', type=Path, default=base.parent / 'cells')
     ap.add_argument('--outdir', type=Path, default=base.parent / 'results' / 'lvs')
     ap.add_argument('--image', default='dd2-layout-tools')
@@ -195,16 +206,20 @@ def main():
     # An interrupted run must never leave an old PASS behind.
     (outdir / 'verification.json').write_text(json.dumps({'passed': False, 'status': 'running'}) + '\n')
     flow, ns = instructor_functions(root)
+    hd_library = args.hd_liberty and {
+        'liberty': args.hd_liberty.read_text(encoding='utf-8', errors='replace'),
+        'spice': args.pdk_spice.read_text(encoding='utf-8', errors='replace')}
     cells = [f for f in sorted(args.cells.iterdir()) if (f / 'cell.gds').is_file()]
     if not cells:
         print(f'FAIL: no cells/<name>/cell.gds under {args.cells}')
         return 1
     results = {}
     for folder in cells:
-        r = results[folder.name] = verify_cell(folder.resolve(), root, flow, ns, args.pdk_spice, outdir)
+        r = results[folder.name] = verify_cell(folder.resolve(), root, flow, ns, hd_library, outdir)
         print(f"{folder.name}: LVS={'match' if r.get('lvs_passed') else 'FAIL'} "
               f"RC-LVS={'match' if r.get('rc', {}).get('collapsed_lvs_passed') else 'FAIL'} "
-              f"HD-LVS={r.get('hd_reference_lvs_passed', 'n/a')} isolated DRC={r.get('isolated_drc_count')} "
+              f"HD-LVS={r.get('hd_reference_lvs_passed', 'n/a')}{hd_note(r)} "
+              f"isolated DRC={r.get('isolated_drc_count')} "
               + (f"ERROR {r['error']}" if 'error' in r else ''), flush=True)
     report = {'check': 'lvs', 'image': args.image, 'source_verify_sha256': ns['verify_sha256'],
               'instructor_checks_modified': False, 'cells': results,

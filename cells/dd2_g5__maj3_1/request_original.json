@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "reason": null,
+  "request": {
+    "request_id": "T6-11",
+    "name": "dd2_g5__maj3_1",
+    "inputs": [
+      "A",
+      "B",
+      "C"
+    ],
+    "output": "Y",
+    "expression": "(A & B) | (C & (A | B))",
+    "sizing": "hd",
+    "truth_table": "0xE8",
+    "truth_table_value": 232,
+    "recognized": null,
+    "supported_by_prototype": false
+  }
+}

@@ -2,11 +2,14 @@
 #
 #   make setup     link the PDK into Tutorial 3's folder (its tools.sh needs it)
 #   make check     package pins, tools, PDK, given files, ngspice stress test, rules vs PDK
-#   make all       the whole flow for every cell in CELLS
+#   make reference the six reference cells alone: steps 1-7 and Table 4 (handout section 4)
+#   make all       make reference, then the whole flow for every cell in CELLS
 #   make test      make all, then every broken case in tests/broken/ must be rejected
 #   make demo IN=tests/requests/<cell>.json
 #   make char_hd   characterize the six installed reference cells (section 5.1)
-#   make char      characterize the generated cells in CELLS (section 5)
+#   make char_validate  Table 5: char_hd, the full-ramp broken case, the stock build, syntax, SPM
+#   make char      after char_validate: installed a21o_1/mux2_1/nor3_1, then the generated cells in
+#                  CELLS (section 5); the NOR3 sizing comparison (8.2); Table 4 again with timing
 #
 # Steps that need GDSfactory/KLayout run with PYTHON. Magic, Netgen and ngspice run in
 # the course container through Tutorial 3's tools.sh, and Icarus on Linux; on a Linux
@@ -17,6 +20,10 @@
 #     PDK_ROOT = /home/<you>/work/pdks
 #     PDK_HOST = //wsl.localhost/Ubuntu-26.04/home/<you>/work/pdks/ciel/sky130/versions/<hash>/sky130A
 #     export MSYS_NO_PATHCONV = 1
+#     STOCK_IMAGE = <an image with a stock ngspice and the same Magic, for Table 5; Tutorial 3's
+#                    dd2-layout-tools has ngspice-42, which the stress test reports as stock>
+#     TUT4 = <Tutorial 4's folder on Linux (SPM.v, synth.ys, ...), for Table 5's design level>
+#     NETGEN_ENTRYPOINT = <Netgen's path, if the image is not the course image>
 -include local.mk
 
 PYTHON   ?= python3
@@ -27,20 +34,26 @@ PDK_HOST ?= $(PDK)
 GIVEN    ?= ../DD2_Project1_student_pack/given
 TUT3     ?= ../student
 IMAGE    ?= dd2-layout-tools
+STOCK_IMAGE ?=
+TUT4     ?=
+NETGEN_ENTRYPOINT ?= netgen
 NETWORK_CELLS ?= $(sort $(basename $(notdir $(wildcard tests/requests/*.json))))
 CELLS    ?= $(NETWORK_CELLS)
-OBJECTIVE ?= inverters
+OBJECTIVE ?= transistors
 PREFIX    = dd2_g5__
 
-LPYTHON   = $(LINUX) env LAYOUT_IMAGE=$(IMAGE) python3
+LPYTHON   = $(LINUX) env LAYOUT_IMAGE=$(IMAGE) NETGEN_ENTRYPOINT=$(NETGEN_ENTRYPOINT) python3
 FRAME     = $(GIVEN)/plan_hd.json
 HD_GDS    = $(PDK_HOST)/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
 HD_SPICE  = $(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 HD_SPICE_HOST = $(PDK_HOST)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
 TECH      = $(PDK)/libs.tech/magic/sky130A.tech
 HD_LIB    = $(PDK)/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+HD_LIB_HOST = $(PDK_HOST)/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 HD_GDS_LINUX = $(PDK)/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
 REFERENCE_CELLS = inv_1 nand2_1 nor2_1 nand3_1 a21oi_1 o21ai_1
+# Installed cells also characterized for Table 4's timing (a21o_1, mux2_1) and Table 6 (nor3_1).
+EXTRA_REFERENCE_CELLS = nor3_1 a21o_1 mux2_1
 
 # A broken case passes only when its check exits non-zero.
 define expect_fail
@@ -49,7 +62,7 @@ define expect_fail
 	 else echo "ok   broken case $(1) rejected"; fi
 endef
 
-.PHONY: setup check test all demo clean network layout drc lvs compare sim model char_hd char
+.PHONY: setup check test all demo clean reference network layout drc lvs compare sim model char_hd char_validate char
 
 setup:            ## Tutorial 3's pdk link, which its tools.sh mounts into the container
 	$(LINUX) ln -sfn $(PDK) $(TUT3)/pdk
@@ -70,17 +83,21 @@ check:            ## tool versions, PDK, and the ngspice stress test for Option 
 	  status=$$?; cat results/check/ngspice_stress.log; exit $$status
 	$(LPYTHON) src/pdk_rules.py --tech $(TECH) --frame $(FRAME) --out results/pdk_rules/report.json
 
-network:          ## steps 1-3: read, minimize, decompose into stages, size; then the switch-level check
+network:          ## steps 1-3: read (reference cells: HD pins, section 4.1), minimize, decompose, size; switch level
+	@mkdir -p build
 	@for c in $(NETWORK_CELLS); do \
-	  $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request.json > /dev/null && \
+	  $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request_original.json > /dev/null && \
+	  $(PYTHON) src/reference_cell.py cells/$(PREFIX)$$c/request_original.json --hd-liberty $(HD_LIB_HOST) \
+	    --hd-spice $(HD_SPICE_HOST) --out cells/$(PREFIX)$$c/request.json --reference-out cells/$(PREFIX)$$c/hd_reference.json && \
 	  $(PYTHON) src/synthesize.py --request cells/$(PREFIX)$$c/request.json --frame $(FRAME) \
-	    --outdir cells/$(PREFIX)$$c --objective $(OBJECTIVE) | head -1 && \
+	    --hd-reference cells/$(PREFIX)$$c/hd_reference.json \
+	    --outdir cells/$(PREFIX)$$c --objective $(OBJECTIVE) > build/synthesize_$$c.log && head -1 build/synthesize_$$c.log && \
 	  $(PYTHON) src/switch_level_check.py cells/$(PREFIX)$$c/network.json --request cells/$(PREFIX)$$c/request.json \
 	    --out results/switch_level/$${c}_network.json || exit 1; done
 
 layout: network   ## steps 4-5: Euler paths, then plan and draw; the reordered network is checked again
 	@for c in $(CELLS); do \
-	  $(PYTHON) src/euler.py cells/$(PREFIX)$$c/network.json --hd-spice $(HD_SPICE_HOST) && \
+	  $(PYTHON) src/euler.py cells/$(PREFIX)$$c/network.json --hd-spice $(HD_SPICE_HOST) --hd-liberty $(HD_LIB_HOST) && \
 	  $(PYTHON) src/switch_level_check.py cells/$(PREFIX)$$c/layout_spec.json --request cells/$(PREFIX)$$c/request.json \
 	    --out results/switch_level/$$c.json && \
 	  $(PYTHON) src/prepare_layout.py cells/$(PREFIX)$$c/layout_spec.json --request cells/$(PREFIX)$$c/request.json \
@@ -93,7 +110,7 @@ drc:              ## step 6: DRC in tapped rows, abutment, layer check
 	  --image $(IMAGE) --linux "$(LINUX)"
 
 lvs:              ## step 6: LVS, RC-LVS, LVS against the installed HD cell
-	$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --image $(IMAGE)
+	$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) --image $(IMAGE)
 
 compare:          ## section 4.1: comparison with the installed HD cells
 	$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME)
@@ -111,18 +128,50 @@ model:            ## section 4.2 level 3: Verilog model and Liberty function
 	  $(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$$c/request.json \
 	    --outdir cells/$(PREFIX)$$c --report results/model_level/$$c.json $$broken || exit 1; done
 
-char_hd:          ## section 5.1: characterize the six installed reference cells
-	@for c in $(REFERENCE_CELLS); do \
-	  $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(IMAGE) \
-	    --hd-cell sky130_fd_sc_hd__$$c --hd-gds $(HD_GDS_LINUX) --pdk-spice $(HD_SPICE) \
-	    --out results/characterization/hd/$$c || exit 1; done
+# $(call characterize_hd,<image>,<extra flags>,<output folder>[,<cells>]): installed cells,
+# by default the six reference cells.
+define characterize_hd
+	@for c in $(if $(4),$(4),$(REFERENCE_CELLS)); do \
+	  $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(1) \
+	    --hd-cell sky130_fd_sc_hd__$$c --hd-gds $(HD_GDS_LINUX) --pdk-spice $(HD_SPICE) $(2) \
+	    --out $(3)/$$c || exit 1; done
+endef
 
-char:             ## section 5: characterize the generated cells (only after char_hd is validated)
+char_hd:          ## section 5.1: characterize the six installed reference cells
+	$(call characterize_hd,$(IMAGE),,results/characterization/hd)
+
+char_validate: char_hd   ## section 5.1, Table 5; fails while a part did not run (STOCK_IMAGE, TUT4, OpenSTA)
+	$(call characterize_hd,$(IMAGE),--index-by-ramp,results/characterization/hd_broken)
+	$(if $(STOCK_IMAGE),$(call characterize_hd,$(STOCK_IMAGE),,results/characterization/hd_stock))
+	@rm -f results/characterization/design_level.json
+	$(if $(TUT4),-$(LPYTHON) src/design_level.py --liberty $(HD_LIB) --cells results/characterization/hd --tutorial4 $(TUT4))
+	$(LPYTHON) src/validate_characterizer.py --liberty $(HD_LIB) --fixed results/characterization/hd \
+	  --broken results/characterization/hd_broken $(if $(STOCK_IMAGE),--stock results/characterization/hd_stock) \
+	  --syntax-check --design-level results/characterization/design_level.json \
+	  --out results/characterization/validation.json
+
+char: char_validate   ## section 5: characterize the generated cells (only after Table 5 passes)
+	$(call characterize_hd,$(IMAGE),,results/characterization/hd_reference,$(EXTRA_REFERENCE_CELLS))
 	@for c in $(CELLS); do \
 	  $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(IMAGE) \
 	    --cell-dir cells/$(PREFIX)$$c --out cells/$(PREFIX)$$c/characterized || exit 1; done
+	$(PYTHON) src/compare_sizing.py --hd cells/$(PREFIX)nor3_1 --stack cells/$(PREFIX)nor3_stack_1 --out results/sizing/nor3.json
+	$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME)
 
-all: network layout drc lvs compare sim model
+# Handout section 4: steps 1 to 7 on the reference cells first; new functions only after the
+# Table 4 comparison (DRC with abutment, LVS against HD, frame and pins) passes.
+reference:        ## section 4: build and check the six reference cells alone, before anything else
+	$(MAKE) network layout NETWORK_CELLS="$(REFERENCE_CELLS)" CELLS="$(REFERENCE_CELLS)"
+	@rm -rf build/reference && mkdir -p build/reference && \
+	  for c in $(REFERENCE_CELLS); do cp -r cells/$(PREFIX)$$c build/reference/; done
+	$(PYTHON) src/verify_drc.py --tutorial-root $(TUT3) --reference-gds $(HD_GDS) --frame $(FRAME) \
+	  --image $(IMAGE) --linux "$(LINUX)" --generated build/reference --outdir build/reference_results/drc
+	$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) \
+	  --image $(IMAGE) --cells build/reference --outdir build/reference_results/lvs
+	$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME) --generated build/reference \
+	  --outdir build/reference_results/hd_comparison
+
+all: reference network layout drc lvs compare sim model
 
 test: all         ## every broken case must be rejected by its check
 	$(call expect_fail,bad_request,$(PYTHON) src/request_reader.py tests/broken/bad_request.json)
@@ -132,14 +181,23 @@ test: all         ## every broken case must be rejected by its check
 	@rm -rf build/broken/lvs && mkdir -p build/broken/lvs/$(PREFIX)nand2_1 && \
 	  cp cells/$(PREFIX)nand2_1/cell.gds cells/$(PREFIX)nand2_1/input.json build/broken/lvs/$(PREFIX)nand2_1/ && \
 	  cp tests/broken/nand2_1_wrong_width.spice build/broken/lvs/$(PREFIX)nand2_1/schematic.spice
-	$(call expect_fail,nand2_1_wrong_width,$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --image $(IMAGE) --cells build/broken/lvs --outdir build/broken/lvs_results)
+	$(call expect_fail,nand2_1_wrong_width,$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) --image $(IMAGE) --cells build/broken/lvs --outdir build/broken/lvs_results)
+	@rm -rf build/broken/lvs_map && mkdir -p build/broken/lvs_map/$(PREFIX)a21oi_1 && \
+	  cp cells/$(PREFIX)a21oi_1/cell.gds cells/$(PREFIX)a21oi_1/schematic.spice build/broken/lvs_map/$(PREFIX)a21oi_1/ && \
+	  $(PYTHON) src/merge_json.py cells/$(PREFIX)a21oi_1/input.json tests/broken/a21oi_1_wrong_pin_map.json build/broken/lvs_map/$(PREFIX)a21oi_1/input.json
+	$(call expect_fail,a21oi_1_wrong_pin_map,$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) --image $(IMAGE) --cells build/broken/lvs_map --outdir build/broken/lvs_map_results)
+	@rm -rf build/broken/lvs_swap && mkdir -p build/broken/lvs_swap/$(PREFIX)a21oi_1 && \
+	  cp cells/$(PREFIX)a21oi_1/cell.gds cells/$(PREFIX)a21oi_1/schematic.spice build/broken/lvs_swap/$(PREFIX)a21oi_1/ && \
+	  $(PYTHON) src/merge_json.py cells/$(PREFIX)a21oi_1/input.json tests/broken/a21oi_1_swapped_hd_pins.json build/broken/lvs_swap/$(PREFIX)a21oi_1/input.json
+	$(call expect_fail,a21oi_1_swapped_hd_pins,$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) --image $(IMAGE) --cells build/broken/lvs_swap --outdir build/broken/lvs_swap_results)
 	$(call expect_fail,inv_1_no_hvtp,$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME) --generated tests/broken/frame --outdir build/broken/frame_results)
+	$(call expect_fail,inv_1_pin_off_band,$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME) --generated tests/broken/pins --outdir build/broken/pin_results)
 	$(call expect_fail,nand2_1_pex_missing_pullup,$(LPYTHON) src/transistor_level_check.py --pex tests/broken/nand2_1_pex_missing_pullup.spice --request cells/$(PREFIX)nand2_1/request.json --models $(TUT3)/pdk/libs.tech/ngspice/sky130.lib.spice --liberty $(GIVEN)/hd_reduced.lib --ngspice "$(TUT3)/tools.sh ngspice" --workdir $(TUT3)/build/dd2_sim_broken --out build/broken/transistor_level.json)
 	@echo "PASS: every broken case was rejected (DRC and layer-check broken cases run inside make drc)"
 
 demo:             ## what the interview runs: make demo IN=tests/requests/<cell>.json
 	@test -n "$(IN)" || (echo "usage: make demo IN=tests/requests/<cell>.json" && exit 1)
-	$(MAKE) all NETWORK_CELLS=$(basename $(notdir $(IN))) CELLS=$(basename $(notdir $(IN)))
+	$(MAKE) network layout drc lvs compare sim model NETWORK_CELLS=$(basename $(notdir $(IN))) CELLS=$(basename $(notdir $(IN)))
 
 clean:
 	rm -rf build

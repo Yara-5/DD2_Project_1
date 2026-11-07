@@ -1,0 +1,64 @@
+
+Magic 8.3.684 revision 684 - Compiled on Fri Oct 30 18:18:19 UTC 2026.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Switching to WIRING tool.
+Switching to NETLIST tool.
+Switching to PICK tool.
+Switching to BOX tool.
+Using technology "minimum", version 0.0
+Input style sky130(): scaleFactor=2, multiplier=2
+The following types are not handled by extraction and will be treated as non-electrical types:
+    ubm 
+Warning: Calma reading is not undoable!  I hope that's OK.
+Library written using GDS-II Release 6.0
+Library name: LIB
+Reading "dd2_g5__mux2_1".
+CIF file read warning: Input off lambda grid by 1/2; grid redefined.
+DRC style is now "drc(full)"
+Loading DRC CIF style.
+DRC_COUNT 9
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 958 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{45 297 97 497} {127 297 179 497} {233 297 285 497} {315 297 377 497} {407 297 513 497} {543 297 653 497} {683 297 789 497} {819 297 871 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{45 47 97 177} {127 47 179 177} {233 47 285 177} {315 47 377 177} {407 47 513 177} {543 47 653 177} {683 47 789 177} {819 47 871 177}}
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+Extracting dd2_g5__mux2_1 into dd2_g5__mux2_1.ext:
+Processing dd2_g5__mux2_1
+exttospice finished.
+exttospice finished.
+Extracting dd2_g5__mux2_1 into dd2_g5__mux2_1.ext:
+Processing dd2_g5__mux2_1
+Processing cell dd2_g5__mux2_1 for resistance extraction.
+Extracting a_127_47#
+Extracting a_501_199#
+Extracting a_233_297#
+Extracting a_683_297#
+Extracting a_315_47#
+Extracting VNB
+Extracting VPB
+Extracting A1
+Extracting S
+Extracting A0
+Extracting VPWR
+Extracting X
+Extracting VGND
+Total Nets: 13
+Nets extracted: 13 (1.000000)
+Nets output: 13 (1.000000)
+exttospice finished.
+MAGIC_DONE

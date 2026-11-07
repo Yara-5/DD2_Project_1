@@ -1,0 +1,128 @@
+{
+  "check": "switch_level",
+  "cell": "dd2_g5__a21oi_1",
+  "truth_table": "0x7",
+  "passed": true,
+  "rows": [
+    {
+      "inputs": {
+        "A1": 0,
+        "A2": 0,
+        "B1": 0
+      },
+      "expected_output": 1,
+      "expected_rail": "VPWR",
+      "output_connected_to_VPWR": true,
+      "output_connected_to_VGND": false,
+      "VPWR_to_VGND_path": false,
+      "internal_nets": {},
+      "errors": {},
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A1": 0,
+        "A2": 0,
+        "B1": 1
+      },
+      "expected_output": 0,
+      "expected_rail": "VGND",
+      "output_connected_to_VPWR": false,
+      "output_connected_to_VGND": true,
+      "VPWR_to_VGND_path": false,
+      "internal_nets": {},
+      "errors": {},
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A1": 0,
+        "A2": 1,
+        "B1": 0
+      },
+      "expected_output": 1,
+      "expected_rail": "VPWR",
+      "output_connected_to_VPWR": true,
+      "output_connected_to_VGND": false,
+      "VPWR_to_VGND_path": false,
+      "internal_nets": {},
+      "errors": {},
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A1": 0,
+        "A2": 1,
+        "B1": 1
+      },
+      "expected_output": 0,
+      "expected_rail": "VGND",
+      "output_connected_to_VPWR": false,
+      "output_connected_to_VGND": true,
+      "VPWR_to_VGND_path": false,
+      "internal_nets": {},
+      "errors": {},
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A1": 1,
+        "A2": 0,
+        "B1": 0
+      },
+      "expected_output": 1,
+      "expected_rail": "VPWR",
+      "output_connected_to_VPWR": true,
+      "output_connected_to_VGND": false,
+      "VPWR_to_VGND_path": false,
+      "internal_nets": {},
+      "errors": {},
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A1": 1,
+        "A2": 0,
+        "B1": 1
+      },
+      "expected_output": 0,
+      "expected_rail": "VGND",
+      "output_connected_to_VPWR": false,
+      "output_connected_to_VGND": true,
+      "VPWR_to_VGND_path": false,
+      "internal_nets": {},
+      "errors": {},
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 0
+      },
+      "expected_output": 0,
+      "expected_rail": "VGND",
+      "output_connected_to_VPWR": false,
+      "output_connected_to_VGND": true,
+      "VPWR_to_VGND_path": false,
+      "internal_nets": {},
+      "errors": {},
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A1": 1,
+        "A2": 1,
+        "B1": 1
+      },
+      "expected_output": 0,
+      "expected_rail": "VGND",
+      "output_connected_to_VPWR": false,
+      "output_connected_to_VGND": true,
+      "VPWR_to_VGND_path": false,
+      "internal_nets": {},
+      "errors": {},
+      "passed": true
+    }
+  ]
+}

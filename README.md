@@ -8,44 +8,55 @@ Tools: Yosys 0.52, Icarus Verilog 12.0, Magic 8.3.684, Netgen 1.5.133, ngspice-4
 BSIM4 stress fix (course image, sha256 `51123371…`), Python 3.12 with gdsfactory 9.51.0,
 klayout 0.30.12 and matplotlib 3.11.2 (`requirements.txt`).
 
-Put machine-specific paths in `local.mk` (see the top of the `Makefile`), then:
+Put machine-specific paths in `local.mk` (see the top of the `Makefile`; `STOCK_IMAGE` is an
+image with a stock ngspice for Table 5, Tutorial 3's `dd2-layout-tools`, and `TUT4` the
+Tutorial 4 folder with SPM), then:
 
     make setup     # links the PDK into Tutorial 3's folder for its tools.sh
     make check     # under a minute
-    make all       # about 70 minutes for the 18 requests; make demo IN=... for one
+    make all       # about 2 hours for the 20 requests; make demo IN=... for one
     make test      # make all, then every broken case
 
 ## 3. What the tool does
 It reads a cell request (Appendix A of the overview) and checks that its expression and
-truth table agree. `synthesize.py` minimizes the function (Quine-McCluskey), factors it, and
-splits it into static CMOS stages of at most 3 series transistors with the fewest inverters.
+truth table agree. For the reference cells (inv_1 ... o21ai_1, nor3_1, a21o_1, mux2_1)
+`reference_cell.py` renames the pins to the installed cell's (A1, A2, B1, X), the map found
+from the function. `synthesize.py` minimizes the function (Quine-McCluskey), factors it, also
+tries disjoint decompositions f = F(h(...), ...), and splits it into static CMOS stages of at
+most 3 series transistors with the fewest transistors (handout step 2). It sizes them the HD
+way (x1; the installed cell's W and L for the reference cells) or the Tutorial 3 way
+(`"sizing": "stack"`: width times stack depth, folded into fingers).
 `euler.py` orders each stage's transistors as dual trails (after Maziasz and Hayes, DAC 1991)
 and places the stages side by side, abutting on the supplies. `prepare_layout.py` places the
 gates in the HD frame of `given/plan_hd.json`, sizes every contact, pitch and diffusion break
 from `src/rules.json` (HD-style: one npc band, directional landings, poly contacts beside
 their gates, 0.42 um minimum gate pitch) and routes on li1 (met1 only inside multi-stage
-cells, or as a recorded last resort); `generate_gds.py` draws that plan with GDSfactory. The cell is then checked:
+cells, or as a recorded last resort), with rip-up and reroute when no net order routes;
+`generate_gds.py` draws that plan with GDSfactory. The cell is then checked:
 switch level (network and reordered network), DRC in tapped rows with abutment, the
 implant/npc layer check, LVS, RC-LVS and LVS against the installed HD cell where one exists,
 the frame comparison with HD, a transistor-level simulation of the RC netlist, and the
 Verilog/Liberty model check. `characterize.py` (section 5) measures delay, transition and
 input capacitance tables on the RC netlist with SA/SB on every transistor, and writes a
-Liberty cell; it runs on the installed reference cells (`make char_hd`) and, once that is
-validated, on the generated cells (`make char`).
+Liberty cell; it runs on the installed reference cells (`make char_hd`), is validated against
+the shipped Liberty (`make char_validate`, handout Table 5), and then runs on the generated
+cells (`make char`).
 
 ## 4. Commands
 | Command | Input | Output |
 |---|---|---|
 | `make check` | PDK, `given/`, course image | `results/check/`, `results/pdk_rules/report.json` |
-| `make network` | `tests/requests/*.json` | `cells/<name>/request.json`, `network.json`, `network.spice`, `network_schematic.png`, `network_tree.png`, `results/switch_level/<cell>_network.json` |
+| `make reference` | the six section 4.1 requests | the six cells through DRC, LVS against HD and the Table 4 comparison, alone (`build/reference_results/`); `make all` starts with it |
+| `make network` | `tests/requests/*.json` | `cells/<name>/request.json` (`request_original.json`, `hd_reference.json` for reference cells), `network.json`, `network.spice`, `network_schematic.png`, `network_tree.png`, `results/switch_level/<cell>_network.json` |
 | `make layout` | `cells/<name>/network.json` | `layout_spec.json` (Euler paths), `results/switch_level/<cell>.json`, `layout_plan.json`, `dimensions.json`, `schematic.spice`, `cell.gds`, `layout_preview.png` |
 | `make drc` | `cells/*/cell.gds` | `results/drc/verification.json` and one Magic log per context |
 | `make lvs` | `cells/*/cell.gds`, `schematic.spice` | `cells/<name>/<name>_{lvs,cap,pex,rc_collapsed}.spice`, `results/lvs/` |
-| `make compare` | `cells/*/cell.gds`, PDK GDS | `results/hd_comparison/comparison.json`, `<cell>_side_by_side.png` |
+| `make compare` | `cells/*/cell.gds`, PDK GDS | `results/hd_comparison/comparison.json` (Table 4: frame, pins, wiring must match; width, gate order, parasitics, timing reported), `<cell>_side_by_side.png` |
 | `make sim` | `cells/<name>/<name>_pex.spice` | `results/transistor_level/<cell>.json` |
 | `make model` | `cells/<name>/request.json` | `cells/<name>/cell.v`, `cell.lib`, `results/model_level/<cell>.json` |
 | `make char_hd` | the six installed reference cells, the shipped HD Liberty | `results/characterization/hd/<cell>.{json,lib}` |
-| `make char` | `cells/<name>/cell.gds`, `layout_plan.json` | `cells/<name>/characterized.{json,lib}` |
+| `make char_validate` | `make char_hd`'s results, the full-ramp broken run, the stock run (`STOCK_IMAGE`), Tutorial 4's SPM (`TUT4`) | `results/characterization/validation.json`, `design_level.json` (Table 5) |
+| `make char` | `make char_validate` passing; `cells/<name>/cell.gds`, `layout_plan.json` | installed nor3_1, a21o_1, mux2_1 in `results/characterization/hd_reference/`; `cells/<name>/characterized.{json,lib,pex.spice}`; `results/sizing/nor3.json` (section 8.2); the comparison again with timing and parasitics |
 | `make demo IN=tests/requests/<cell>.json` | one request | the whole flow for that cell |
 
 ## 5. Layout
@@ -57,17 +68,19 @@ validated, on the generated cells (`make char`).
 - `ai/` the AI use and mistakes logs; `docs/interface/` the Appendix A examples
 
 ## 6. Results
-These files are not in the repository; `make all` writes them (about 70 minutes for the 18
-requests in `tests/requests/`, most of it transistor-level simulation).
-- `results/pdk_rules/report.json`: all 29 rule values match the installed sky130A.tech
+These files are not in the repository; `make all` writes them. The last full run (6-7
+November 2026, 20 requests in `tests/requests/`) took 1 h 58 min for `make test` and 53 min
+for `make char`; both exited 0. docs/TECHNICAL.md section 19 has the per-cell table.
+- `results/pdk_rules/report.json`: all 29 rule values match the installed sky130A.tech; the ngspice-47 stress test passes (ratio 1.035)
 - `results/switch_level/`: every synthesized network and every reordered (Euler) network passes
-- `results/drc/verification.json`: 432 abutment contexts (18 cells x 24) with 0 DRC errors; layer check passes on all generated cells and on installed inv_1 and nand2_1
-- `results/lvs/verification.json`: LVS and RC-LVS match for all 18 cells; LVS against the installed HD cell matches for inv_1, nand2_1, nand3_1, nor2_1, nor3_1 (the cells whose HD ports have our names)
-- `results/hd_comparison/comparison.json`: frame XOR clean for those five
-- `results/transistor_level/`: every DC row and every single-input edge passes for all 18 cells
-- `results/model_level/`: Verilog and Liberty function match the request for all 18; broken models rejected
-- Cell widths (from each `layout_plan.json`): inv_1, nand2_1, nor2_1 3 sites and nand3_1, nor3_1 4 sites, the widths `compare_hd.py` measures for the installed cells; a21oi_1 4, o21ai_1 5; the largest is maj4_1 at 13. Only maj4n_1 among the single-stage cells still uses met1
-- `results/characterization/hd/` (`make char_hd`, about 8 minutes, not part of `make all`): the six reference cells over the full 7 x 7 tables. Against the shipped Liberty (scratch comparison, not a flow check), the median error of delay and transition is 2.1 % to 4.3 % per cell, and every input capacitance is within 6 %. The largest errors are all cell_fall at 1.5 ns and 0.5 fF, where the delay is only a few ps (see docs/TECHNICAL.md, section 13.6)
+- `results/drc/verification.json`: 480 abutment contexts (20 cells x 24) with 0 DRC errors; layer check passes on all generated cells and on installed inv_1 and nand2_1
+- `results/lvs/verification.json`: LVS and RC-LVS match for all 20 cells; LVS against the installed HD cell is required and matches for inv_1, nand2_1, nor2_1, nand3_1, nor3_1, a21oi_1, o21ai_1 (W and L included); reported for a21o_1 and mux2_1 (another circuit, as handout section 4 allows)
+- `results/hd_comparison/comparison.json` (Table 4): frame, pins and wiring (li1 inside, met1 only for the rails) pass for all nine cells with an HD counterpart. Widths: inv_1, nand2_1, nor2_1 3 sites, nand3_1, nor3_1 4, a21o_1 6, the same as HD; a21oi_1 and o21ai_1 5 (HD 4), mux2_1 10 (HD 9). Parasitics (R and C per port) and timing are reported for all nine; the median timing difference is within 3.4 % for the seven single-stage cells, -1.0 % for mux2_1 and +10.2 % for a21o_1
+- `results/transistor_level/`: every DC row and every single-input edge passes for all 20 cells
+- `results/model_level/`: Verilog and Liberty function match the request for all 20; broken models rejected
+- `results/characterization/validation.json` (Table 5, `make char_validate`): setup exact; median delay/transition error 3.36 % with the fixed ngspice-47 (limit 5 %), 4.83 % with the stock ngspice-42; input capacitance within 5.5 % (limit 10 %); every Liberty file loads in Yosys and OpenSTA; SPM's worst delay 0.6883 ns with the shipped library, 0.689 ns with ours (+0.10 %); the `--index-by-ramp` broken case is flagged (7.46 %)
+- `cells/<name>/characterized.json`: all 20 generated cells characterized on HD nand2_1's 7 x 7 table indices
+- `results/sizing/nor3.json`: hd sizing (nor3_1, 4 sites) against stack sizing (nor3_stack_1, 15 sites, 12 transistors): rise delay 22-55 % lower, fall delay 3-48 % higher, 3.75 times the area
 
 ## 7. Tests
 `make test` runs the whole flow and then each broken case in `tests/broken/` against its check
@@ -77,21 +90,24 @@ requests in `tests/requests/`, most of it transistor-level simulation).
 AGENTS.md · ai/use_log.md · ai/mistakes_log.md · report/ai_report.pdf
 
 ## 9. Limitations
-- 'stack' sizing (transistors folded into fingers) is refused by the layout step, so only the
-  'hd' sizing reaches GDS; the NOR3 sizing comparison of section 8.2 is not done.
-- One single-stage cell, maj4n_1 (12 transistors, two inputs on two gates each), still needs
-  met1, which handout Table 3 reserves for multi-stage cells; the plan records
-  `met1_in_single_stage_cell`. Some cells are still wider than HD where the output has to
-  cross the npc band through a routing channel (a 0.68-0.70 um gap). One licon per diffusion
-  contact (HD uses two or three).
-- `synthesize.py` does not share identical sub-stages, and only considers algebraic
-  factorings of minimum SOP/POS covers.
-- The characterizer is not yet validated as Table 5 asks (six cells, full tables, both
-  ngspice builds, Yosys/OpenSTA syntax, SPM, the full-ramp broken case), so no generated
-  cell is characterized in `make all`; the Liberty cell `make model` writes is functional
-  only, and there is no response file. The round trip of section 3.3, the Yosys/ABC `cec`
-  check and the a21o_1/mux2_1 comparison are not done.
-- Parasitic and timing comparisons with HD (Table 4) are not done.
+- Some single-stage cells (maj4n_1, the folded nor3_stack_1) still need met1, which handout
+  Table 3 reserves for the rails; the plan records `met1_in_single_stage_cell`. Several
+  cells are wider than HD where the output crosses the npc band through a routing channel
+  (a 0.68-0.70 um gap). One licon per diffusion contact (HD uses two or three).
+- Multi-stage cells take met1 only after every li1-only attempt (all widths, rip-up included)
+  has failed (handout Table 1); xor2_1, xor3_1, maj3_1 and maj4_1 still need it. None of them
+  has an HD counterpart, so Table 4's wiring row does not apply to them.
+- Rip-up and reroute runs only when every net order fails, and takes minutes per cell
+  (nor3_stack_1 takes about 20 minutes to plan, maj3_1 about 4).
+- `synthesize.py` does not share identical sub-stages; it tries algebraic factorings of
+  minimum covers and simple disjoint decompositions only.
+- The characterizer gives every generated cell HD nand2_1's table indices; weak cells need a
+  longer settling window at the largest load (recorded as `extended_windows_ns`).
+- `make model` writes a functional Liberty cell only, and there is no response file; the round
+  trip of section 3.3 and the Yosys/ABC `cec` check are not done (M3).
+- `verify_drc.py`'s built-in DRC control (a narrow met1 stripe at a fixed spot of the first
+  context) is not caught when the first generated cell has met1 there; with the full set of
+  requests it is caught.
 
 ## 10. Third-party files
 None in the repository. The flow reads, without copying: the course student pack (`given/`,

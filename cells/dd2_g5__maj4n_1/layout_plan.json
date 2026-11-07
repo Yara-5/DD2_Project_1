@@ -1,0 +1,4850 @@
+{
+  "schema": "dd2.cp1.layout-plan.v1",
+  "units": "um",
+  "name": "dd2_g5__maj4n_1",
+  "grid_um": 0.005,
+  "input": {
+    "schema": "dd2.layout-spec.v1",
+    "name": "dd2_g5__maj4n_1",
+    "request_id": "T6-15",
+    "inputs": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "output": "Y",
+    "truth_table": "0x077F",
+    "sizing": "hd",
+    "devices": [
+      {
+        "id": "N1",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "C",
+        "source": "VGND",
+        "drain": "Y_d2",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 3,
+        "fingers": 1
+      },
+      {
+        "id": "N2",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "D",
+        "source": "VGND",
+        "drain": "Y_d2",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 1,
+        "stack_depth": 3,
+        "fingers": 1
+      },
+      {
+        "id": "N3",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "A",
+        "source": "Y_d2",
+        "drain": "Y_d1",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 3,
+        "fingers": 1
+      },
+      {
+        "id": "N4",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "B",
+        "source": "Y_d1",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 3,
+        "stack_depth": 3,
+        "fingers": 1
+      },
+      {
+        "id": "N5",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "C",
+        "source": "Y_d3",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 4,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "N6",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "D",
+        "source": "VGND",
+        "drain": "Y_d3",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 5,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "P1",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "Y",
+        "drain": "Y_u2",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 3,
+        "fingers": 1
+      },
+      {
+        "id": "P2",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "D",
+        "source": "Y_u2",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 1,
+        "stack_depth": 3,
+        "fingers": 1
+      },
+      {
+        "id": "P3",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "Y",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "P4",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "B",
+        "source": "Y",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 3,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "P5",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "Y_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 4,
+        "stack_depth": 3,
+        "fingers": 1
+      },
+      {
+        "id": "P6",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "D",
+        "source": "Y_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 5,
+        "stack_depth": 3,
+        "fingers": 1
+      }
+    ],
+    "euler_paths": {
+      "nmos": [
+        {
+          "devices": [
+            "N1",
+            "N2",
+            "N3",
+            "N4",
+            "N5",
+            "N6"
+          ],
+          "nodes": [
+            "Y_d2",
+            "VGND",
+            "Y_d2",
+            "Y_d1",
+            "Y",
+            "Y_d3",
+            "VGND"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5",
+            "P6"
+          ],
+          "nodes": [
+            "Y",
+            "Y_u2",
+            "Y_u1",
+            "Y",
+            "Y_u1",
+            "VPWR",
+            "Y_u1"
+          ]
+        }
+      ]
+    },
+    "alternative_euler_paths": [
+      {
+        "nmos": [
+          {
+            "devices": [
+              "N6",
+              "N5",
+              "N4",
+              "N3",
+              "N2",
+              "N1"
+            ],
+            "nodes": [
+              "VGND",
+              "Y_d3",
+              "Y",
+              "Y_d1",
+              "Y_d2",
+              "VGND",
+              "Y_d2"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "devices": [
+              "P6",
+              "P5",
+              "P4",
+              "P3",
+              "P2",
+              "P1"
+            ],
+            "nodes": [
+              "Y_u1",
+              "VPWR",
+              "Y_u1",
+              "Y",
+              "Y_u1",
+              "Y_u2",
+              "Y"
+            ]
+          }
+        ]
+      }
+    ],
+    "placement": {
+      "stage_order": [
+        "Y"
+      ],
+      "mirrored": [],
+      "dual_trails_per_stage": {
+        "Y": 1
+      },
+      "diffusion_segments": 1,
+      "diffusion_breaks": 0,
+      "columns": 6,
+      "repeated_nets_in_rows": 4,
+      "folded": false,
+      "wiring_slots": 36,
+      "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+    },
+    "placement_used": 0
+  },
+  "dimensions": {
+    "gate_length_um": 0.15,
+    "gate_pitches_um": [
+      0.68,
+      0.7,
+      0.68,
+      0.7,
+      0.68
+    ],
+    "gate_gaps": [
+      {
+        "between_columns": [
+          0,
+          1
+        ],
+        "pitch_um": 0.68,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "poly_pad_spacing": 0.47,
+          "gate_li1_spacing": 0.33,
+          "li1_track_through_band": 0.68
+        }
+      },
+      {
+        "between_columns": [
+          1,
+          2
+        ],
+        "pitch_um": 0.7,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "poly_pad_spacing": 0.49,
+          "gate_li1_spacing": 0.35,
+          "li1_track_through_band": 0.7
+        }
+      },
+      {
+        "between_columns": [
+          2,
+          3
+        ],
+        "pitch_um": 0.68,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "poly_pad_spacing": 0.47,
+          "gate_li1_spacing": 0.33,
+          "li1_track_through_band": 0.68
+        }
+      },
+      {
+        "between_columns": [
+          3,
+          4
+        ],
+        "pitch_um": 0.7,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "poly_pad_spacing": 0.49,
+          "gate_li1_spacing": 0.35,
+          "li1_track_through_band": 0.7
+        }
+      },
+      {
+        "between_columns": [
+          4,
+          5
+        ],
+        "pitch_um": 0.68,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "poly_pad_spacing": 0.47,
+          "gate_li1_spacing": 0.33,
+          "li1_track_through_band": 0.68
+        }
+      }
+    ],
+    "pitch_lower_bounds_um": {
+      "poly_stripe_spacing": 0.36,
+      "diffusion_contact_between_gates": 0.42000000000000004
+    },
+    "gate_contact_offset_um": [
+      -0.01,
+      0.0,
+      -0.01,
+      0.0,
+      -0.01,
+      0.0
+    ],
+    "li1_landing_um": [
+      0.17,
+      0.33
+    ],
+    "li1_pin_um": 0.15,
+    "poly_landing_um": [
+      0.27,
+      0.33
+    ],
+    "met1_landing_um": 0.29,
+    "diffusion_end_extension_um": 0.26,
+    "end_extension_lower_bounds_um": {
+      "diffusion_extension": 0.25,
+      "contact_fit": 0.26
+    },
+    "diffusion_break_um": 0.27,
+    "diffusion_break_lower_bounds_um": {
+      "diffusion_spacing": 0.27,
+      "end_landing_li1_spacing": 0.09000000000000002
+    },
+    "side_margin_um": 0.135,
+    "side_margin_lower_bounds_um": {
+      "half_diffusion_spacing": 0.135,
+      "implant_enclosure": 0.125
+    },
+    "left_edge_lower_bounds_um": {
+      "diffusion_margin": 0.47,
+      "poly_pad_to_edge": 0.25,
+      "gate_li1_to_edge": 0.18,
+      "li1_track_through_band": 0.53
+    },
+    "right_edge_lower_bounds_um": {
+      "diffusion_margin": 0.47,
+      "poly_pad_to_edge": 0.24,
+      "gate_li1_to_edge": 0.17,
+      "li1_track_through_band": 0.52
+    },
+    "li1_track_um": 0.52,
+    "channels": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ]
+    ],
+    "crossing_gaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "diffusion_segments": 1,
+    "active_x_um": [
+      [
+        0.245,
+        4.355
+      ]
+    ],
+    "centering_shift_um": 0.05,
+    "gate_x_um": [
+      0.58,
+      1.26,
+      1.96,
+      2.64,
+      3.34,
+      4.02
+    ],
+    "diffusion_node_x_um": [
+      [
+        0.37,
+        0.92,
+        1.61,
+        2.3,
+        2.99,
+        3.68,
+        4.23
+      ]
+    ],
+    "row_active_x_um": {
+      "nmos": [
+        [
+          0.245,
+          4.355
+        ]
+      ],
+      "pmos": [
+        [
+          0.245,
+          4.355
+        ]
+      ]
+    },
+    "row_node_x_um": {
+      "nmos": [
+        [
+          0.37,
+          0.92,
+          1.61,
+          2.3,
+          2.99,
+          3.68,
+          4.23
+        ]
+      ],
+      "pmos": [
+        [
+          0.37,
+          0.92,
+          1.61,
+          2.3,
+          2.99,
+          3.68,
+          4.23
+        ]
+      ]
+    },
+    "raw_width_um": 4.49,
+    "minimum_width_sites": 10,
+    "width_sites": 10,
+    "formulas": {
+      "pitch": "per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, gate li1 spacing li.3, li1 track at a channel), 2 routing steps)",
+      "gate_contact_offset": "chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe",
+      "li1_landing": "licon wide (li1 covers it), licon + 2 li.5 tall, at least li.6 in area",
+      "poly_landing": "licon + 2 licon.8 wide, licon + 2 licon.8a tall, joined to the stripe",
+      "end_extension": "max(poly.7, licon.11 + licon + licon.5a)",
+      "diffusion_break": "snap_up(max(diff/tap.3, end-landing li1 spacing))",
+      "side_margin": "max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half",
+      "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
+    },
+    "cell_width_um": 4.6,
+    "cell_height_um": 2.72,
+    "routing_retries": [
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for D at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            6
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for D at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            6
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for C at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for D at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1 route found for D at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 2,
+        "rip_up": false,
+        "reason": "No li1 route found for D at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 2,
+        "rip_up": false,
+        "reason": "No li1 route found for D at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for D at this width (rip-up and reroute; first failure: No li1 route found for D at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            6
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for D at this width (rip-up and reroute; first failure: No li1 route found for D at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            6
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "No li1 route found for C at this width (rip-up and reroute; first failure: No li1 route found for C at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "rip-up and reroute gave up after 82 rip-ups (first failure: No li1 route found for D at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": true,
+        "reason": "rip-up and reroute gave up after 81 rip-ups (first failure: No li1 route found for D at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 2,
+        "rip_up": true,
+        "reason": "rip-up and reroute gave up after 82 rip-ups (first failure: No li1 route found for D at this width)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 2,
+        "rip_up": true,
+        "reason": "rip-up and reroute gave up after 81 rip-ups (first failure: No li1 route found for D at this width)"
+      },
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": true,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1/met1 route found for D at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": true,
+        "extra_sites": 0,
+        "rip_up": false,
+        "reason": "No li1/met1 route found for Y_u1 at this width"
+      }
+    ],
+    "rule_values_and_sources": {
+      "grid": {
+        "value": 0.005,
+        "source": "manufacturing grid, given/plan_hd.json 'grid'",
+        "check": {
+          "kind": "frame",
+          "key": "grid"
+        }
+      },
+      "poly_min_width": {
+        "value": 0.15,
+        "source": "poly.1a",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.1a",
+          "message": "poly width"
+        }
+      },
+      "poly_space": {
+        "value": 0.21,
+        "source": "poly.2",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.2",
+          "message": "poly spacing"
+        }
+      },
+      "diff_end_extension": {
+        "value": 0.25,
+        "source": "poly.7, diffusion extension past the gate",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.7",
+          "message": "N-Diffusion overhang of nFET"
+        }
+      },
+      "poly_endcap": {
+        "value": 0.13,
+        "source": "poly.8, poly extension past the diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.8",
+          "message": "poly overhang of transistor"
+        }
+      },
+      "channel_min_width": {
+        "value": 0.36,
+        "source": "diff/tap.2, transistor width inside a standard cell",
+        "check": {
+          "kind": "drc",
+          "rule": "diff/tap.2",
+          "message": "Transistor in standard cell width"
+        }
+      },
+      "diff_space": {
+        "value": 0.27,
+        "source": "diff/tap.3, spacing between diffusion strips (a diffusion break)",
+        "check": {
+          "kind": "drc",
+          "rule": "diff/tap.3",
+          "message": "Diffusion spacing"
+        }
+      },
+      "implant_enclosure": {
+        "value": 0.125,
+        "source": "nsd.5a / psd.5a, implant enclosure of diffusion (Magic does not check drawn implants; src/verify_drc.py layer check does)",
+        "check": {
+          "kind": "drc",
+          "rule": "psd.5a",
+          "message": "N-Diffusion to P-tap spacing"
+        }
+      },
+      "licon_size": {
+        "value": 0.17,
+        "source": "licon.1",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.1",
+          "message": "N-diffusion contact width"
+        }
+      },
+      "licon_diff_enclosure": {
+        "value": 0.06,
+        "source": "licon.5c, diffusion overlap of a diffusion contact in one direction (applied above and below it)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.5c",
+          "message": "N-diffusion overlap of N-diffusion contact"
+        }
+      },
+      "licon_diff_enclosure_min": {
+        "value": 0.04,
+        "source": "licon.5a, diffusion overlap of a diffusion contact on every side (licon.5c's 0.06 then holds in the other direction)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.5a",
+          "message": "N-diffusion overlap of N-diffusion contact"
+        }
+      },
+      "licon_poly_enclosure": {
+        "value": 0.08,
+        "source": "licon.8a, poly overlap of a poly contact in one direction (applied above and below it)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.8a",
+          "message": "poly overlap of poly contact"
+        }
+      },
+      "licon_poly_enclosure_min": {
+        "value": 0.05,
+        "source": "licon.8, poly overlap of a poly contact on every side",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.8",
+          "message": "poly overlap of poly contact"
+        }
+      },
+      "poly_diff_space": {
+        "value": 0.075,
+        "source": "poly.4, poly (the gate contact pad) to diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.4",
+          "message": "poly spacing to Diffusion"
+        }
+      },
+      "poly_contact_diff_space": {
+        "value": 0.19,
+        "source": "licon.14, poly contact to diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.14",
+          "message": "poly contact spacing to diffusion"
+        }
+      },
+      "poly_contact_pdiff_space": {
+        "value": 0.235,
+        "source": "licon.9 + psdm.5a, poly contact to P-diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.9 + psdm.5a",
+          "message": "poly contact spacing to P-diffusion"
+        }
+      },
+      "licon_gate_space": {
+        "value": 0.05,
+        "source": "licon.11, diffusion contact to standard-cell gate",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.11",
+          "message": "Diffusion contact to standard cell gate"
+        }
+      },
+      "licon_npc_enclosure": {
+        "value": 0.1,
+        "source": "NPC grown 0.1 um around every poly contact (npc.1/npc.5 as Magic generates it; drawn NPC is checked by src/verify_drc.py)",
+        "check": {
+          "kind": "cif",
+          "layer": "NPC pc",
+          "operation": "grow",
+          "occurrence": 1
+        }
+      },
+      "npc_space": {
+        "value": 0.27,
+        "source": "npc.2, NPC openings closer than 0.27 um are bridged by Magic's NPC generation",
+        "check": {
+          "kind": "cif",
+          "layer": "NPC pc",
+          "operation": "bridge",
+          "occurrence": 1
+        }
+      },
+      "li_width": {
+        "value": 0.17,
+        "source": "li.1",
+        "check": {
+          "kind": "drc",
+          "rule": "li.1",
+          "message": "Local interconnect width"
+        }
+      },
+      "li_space": {
+        "value": 0.17,
+        "source": "li.3",
+        "check": {
+          "kind": "drc",
+          "rule": "li.3",
+          "message": "Local interconnect spacing"
+        }
+      },
+      "li_contact_enclosure": {
+        "value": 0.08,
+        "source": "li.5, li1 overlap of a contact in one direction (landings extend 0.08 um above and below; li1 covers the contact on the other two sides)",
+        "check": {
+          "kind": "drc",
+          "rule": "li.5",
+          "message": "Local interconnect overlap of poly contact"
+        }
+      },
+      "li_min_area": {
+        "value": 0.0561,
+        "source": "li.6 (um^2)",
+        "check": {
+          "kind": "drc",
+          "rule": "li.6",
+          "message": "Local interconnect minimum area",
+          "area": true
+        }
+      },
+      "mcon_size": {
+        "value": 0.17,
+        "source": "mcon.1 (ct.1)",
+        "check": {
+          "kind": "drc",
+          "rule": "mcon.1",
+          "message": "mcon.width"
+        }
+      },
+      "mcon_space": {
+        "value": 0.19,
+        "source": "mcon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "mcon.2",
+          "message": "mcon.spacing"
+        }
+      },
+      "met1_width": {
+        "value": 0.14,
+        "source": "met1.1",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.1",
+          "message": "Metal1 width"
+        }
+      },
+      "met1_space": {
+        "value": 0.14,
+        "source": "met1.2",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.2",
+          "message": "Metal1 spacing"
+        }
+      },
+      "met1_contact_enclosure": {
+        "value": 0.06,
+        "source": "met1.5, applied on all four sides (conservative)",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.5",
+          "message": "Metal1 overlap of local interconnect contact"
+        }
+      },
+      "met1_min_area": {
+        "value": 0.083,
+        "source": "met1.6 (um^2)",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.6",
+          "message": "Metal1 minimum area",
+          "area": true
+        }
+      }
+    },
+    "frame_source": "plan_hd.json",
+    "frame_sha256": "d22bd12109df202fa34c590c2402030e2b38952a6962b806499f2ed3aa2a11df"
+  },
+  "geometry": {
+    "width_um": 4.6,
+    "width_sites": 10,
+    "height_um": 2.72,
+    "shapes": [
+      {
+        "layer": "boundary",
+        "box": [
+          0.0,
+          0.0,
+          4.6,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          236,
+          0
+        ]
+      },
+      {
+        "layer": "areaid_sc",
+        "box": [
+          0.0,
+          0.0,
+          4.6,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          81,
+          4
+        ]
+      },
+      {
+        "layer": "nwell",
+        "box": [
+          -0.19,
+          1.305,
+          4.79,
+          2.91
+        ],
+        "net": null,
+        "gds": [
+          64,
+          20
+        ]
+      },
+      {
+        "layer": "nsdm",
+        "box": [
+          0.0,
+          -0.19,
+          4.6,
+          1.015
+        ],
+        "net": null,
+        "gds": [
+          93,
+          44
+        ]
+      },
+      {
+        "layer": "psdm",
+        "box": [
+          0.0,
+          1.355,
+          4.6,
+          2.91
+        ],
+        "net": null,
+        "gds": [
+          94,
+          20
+        ]
+      },
+      {
+        "layer": "hvtp",
+        "box": [
+          0.0,
+          1.25,
+          4.6,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          78,
+          44
+        ]
+      },
+      {
+        "layer": "npc",
+        "box": [
+          0.0,
+          0.975,
+          4.6,
+          1.345
+        ],
+        "net": null,
+        "gds": [
+          95,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "box": [
+          0.0,
+          -0.24,
+          4.6,
+          0.24
+        ],
+        "net": "VGND",
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.605,
+          -0.085,
+          0.775,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.065,
+          -0.085,
+          1.235,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.525,
+          -0.085,
+          1.695,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.985,
+          -0.085,
+          2.155,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.445,
+          -0.085,
+          2.615,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.905,
+          -0.085,
+          3.075,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.365,
+          -0.085,
+          3.535,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.825,
+          -0.085,
+          3.995,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          4.285,
+          -0.085,
+          4.455,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "met1",
+        "box": [
+          0.0,
+          2.48,
+          4.6,
+          2.96
+        ],
+        "net": "VPWR",
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.605,
+          2.635,
+          0.775,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.065,
+          2.635,
+          1.235,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.525,
+          2.635,
+          1.695,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.985,
+          2.635,
+          2.155,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.445,
+          2.635,
+          2.615,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.905,
+          2.635,
+          3.075,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.365,
+          2.635,
+          3.535,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.825,
+          2.635,
+          3.995,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          4.285,
+          2.635,
+          4.455,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.245,
+          0.235,
+          1.26,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.58,
+          0.235,
+          1.96,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.26,
+          0.235,
+          2.64,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.96,
+          0.235,
+          3.34,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          2.64,
+          0.235,
+          4.02,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          3.34,
+          0.235,
+          4.355,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.285,
+          0.575,
+          0.455,
+          0.745
+        ],
+        "net": "Y_d2",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.835,
+          0.295,
+          1.005,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.525,
+          0.575,
+          1.695,
+          0.745
+        ],
+        "net": "Y_d2",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.905,
+          0.575,
+          3.075,
+          0.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          0.295,
+          4.315,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.245,
+          1.485,
+          1.26,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.58,
+          1.485,
+          1.96,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.26,
+          1.485,
+          2.64,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.96,
+          1.485,
+          3.34,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          2.64,
+          1.485,
+          4.02,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          3.34,
+          1.485,
+          4.355,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.285,
+          2.255,
+          0.455,
+          2.425
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.525,
+          2.255,
+          1.695,
+          2.425
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.215,
+          2.255,
+          2.385,
+          2.425
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.905,
+          2.255,
+          3.075,
+          2.425
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.595,
+          2.255,
+          3.765,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          1.575,
+          4.315,
+          1.745
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.505,
+          0.105,
+          0.655,
+          2.615
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.435,
+          0.995,
+          0.705,
+          1.325
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.485,
+          1.075,
+          0.655,
+          1.245
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.495,
+          1.085,
+          0.645,
+          1.235
+        ],
+        "net": "C",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.185,
+          0.105,
+          1.335,
+          2.615
+        ],
+        "net": "D",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.125,
+          0.995,
+          1.395,
+          1.325
+        ],
+        "net": "D",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.175,
+          1.075,
+          1.345,
+          1.245
+        ],
+        "net": "D",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          1.185,
+          1.085,
+          1.335,
+          1.235
+        ],
+        "net": "D",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.885,
+          0.105,
+          2.035,
+          2.615
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.815,
+          0.995,
+          2.085,
+          1.325
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.865,
+          1.075,
+          2.035,
+          1.245
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          1.875,
+          1.085,
+          2.025,
+          1.235
+        ],
+        "net": "A",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          2.565,
+          0.105,
+          2.715,
+          2.615
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          2.505,
+          0.995,
+          2.775,
+          1.325
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.555,
+          1.075,
+          2.725,
+          1.245
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          2.565,
+          1.085,
+          2.715,
+          1.235
+        ],
+        "net": "B",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.265,
+          0.105,
+          3.415,
+          2.615
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.195,
+          0.995,
+          3.465,
+          1.325
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.245,
+          1.075,
+          3.415,
+          1.245
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          3.255,
+          1.085,
+          3.405,
+          1.235
+        ],
+        "net": "C",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.945,
+          0.105,
+          4.095,
+          2.615
+        ],
+        "net": "D",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.885,
+          0.995,
+          4.155,
+          1.325
+        ],
+        "net": "D",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.935,
+          1.075,
+          4.105,
+          1.245
+        ],
+        "net": "D",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          3.945,
+          1.085,
+          4.095,
+          1.235
+        ],
+        "net": "D",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          2.915,
+          0.585,
+          3.065,
+          0.735
+        ],
+        "net": "Y",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "met1_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          68,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "met1_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          68,
+          16
+        ]
+      },
+      {
+        "layer": "vpb_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPB",
+        "gds": [
+          64,
+          16
+        ]
+      },
+      {
+        "layer": "vnb_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VNB",
+        "gds": [
+          122,
+          16
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.875,
+          1.915,
+          2.045,
+          2.085
+        ],
+        "net": "Y_u1",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.555,
+          1.915,
+          2.725,
+          2.085
+        ],
+        "net": "Y_u1",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.525,
+          1.075,
+          1.695,
+          1.245
+        ],
+        "net": "D",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.895,
+          1.075,
+          3.065,
+          1.245
+        ],
+        "net": "D",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.835,
+          0.975,
+          1.005,
+          1.145
+        ],
+        "net": "C",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.245,
+          0.645,
+          3.415,
+          0.815
+        ],
+        "net": "C",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          0.0,
+          -0.085,
+          4.6,
+          0.085
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          0.755,
+          0.085,
+          1.085,
+          0.465
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          4.065,
+          0.085,
+          4.395,
+          0.465
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          3.595,
+          2.175,
+          3.765,
+          2.635
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          0.0,
+          2.635,
+          4.6,
+          2.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_d2",
+        "box": [
+          0.285,
+          0.495,
+          0.455,
+          0.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_d2",
+        "box": [
+          0.285,
+          0.575,
+          0.585,
+          0.635
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_d2",
+        "box": [
+          1.525,
+          0.495,
+          1.695,
+          0.635
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_d2",
+        "box": [
+          0.285,
+          0.635,
+          1.695,
+          0.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_d2",
+        "box": [
+          0.285,
+          0.805,
+          0.455,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_d2",
+        "box": [
+          1.525,
+          0.805,
+          1.695,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.905,
+          0.495,
+          3.075,
+          0.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.205,
+          0.575,
+          3.075,
+          0.745
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.905,
+          0.745,
+          3.075,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.205,
+          0.745,
+          2.375,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.285,
+          1.495,
+          2.385,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.285,
+          1.665,
+          0.455,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.215,
+          1.665,
+          2.385,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.205,
+          2.255,
+          0.535,
+          2.425
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.135,
+          2.255,
+          2.465,
+          2.425
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.795,
+          1.915,
+          2.045,
+          2.085
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.795,
+          2.085,
+          1.965,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.445,
+          2.255,
+          1.965,
+          2.425
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          4.145,
+          1.495,
+          4.315,
+          1.835
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          3.255,
+          1.835,
+          4.315,
+          1.915
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          2.555,
+          1.915,
+          4.315,
+          2.005
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          2.555,
+          2.005,
+          3.425,
+          2.085
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          2.825,
+          2.085,
+          3.155,
+          2.425
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          0.835,
+          0.975,
+          1.005,
+          0.995
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          0.485,
+          0.995,
+          1.005,
+          1.245
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          0.485,
+          1.245,
+          0.655,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          3.245,
+          0.645,
+          3.415,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          1.175,
+          0.995,
+          1.345,
+          1.075
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          1.175,
+          1.075,
+          1.695,
+          1.245
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          1.175,
+          1.245,
+          1.345,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          3.935,
+          0.995,
+          4.105,
+          1.155
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          2.895,
+          1.075,
+          3.075,
+          1.245
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          3.805,
+          1.155,
+          4.105,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          2.905,
+          1.245,
+          3.075,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          3.805,
+          1.325,
+          3.975,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "D",
+        "box": [
+          2.905,
+          1.495,
+          3.975,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "A",
+        "box": [
+          1.865,
+          0.995,
+          2.035,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B",
+        "box": [
+          2.555,
+          0.995,
+          2.725,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "Y_u1",
+        "box": [
+          1.815,
+          1.855,
+          2.105,
+          1.93
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "Y_u1",
+        "box": [
+          2.495,
+          1.855,
+          2.785,
+          1.93
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "Y_u1",
+        "box": [
+          1.815,
+          1.93,
+          2.785,
+          2.07
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "Y_u1",
+        "box": [
+          1.815,
+          2.07,
+          2.105,
+          2.145
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "Y_u1",
+        "box": [
+          2.495,
+          2.07,
+          2.785,
+          2.145
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "D",
+        "box": [
+          1.465,
+          1.015,
+          1.755,
+          1.09
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "D",
+        "box": [
+          2.835,
+          1.015,
+          3.125,
+          1.09
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "D",
+        "box": [
+          1.465,
+          1.09,
+          3.125,
+          1.23
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "D",
+        "box": [
+          1.465,
+          1.23,
+          1.755,
+          1.305
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "D",
+        "box": [
+          2.835,
+          1.23,
+          3.125,
+          1.305
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "C",
+        "box": [
+          3.185,
+          0.585,
+          3.475,
+          0.73
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "C",
+        "box": [
+          1.18,
+          0.73,
+          3.475,
+          0.87
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "C",
+        "box": [
+          3.185,
+          0.87,
+          3.475,
+          0.875
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "C",
+        "box": [
+          1.18,
+          0.87,
+          1.32,
+          0.915
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "C",
+        "box": [
+          0.775,
+          0.915,
+          1.32,
+          1.13
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "net": "C",
+        "box": [
+          0.775,
+          1.13,
+          1.065,
+          1.205
+        ],
+        "gds": [
+          68,
+          20
+        ]
+      }
+    ],
+    "terminals": {
+      "Y_d2": [
+        [
+          0.37,
+          0.66
+        ],
+        [
+          1.61,
+          0.66
+        ]
+      ],
+      "VGND": [
+        [
+          0.92,
+          0.0
+        ],
+        [
+          4.23,
+          0.0
+        ],
+        [
+          0.92,
+          0.0
+        ],
+        [
+          4.23,
+          0.0
+        ]
+      ],
+      "Y": [
+        [
+          2.99,
+          0.66
+        ],
+        [
+          0.37,
+          2.34
+        ],
+        [
+          2.3,
+          2.34
+        ]
+      ],
+      "Y_u1": [
+        [
+          1.61,
+          2.34
+        ],
+        [
+          2.99,
+          2.34
+        ],
+        [
+          4.23,
+          1.66
+        ]
+      ],
+      "VPWR": [
+        [
+          3.68,
+          2.7199999999999998
+        ],
+        [
+          3.68,
+          2.7199999999999998
+        ]
+      ],
+      "C": [
+        [
+          0.57,
+          1.16
+        ],
+        [
+          3.33,
+          1.16
+        ]
+      ],
+      "D": [
+        [
+          1.26,
+          1.16
+        ],
+        [
+          4.02,
+          1.16
+        ]
+      ],
+      "A": [
+        [
+          1.95,
+          1.16
+        ]
+      ],
+      "B": [
+        [
+          2.64,
+          1.16
+        ]
+      ]
+    },
+    "contacts": [
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          0.23,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          0.6900000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          1.1500000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          1.61,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          2.0700000000000003,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          2.5300000000000002,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          2.99,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          3.45,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          3.91,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          4.370000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          0.23,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          0.6900000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          1.1500000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          1.61,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          2.0700000000000003,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          2.5300000000000002,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          2.99,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          3.45,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          3.91,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          4.370000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_d2",
+        "point_um": [
+          0.37,
+          0.66
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "VGND",
+        "point_um": [
+          0.92,
+          0.38
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_d2",
+        "point_um": [
+          1.61,
+          0.66
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          2.99,
+          0.66
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "VGND",
+        "point_um": [
+          4.23,
+          0.38
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          0.37,
+          2.34
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u1",
+        "point_um": [
+          1.61,
+          2.34
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          2.3,
+          2.34
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u1",
+        "point_um": [
+          2.99,
+          2.34
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "VPWR",
+        "point_um": [
+          3.68,
+          2.34
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u1",
+        "point_um": [
+          4.23,
+          1.66
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "poly",
+        "net": "C",
+        "point_um": [
+          0.57,
+          1.16
+        ],
+        "gate_x_um": 0.58
+      },
+      {
+        "type": "poly",
+        "net": "D",
+        "point_um": [
+          1.26,
+          1.16
+        ],
+        "gate_x_um": 1.26
+      },
+      {
+        "type": "poly",
+        "net": "A",
+        "point_um": [
+          1.95,
+          1.16
+        ],
+        "gate_x_um": 1.96
+      },
+      {
+        "type": "poly",
+        "net": "B",
+        "point_um": [
+          2.64,
+          1.16
+        ],
+        "gate_x_um": 2.64
+      },
+      {
+        "type": "poly",
+        "net": "C",
+        "point_um": [
+          3.33,
+          1.16
+        ],
+        "gate_x_um": 3.34
+      },
+      {
+        "type": "poly",
+        "net": "D",
+        "point_um": [
+          4.02,
+          1.16
+        ],
+        "gate_x_um": 4.02
+      }
+    ],
+    "devices": [
+      {
+        "id": "N1",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "C",
+        "source": "VGND",
+        "drain": "Y_d2",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 3,
+        "fingers": 1,
+        "gate_x_um": 0.58,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 0,
+        "left_net": "Y_d2",
+        "right_net": "VGND",
+        "diffusion_edge_distances_um": {
+          "left": 0.26,
+          "right": 3.7
+        }
+      },
+      {
+        "id": "N2",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "D",
+        "source": "VGND",
+        "drain": "Y_d2",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 1,
+        "stack_depth": 3,
+        "fingers": 1,
+        "gate_x_um": 1.26,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 0,
+        "left_net": "VGND",
+        "right_net": "Y_d2",
+        "diffusion_edge_distances_um": {
+          "left": 0.94,
+          "right": 3.02
+        }
+      },
+      {
+        "id": "N3",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "A",
+        "source": "Y_d2",
+        "drain": "Y_d1",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 3,
+        "fingers": 1,
+        "gate_x_um": 1.96,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 0,
+        "left_net": "Y_d2",
+        "right_net": "Y_d1",
+        "diffusion_edge_distances_um": {
+          "left": 1.64,
+          "right": 2.32
+        }
+      },
+      {
+        "id": "N4",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "B",
+        "source": "Y_d1",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 3,
+        "stack_depth": 3,
+        "fingers": 1,
+        "gate_x_um": 2.64,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 0,
+        "left_net": "Y_d1",
+        "right_net": "Y",
+        "diffusion_edge_distances_um": {
+          "left": 2.32,
+          "right": 1.64
+        }
+      },
+      {
+        "id": "N5",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "C",
+        "source": "Y_d3",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 4,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 3.34,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 0,
+        "left_net": "Y",
+        "right_net": "Y_d3",
+        "diffusion_edge_distances_um": {
+          "left": 3.02,
+          "right": 0.94
+        }
+      },
+      {
+        "id": "N6",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "D",
+        "source": "VGND",
+        "drain": "Y_d3",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 5,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 4.02,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 0,
+        "left_net": "Y_d3",
+        "right_net": "VGND",
+        "diffusion_edge_distances_um": {
+          "left": 3.7,
+          "right": 0.26
+        }
+      },
+      {
+        "id": "P1",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "Y",
+        "drain": "Y_u2",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 3,
+        "fingers": 1,
+        "gate_x_um": 0.58,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "Y",
+        "right_net": "Y_u2",
+        "diffusion_edge_distances_um": {
+          "left": 0.26,
+          "right": 3.7
+        }
+      },
+      {
+        "id": "P2",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "D",
+        "source": "Y_u2",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 1,
+        "stack_depth": 3,
+        "fingers": 1,
+        "gate_x_um": 1.26,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "Y_u2",
+        "right_net": "Y_u1",
+        "diffusion_edge_distances_um": {
+          "left": 0.94,
+          "right": 3.02
+        }
+      },
+      {
+        "id": "P3",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "Y",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 1.96,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "Y_u1",
+        "right_net": "Y",
+        "diffusion_edge_distances_um": {
+          "left": 1.64,
+          "right": 2.32
+        }
+      },
+      {
+        "id": "P4",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "B",
+        "source": "Y",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 3,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 2.64,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "Y",
+        "right_net": "Y_u1",
+        "diffusion_edge_distances_um": {
+          "left": 2.32,
+          "right": 1.64
+        }
+      },
+      {
+        "id": "P5",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "Y_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 4,
+        "stack_depth": 3,
+        "fingers": 1,
+        "gate_x_um": 3.34,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "Y_u1",
+        "right_net": "VPWR",
+        "diffusion_edge_distances_um": {
+          "left": 3.02,
+          "right": 0.94
+        }
+      },
+      {
+        "id": "P6",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "D",
+        "source": "Y_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 5,
+        "stack_depth": 3,
+        "fingers": 1,
+        "gate_x_um": 4.02,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "VPWR",
+        "right_net": "Y_u1",
+        "diffusion_edge_distances_um": {
+          "left": 3.7,
+          "right": 0.26
+        }
+      }
+    ],
+    "output_pin_um": [
+      2.99,
+      0.66
+    ],
+    "gate_contact_y_um": 1.16,
+    "supply_pin_x_um": 0.23,
+    "routes": [
+      {
+        "net": "Y_d2",
+        "layer": "li1",
+        "points_um": [
+          [
+            0.37,
+            0.66
+          ],
+          [
+            0.5,
+            0.66
+          ],
+          [
+            0.5,
+            0.72
+          ],
+          [
+            1.61,
+            0.72
+          ],
+          [
+            1.61,
+            0.66
+          ]
+        ]
+      },
+      {
+        "net": "Y",
+        "layer": "li1",
+        "points_um": [
+          [
+            2.99,
+            0.66
+          ],
+          [
+            2.29,
+            0.66
+          ],
+          [
+            2.29,
+            1.58
+          ],
+          [
+            0.37,
+            1.58
+          ],
+          [
+            0.37,
+            2.34
+          ]
+        ]
+      },
+      {
+        "net": "Y",
+        "layer": "li1",
+        "points_um": [
+          [
+            2.29,
+            1.58
+          ],
+          [
+            2.3,
+            1.58
+          ],
+          [
+            2.3,
+            2.34
+          ]
+        ]
+      },
+      {
+        "net": "Y_u1",
+        "layer": "li1",
+        "points_um": [
+          [
+            1.61,
+            2.34
+          ],
+          [
+            1.88,
+            2.34
+          ],
+          [
+            1.88,
+            2.0
+          ],
+          [
+            1.96,
+            2.0
+          ]
+        ]
+      },
+      {
+        "net": "Y_u1",
+        "layer": "met1",
+        "points_um": [
+          [
+            1.96,
+            2.0
+          ],
+          [
+            2.64,
+            2.0
+          ]
+        ]
+      },
+      {
+        "net": "Y_u1",
+        "layer": "li1",
+        "points_um": [
+          [
+            2.64,
+            2.0
+          ],
+          [
+            2.99,
+            2.0
+          ],
+          [
+            2.99,
+            2.34
+          ]
+        ]
+      },
+      {
+        "net": "Y_u1",
+        "layer": "li1",
+        "points_um": [
+          [
+            2.99,
+            2.0
+          ],
+          [
+            3.34,
+            2.0
+          ],
+          [
+            3.34,
+            1.92
+          ],
+          [
+            4.23,
+            1.92
+          ],
+          [
+            4.23,
+            1.66
+          ]
+        ]
+      },
+      {
+        "net": "D",
+        "layer": "li1",
+        "points_um": [
+          [
+            1.26,
+            1.16
+          ],
+          [
+            1.61,
+            1.16
+          ]
+        ]
+      },
+      {
+        "net": "D",
+        "layer": "met1",
+        "points_um": [
+          [
+            1.61,
+            1.16
+          ],
+          [
+            2.98,
+            1.16
+          ]
+        ]
+      },
+      {
+        "net": "D",
+        "layer": "li1",
+        "points_um": [
+          [
+            2.98,
+            1.16
+          ],
+          [
+            2.99,
+            1.16
+          ],
+          [
+            2.99,
+            1.58
+          ],
+          [
+            3.89,
+            1.58
+          ],
+          [
+            3.89,
+            1.24
+          ],
+          [
+            4.02,
+            1.24
+          ],
+          [
+            4.02,
+            1.16
+          ]
+        ]
+      },
+      {
+        "net": "C",
+        "layer": "li1",
+        "points_um": [
+          [
+            0.57,
+            1.16
+          ],
+          [
+            0.92,
+            1.16
+          ],
+          [
+            0.92,
+            1.06
+          ]
+        ]
+      },
+      {
+        "net": "C",
+        "layer": "met1",
+        "points_um": [
+          [
+            0.92,
+            1.06
+          ],
+          [
+            1.25,
+            1.06
+          ],
+          [
+            1.25,
+            0.8
+          ],
+          [
+            3.33,
+            0.8
+          ],
+          [
+            3.33,
+            0.73
+          ]
+        ]
+      },
+      {
+        "net": "C",
+        "layer": "li1",
+        "points_um": [
+          [
+            3.33,
+            0.73
+          ],
+          [
+            3.33,
+            1.16
+          ]
+        ]
+      }
+    ],
+    "vias": [
+      {
+        "net": "Y_u1",
+        "point_um": [
+          1.96,
+          2.0
+        ]
+      },
+      {
+        "net": "Y_u1",
+        "point_um": [
+          2.64,
+          2.0
+        ]
+      },
+      {
+        "net": "D",
+        "point_um": [
+          1.61,
+          1.16
+        ]
+      },
+      {
+        "net": "D",
+        "point_um": [
+          2.98,
+          1.16
+        ]
+      },
+      {
+        "net": "C",
+        "point_um": [
+          0.92,
+          1.06
+        ]
+      },
+      {
+        "net": "C",
+        "point_um": [
+          3.33,
+          0.73
+        ]
+      }
+    ],
+    "routing_order": [
+      "A",
+      "B",
+      "Y_d2",
+      "Y",
+      "Y_u1",
+      "D",
+      "C"
+    ],
+    "li1_notch_fill_added_area_um2": {
+      "VGND": 0.0,
+      "VPWR": 0.0,
+      "Y_d2": 0.0,
+      "Y": 0.0,
+      "Y_u1": 0.0272,
+      "C": 0.0144,
+      "D": 0.0,
+      "A": 0.0,
+      "B": 0.0
+    },
+    "met1_notch_fill_added_area_um2": {
+      "Y_u1": 0.0,
+      "D": 0.0,
+      "C": 0.008625
+    },
+    "met1_in_single_stage_cell": true
+  },
+  "labels": [
+    {
+      "text": "VPWR",
+      "position_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "gds": [
+        68,
+        5
+      ]
+    },
+    {
+      "text": "VPWR",
+      "position_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "VGND",
+      "position_um": [
+        0.23,
+        0.0
+      ],
+      "gds": [
+        68,
+        5
+      ]
+    },
+    {
+      "text": "VGND",
+      "position_um": [
+        0.23,
+        0.0
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "A",
+      "position_um": [
+        1.95,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "B",
+      "position_um": [
+        2.64,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "C",
+      "position_um": [
+        0.57,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "D",
+      "position_um": [
+        1.26,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "Y",
+      "position_um": [
+        2.99,
+        0.66
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "VPB",
+      "position_um": [
+        0.23,
+        2.72
+      ],
+      "gds": [
+        64,
+        5
+      ]
+    },
+    {
+      "text": "VNB",
+      "position_um": [
+        0.23,
+        0
+      ],
+      "gds": [
+        64,
+        59
+      ]
+    }
+  ],
+  "status": "prepared_unverified"
+}

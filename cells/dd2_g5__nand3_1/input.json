@@ -1,0 +1,196 @@
+{
+  "schema": "dd2.layout-spec.v1",
+  "name": "dd2_g5__nand3_1",
+  "request_id": "T6-02",
+  "inputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "output": "Y",
+  "truth_table": "0x7F",
+  "sizing": "hd",
+  "devices": [
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "Y_d1",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 3,
+      "fingers": 1
+    },
+    {
+      "id": "N2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "Y_d2",
+      "drain": "Y_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 3,
+      "fingers": 1
+    },
+    {
+      "id": "N3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "C",
+      "source": "VGND",
+      "drain": "Y_d2",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 3,
+      "fingers": 1
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "Y",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P2",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "B",
+      "source": "Y",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P3",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "C",
+      "source": "Y",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 1,
+      "fingers": 1
+    }
+  ],
+  "euler_paths": {
+    "nmos": [
+      {
+        "devices": [
+          "N1",
+          "N2",
+          "N3"
+        ],
+        "nodes": [
+          "Y",
+          "Y_d1",
+          "Y_d2",
+          "VGND"
+        ]
+      }
+    ],
+    "pmos": [
+      {
+        "devices": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "nodes": [
+          "Y",
+          "VPWR",
+          "Y",
+          "VPWR"
+        ]
+      }
+    ]
+  },
+  "alternative_euler_paths": [
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N3",
+            "N2",
+            "N1"
+          ],
+          "nodes": [
+            "VGND",
+            "Y_d2",
+            "Y_d1",
+            "Y"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P3",
+            "P2",
+            "P1"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y",
+            "VPWR",
+            "Y"
+          ]
+        }
+      ]
+    }
+  ],
+  "placement": {
+    "stage_order": [
+      "Y"
+    ],
+    "mirrored": [],
+    "dual_trails_per_stage": {
+      "Y": 1
+    },
+    "diffusion_segments": 1,
+    "diffusion_breaks": 0,
+    "columns": 3,
+    "repeated_nets_in_rows": 1,
+    "folded": false,
+    "wiring_slots": 4,
+    "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+  },
+  "hd_reference": "sky130_fd_sc_hd__nand3_1",
+  "hd_pin_mapping": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "Y": "Y"
+  },
+  "hd_same_circuit": true,
+  "placement_used": 0
+}

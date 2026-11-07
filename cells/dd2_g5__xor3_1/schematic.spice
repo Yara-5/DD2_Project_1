@@ -1,0 +1,24 @@
+* Intended schematic from supplied transistor connections.
+* SKY130 model files use um-scale W/L convention; load the course model setup.
+.subckt dd2_g5__xor3_1 A B C VGND VNB VPB VPWR Y
+XN1 x1_n1_d1 A VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN2 x1_n1 B x1_n1_d1 VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XP1 VPWR A x1_n1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP2 VPWR B x1_n1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XN3 x1_d1 A VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN4 x1_d1 B VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN5 x1 x1_n1 x1_d1 VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XP3 VPWR A x1_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP4 x1_u1 B x1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP5 VPWR x1_n1 x1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XN6 n1_d1 x1 VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN7 n1 C n1_d1 VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XP6 VPWR x1 n1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP7 VPWR C n1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XN8 Y_d1 x1 VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN9 Y_d1 C VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN10 Y n1 Y_d1 VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XP8 VPWR x1 Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP9 Y_u1 C Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP10 VPWR n1 Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+.ends dd2_g5__xor3_1

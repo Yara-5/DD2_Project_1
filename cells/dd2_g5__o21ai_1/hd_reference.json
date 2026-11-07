@@ -1,0 +1,91 @@
+{
+  "reference": "sky130_fd_sc_hd__o21ai_1",
+  "pin_map": {
+    "A": "A1",
+    "B": "A2",
+    "C": "B1",
+    "Y": "Y"
+  },
+  "valid_pin_maps": [
+    {
+      "A": "A1",
+      "B": "A2",
+      "C": "B1",
+      "Y": "Y"
+    },
+    {
+      "A": "A2",
+      "B": "A1",
+      "C": "B1",
+      "Y": "Y"
+    }
+  ],
+  "ports": [
+    "A1",
+    "A2",
+    "B1",
+    "VGND",
+    "VNB",
+    "VPB",
+    "VPWR",
+    "Y"
+  ],
+  "function": "(!A1&!A2) | (!B1)",
+  "devices": [
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "drain": "a_109_297#",
+      "gate": "A2",
+      "source": "Y",
+      "bulk": "VPB",
+      "w": 1.0,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "drain": "Y",
+      "gate": "B1",
+      "source": "VPWR",
+      "bulk": "VPB",
+      "w": 0.7,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "drain": "a_27_47#",
+      "gate": "A1",
+      "source": "VGND",
+      "bulk": "VNB",
+      "w": 0.65,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "drain": "a_27_47#",
+      "gate": "B1",
+      "source": "Y",
+      "bulk": "VNB",
+      "w": 0.65,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "drain": "VPWR",
+      "gate": "A1",
+      "source": "a_109_297#",
+      "bulk": "VPB",
+      "w": 1.0,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "drain": "VGND",
+      "gate": "A2",
+      "source": "a_27_47#",
+      "bulk": "VNB",
+      "w": 0.65,
+      "l": 0.15
+    }
+  ],
+  "source": "PDK SPICE library (ports, W, L) and HD Liberty (directions, function)"
+}

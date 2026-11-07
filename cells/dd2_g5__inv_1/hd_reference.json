@@ -1,0 +1,43 @@
+{
+  "reference": "sky130_fd_sc_hd__inv_1",
+  "pin_map": {
+    "A": "A",
+    "Y": "Y"
+  },
+  "valid_pin_maps": [
+    {
+      "A": "A",
+      "Y": "Y"
+    }
+  ],
+  "ports": [
+    "A",
+    "VGND",
+    "VNB",
+    "VPB",
+    "VPWR",
+    "Y"
+  ],
+  "function": "(!A)",
+  "devices": [
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "drain": "VGND",
+      "gate": "A",
+      "source": "Y",
+      "bulk": "VNB",
+      "w": 0.65,
+      "l": 0.15
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "drain": "VPWR",
+      "gate": "A",
+      "source": "Y",
+      "bulk": "VPB",
+      "w": 1.0,
+      "l": 0.15
+    }
+  ],
+  "source": "PDK SPICE library (ports, W, L) and HD Liberty (directions, function)"
+}

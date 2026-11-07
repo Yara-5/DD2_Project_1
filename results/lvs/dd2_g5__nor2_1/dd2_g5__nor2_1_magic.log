@@ -1,0 +1,57 @@
+
+Magic 8.3.684 revision 684 - Compiled on Fri Oct 30 18:18:19 UTC 2026.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Switching to WIRING tool.
+Switching to NETLIST tool.
+Switching to PICK tool.
+Switching to BOX tool.
+Using technology "minimum", version 0.0
+Input style sky130(): scaleFactor=2, multiplier=2
+The following types are not handled by extraction and will be treated as non-electrical types:
+    ubm 
+Warning: Calma reading is not undoable!  I hope that's OK.
+Library written using GDS-II Release 6.0
+Library name: LIB
+Reading "dd2_g5__nor2_1".
+CIF file read warning: Input off lambda grid by 1/2; grid redefined.
+DRC style is now "drc(full)"
+Loading DRC CIF style.
+DRC_COUNT 4
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 314 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{29 297 81 497} {111 297 165 497} {195 297 247 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{29 47 81 177} {111 47 165 177} {195 47 247 177}}
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+Extracting dd2_g5__nor2_1 into dd2_g5__nor2_1.ext:
+Processing dd2_g5__nor2_1
+exttospice finished.
+exttospice finished.
+Extracting dd2_g5__nor2_1 into dd2_g5__nor2_1.ext:
+Processing dd2_g5__nor2_1
+Processing cell dd2_g5__nor2_1 for resistance extraction.
+Extracting a_111_297#
+Extracting VNB
+Extracting VPB
+Extracting A
+Extracting B
+Extracting VPWR
+Extracting Y
+Extracting VGND
+Total Nets: 8
+Nets extracted: 8 (1.000000)
+Nets output: 8 (1.000000)
+exttospice finished.
+MAGIC_DONE

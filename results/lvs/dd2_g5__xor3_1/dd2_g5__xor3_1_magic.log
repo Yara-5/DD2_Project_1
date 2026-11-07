@@ -1,0 +1,68 @@
+
+Magic 8.3.684 revision 684 - Compiled on Fri Oct 30 18:18:19 UTC 2026.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Switching to WIRING tool.
+Switching to NETLIST tool.
+Switching to PICK tool.
+Switching to BOX tool.
+Using technology "minimum", version 0.0
+Input style sky130(): scaleFactor=2, multiplier=2
+The following types are not handled by extraction and will be treated as non-electrical types:
+    ubm 
+Warning: Calma reading is not undoable!  I hope that's OK.
+Library written using GDS-II Release 6.0
+Library name: LIB
+Reading "dd2_g5__xor3_1".
+CIF file read warning: Input off lambda grid by 1/2; grid redefined.
+DRC style is now "drc(full)"
+Loading DRC CIF style.
+DRC_COUNT 14
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 1510 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{49 297 101 497} {131 297 237 497} {267 297 373 497} {403 297 455 497} {509 297 561 497} {591 297 653 497} {683 297 789 497} {819 297 925 497} {955 297 1007 497} {1061 297 1113 497} {1143 297 1205 497} {1235 297 1341 497} {1371 297 1423 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{49 47 101 177} {131 47 237 177} {267 47 373 177} {403 47 455 177} {509 47 561 177} {591 47 653 177} {683 47 789 177} {819 47 925 177} {955 47 1007 177} {1061 47 1113 177} {1143 47 1205 177} {1235 47 1341 177} {1371 47 1423 177}}
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+Extracting dd2_g5__xor3_1 into dd2_g5__xor3_1.ext:
+Processing dd2_g5__xor3_1
+exttospice finished.
+exttospice finished.
+Extracting dd2_g5__xor3_1 into dd2_g5__xor3_1.ext:
+Processing dd2_g5__xor3_1
+Processing cell dd2_g5__xor3_1 for resistance extraction.
+Extracting a_363_199#
+Extracting a_267_297#
+Extracting a_819_297#
+Extracting a_131_297#
+Extracting a_1143_297#
+Extracting a_49_47#
+Extracting a_591_47#
+Extracting a_819_47#
+Extracting a_1061_47#
+Extracting VNB
+Extracting VPB
+Extracting A
+Extracting B
+Extracting C
+Extracting VPWR
+Extracting Y
+Extracting VGND
+Total Nets: 17
+Nets extracted: 17 (1.000000)
+Nets output: 17 (1.000000)
+exttospice finished.
+MAGIC_DONE

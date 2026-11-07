@@ -12,6 +12,9 @@ and `alter`s its way through every table point) to what the HD Liberty needs:
   3. for every input pin, every side-input setting in which the pin controls Y is
      simulated over the table indices (both input edges, so both output edges); the
      slowest setting of each arc and output edge is kept, as the HD TT library does;
+     each edge gets HOLD_NS to settle; an arc that does not settle (a weak cell at the
+     largest load of the template's index) is simulated again with the window doubled,
+     up to HOLD_MAX_NS, and listed in the json's `extended_windows_ns`;
   4. the input capacitance of every pin is the charge its source delivers over each
      edge, divided by the supply.
 Supply, temperature, thresholds, slew derating and table indices are read from the HD
@@ -20,7 +23,8 @@ ramp lasts slew / (upper - lower threshold). The ngspice version and the SHA-256
 its binary in the course image are recorded in every output.
 
 Outputs: <out>.json (setup, devices with SA/SB, every setting's tables, the chosen
-ones) and <out>.lib (one cell group in HD units). Exits non-zero when a measurement
+ones), <out>.lib (one cell group in HD units) and <out>.pex.spice (the RC netlist, for
+Table 4's parasitics comparison). Exits non-zero when a measurement
 is missing, an output does not settle, or a tool fails: a cell that was not
 characterized is never reported as characterized. Linux only; standard library only.
 """
@@ -46,6 +50,7 @@ POLY = (66, 20)
 SUPPLY_NODES = {'VPWR': 'VPWR', 'VPB': 'VPWR', 'VGND': '0', 'VNB': '0'}
 EDGE_NS = 1.0            # the first input edge, once the initial state has settled
 HOLD_NS = 4.0            # time the output gets after each ramp, plus the ramp itself
+HOLD_MAX_NS = 64.0       # an arc that has not settled is simulated again, the window doubled, up to this
 # The course ngspice evaluates BSIM4 with OpenMP, as many threads as its num_threads
 # variable says, whatever OMP_NUM_THREADS is; several runs at once then oversubscribe
 # the cores and each run slows down a hundredfold. One thread per run, as tools.sh intends.
@@ -285,6 +290,7 @@ class Bench:
         self.inputs, self.output, self.netlist, self.build = inputs, output, netlist, args.build
         self.vdd = setup['nom_voltage']
         self.index_by_ramp = args.index_by_ramp
+        self.extended = {}      # arcs simulated again with a longer window: tag -> hold (ns)
 
     def ramp(self, slew):
         """Full 0-100% ramp of a table slew: the tables are indexed by the 20-80% time."""
@@ -313,15 +319,29 @@ class Bench:
             raise RuntimeError(f'ngspice reported an error; see {tag}.log')
         return out
 
-    def measure(self, arc, points, tag):
-        """Both input edges at every (slew, load) point; delays and output transitions."""
+    def measure(self, arc, points, tag, hold_ns=HOLD_NS):
+        """Both input edges at every (slew, load) point; delays and output transitions.
+
+        A weak cell at the largest load may not finish its output edge within hold_ns:
+        the whole arc is then simulated again with the window doubled (up to
+        HOLD_MAX_NS), so every point is still measured in one deck, and the arc is
+        recorded in `extended`. Settling is checked at every point either way."""
+        try:
+            return self.measure_once(arc, points, tag if hold_ns == HOLD_NS else f'{tag}_hold{hold_ns:g}', hold_ns)
+        except RuntimeError as exc:
+            if 'ngspice reported an error' in str(exc) or 2 * hold_ns > HOLD_MAX_NS:
+                raise
+            self.extended[tag] = 2 * hold_ns
+            return self.measure(arc, points, tag, 2 * hold_ns)
+
+    def measure_once(self, arc, points, tag, hold_ns):
         s, v = self.setup, self.vdd
         pin, positive = arc['pin'], arc['sense'] == 'positive_unate'
         y_after_rise, y_after_fall = ('RISE', 'FALL') if positive else ('FALL', 'RISE')
         deck = self.header(f'{self.name}: {pin} with {arc["side"]}', arc['side'], pin) + ['.control', THREADS]
         for i, (slew, load) in enumerate(points):
             r = self.ramp(slew)
-            hold = HOLD_NS + r
+            hold = hold_ns + r
             stop = EDGE_NS + 2 * (r + hold)
             deck += [f'alter CL = {load}e-12',
                      f'alter @V_{pin}[pulse] = [ 0 {v:g} {EDGE_NS}n {r:.6g}n {r:.6g}n {hold:.6g}n {4 * hold:.6g}n ]',
@@ -351,7 +371,13 @@ class Bench:
             got = {k: float(m[1]) for k, m in got.items()}
             settled = (abs(got['s0'] - (v if positive else 0)) < 0.1 * v
                        and abs(got['s1'] - (0 if positive else v)) < 0.1 * v)
-            if not settled or min(got['d0'], got['t0'], got['d1'], got['t1']) <= 0:
+            # A delay may be negative (a slow input ramp with a small load: the output
+            # crosses its threshold before the input crosses its own; 238 entries of the HD
+            # TT Liberty are), but the output may not move before the input ramp starts.
+            r = self.ramp(slew) * 1e-9
+            earliest = {0: -r * s['input_threshold_pct_rise'] / 100, 1: -r * s['input_threshold_pct_fall'] / 100}
+            if (not settled or min(got['t0'], got['t1']) <= 0
+                    or got['d0'] <= earliest[0] or got['d1'] <= earliest[1]):
                 raise RuntimeError(f'{tag}: did not switch cleanly at slew {slew} ns, load {load} pF: {got}')
             rise_first = positive
             rows.append({'slew_ns': slew, 'load_pf': load,
@@ -594,6 +620,11 @@ def main():
             liberty_text(name, setup, report['simulator'], area, [p for p in inputs if p in caps],
                          output, function, caps, timing))
         report['liberty'] = str(args.out.with_suffix('.lib'))
+        # Table 4 'Parasitics': the RC netlist of this extraction (the same Magic flow as
+        # verify_lvs.py uses on generated cells), kept for compare_hd.py.
+        shutil.copyfile(pex, args.out.with_suffix('.pex.spice'))
+        report['rc_netlist'] = str(args.out.with_suffix('.pex.spice'))
+        report['extended_windows_ns'] = dict(sorted(bench.extended.items()))
         report['passed'] = True
     except (OSError, KeyError, ValueError, RuntimeError, TypeError) as exc:
         report['error'] = f'{type(exc).__name__}: {exc}'

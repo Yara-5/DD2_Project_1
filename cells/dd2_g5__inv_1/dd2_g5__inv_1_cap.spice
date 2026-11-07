@@ -1,0 +1,21 @@
+* NGSPICE file created from dd2_g5__inv_1.ext - technology: sky130A
+
+.subckt dd2_g5__inv_1 A VGND VNB VPB VPWR Y
+X0 Y A VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.26 pd=2.52 as=0.26 ps=2.52 w=1 l=0.15
+X1 Y A VGND VNB sky130_fd_pr__nfet_01v8 ad=0.169 pd=1.82 as=0.169 ps=1.82 w=0.65 l=0.15
+C0 VGND Y 0.02402f
+C1 A VPWR 0.02077f
+C2 VGND A 0.0214f
+C3 VPB Y 0.0158f
+C4 VPB A 0.03665f
+C5 VGND VPWR 0.02291f
+C6 A Y 0.02628f
+C7 VPB VPWR 0.06396f
+C8 VGND VPB 0.01454f
+C9 VPWR Y 0.02047f
+C10 VGND VNB 0.23618f
+C11 Y VNB 0.14527f
+C12 VPWR VNB 0.25439f
+C13 VPB VNB 0.33898f
+.ends
+

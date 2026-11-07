@@ -1,0 +1,19 @@
+library (dd2_functional) {
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  current_unit : "1mA";
+  capacitive_load_unit (1, pf);
+  cell (dd2_g5__nand2_1) {
+    area : 0.0;
+    pin (A) {
+      direction : input;
+    }
+    pin (B) {
+      direction : input;
+    }
+    pin (Y) {
+      direction : output;
+      function : "(!A & !B) | (A & !B) | (!A & B)";
+    }
+  }
+}

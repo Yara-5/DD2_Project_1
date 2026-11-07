@@ -129,6 +129,37 @@ def path_segments(euler_paths):
     return {kind: [p] if isinstance(p, dict) else list(p) for kind, p in euler_paths.items()}
 
 
+def strip_columns(segment):
+    """Columns of a row segment that have diffusion in that row: a transistor, or a node
+    carried on under a column whose transistor is in the other row only (folding)."""
+    nodes = segment['nodes']
+    return [i for i in range(len(segment['devices'])) if nodes[i] is not None and nodes[i + 1] is not None]
+
+
+def node_positions(segment):
+    """Node positions of a row segment that are diffusion regions of their own: a node
+    carried on under a column without a transistor is the region of the position
+    before it, so it is contacted (and counted) once."""
+    keep = []
+    for k, net in enumerate(segment['nodes']):
+        if net is None:
+            continue
+        if k > 0 and segment['devices'][k - 1] is None and segment['nodes'][k - 1] == net:
+            continue
+        keep.append(k)
+    return keep
+
+
+def column_devices(rows, by_id):
+    """Per column, left to right: (a transistor on its gate, has NMOS, has PMOS)."""
+    out = []
+    for s in range(len(rows['nmos'])):
+        for i in range(len(rows['nmos'][s]['devices'])):
+            n, p = rows['nmos'][s]['devices'][i], rows['pmos'][s]['devices'][i]
+            out.append((by_id[n if n is not None else p], n is not None, p is not None))
+    return out
+
+
 def validate(spec, frame, r, rows):
     """Validate the supplied devices and Euler paths; do not search for an Euler path."""
     if frame.get('units') != 'um' or '_contract' not in frame or abs(frame['grid']-r['grid'])>1e-9:
@@ -168,7 +199,17 @@ def validate(spec, frame, r, rows):
             seg_ids, nodes = segment['devices'], segment['nodes']
             if not seg_ids or len(nodes) != len(seg_ids) + 1:
                 raise ValueError(f'{kind}: every Euler path segment needs n devices and n+1 nodes')
+            present = [k for k, n in enumerate(nodes) if n is not None]
+            if present and present != list(range(present[0], present[-1] + 1)):
+                raise ValueError(f'{kind}: a row strip must be contiguous within its diffusion segment')
             for i, identifier in enumerate(seg_ids):
+                if identifier is None:
+                    # Folding: a column whose transistor is in the other row only.
+                    if nodes[i] is not None and nodes[i + 1] is not None and nodes[i] != nodes[i + 1]:
+                        raise ValueError(f'{kind}: a column without a transistor must carry one node on')
+                    continue
+                if nodes[i] is None or nodes[i + 1] is None:
+                    raise ValueError(f'{identifier}: a transistor needs diffusion on both sides')
                 d = by_id[identifier]
                 if d['type'] != kind or d['model'] != model or d['bulk'] != bulk:
                     raise ValueError(f'{identifier}: unsupported type/model/bulk for this row of the HD frame')
@@ -187,17 +228,20 @@ def validate(spec, frame, r, rows):
                 if abs(w / r['grid'] - round(w / r['grid'])) > 1e-7:
                     raise ValueError('Supplied widths must lie on the configured manufacturing grid')
                 widths.append(w)
-            ids += seg_ids
+            ids += [x for x in seg_ids if x is not None]
         if len(set(ids)) != len(ids) or set(ids) != {d['id'] for d in devices if d['type'] == kind}:
             raise ValueError(f'{kind}: the Euler path must traverse every device of this row exactly once')
-        # Uniform rows keep every diffusion strip a simple rectangle.
-        # A stepped-diffusion algorithm must be added before relaxing this.
-        if max(widths) - min(widths) > 1e-9:
-            raise ValueError(f'{kind}: unequal finger widths need stepped diffusion, not implemented yet')
-        gate_orders.append([by_id[x]['gate'] for x in ids])
-    if gate_orders[0] != gate_orders[1]:
-        raise ValueError('Supplied Euler paths must have identical gate order for common poly columns')
-    if not set(spec['inputs']) <= set(gate_orders[0]):
+        # Unequal widths in one strip are drawn as a stepped strip (see plan_geometry).
+    # Every column is one poly gate: a transistor in at least one row, one gate net.
+    for s in range(len(rows['nmos'])):
+        for i in range(len(rows['nmos'][s]['devices'])):
+            present = [rows[k][s]['devices'][i] for k in rows if rows[k][s]['devices'][i] is not None]
+            if not present:
+                raise ValueError('Every poly column needs a transistor in at least one row')
+            if len({by_id[x]['gate'] for x in present}) != 1:
+                raise ValueError('Supplied Euler paths must have identical gate order for common poly columns')
+            gate_orders.append(by_id[present[0]]['gate'])
+    if not set(spec['inputs']) <= set(gate_orders):
         raise ValueError('Every declared input must drive at least one gate')
     return by_id
 
@@ -208,10 +252,11 @@ def contacted_nodes(spec, rows):
     Supplies, the output, stage outputs that drive gates and nets that appear more
     than once need one; a unique internal shared-diffusion node does not.
     """
-    counts = Counter(node for segments in rows.values() for seg in segments for node in seg['nodes'])
+    counts = Counter(seg['nodes'][k] for segments in rows.values() for seg in segments
+                     for k in node_positions(seg))
     exposed = {*spec['inputs'], spec['output'], 'VPWR', 'VGND'} | {d['gate'] for d in spec['devices']}
     return {(kind, s, k) for kind, segments in rows.items() for s, seg in enumerate(segments)
-            for k, net in enumerate(seg['nodes']) if counts[net] > 1 or net in exposed}
+            for k in node_positions(seg) if counts[seg['nodes'][k]] > 1 or seg['nodes'][k] in exposed}
 
 
 def derive_dimensions(spec, frame, r, by_id, rows, channels=(), policies=None, extra_sites=0):
@@ -297,6 +342,12 @@ def derive_dimensions(spec, frame, r, by_id, rows, channels=(), policies=None, e
             contacted = any((kind, s0, node) in contacts for kind in rows)
             key = 'diffusion_contact_between_gates' if contacted else 'poly_stripe_spacing'
             bounds[key] = pitch_bounds[key]
+            # A stepped strip: the wider transistor's diffusion runs poly.7 past its
+            # gate and stops poly.4 short of the narrower one's gate.
+            pair_ids = [(rows[kind][s0]['devices'][i0], rows[kind][s0]['devices'][i1]) for kind in rows]
+            if any(a is not None and b is not None and abs(by_id[a]['w_um'] - by_id[b]['w_um']) > 1e-9
+                   for a, b in pair_ids):
+                bounds['diffusion_step'] = l + r['diff_end_extension'] + r['poly_diff_space']
         else:
             bounds['diffusion_break'] = 2 * end + gap + l
         bounds['poly_pad_spacing'] = right_ext(a) - left_ext(b) + r['poly_space']
@@ -358,6 +409,7 @@ def derive_dimensions(spec, frame, r, by_id, rows, channels=(), policies=None, e
     gates = [round(x + shift, 9) for x in gates]
 
     active, contacts_x, column = [], [], 0
+    row_active, row_nodes_x = {k: [] for k in rows}, {k: [] for k in rows}
     for s, segment in enumerate(rows['nmos']):
         n = len(segment['devices'])
         seg_gates = gates[column:column + n]
@@ -366,6 +418,22 @@ def derive_dimensions(spec, frame, r, by_id, rows, channels=(), policies=None, e
         contacts_x.append([round(left + contact_inset_x, 9)]
                           + [round((seg_gates[i] + seg_gates[i + 1]) / 2, 9) for i in range(n - 1)]
                           + [round(right - contact_inset_x, 9)])
+        # Per row: its strip may start or end inside the segment (folding); its ends
+        # then sit poly.7 / contact-fit past its own first and last gates.
+        for kind in rows:
+            strip = strip_columns(rows[kind][s])
+            if not strip:
+                row_active[kind].append(None)
+                row_nodes_x[kind].append([None] * (n + 1))
+                continue
+            a, b = strip[0], strip[-1]
+            lo, hi = round(seg_gates[a] - l / 2 - end, 9), round(seg_gates[b] + l / 2 + end, 9)
+            row_active[kind].append([lo, hi])
+            xs = [None] * (n + 1)
+            xs[a], xs[b + 1] = round(lo + contact_inset_x, 9), round(hi - contact_inset_x, 9)
+            for k in range(a + 1, b + 1):
+                xs[k] = round((seg_gates[k - 1] + seg_gates[k]) / 2, 9)
+            row_nodes_x[kind].append(xs)
         column += n
     return {
         'gate_length_um': l,
@@ -384,6 +452,7 @@ def derive_dimensions(spec, frame, r, by_id, rows, channels=(), policies=None, e
         'diffusion_segments': len(active),
         'active_x_um': active, 'centering_shift_um': round(shift, 9),
         'gate_x_um': gates, 'diffusion_node_x_um': contacts_x,
+        'row_active_x_um': row_active, 'row_node_x_um': row_nodes_x,
         'raw_width_um': round(raw_width, 9), 'minimum_width_sites': sites - extra_sites,
         'width_sites': sites,
         'formulas': {
@@ -434,15 +503,49 @@ def plan_geometry(spec, frame, r, dim, by_id, sites, rows):
     # Across a contact: licon.5c from the strip's top and bottom.
     inset = r['licon_diff_enclosure'] + r['licon_size'] / 2
     for kind in ('nmos', 'pmos'):
-        w = by_id[rows[kind][0]['devices'][0]]['w_um']
         band = frame[f'{kind}_band']
-        bottom, top = (band[0], band[0]+w) if kind == 'nmos' else (band[1]-w, band[1])
+        # Every strip is aligned to the band edge on the rail side, as in HD.
+        span = lambda w: (band[0], round(band[0] + w, 9)) if kind == 'nmos' else (round(band[1] - w, 9), band[1])
         column = 0
         for s, segment in enumerate(rows[kind]):
-            active_left, active_right = dim['active_x_um'][s]
-            rect('diff', (active_left, bottom, active_right, top))
-            for i, identifier in enumerate(segment['devices']):
+            ids = segment['devices']
+            xs = dim['gate_x_um'][column:column + len(ids)]
+            strip = strip_columns(segment)
+            if not strip:
+                column += len(ids)
+                continue
+            active_left, active_right = dim['row_active_x_um'][kind][s]
+            # Width of each strip column: its transistor's W; under a column without one
+            # (folding), the narrower of the nearest transistors on either side.
+            ws = {i: by_id[ids[i]]['w_um'] for i in strip if ids[i] is not None}
+            for i in strip:
+                if ids[i] is None:
+                    near = [ws[j] for j in (max((j for j in ws if j < i), default=None),
+                                            min((j for j in ws if j > i), default=None)) if j is not None]
+                    ws[i] = min(near)
+            # One rectangle per column. Towards an equal or wider neighbour it runs to
+            # that neighbour's gate centre (inside the neighbour's strip); towards a
+            # narrower one it stops poly.7 past its own gate (a stepped strip, as HD's
+            # o21ai_1), which the 'diffusion_step' pitch keeps poly.4 from that gate.
+            half_l = dim['gate_length_um'] / 2
+            for i in strip:
+                x, w = xs[i], ws[i]
+                def reach(j, sign):
+                    if j not in ws:
+                        return active_left if sign < 0 else active_right
+                    if ws[j] >= w - 1e-9:
+                        return xs[j]
+                    return round(x + sign * (half_l + r['diff_end_extension']), 9)
+                rect('diff', (reach(i - 1, -1), span(w)[0], reach(i + 1, 1), span(w)[1]))
+            # The y range a node's contact may use: inside both neighbours' diffusion.
+            def node_span(k):
+                near = [ws[j] for j in (k - 1, k) if j in ws]
+                return span(min(near))
+            for i, identifier in enumerate(ids):
+                if identifier is None:
+                    continue
                 d, x = by_id[identifier], dim['gate_x_um'][column + i]
+                bottom, top = span(d['w_um'])
                 devices.append({**d, 'gate_x_um': x, 'diffusion_y_um': [bottom, top], 'segment': s,
                                 'left_net': segment['nodes'][i], 'right_net': segment['nodes'][i+1],
                                 # BSIM4 SA/SB: gate edge to the end of its own diffusion strip.
@@ -451,10 +554,11 @@ def plan_geometry(spec, frame, r, dim, by_id, sites, rows):
                                     'right': round(active_right-x-d['l_um']/2, 9),
                                 }})
             column += len(segment['devices'])
-            for k, (x, net) in enumerate(zip(dim['diffusion_node_x_um'][s], segment['nodes'])):
+            for k, (x, net) in enumerate(zip(dim['row_node_x_um'][kind][s], segment['nodes'])):
                 # A unique internal shared-diffusion node needs no contact or wire.
-                if (kind, s, k) not in contacted:
+                if net is None or (kind, s, k) not in contacted:
                     continue
+                bottom, top = node_span(k)
                 supply = net == ('VGND' if kind == 'nmos' else 'VPWR')
                 wide = r['licon_size'] + 2 * r['li_contact_enclosure']
                 if supply:
@@ -487,10 +591,10 @@ def plan_geometry(spec, frame, r, dim, by_id, sites, rows):
                 square('licon', x, y, r['licon_size'], net)
                 contacts.append({'type': 'diffusion', 'net': net, 'point_um': [x, round(y, 9)], 'row': kind})
 
-    n_bottom = next(d['diffusion_y_um'][0] for d in devices if d['type']=='nmos')
-    p_top = next(d['diffusion_y_um'][1] for d in devices if d['type']=='pmos')
-    n_top = next(d['diffusion_y_um'][1] for d in devices if d['type']=='nmos')
-    p_bottom = next(d['diffusion_y_um'][0] for d in devices if d['type']=='pmos')
+    n_bottom = min(d['diffusion_y_um'][0] for d in devices if d['type']=='nmos')
+    p_top = max(d['diffusion_y_um'][1] for d in devices if d['type']=='pmos')
+    n_top = max(d['diffusion_y_um'][1] for d in devices if d['type']=='nmos')
+    p_bottom = min(d['diffusion_y_um'][0] for d in devices if d['type']=='pmos')
     # The npc band's position decides these; check them rather than assume them.
     for name, value, rule in (
             ('poly pad to NMOS diffusion', gate_y - pad_h/2 - n_top, 'poly_diff_space'),
@@ -499,11 +603,14 @@ def plan_geometry(spec, frame, r, dim, by_id, sites, rows):
             ('poly contact to PMOS diffusion', p_bottom - gate_y - r['licon_size']/2, 'poly_contact_pdiff_space')):
         if value < r[rule] - 1e-9:
             raise ValueError(f'{name} is {value:.3f} um, below {rule} ({r[rule]} um)')
-    nmos_columns = [identifier for seg in rows['nmos'] for identifier in seg['devices']]
-    for x, c, identifier in zip(dim['gate_x_um'], dim['gate_contact_offset_um'], nmos_columns):
-        d, net = by_id[identifier], by_id[identifier]['gate']
+    for x, c, (d, has_n, has_p) in zip(dim['gate_x_um'], dim['gate_contact_offset_um'], column_devices(rows, by_id)):
+        net = d['gate']
         half = d['l_um']/2
-        rect('poly', (x-half, n_bottom-r['poly_endcap'], x+half, p_top+r['poly_endcap']), net)
+        # A column with a transistor in one row only (folding) stops at its contact pad
+        # on the other side, so it makes no transistor in that row's diffusion.
+        bottom = n_bottom-r['poly_endcap'] if has_n else gate_y-pad_h/2
+        top = p_top+r['poly_endcap'] if has_p else gate_y+pad_h/2
+        rect('poly', (x-half, bottom, x+half, top), net)
         # The pad encloses its contact and reaches its stripe.
         rect('poly', (min(x+c-pad_w/2, x-half), gate_y-pad_h/2, max(x+c+pad_w/2, x+half), gate_y+pad_h/2), net)
         square('licon', x+c, gate_y, r['licon_size'], net)
@@ -557,7 +664,7 @@ def rail_side_contacts(rows, contacted, dim, r):
     for s, seg in enumerate(rows['pmos']):
         for k, net in enumerate(seg['nodes']):
             if ('pmos', s, k) in contacted:
-                sequence.append(((s, k), dim['diffusion_node_x_um'][s][k], net))
+                sequence.append(((s, k), dim['row_node_x_um']['pmos'][s][k], net))
     # Two wide landings side by side: li.3 between them.
     apart = r['licon_size'] + 2 * r['li_contact_enclosure'] + r['li_space']
     chosen = {}
@@ -587,6 +694,8 @@ def channel_candidates(spec, rows):
     for kind, segments in rows.items():
         for s, segment in enumerate(segments):
             for k, net in enumerate(segment['nodes']):
+                if net is None:
+                    continue
                 kinds[net].add(kind)
                 gaps[net].add((s, k))          # node k sits between gates k-1 and k
                 every.add((s, k))
@@ -597,7 +706,7 @@ def channel_candidates(spec, rows):
     return near + sorted(every - set(near)) if nets else []
 
 
-def route_li1(plan, spec, frame, r, policies, allow_met1=False):
+def route_li1(plan, spec, frame, r, policies, allow_met1=False, rip_up=False):
     """Deterministic Manhattan A* on li1, with met1 through mcon only where li1 cannot pass.
 
     Every terminal is on li1. A net may step onto met1 through an mcon via; a met1
@@ -645,14 +754,36 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
                 grid[iy * columns + x0:iy * columns + x1 + 1] = ones
         return grid
 
-    def search(start, goal, net, allow_met1):
-        others = {layer: [b for owner, b in occupied[layer] if owner != net] for layer in occupied}
+    def footprint(boxes):
+        """Where another net's wire centre or via may not go, near these shapes."""
+        return {'li1': raster(boxes['li1'], space['li1'] + wire['li1'] / 2),
+                'met1': raster(boxes['met1'], space['met1'] + wire['met1'] / 2),
+                'pad': raster(boxes['met1'], space['met1'] + met1_pad / 2),
+                'via': raster(boxes['mcon'], r['mcon_space'] + r['mcon_size'] / 2)}
+
+    def union(grids):
+        """Byte grids OR-ed together (one C-level operation per grid)."""
+        size = columns * (ny + 1)
+        total = 0
+        for g in grids:
+            total |= int.from_bytes(g, 'little')
+        return bytearray(total.to_bytes(size, 'little'))
+
+    def search(start, goal, net, allow_met1, hard=None, soft=None, penalty=0, no_via=frozenset()):
+        """A* from start to goal. hard: {layer: [(net, box)], 'mcon': [box]} replaces the
+        shapes routed so far (rip-up mode); soft: {net: footprint} of other nets' routed
+        wires, which the path may cross at `penalty` per grid step. Returns the path, or
+        (path, nets crossed) when soft is given."""
+        source = hard if hard is not None else occupied
+        others = {layer: [b for owner, b in source[layer] if owner != net] for layer in ('li1', 'met1')}
         blocked = {'li1': raster(others['li1'], space['li1'] + wire['li1'] / 2),
                    'met1': raster(others['met1'], space['met1'] + wire['met1'] / 2)}
         layers = ('li1', 'met1') if allow_met1 and net not in rail_y else ('li1',)
         if len(layers) == 2:
             pad_blocked = raster(others['met1'], space['met1'] + met1_pad / 2)
-            via_blocked = raster(mcons, r['mcon_space'] + r['mcon_size'] / 2)
+            via_blocked = raster(hard['mcon'] if hard is not None else mcons, r['mcon_space'] + r['mcon_size'] / 2)
+        soft = soft or {}
+        cross = {k: union([f[k] for f in soft.values()]) for k in ('li1', 'met1', 'pad', 'via')} if soft else None
         # Half the spacing at the cell edge: every HD neighbour keeps the other half.
         edge = r['li_space'] / 2 if net not in rail_y else 0
 
@@ -666,7 +797,8 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
 
         def via_ok(ix, iy):
             return (allowed(ix, iy, 'li1') and inside(ix, iy, 'met1')
-                    and not pad_blocked[iy * columns + ix] and not via_blocked[iy * columns + ix])
+                    and not pad_blocked[iy * columns + ix] and not via_blocked[iy * columns + ix]
+                    and (ix, iy) not in no_via)
 
         start3, goal3 = (*start, 'li1'), (*goal, 'li1')
         if not allowed(*start3) or not allowed(*goal3):
@@ -689,10 +821,44 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
             if len(layers) == 2 and via_ok(ix, iy):
                 moves.append(((ix, iy, 'met1' if layer == 'li1' else 'li1'), via_cost))
             for nxt, c in moves:
+                if cross is not None:
+                    k = nxt[1] * columns + nxt[0]
+                    if nxt[2] != layer:      # a via: its pads on both layers and its cut
+                        c += penalty * (cross['li1'][k] + cross['pad'][k] + cross['via'][k])
+                    else:
+                        c += penalty * cross[layer][k]
                 if cost + c < best.get(nxt, math.inf):
                     best[nxt] = cost + c; parent[nxt] = p
                     heapq.heappush(queue, (cost + c + heuristic(nxt), cost + c, next(serial), nxt))
         raise ValueError(f"No {'/'.join(layers)} route found for {net} at this width")
+
+    def spaced_search(*args, **kwargs):
+        """search, but a path may not put two of its own vias closer than mcon.2 allows
+        (the rasters only hold vias laid before this path): the later via's point is
+        forbidden and the search repeated."""
+        pitch = r['mcon_size'] + r['mcon_space']
+        no_via = set()
+        while True:
+            path = search(*args, **kwargs, no_via=frozenset(no_via))
+            vias = [(b[0], b[1]) for a, b in zip(path, path[1:]) if a[2] != b[2]]
+            close = [v for i, u in enumerate(vias) for v in vias[i + 1:]
+                     if abs(u[0] - v[0]) * step < pitch - 1e-9 and abs(u[1] - v[1]) * step < pitch - 1e-9]
+            if not close:
+                return path
+            no_via.add(close[0])
+            if len(no_via) > int(policies['rip_up_limit']):
+                raise ValueError(f'no route for {args[2]} with its vias spaced')
+
+    def crossed(path, soft):
+        """The nets whose routed wires a soft path comes too close to."""
+        hit = set()
+        for i, (ix, iy, layer) in enumerate(path):
+            k = iy * columns + ix
+            via = i > 0 and path[i - 1][2] != layer
+            for other, f in soft.items():
+                if f[layer][k] or (via and (f['li1'][k] or f['pad'][k] or f['via'][k])):
+                    hit.add(other)
+        return hit
 
     def connections(net):
         """(origin, target) pairs to route; origins come from what is already connected."""
@@ -713,7 +879,16 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
         return [round(v, 9) for v in (min(a[0], b[0]) - w/2, min(a[1], b[1]) - w/2,
                                       max(a[0], b[0]) + w/2, max(a[1], b[1]) + w/2)]
 
-    def lay(net, connected, path):
+    def lay(net, connected, path, sink=None):
+        """Add the path's wires and vias: to the plan, or to a rip-up record (sink)."""
+        if sink is not None:
+            shapes, routes, vias = sink['shapes'], sink['routes'], sink['vias']
+            def keep(layer, box):
+                sink[layer].append(box)
+        else:
+            shapes, routes, vias = plan['shapes'], plan['routes'], plan.setdefault('vias', [])
+            def keep(layer, box):
+                (mcons if layer == 'mcon' else occupied[layer]).append(box if layer == 'mcon' else (net, box))
         # Split the path into runs on one layer; a layer change is an mcon via.
         runs, current = [], [path[0]]
         for p in path[1:]:
@@ -722,12 +897,9 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
                 x, y = p[0]*step, p[1]*step
                 for layer, size in (('mcon', r['mcon_size']), ('li1', r['mcon_size']), ('met1', met1_pad)):
                     box = box_at((x, y), (x, y), size)
-                    plan['shapes'].append({'layer': layer, 'box': box, 'net': net})
-                    if layer == 'mcon':
-                        mcons.append(box)
-                    else:
-                        occupied[layer].append((net, box))
-                plan.setdefault('vias', []).append({'net': net, 'point_um': [round(x, 9), round(y, 9)]})
+                    shapes.append({'layer': layer, 'box': box, 'net': net})
+                    keep(layer, box)
+                vias.append({'net': net, 'point_um': [round(x, 9), round(y, 9)]})
             else:
                 current.append(p)
         runs.append(current)
@@ -744,10 +916,10 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
             physical = [(round(x*step, 9), round(y*step, 9)) for x, y, _ in turns]
             for a, b in zip(physical, physical[1:]):
                 box = box_at(a, b, wire[layer])
-                plan['shapes'].append({'layer': layer, 'box': box, 'net': net})
-                occupied[layer].append((net, box))
+                shapes.append({'layer': layer, 'box': box, 'net': net})
+                keep(layer, box)
             if len(physical) > 1:
-                plan['routes'].append({'net': net, 'layer': layer, 'points_um': physical})
+                routes.append({'net': net, 'layer': layer, 'points_um': physical})
         connected.extend((ix, iy) for ix, iy, layer in path if layer == 'li1')
 
     def route_all(order):
@@ -760,8 +932,52 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
                 except ValueError:
                     if not allow_met1:
                         raise
-                    path = search(origin, target, net, True)
+                    path = spaced_search(origin, target, net, True)
                 lay(net, connected, path)
+
+    def rip_up_and_reroute(order, first_error):
+        """Rip-up and reroute, used only when every net order above failed. The supply
+        stubs are laid first and kept. Each signal net is then routed with the other
+        signal nets' wires soft: the path may cross them at a cost per grid step that
+        grows with every rip-up, and each net it crosses is removed and queued again.
+        Fixed shapes (landings, rails, supply stubs) stay hard. Gives up after
+        policies['rip_up_limit'] rip-ups."""
+        plan['shapes'][:], plan['routes'][:] = saved[0], []
+        plan['vias'] = []
+        for k in occupied:
+            occupied[k][:] = saved[1][k]
+        mcons[:] = saved[2]
+        route_all(['VPWR', 'VGND'])
+        hard = {'li1': list(occupied['li1']), 'met1': list(occupied['met1']), 'mcon': list(mcons)}
+        limit = int(policies['rip_up_limit'])
+        base_penalty = float(policies['rip_up_penalty'])
+        records, prints, queue, rips = {}, {}, list(order), 0
+        while queue:
+            net = queue.pop(0)
+            record = {'shapes': [], 'routes': [], 'vias': [], 'li1': [], 'met1': [], 'mcon': []}
+            for connected, target in connections(net):
+                origin = min(connected, key=lambda p: abs(p[0]-target[0])+abs(p[1]-target[1]))
+                soft = {n: f for n, f in prints.items() if n != net}
+                try:
+                    # The net's own vias from its earlier connections are hard too (mcon.2).
+                    own = dict(hard, mcon=hard['mcon'] + record['mcon'])
+                    path = spaced_search(origin, target, net, allow_met1, own, soft, base_penalty * (1 + rips))
+                except ValueError as exc:
+                    raise ValueError(f'{exc} (rip-up and reroute; first failure: {first_error})') from None
+                for other in sorted(crossed(path, soft)):
+                    del records[other], prints[other]
+                    queue.append(other)
+                    rips += 1
+                lay(net, connected, path, record)
+            records[net], prints[net] = record, footprint(record)
+            if rips > limit:
+                raise ValueError(f'rip-up and reroute gave up after {rips} rip-ups (first failure: {first_error})')
+        for net in order:
+            plan['shapes'].extend(records[net]['shapes'])
+            plan['routes'].extend(records[net]['routes'])
+            plan['vias'].extend(records[net]['vias'])
+        plan['routing_order'] = order
+        plan['rip_ups'] = rips
 
     # Nets are routed one at a time, so an early net can wall off a later one. Try a
     # few deterministic orders (supply stubs always first) before giving up.
@@ -794,7 +1010,10 @@ def route_li1(plan, spec, frame, r, policies, allow_met1=False):
         if result[0] == 0:
             break
     if best is None or best[0] is None:
-        raise best[1]
+        if not rip_up:
+            raise best[1]
+        rip_up_and_reroute(orders[0], best[1])
+        return
     _, plan['shapes'][:], plan['routes'][:], plan['vias'], plan['routing_order'] = best
 
 
@@ -875,15 +1094,28 @@ def prepare_layout(spec,rules_document,frame):
     stage_outputs={n for n in stage_outputs if n not in ('VPWR','VGND') and
                    {d['type'] for d in spec['devices'] if n in (d['source'],d['drain'])}=={'nmos','pmos'}}
     multi_stage=len(stage_outputs)>1
-    # Try, in order, for each placement euler.py ranked: li1 only with no channel, with
-    # each candidate channel, with all of them; then, in a multi-stage cell, li1 + met1;
-    # then a wider cell. A single-stage cell gets met1 only in a last pass after every
-    # placement failed on li1: handout Table 3 keeps met1 for the rails there, so the
-    # plan records 'met1_in_single_stage_cell' and the HD comparison flags it.
+    # Try, for each placement euler.py ranked: li1 only with no channel, with each
+    # candidate channel, with all of them, then a wider cell; narrowest first, first
+    # without and then with rip-up and reroute. Only when every li1-only attempt has
+    # failed does a multi-stage cell get li1 + met1 (handout Table 1: met1 "inside a
+    # multi-stage cell only where li1 cannot route"; Table 4: "li1 inside"). A
+    # single-stage cell gets met1 only in a last pass: handout Table 3 keeps met1 for the
+    # rails there, so the plan records 'met1_in_single_stage_cell' and the HD comparison
+    # flags it.
     failures=[]
     extra_sites=int(policies['maximum_extra_sites'])
     placements=[spec['euler_paths'],*spec.get('alternative_euler_paths',[])]
-    def attempts():
+    def attempts(last_resort):
+        if last_resort:
+            if not multi_stage:
+                for index,euler_paths in enumerate(placements):
+                    rows=path_segments(euler_paths)
+                    every=tuple(channel_candidates(spec,rows))
+                    for channels,extra in dict.fromkeys([((),0),(every,0),(every,min(2,extra_sites))]):
+                        yield index,euler_paths,rows,channels,True,extra
+            return
+        # Every placement at its own width first; extra sites only after all have failed
+        # (HD nand2_1's mirror image routes at 3 sites where the first placement does not).
         for index,euler_paths in enumerate(placements):
             rows=path_segments(euler_paths)
             candidates=channel_candidates(spec,rows)
@@ -894,24 +1126,43 @@ def prepare_layout(spec,rules_document,frame):
             if multi_stage:
                 for channels in dict.fromkeys([(),every]):
                     yield index,euler_paths,rows,channels,True,0
-            yield index,euler_paths,rows,every,multi_stage,min(2,extra_sites)
-        if not multi_stage:
-            for index,euler_paths in enumerate(placements):
-                rows=path_segments(euler_paths)
-                every=tuple(channel_candidates(spec,rows))
-                for channels,extra in dict.fromkeys([((),0),(every,0),(every,min(2,extra_sites))]):
-                    yield index,euler_paths,rows,channels,True,extra
-    for index,euler_paths,rows,channels,allow_met1,extra in attempts():
+        for index,euler_paths in enumerate(placements):
+            rows=path_segments(euler_paths)
+            every=tuple(channel_candidates(spec,rows))
+            yield index,euler_paths,rows,every,False,min(2,extra_sites)
+            if multi_stage:
+                yield index,euler_paths,rows,every,True,min(2,extra_sites)
+    # Tiers, each first without and then with rip-up and reroute: the li1-only attempts
+    # above, then the li1 + met1 ones (multi-stage cells), then (single-stage cells only)
+    # met1 as a last resort.
+    def width_of(attempt):
+        """The width an attempt would get (channels and extra sites included)."""
+        index,euler_paths,rows,channels,allow_met1,extra=attempt
+        try:
+            by_id=validate(spec,frame,r,rows)
+            return derive_dimensions(spec,frame,r,by_id,rows,channels,policies,extra)['width_sites']
+        except ValueError:
+            return math.inf
+    def tiers():
+        normal=list(attempts(False))
+        groups=[[a for a in normal if not a[4]],[a for a in normal if a[4]],list(attempts(True))]
+        for group in groups:
+            # Narrowest first; equal widths keep the order above.
+            ordered=sorted(group,key=width_of)
+            for rip_up in (False,True):
+                for attempt in ordered:
+                    yield (*attempt,rip_up)
+    for index,euler_paths,rows,channels,allow_met1,extra,rip_up in tiers():
         by_id=validate(spec,frame,r,rows)
         dimensions=derive_dimensions(spec,frame,r,by_id,rows,channels,policies,extra)
         plan=plan_geometry(spec,frame,r,dimensions,by_id,dimensions['width_sites'],rows)
         try:
-            route_li1(plan,spec,frame,r,policies,allow_met1)
+            route_li1(plan,spec,frame,r,policies,allow_met1,rip_up)
             fill_li1_notches(plan,r)
             break
         except ValueError as error:
             failures.append({'placement':index,'channels':list(channels),'met1':allow_met1,
-                             'extra_sites':extra,'reason':str(error)})
+                             'extra_sites':extra,'rip_up':rip_up,'reason':str(error)})
     else:raise ValueError('Routing failed for every placement, channel set and allowed width: '+json.dumps(failures))
     plan['met1_in_single_stage_cell']=bool(plan.get('vias')) and not multi_stage
     spec=dict(spec,euler_paths=euler_paths,placement_used=index)

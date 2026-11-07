@@ -1,0 +1,237 @@
+{
+  "schema": "dd2.network.v1",
+  "name": "dd2_g5__nor3_1",
+  "request_id": "T6-03",
+  "inputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "output": "Y",
+  "truth_table": "0x01",
+  "sizing": "hd",
+  "objective": "transistors",
+  "unateness": {
+    "A": "negative",
+    "B": "negative",
+    "C": "negative"
+  },
+  "minimization": {
+    "f": {
+      "minterms": [
+        0
+      ],
+      "prime_implicants": [
+        "!A & !B & !C"
+      ],
+      "essential_prime_implicants": [
+        "!A & !B & !C"
+      ],
+      "minimum_covers": [
+        "!A & !B & !C"
+      ],
+      "terms": 1,
+      "literals": 3
+    },
+    "not_f": {
+      "minterms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "prime_implicants": [
+        "A",
+        "B",
+        "C"
+      ],
+      "essential_prime_implicants": [
+        "A",
+        "B",
+        "C"
+      ],
+      "minimum_covers": [
+        "A | B | C"
+      ],
+      "terms": 3,
+      "literals": 3
+    }
+  },
+  "formula": "Y = !A & !B & !C",
+  "formula_source": "SOP of f",
+  "formulas_considered": 1,
+  "cost": {
+    "inverters": 0,
+    "input_inverters": 0,
+    "output_inverter": false,
+    "stages": 1,
+    "complex_stages": 1,
+    "transistors": 6,
+    "max_series_pull_down": 1,
+    "max_series_pull_up": 3
+  },
+  "stages": [
+    {
+      "output": "Y",
+      "kind": "complex",
+      "form": "dual",
+      "function": "Y = !(A | B | C)",
+      "pull_down": {
+        "op": "parallel",
+        "children": [
+          {
+            "gate": "A"
+          },
+          {
+            "gate": "B"
+          },
+          {
+            "gate": "C"
+          }
+        ]
+      },
+      "pull_up": {
+        "op": "series",
+        "children": [
+          {
+            "gate": "A"
+          },
+          {
+            "gate": "B"
+          },
+          {
+            "gate": "C"
+          }
+        ]
+      },
+      "pull_down_series": 1,
+      "pull_up_series": 3,
+      "transistors": 6
+    }
+  ],
+  "devices": [
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "VGND",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "N2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "VGND",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "N3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "C",
+      "source": "VGND",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "VPWR",
+      "drain": "Y_u1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 3,
+      "fingers": 1
+    },
+    {
+      "id": "P2",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "B",
+      "source": "Y_u1",
+      "drain": "Y_u2",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 3,
+      "fingers": 1
+    },
+    {
+      "id": "P3",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "C",
+      "source": "Y_u2",
+      "drain": "Y",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 3,
+      "fingers": 1
+    }
+  ],
+  "decomposition_tree": {
+    "kind": "op",
+    "op": "and",
+    "stage": "Y",
+    "pull_down": "parallel",
+    "children": [
+      {
+        "kind": "lit",
+        "stage": "Y",
+        "gate": "A",
+        "text": "!A"
+      },
+      {
+        "kind": "lit",
+        "stage": "Y",
+        "gate": "B",
+        "text": "!B"
+      },
+      {
+        "kind": "lit",
+        "stage": "Y",
+        "gate": "C",
+        "text": "!C"
+      }
+    ]
+  },
+  "sizes_from": {
+    "source": "sky130_fd_sc_hd__nor3_1",
+    "note": "every W and L from the installed cell, matched by type and gate pin"
+  }
+}

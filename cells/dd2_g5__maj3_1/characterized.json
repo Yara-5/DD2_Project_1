@@ -1,0 +1,3540 @@
+{
+  "check": "characterization",
+  "passed": true,
+  "cell": "dd2_g5__maj3_1",
+  "inputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "output": "Y",
+  "function": "(A & B) | (C & (A | B))",
+  "setup": {
+    "nom_voltage": 1.8,
+    "nom_temperature": 25.0,
+    "nom_process": 1.0,
+    "slew_derate_from_library": 1.0,
+    "input_threshold_pct_rise": 50.0,
+    "output_threshold_pct_rise": 50.0,
+    "slew_lower_threshold_pct_rise": 20.0,
+    "slew_upper_threshold_pct_rise": 80.0,
+    "input_threshold_pct_fall": 50.0,
+    "output_threshold_pct_fall": 50.0,
+    "slew_lower_threshold_pct_fall": 20.0,
+    "slew_upper_threshold_pct_fall": 80.0,
+    "units": {
+      "time_unit": "1ns",
+      "voltage_unit": "1V",
+      "current_unit": "1mA",
+      "pulling_resistance_unit": "1kohm",
+      "leakage_power_unit": "1nW",
+      "capacitive_load_unit": [
+        1.0,
+        "pf"
+      ]
+    },
+    "library": "sky130_fd_sc_hd__tt_025C_1v80",
+    "operating_conditions": "tt_025C_1v80",
+    "template_cell": "sky130_fd_sc_hd__nand2_1",
+    "table_template": "del_1_7_7",
+    "slews_ns": [
+      0.01,
+      0.0230506,
+      0.0531329,
+      0.122474,
+      0.282311,
+      0.650743,
+      1.5
+    ],
+    "loads_pf": [
+      0.0005,
+      0.00131655,
+      0.00346659,
+      0.00912787,
+      0.0240345,
+      0.0632852,
+      0.166636
+    ]
+  },
+  "index_by_ramp": false,
+  "devices": [
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "x": 3.9450000000000003,
+      "y": 0.23500000000000001,
+      "l": 0.15,
+      "w": 0.65,
+      "gate": "a_267_47",
+      "terminals": [
+        "VGND",
+        "Y"
+      ],
+      "sa_um": 0.26,
+      "sb_um": 0.26
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "x": 3.005,
+      "y": 0.23500000000000001,
+      "l": 0.15,
+      "w": 0.65,
+      "gate": "B",
+      "terminals": [
+        "VGND",
+        "a_49_47"
+      ],
+      "sa_um": 2.76,
+      "sb_um": 0.26
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "x": 2.565,
+      "y": 0.23500000000000001,
+      "l": 0.15,
+      "w": 0.65,
+      "gate": "A",
+      "terminals": [
+        "VGND",
+        "a_49_47"
+      ],
+      "sa_um": 2.32,
+      "sb_um": 0.7
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "x": 1.885,
+      "y": 0.23500000000000001,
+      "l": 0.15,
+      "w": 0.65,
+      "gate": "C",
+      "terminals": [
+        "a_267_47",
+        "a_49_47"
+      ],
+      "sa_um": 1.64,
+      "sb_um": 1.38
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "x": 1.185,
+      "y": 0.23500000000000001,
+      "l": 0.15,
+      "w": 0.65,
+      "gate": "B",
+      "terminals": [
+        "a_131_47",
+        "a_267_47"
+      ],
+      "sa_um": 0.94,
+      "sb_um": 2.08
+    },
+    {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "x": 0.505,
+      "y": 0.23500000000000001,
+      "l": 0.15,
+      "w": 0.65,
+      "gate": "A",
+      "terminals": [
+        "a_131_47",
+        "a_49_47"
+      ],
+      "sa_um": 0.26,
+      "sb_um": 2.76
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "x": 3.9450000000000003,
+      "y": 1.485,
+      "l": 0.15,
+      "w": 1.0,
+      "gate": "a_267_47",
+      "terminals": [
+        "VPWR",
+        "Y"
+      ],
+      "sa_um": 0.26,
+      "sb_um": 0.26
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "x": 3.005,
+      "y": 1.485,
+      "l": 0.15,
+      "w": 1.0,
+      "gate": "B",
+      "terminals": [
+        "VPWR",
+        "a_543_297"
+      ],
+      "sa_um": 2.76,
+      "sb_um": 0.26
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "x": 2.565,
+      "y": 1.485,
+      "l": 0.15,
+      "w": 1.0,
+      "gate": "A",
+      "terminals": [
+        "a_267_47",
+        "a_543_297"
+      ],
+      "sa_um": 2.32,
+      "sb_um": 0.7
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "x": 1.885,
+      "y": 1.485,
+      "l": 0.15,
+      "w": 1.0,
+      "gate": "C",
+      "terminals": [
+        "a_267_47",
+        "a_49_297"
+      ],
+      "sa_um": 1.64,
+      "sb_um": 1.38
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "x": 1.185,
+      "y": 1.485,
+      "l": 0.15,
+      "w": 1.0,
+      "gate": "B",
+      "terminals": [
+        "VPWR",
+        "a_49_297"
+      ],
+      "sa_um": 0.94,
+      "sb_um": 2.08
+    },
+    {
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "x": 0.505,
+      "y": 1.485,
+      "l": 0.15,
+      "w": 1.0,
+      "gate": "A",
+      "terminals": [
+        "VPWR",
+        "a_49_297"
+      ],
+      "sa_um": 0.26,
+      "sb_um": 2.76
+    }
+  ],
+  "simulator": {
+    "image": "dd2-project1-tools",
+    "version": "ngspice-47",
+    "sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660"
+  },
+  "settings": [
+    {
+      "pin": "A",
+      "side": {
+        "B": 0,
+        "C": 1
+      },
+      "sense": "positive_unate",
+      "rows": [
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0820336,
+          "rise_transition": 0.0247168,
+          "cell_fall": 0.18788400000000002,
+          "fall_transition": 0.030515200000000003
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.0897761,
+          "rise_transition": 0.032637000000000006,
+          "cell_fall": 0.195941,
+          "fall_transition": 0.035664600000000005
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.107494,
+          "rise_transition": 0.0530705,
+          "cell_fall": 0.212585,
+          "fall_transition": 0.0472678
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.148768,
+          "rise_transition": 0.107346,
+          "cell_fall": 0.24497,
+          "fall_transition": 0.0737698
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.251173,
+          "rise_transition": 0.25329100000000004,
+          "cell_fall": 0.309554,
+          "fall_transition": 0.13901200000000002
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.51734,
+          "rise_transition": 0.641128,
+          "cell_fall": 0.454903,
+          "fall_transition": 0.315213
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2171299999999998,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.801853,
+          "fall_transition": 0.7982060000000001
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0005,
+          "cell_rise": 0.08696090000000001,
+          "rise_transition": 0.0247145,
+          "cell_fall": 0.191201,
+          "fall_transition": 0.0305134
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.0947029,
+          "rise_transition": 0.032635399999999995,
+          "cell_fall": 0.199247,
+          "fall_transition": 0.0356583
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.112414,
+          "rise_transition": 0.053071700000000006,
+          "cell_fall": 0.215889,
+          "fall_transition": 0.047260699999999996
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.153687,
+          "rise_transition": 0.107348,
+          "cell_fall": 0.248279,
+          "fall_transition": 0.07375860000000001
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.256119,
+          "rise_transition": 0.25329100000000004,
+          "cell_fall": 0.312866,
+          "fall_transition": 0.138992
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.522291,
+          "rise_transition": 0.6411290000000001,
+          "cell_fall": 0.458198,
+          "fall_transition": 0.315166
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2220700000000002,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.806216,
+          "fall_transition": 0.798083
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0973262,
+          "rise_transition": 0.0247105,
+          "cell_fall": 0.200799,
+          "fall_transition": 0.0305101
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.105065,
+          "rise_transition": 0.032636899999999996,
+          "cell_fall": 0.20882699999999998,
+          "fall_transition": 0.0356579
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.12274,
+          "rise_transition": 0.0530794,
+          "cell_fall": 0.225441,
+          "fall_transition": 0.0472601
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.163942,
+          "rise_transition": 0.10735700000000001,
+          "cell_fall": 0.257808,
+          "fall_transition": 0.0737599
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.26639999999999997,
+          "rise_transition": 0.25329199999999996,
+          "cell_fall": 0.322389,
+          "fall_transition": 0.13899
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.5326219999999999,
+          "rise_transition": 0.6411290000000001,
+          "cell_fall": 0.467719,
+          "fall_transition": 0.315159
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.166636,
+          "cell_rise": 1.23241,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.818154,
+          "fall_transition": 0.798028
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0005,
+          "cell_rise": 0.11790300000000001,
+          "rise_transition": 0.0255216,
+          "cell_fall": 0.22717,
+          "fall_transition": 0.030490000000000003
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.125697,
+          "rise_transition": 0.033267500000000005,
+          "cell_fall": 0.23519400000000001,
+          "fall_transition": 0.035636100000000004
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.14338,
+          "rise_transition": 0.0534638,
+          "cell_fall": 0.251789,
+          "fall_transition": 0.0472461
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.184534,
+          "rise_transition": 0.107504,
+          "cell_fall": 0.28411000000000003,
+          "fall_transition": 0.0737665
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.287044,
+          "rise_transition": 0.253316,
+          "cell_fall": 0.348673,
+          "fall_transition": 0.138994
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.55341,
+          "rise_transition": 0.6411290000000001,
+          "cell_fall": 0.49401100000000003,
+          "fall_transition": 0.315157
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.166636,
+          "cell_rise": 1.25328,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.8491219999999999,
+          "fall_transition": 0.797958
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0005,
+          "cell_rise": 0.148616,
+          "rise_transition": 0.029320000000000002,
+          "cell_fall": 0.294431,
+          "fall_transition": 0.0303059
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.157305,
+          "rise_transition": 0.0371531,
+          "cell_fall": 0.30241,
+          "fall_transition": 0.0354895
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.17631000000000002,
+          "rise_transition": 0.056964,
+          "cell_fall": 0.31890999999999997,
+          "fall_transition": 0.0471727
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.21872,
+          "rise_transition": 0.10993800000000001,
+          "cell_fall": 0.351109,
+          "fall_transition": 0.0737656
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.321877,
+          "rise_transition": 0.254127,
+          "cell_fall": 0.41564500000000004,
+          "fall_transition": 0.138991
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.588381,
+          "rise_transition": 0.641145,
+          "cell_fall": 0.561033,
+          "fall_transition": 0.31514600000000004
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.166636,
+          "cell_rise": 1.28837,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.923022,
+          "fall_transition": 0.797863
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0005,
+          "cell_rise": 0.182618,
+          "rise_transition": 0.0365063,
+          "cell_fall": 0.439149,
+          "fall_transition": 0.0361703
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.192891,
+          "rise_transition": 0.044428199999999994,
+          "cell_fall": 0.447981,
+          "fall_transition": 0.04110200000000001
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.214411,
+          "rise_transition": 0.063756,
+          "cell_fall": 0.465701,
+          "fall_transition": 0.0520769
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.259286,
+          "rise_transition": 0.114392,
+          "cell_fall": 0.499284,
+          "fall_transition": 0.0777754
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.363548,
+          "rise_transition": 0.25627900000000003,
+          "cell_fall": 0.565486,
+          "fall_transition": 0.141938
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.631289,
+          "rise_transition": 0.642403,
+          "cell_fall": 0.711577,
+          "fall_transition": 0.316121
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.166636,
+          "cell_rise": 1.33141,
+          "rise_transition": 1.66352,
+          "cell_fall": 1.0790499999999998,
+          "fall_transition": 0.797898
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0005,
+          "cell_rise": 0.192202,
+          "rise_transition": 0.0504013,
+          "cell_fall": 0.6747369999999999,
+          "fall_transition": 0.050558599999999995
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.205928,
+          "rise_transition": 0.0596805,
+          "cell_fall": 0.686052,
+          "fall_transition": 0.056391000000000004
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.233401,
+          "rise_transition": 0.0793827,
+          "cell_fall": 0.708453,
+          "fall_transition": 0.068036
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.284805,
+          "rise_transition": 0.126604,
+          "cell_fall": 0.747935,
+          "fall_transition": 0.0914991
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.392455,
+          "rise_transition": 0.26105,
+          "cell_fall": 0.818559,
+          "fall_transition": 0.15112899999999999
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.660257,
+          "rise_transition": 0.6434920000000001,
+          "cell_fall": 0.967929,
+          "fall_transition": 0.32228300000000004
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.166636,
+          "cell_rise": 1.36197,
+          "rise_transition": 1.6651399999999998,
+          "cell_fall": 1.33957,
+          "fall_transition": 0.801579
+        }
+      ],
+      "capacitance_pf": {
+        "rise_capacitance": 0.004902888888888889,
+        "fall_capacitance": 0.004535222222222222,
+        "rise_until_settled": 0.005109322222222223,
+        "fall_until_settled": 0.005044516666666667
+      }
+    },
+    {
+      "pin": "A",
+      "side": {
+        "B": 1,
+        "C": 0
+      },
+      "sense": "positive_unate",
+      "rows": [
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0005,
+          "cell_rise": 0.111768,
+          "rise_transition": 0.0287731,
+          "cell_fall": 0.17907,
+          "fall_transition": 0.0325236
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.12038199999999999,
+          "rise_transition": 0.0368546,
+          "cell_fall": 0.187941,
+          "fall_transition": 0.039012
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.139502,
+          "rise_transition": 0.0572419,
+          "cell_fall": 0.206944,
+          "fall_transition": 0.0537761
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.182471,
+          "rise_transition": 0.11073,
+          "cell_fall": 0.244839,
+          "fall_transition": 0.0850623
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.286356,
+          "rise_transition": 0.25550900000000004,
+          "cell_fall": 0.317892,
+          "fall_transition": 0.153296
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.553623,
+          "rise_transition": 0.642822,
+          "cell_fall": 0.47105099999999994,
+          "fall_transition": 0.325409
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.166636,
+          "cell_rise": 1.25434,
+          "rise_transition": 1.6651399999999998,
+          "cell_fall": 0.8183969999999999,
+          "fall_transition": 0.800676
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0005,
+          "cell_rise": 0.11665600000000001,
+          "rise_transition": 0.0287701,
+          "cell_fall": 0.184059,
+          "fall_transition": 0.03252
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.125266,
+          "rise_transition": 0.0368494,
+          "cell_fall": 0.192927,
+          "fall_transition": 0.0390099
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.144378,
+          "rise_transition": 0.0572298,
+          "cell_fall": 0.211935,
+          "fall_transition": 0.053773299999999996
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.187334,
+          "rise_transition": 0.11069899999999999,
+          "cell_fall": 0.249842,
+          "fall_transition": 0.085061
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.29121,
+          "rise_transition": 0.25544100000000003,
+          "cell_fall": 0.322909,
+          "fall_transition": 0.153294
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.5584210000000001,
+          "rise_transition": 0.642715,
+          "cell_fall": 0.476075,
+          "fall_transition": 0.325408
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.166636,
+          "cell_rise": 1.25904,
+          "rise_transition": 1.66502,
+          "cell_fall": 0.824655,
+          "fall_transition": 0.800619
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0005,
+          "cell_rise": 0.12648,
+          "rise_transition": 0.0287684,
+          "cell_fall": 0.19590200000000002,
+          "fall_transition": 0.0325012
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.13509100000000002,
+          "rise_transition": 0.0368456,
+          "cell_fall": 0.20474699999999998,
+          "fall_transition": 0.0389842
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.154202,
+          "rise_transition": 0.057218700000000004,
+          "cell_fall": 0.22371500000000002,
+          "fall_transition": 0.0537437
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.19712900000000003,
+          "rise_transition": 0.110687,
+          "cell_fall": 0.261579,
+          "fall_transition": 0.0850294
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.300993,
+          "rise_transition": 0.25540799999999997,
+          "cell_fall": 0.33463299999999996,
+          "fall_transition": 0.15327400000000002
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.5681970000000001,
+          "rise_transition": 0.642651,
+          "cell_fall": 0.487798,
+          "fall_transition": 0.32539999999999997
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.166636,
+          "cell_rise": 1.26875,
+          "rise_transition": 1.6649200000000002,
+          "cell_fall": 0.839002,
+          "fall_transition": 0.8004979999999999
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0005,
+          "cell_rise": 0.148314,
+          "rise_transition": 0.0286098,
+          "cell_fall": 0.222143,
+          "fall_transition": 0.0324114
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.156884,
+          "rise_transition": 0.0367067,
+          "cell_fall": 0.230967,
+          "fall_transition": 0.03888
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.17590699999999998,
+          "rise_transition": 0.0571225,
+          "cell_fall": 0.24987099999999998,
+          "fall_transition": 0.0536075
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.218672,
+          "rise_transition": 0.110643,
+          "cell_fall": 0.287608,
+          "fall_transition": 0.0848989
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.322452,
+          "rise_transition": 0.25538,
+          "cell_fall": 0.360585,
+          "fall_transition": 0.15318900000000002
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.589734,
+          "rise_transition": 0.642617,
+          "cell_fall": 0.513733,
+          "fall_transition": 0.325365
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.166636,
+          "cell_rise": 1.29032,
+          "rise_transition": 1.66486,
+          "cell_fall": 0.869834,
+          "fall_transition": 0.8002790000000001
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0005,
+          "cell_rise": 0.191317,
+          "rise_transition": 0.0306154,
+          "cell_fall": 0.279747,
+          "fall_transition": 0.0321336
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.200235,
+          "rise_transition": 0.0386185,
+          "cell_fall": 0.288454,
+          "fall_transition": 0.0385287
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.219763,
+          "rise_transition": 0.05888619999999999,
+          "cell_fall": 0.307098,
+          "fall_transition": 0.0531398
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.26303699999999997,
+          "rise_transition": 0.111691,
+          "cell_fall": 0.34446099999999996,
+          "fall_transition": 0.08440070000000001
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.36680799999999997,
+          "rise_transition": 0.255524,
+          "cell_fall": 0.417225,
+          "fall_transition": 0.152859
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.634203,
+          "rise_transition": 0.6425960000000001,
+          "cell_fall": 0.570327,
+          "fall_transition": 0.325227
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.166636,
+          "cell_rise": 1.33495,
+          "rise_transition": 1.66483,
+          "cell_fall": 0.9334790000000001,
+          "fall_transition": 0.7999689999999999
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0005,
+          "cell_rise": 0.251251,
+          "rise_transition": 0.036369,
+          "cell_fall": 0.38619400000000004,
+          "fall_transition": 0.0350617
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.261263,
+          "rise_transition": 0.0440473,
+          "cell_fall": 0.395169,
+          "fall_transition": 0.0410467
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.282252,
+          "rise_transition": 0.0632217,
+          "cell_fall": 0.414005,
+          "fall_transition": 0.054903299999999995
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.326685,
+          "rise_transition": 0.114564,
+          "cell_fall": 0.45172199999999996,
+          "fall_transition": 0.08727399999999999
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.431429,
+          "rise_transition": 0.25766500000000003,
+          "cell_fall": 0.527807,
+          "fall_transition": 0.15914
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.699762,
+          "rise_transition": 0.643639,
+          "cell_fall": 0.6844380000000001,
+          "fall_transition": 0.32963
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.166636,
+          "cell_rise": 1.40069,
+          "rise_transition": 1.66487,
+          "cell_fall": 1.0539500000000002,
+          "fall_transition": 0.8005249999999999
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0005,
+          "cell_rise": 0.310819,
+          "rise_transition": 0.0482547,
+          "cell_fall": 0.567312,
+          "fall_transition": 0.044284000000000004
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.323637,
+          "rise_transition": 0.0566884,
+          "cell_fall": 0.5778289999999999,
+          "fall_transition": 0.050555499999999996
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.34907,
+          "rise_transition": 0.0751941,
+          "cell_fall": 0.599291,
+          "fall_transition": 0.0642185
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.39743,
+          "rise_transition": 0.12225200000000001,
+          "cell_fall": 0.639899,
+          "fall_transition": 0.09413350000000001
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.503287,
+          "rise_transition": 0.25981,
+          "cell_fall": 0.717927,
+          "fall_transition": 0.16552599999999998
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.7715920000000001,
+          "rise_transition": 0.644864,
+          "cell_fall": 0.8807940000000001,
+          "fall_transition": 0.340731
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.166636,
+          "cell_rise": 1.47403,
+          "rise_transition": 1.66648,
+          "cell_fall": 1.25959,
+          "fall_transition": 0.810103
+        }
+      ],
+      "capacitance_pf": {
+        "rise_capacitance": 0.004760744444444445,
+        "fall_capacitance": 0.004247305555555555,
+        "rise_until_settled": 0.005004927777777778,
+        "fall_until_settled": 0.004983877777777777
+      }
+    },
+    {
+      "pin": "B",
+      "side": {
+        "A": 0,
+        "C": 1
+      },
+      "sense": "positive_unate",
+      "rows": [
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0967416,
+          "rise_transition": 0.0289169,
+          "cell_fall": 0.2055,
+          "fall_transition": 0.0305177
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.105474,
+          "rise_transition": 0.0369129,
+          "cell_fall": 0.21356,
+          "fall_transition": 0.0356652
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.124767,
+          "rise_transition": 0.0571724,
+          "cell_fall": 0.230208,
+          "fall_transition": 0.0472705
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.167824,
+          "rise_transition": 0.11043399999999999,
+          "cell_fall": 0.2626,
+          "fall_transition": 0.0737666
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.271395,
+          "rise_transition": 0.25478500000000004,
+          "cell_fall": 0.327193,
+          "fall_transition": 0.13899799999999998
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.538106,
+          "rise_transition": 0.641822,
+          "cell_fall": 0.47252399999999994,
+          "fall_transition": 0.31518
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.166636,
+          "cell_rise": 1.23827,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.819336,
+          "fall_transition": 0.798134
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0005,
+          "cell_rise": 0.101462,
+          "rise_transition": 0.0289112,
+          "cell_fall": 0.21013,
+          "fall_transition": 0.030517799999999998
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.110195,
+          "rise_transition": 0.0369106,
+          "cell_fall": 0.21817399999999998,
+          "fall_transition": 0.0356654
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.12948700000000002,
+          "rise_transition": 0.0571715,
+          "cell_fall": 0.234811,
+          "fall_transition": 0.047271200000000006
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.172542,
+          "rise_transition": 0.11043399999999999,
+          "cell_fall": 0.267204,
+          "fall_transition": 0.07376590000000001
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.276129,
+          "rise_transition": 0.25478500000000004,
+          "cell_fall": 0.331803,
+          "fall_transition": 0.13899
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.542844,
+          "rise_transition": 0.641822,
+          "cell_fall": 0.477132,
+          "fall_transition": 0.315162
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2429999999999999,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.8250879999999999,
+          "fall_transition": 0.798075
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0005,
+          "cell_rise": 0.111759,
+          "rise_transition": 0.0288396,
+          "cell_fall": 0.220558,
+          "fall_transition": 0.030514200000000002
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.12048999999999999,
+          "rise_transition": 0.036850799999999996,
+          "cell_fall": 0.22858499999999998,
+          "fall_transition": 0.035662900000000004
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.13977,
+          "rise_transition": 0.057133699999999996,
+          "cell_fall": 0.245194,
+          "fall_transition": 0.047269399999999996
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.182771,
+          "rise_transition": 0.110425,
+          "cell_fall": 0.277563,
+          "fall_transition": 0.07376569999999999
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.28634899999999996,
+          "rise_transition": 0.254783,
+          "cell_fall": 0.342159,
+          "fall_transition": 0.13899
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.5530889999999999,
+          "rise_transition": 0.641822,
+          "cell_fall": 0.48748800000000003,
+          "fall_transition": 0.315159
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.166636,
+          "cell_rise": 1.25325,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.837893,
+          "fall_transition": 0.7980269999999999
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0005,
+          "cell_rise": 0.133049,
+          "rise_transition": 0.0286628,
+          "cell_fall": 0.24414200000000003,
+          "fall_transition": 0.0305026
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.141713,
+          "rise_transition": 0.0367155,
+          "cell_fall": 0.252166,
+          "fall_transition": 0.03565
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.160863,
+          "rise_transition": 0.0570583,
+          "cell_fall": 0.26876,
+          "fall_transition": 0.0472617
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.203695,
+          "rise_transition": 0.110405,
+          "cell_fall": 0.301092,
+          "fall_transition": 0.0737726
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.30722900000000003,
+          "rise_transition": 0.254775,
+          "cell_fall": 0.365671,
+          "fall_transition": 0.138993
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.574065,
+          "rise_transition": 0.64182,
+          "cell_fall": 0.511007,
+          "fall_transition": 0.315157
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2743,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.86605,
+          "fall_transition": 0.797958
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0005,
+          "cell_rise": 0.168831,
+          "rise_transition": 0.030942300000000002,
+          "cell_fall": 0.300485,
+          "fall_transition": 0.0303569
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.178138,
+          "rise_transition": 0.039411,
+          "cell_fall": 0.30847199999999997,
+          "fall_transition": 0.0355285
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.198353,
+          "rise_transition": 0.059953799999999995,
+          "cell_fall": 0.324992,
+          "fall_transition": 0.0471872
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.242539,
+          "rise_transition": 0.112757,
+          "cell_fall": 0.357231,
+          "fall_transition": 0.0737506
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.34657600000000005,
+          "rise_transition": 0.25551500000000005,
+          "cell_fall": 0.421786,
+          "fall_transition": 0.138973
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.613545,
+          "rise_transition": 0.641853,
+          "cell_fall": 0.56716,
+          "fall_transition": 0.315142
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.166636,
+          "cell_rise": 1.3139,
+          "rise_transition": 1.6641000000000001,
+          "cell_fall": 0.928986,
+          "fall_transition": 0.797864
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0005,
+          "cell_rise": 0.21697,
+          "rise_transition": 0.035781900000000005,
+          "cell_fall": 0.41732199999999997,
+          "fall_transition": 0.034718399999999996
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.227116,
+          "rise_transition": 0.0442259,
+          "cell_fall": 0.42606099999999997,
+          "fall_transition": 0.0400632
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.24904900000000002,
+          "rise_transition": 0.06479560000000001,
+          "cell_fall": 0.44393900000000003,
+          "fall_transition": 0.051907
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.295141,
+          "rise_transition": 0.116692,
+          "cell_fall": 0.478121,
+          "fall_transition": 0.07835109999999999
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.40083399999999997,
+          "rise_transition": 0.258542,
+          "cell_fall": 0.544809,
+          "fall_transition": 0.142495
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.6694709999999999,
+          "rise_transition": 0.643582,
+          "cell_fall": 0.691141,
+          "fall_transition": 0.31635
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.166636,
+          "cell_rise": 1.37,
+          "rise_transition": 1.66415,
+          "cell_fall": 1.0585,
+          "fall_transition": 0.797885
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0005,
+          "cell_rise": 0.256732,
+          "rise_transition": 0.0479548,
+          "cell_fall": 0.619989,
+          "fall_transition": 0.0439945
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.269815,
+          "rise_transition": 0.056963400000000004,
+          "cell_fall": 0.630317,
+          "fall_transition": 0.0498954
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.296162,
+          "rise_transition": 0.0769423,
+          "cell_fall": 0.651233,
+          "fall_transition": 0.06260210000000001
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.34726900000000005,
+          "rise_transition": 0.12634,
+          "cell_fall": 0.6901240000000001,
+          "fall_transition": 0.0896093
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.455896,
+          "rise_transition": 0.262556,
+          "cell_fall": 0.7623110000000001,
+          "fall_transition": 0.152641
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.7246560000000001,
+          "rise_transition": 0.645076,
+          "cell_fall": 0.913019,
+          "fall_transition": 0.32300799999999996
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.166636,
+          "cell_rise": 1.42747,
+          "rise_transition": 1.66648,
+          "cell_fall": 1.28409,
+          "fall_transition": 0.800843
+        }
+      ],
+      "capacitance_pf": {
+        "rise_capacitance": 0.004848572222222222,
+        "fall_capacitance": 0.004825016666666667,
+        "rise_until_settled": 0.005259522222222222,
+        "fall_until_settled": 0.005216061111111111
+      }
+    },
+    {
+      "pin": "B",
+      "side": {
+        "A": 1,
+        "C": 0
+      },
+      "sense": "positive_unate",
+      "rows": [
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0958076,
+          "rise_transition": 0.0286955,
+          "cell_fall": 0.15523699999999999,
+          "fall_transition": 0.027041199999999998
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.104417,
+          "rise_transition": 0.0367721,
+          "cell_fall": 0.162861,
+          "fall_transition": 0.0322638
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.123547,
+          "rise_transition": 0.057154699999999996,
+          "cell_fall": 0.178807,
+          "fall_transition": 0.044127
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.16648000000000002,
+          "rise_transition": 0.11067199999999999,
+          "cell_fall": 0.21022,
+          "fall_transition": 0.0711949
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.270224,
+          "rise_transition": 0.25548,
+          "cell_fall": 0.273698,
+          "fall_transition": 0.137007
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.537411,
+          "rise_transition": 0.6427930000000001,
+          "cell_fall": 0.417828,
+          "fall_transition": 0.313227
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2381000000000002,
+          "rise_transition": 1.66511,
+          "cell_fall": 0.7624420000000001,
+          "fall_transition": 0.796125
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0005,
+          "cell_rise": 0.09980810000000001,
+          "rise_transition": 0.0286921,
+          "cell_fall": 0.16071000000000002,
+          "fall_transition": 0.027045200000000002
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.108417,
+          "rise_transition": 0.036766200000000006,
+          "cell_fall": 0.16830799999999999,
+          "fall_transition": 0.0322674
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.127541,
+          "rise_transition": 0.0571427,
+          "cell_fall": 0.18423599999999998,
+          "fall_transition": 0.044126700000000005
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.170455,
+          "rise_transition": 0.110641,
+          "cell_fall": 0.215654,
+          "fall_transition": 0.0711957
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.274172,
+          "rise_transition": 0.255406,
+          "cell_fall": 0.27914500000000003,
+          "fall_transition": 0.13700500000000002
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.5412859999999999,
+          "rise_transition": 0.642661,
+          "cell_fall": 0.423282,
+          "fall_transition": 0.313227
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2418600000000002,
+          "rise_transition": 1.66493,
+          "cell_fall": 0.7691570000000001,
+          "fall_transition": 0.796113
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0005,
+          "cell_rise": 0.109571,
+          "rise_transition": 0.028664600000000002,
+          "cell_fall": 0.173208,
+          "fall_transition": 0.0270358
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.11818,
+          "rise_transition": 0.0367387,
+          "cell_fall": 0.180784,
+          "fall_transition": 0.032261200000000004
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.137284,
+          "rise_transition": 0.0571234,
+          "cell_fall": 0.196667,
+          "fall_transition": 0.0441304
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.18013,
+          "rise_transition": 0.110635,
+          "cell_fall": 0.228046,
+          "fall_transition": 0.0712005
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.283828,
+          "rise_transition": 0.25538700000000003,
+          "cell_fall": 0.291534,
+          "fall_transition": 0.13700500000000002
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.550956,
+          "rise_transition": 0.6426189999999999,
+          "cell_fall": 0.435674,
+          "fall_transition": 0.313226
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2515,
+          "rise_transition": 1.6648500000000002,
+          "cell_fall": 0.784156,
+          "fall_transition": 0.796087
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0005,
+          "cell_rise": 0.133359,
+          "rise_transition": 0.0284113,
+          "cell_fall": 0.201269,
+          "fall_transition": 0.0270316
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.141842,
+          "rise_transition": 0.0365197,
+          "cell_fall": 0.208837,
+          "fall_transition": 0.0322587
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.16072899999999998,
+          "rise_transition": 0.0569636,
+          "cell_fall": 0.224694,
+          "fall_transition": 0.0441376
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.203329,
+          "rise_transition": 0.110542,
+          "cell_fall": 0.25603,
+          "fall_transition": 0.0712181
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.30696999999999997,
+          "rise_transition": 0.25534,
+          "cell_fall": 0.319514,
+          "fall_transition": 0.137012
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.574229,
+          "rise_transition": 0.6426000000000001,
+          "cell_fall": 0.46366799999999997,
+          "fall_transition": 0.313226
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.166636,
+          "cell_rise": 1.27487,
+          "rise_transition": 1.66483,
+          "cell_fall": 0.8169810000000001,
+          "fall_transition": 0.796043
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0005,
+          "cell_rise": 0.174442,
+          "rise_transition": 0.030544899999999996,
+          "cell_fall": 0.26339,
+          "fall_transition": 0.0275678
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.183199,
+          "rise_transition": 0.0384935,
+          "cell_fall": 0.270982,
+          "fall_transition": 0.032758899999999994
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.202522,
+          "rise_transition": 0.0587657,
+          "cell_fall": 0.28686,
+          "fall_transition": 0.0445593
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.24582900000000002,
+          "rise_transition": 0.11199600000000001,
+          "cell_fall": 0.318247,
+          "fall_transition": 0.0715025
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.349626,
+          "rise_transition": 0.25571499999999997,
+          "cell_fall": 0.38183799999999996,
+          "fall_transition": 0.137134
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.616993,
+          "rise_transition": 0.6425909999999999,
+          "cell_fall": 0.526078,
+          "fall_transition": 0.313252
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.166636,
+          "cell_rise": 1.3177999999999999,
+          "rise_transition": 1.66483,
+          "cell_fall": 0.8864029999999999,
+          "fall_transition": 0.795988
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0005,
+          "cell_rise": 0.223101,
+          "rise_transition": 0.0370649,
+          "cell_fall": 0.378353,
+          "fall_transition": 0.033281200000000004
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.23293400000000003,
+          "rise_transition": 0.0442294,
+          "cell_fall": 0.387024,
+          "fall_transition": 0.0389501
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.253405,
+          "rise_transition": 0.0627542,
+          "cell_fall": 0.404959,
+          "fall_transition": 0.0514074
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.29719599999999996,
+          "rise_transition": 0.114041,
+          "cell_fall": 0.439515,
+          "fall_transition": 0.0786321
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.401698,
+          "rise_transition": 0.257805,
+          "cell_fall": 0.5066900000000001,
+          "fall_transition": 0.143121
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.670416,
+          "rise_transition": 0.64412,
+          "cell_fall": 0.652987,
+          "fall_transition": 0.31576
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.166636,
+          "cell_rise": 1.37137,
+          "rise_transition": 1.66487,
+          "cell_fall": 1.01905,
+          "fall_transition": 0.79613
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0005,
+          "cell_rise": 0.25571,
+          "rise_transition": 0.04955,
+          "cell_fall": 0.573325,
+          "fall_transition": 0.0445422
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.268483,
+          "rise_transition": 0.057586899999999996,
+          "cell_fall": 0.583974,
+          "fall_transition": 0.051211099999999996
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.293527,
+          "rise_transition": 0.0750491,
+          "cell_fall": 0.605885,
+          "fall_transition": 0.0654027
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.340648,
+          "rise_transition": 0.12099899999999998,
+          "cell_fall": 0.647012,
+          "fall_transition": 0.09419079999999999
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.44551399999999997,
+          "rise_transition": 0.259106,
+          "cell_fall": 0.722272,
+          "fall_transition": 0.15755
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.713704,
+          "rise_transition": 0.6451479999999999,
+          "cell_fall": 0.874748,
+          "fall_transition": 0.324819
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.166636,
+          "cell_rise": 1.41669,
+          "rise_transition": 1.6670900000000002,
+          "cell_fall": 1.2447000000000001,
+          "fall_transition": 0.79942
+        }
+      ],
+      "capacitance_pf": {
+        "rise_capacitance": 0.00482886111111111,
+        "fall_capacitance": 0.004814166666666666,
+        "rise_until_settled": 0.005117216666666666,
+        "fall_until_settled": 0.005116622222222222
+      }
+    },
+    {
+      "pin": "C",
+      "side": {
+        "A": 0,
+        "B": 1
+      },
+      "sense": "positive_unate",
+      "rows": [
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0864342,
+          "rise_transition": 0.0293725,
+          "cell_fall": 0.170758,
+          "fall_transition": 0.0330518
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.0952444,
+          "rise_transition": 0.0371629,
+          "cell_fall": 0.17976,
+          "fall_transition": 0.0397536
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.114622,
+          "rise_transition": 0.057215,
+          "cell_fall": 0.199195,
+          "fall_transition": 0.0552541
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.157641,
+          "rise_transition": 0.110405,
+          "cell_fall": 0.23829,
+          "fall_transition": 0.087213
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.261036,
+          "rise_transition": 0.254772,
+          "cell_fall": 0.31233700000000003,
+          "fall_transition": 0.154794
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.527626,
+          "rise_transition": 0.64182,
+          "cell_fall": 0.46591699999999997,
+          "fall_transition": 0.325966
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2277399999999998,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.813837,
+          "fall_transition": 0.800765
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0909565,
+          "rise_transition": 0.029362,
+          "cell_fall": 0.174759,
+          "fall_transition": 0.0330538
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.0997639,
+          "rise_transition": 0.0371579,
+          "cell_fall": 0.183751,
+          "fall_transition": 0.039753199999999995
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.11912799999999998,
+          "rise_transition": 0.0572149,
+          "cell_fall": 0.203183,
+          "fall_transition": 0.055256
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.162139,
+          "rise_transition": 0.11040699999999999,
+          "cell_fall": 0.24229,
+          "fall_transition": 0.0872153
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.26555599999999996,
+          "rise_transition": 0.254772,
+          "cell_fall": 0.31634799999999996,
+          "fall_transition": 0.154794
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.532153,
+          "rise_transition": 0.64182,
+          "cell_fall": 0.46993199999999996,
+          "fall_transition": 0.325966
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2322600000000001,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.819037,
+          "fall_transition": 0.800709
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0005,
+          "cell_rise": 0.10133,
+          "rise_transition": 0.0292942,
+          "cell_fall": 0.18517899999999998,
+          "fall_transition": 0.0330518
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.110117,
+          "rise_transition": 0.0371033,
+          "cell_fall": 0.194156,
+          "fall_transition": 0.0397509
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.129409,
+          "rise_transition": 0.0571969,
+          "cell_fall": 0.213564,
+          "fall_transition": 0.055258299999999996
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.172321,
+          "rise_transition": 0.11041,
+          "cell_fall": 0.252655,
+          "fall_transition": 0.0872256
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.275762,
+          "rise_transition": 0.25476899999999997,
+          "cell_fall": 0.326715,
+          "fall_transition": 0.154802
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.542418,
+          "rise_transition": 0.6418189999999999,
+          "cell_fall": 0.480302,
+          "fall_transition": 0.325968
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.166636,
+          "cell_rise": 1.24255,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.8319300000000001,
+          "fall_transition": 0.800593
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0005,
+          "cell_rise": 0.12506799999999998,
+          "rise_transition": 0.029399899999999996,
+          "cell_fall": 0.212594,
+          "fall_transition": 0.0330373
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.13372499999999998,
+          "rise_transition": 0.0371656,
+          "cell_fall": 0.221566,
+          "fall_transition": 0.0397424
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.152806,
+          "rise_transition": 0.0572145,
+          "cell_fall": 0.24094999999999997,
+          "fall_transition": 0.055272600000000005
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.19552,
+          "rise_transition": 0.110389,
+          "cell_fall": 0.280001,
+          "fall_transition": 0.0872719
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.298995,
+          "rise_transition": 0.25473999999999997,
+          "cell_fall": 0.354066,
+          "fall_transition": 0.154833
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.565841,
+          "rise_transition": 0.64181,
+          "cell_fall": 0.507673,
+          "fall_transition": 0.325976
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.166636,
+          "cell_rise": 1.26609,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.864092,
+          "fall_transition": 0.80038
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0005,
+          "cell_rise": 0.162912,
+          "rise_transition": 0.0335593,
+          "cell_fall": 0.28119900000000003,
+          "fall_transition": 0.032895299999999995
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.172151,
+          "rise_transition": 0.0406509,
+          "cell_fall": 0.29011,
+          "fall_transition": 0.0396586
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.191944,
+          "rise_transition": 0.0598038,
+          "cell_fall": 0.309377,
+          "fall_transition": 0.0552895
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.235348,
+          "rise_transition": 0.112054,
+          "cell_fall": 0.34833,
+          "fall_transition": 0.0873804
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.33910300000000004,
+          "rise_transition": 0.255236,
+          "cell_fall": 0.42243600000000003,
+          "fall_transition": 0.15490400000000001
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.606084,
+          "rise_transition": 0.641804,
+          "cell_fall": 0.576131,
+          "fall_transition": 0.32598499999999997
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.166636,
+          "cell_rise": 1.3065,
+          "rise_transition": 1.66409,
+          "cell_fall": 0.9396140000000001,
+          "fall_transition": 0.8000870000000001
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0005,
+          "cell_rise": 0.204184,
+          "rise_transition": 0.0436176,
+          "cell_fall": 0.42185,
+          "fall_transition": 0.0407012
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.215431,
+          "rise_transition": 0.0500415,
+          "cell_fall": 0.431957,
+          "fall_transition": 0.047396400000000005
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.23765399999999998,
+          "rise_transition": 0.0668821,
+          "cell_fall": 0.45315099999999997,
+          "fall_transition": 0.0627784
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.282518,
+          "rise_transition": 0.115546,
+          "cell_fall": 0.494882,
+          "fall_transition": 0.094419
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.38690199999999997,
+          "rise_transition": 0.257079,
+          "cell_fall": 0.572017,
+          "fall_transition": 0.160088
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.654898,
+          "rise_transition": 0.64296,
+          "cell_fall": 0.727124,
+          "fall_transition": 0.32796000000000003
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.166636,
+          "cell_rise": 1.35544,
+          "rise_transition": 1.66408,
+          "cell_fall": 1.09644,
+          "fall_transition": 0.800167
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0005,
+          "cell_rise": 0.223918,
+          "rise_transition": 0.059334700000000004,
+          "cell_fall": 0.648611,
+          "fall_transition": 0.0561941
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.23870199999999997,
+          "rise_transition": 0.0671926,
+          "cell_fall": 0.661346,
+          "fall_transition": 0.06419889999999999
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.267358,
+          "rise_transition": 0.0842999,
+          "cell_fall": 0.687792,
+          "fall_transition": 0.08230889999999999
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.318397,
+          "rise_transition": 0.127192,
+          "cell_fall": 0.7390869999999999,
+          "fall_transition": 0.11690999999999999
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.424383,
+          "rise_transition": 0.260129,
+          "cell_fall": 0.826818,
+          "fall_transition": 0.179531
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.691929,
+          "rise_transition": 0.6438079999999999,
+          "cell_fall": 0.989633,
+          "fall_transition": 0.340499
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.166636,
+          "cell_rise": 1.39391,
+          "rise_transition": 1.6656499999999999,
+          "cell_fall": 1.3647500000000001,
+          "fall_transition": 0.8056300000000001
+        }
+      ],
+      "capacitance_pf": {
+        "rise_capacitance": 0.00223555,
+        "fall_capacitance": 0.0019843444444444442,
+        "rise_until_settled": 0.002448566666666667,
+        "fall_until_settled": 0.0024483555555555557
+      }
+    },
+    {
+      "pin": "C",
+      "side": {
+        "A": 1,
+        "B": 0
+      },
+      "sense": "positive_unate",
+      "rows": [
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0642646,
+          "rise_transition": 0.024287700000000002,
+          "cell_fall": 0.127425,
+          "fall_transition": 0.0270246
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.07194930000000001,
+          "rise_transition": 0.032189600000000006,
+          "cell_fall": 0.135051,
+          "fall_transition": 0.0322427
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.0895466,
+          "rise_transition": 0.052656499999999995,
+          "cell_fall": 0.150997,
+          "fall_transition": 0.0440986
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.130468,
+          "rise_transition": 0.10709500000000001,
+          "cell_fall": 0.182373,
+          "fall_transition": 0.0711895
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.232501,
+          "rise_transition": 0.253221,
+          "cell_fall": 0.24582400000000001,
+          "fall_transition": 0.137013
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.498512,
+          "rise_transition": 0.641125,
+          "cell_fall": 0.389963,
+          "fall_transition": 0.313228
+        },
+        {
+          "slew_ns": 0.01,
+          "load_pf": 0.166636,
+          "cell_rise": 1.19825,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.734954,
+          "fall_transition": 0.796122
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0687075,
+          "rise_transition": 0.024271,
+          "cell_fall": 0.131224,
+          "fall_transition": 0.0270193
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.0763779,
+          "rise_transition": 0.032185000000000005,
+          "cell_fall": 0.138831,
+          "fall_transition": 0.032238600000000006
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.0939383,
+          "rise_transition": 0.0526575,
+          "cell_fall": 0.154764,
+          "fall_transition": 0.0440967
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.13486800000000002,
+          "rise_transition": 0.107097,
+          "cell_fall": 0.186143,
+          "fall_transition": 0.07118680000000001
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.236944,
+          "rise_transition": 0.25322,
+          "cell_fall": 0.24960200000000002,
+          "fall_transition": 0.13701
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.502963,
+          "rise_transition": 0.641125,
+          "cell_fall": 0.393743,
+          "fall_transition": 0.313228
+        },
+        {
+          "slew_ns": 0.0230506,
+          "load_pf": 0.166636,
+          "cell_rise": 1.2027,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.73991,
+          "fall_transition": 0.79611
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0005,
+          "cell_rise": 0.079068,
+          "rise_transition": 0.0242151,
+          "cell_fall": 0.14204699999999998,
+          "fall_transition": 0.027011800000000002
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.0866412,
+          "rise_transition": 0.0321547,
+          "cell_fall": 0.149631,
+          "fall_transition": 0.0322297
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.10404400000000001,
+          "rise_transition": 0.0526572,
+          "cell_fall": 0.16552,
+          "fall_transition": 0.044094799999999996
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.144919,
+          "rise_transition": 0.107092,
+          "cell_fall": 0.19686399999999998,
+          "fall_transition": 0.0711894
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.24713800000000002,
+          "rise_transition": 0.25321499999999997,
+          "cell_fall": 0.260315,
+          "fall_transition": 0.13700800000000002
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.513274,
+          "rise_transition": 0.641125,
+          "cell_fall": 0.404456,
+          "fall_transition": 0.313227
+        },
+        {
+          "slew_ns": 0.0531329,
+          "load_pf": 0.166636,
+          "cell_rise": 1.21305,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.75314,
+          "fall_transition": 0.796085
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0005,
+          "cell_rise": 0.0994288,
+          "rise_transition": 0.025215500000000002,
+          "cell_fall": 0.17037100000000002,
+          "fall_transition": 0.0269511
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.10709099999999999,
+          "rise_transition": 0.033008699999999995,
+          "cell_fall": 0.177926,
+          "fall_transition": 0.0321876
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.124511,
+          "rise_transition": 0.0532037,
+          "cell_fall": 0.193746,
+          "fall_transition": 0.0440943
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.165344,
+          "rise_transition": 0.107213,
+          "cell_fall": 0.225027,
+          "fall_transition": 0.07121219999999999
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.267721,
+          "rise_transition": 0.253216,
+          "cell_fall": 0.288491,
+          "fall_transition": 0.137013
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.534093,
+          "rise_transition": 0.641124,
+          "cell_fall": 0.43266,
+          "fall_transition": 0.313224
+        },
+        {
+          "slew_ns": 0.122474,
+          "load_pf": 0.166636,
+          "cell_rise": 1.23399,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.7861630000000001,
+          "fall_transition": 0.796042
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0005,
+          "cell_rise": 0.125614,
+          "rise_transition": 0.0283631,
+          "cell_fall": 0.23894800000000002,
+          "fall_transition": 0.0280561
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.133606,
+          "rise_transition": 0.0355726,
+          "cell_fall": 0.24652200000000002,
+          "fall_transition": 0.0331037
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.15142699999999998,
+          "rise_transition": 0.0550381,
+          "cell_fall": 0.262286,
+          "fall_transition": 0.0447024
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.192722,
+          "rise_transition": 0.108751,
+          "cell_fall": 0.293556,
+          "fall_transition": 0.0715411
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.295746,
+          "rise_transition": 0.25403200000000004,
+          "cell_fall": 0.35713300000000003,
+          "fall_transition": 0.13714300000000001
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.562303,
+          "rise_transition": 0.641142,
+          "cell_fall": 0.501417,
+          "fall_transition": 0.313249
+        },
+        {
+          "slew_ns": 0.282311,
+          "load_pf": 0.166636,
+          "cell_rise": 1.26237,
+          "rise_transition": 1.66352,
+          "cell_fall": 0.8619910000000001,
+          "fall_transition": 0.795986
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0005,
+          "cell_rise": 0.148257,
+          "rise_transition": 0.036846199999999996,
+          "cell_fall": 0.360079,
+          "fall_transition": 0.037158800000000006
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.158021,
+          "rise_transition": 0.0435397,
+          "cell_fall": 0.36927,
+          "fall_transition": 0.042477600000000004
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.177786,
+          "rise_transition": 0.060733600000000006,
+          "cell_fall": 0.387676,
+          "fall_transition": 0.0536274
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.219856,
+          "rise_transition": 0.110836,
+          "cell_fall": 0.42179900000000004,
+          "fall_transition": 0.07881930000000001
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.32273599999999997,
+          "rise_transition": 0.25491800000000003,
+          "cell_fall": 0.488291,
+          "fall_transition": 0.143107
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.590401,
+          "rise_transition": 0.642363,
+          "cell_fall": 0.635064,
+          "fall_transition": 0.31645500000000004
+        },
+        {
+          "slew_ns": 0.650743,
+          "load_pf": 0.166636,
+          "cell_rise": 1.29061,
+          "rise_transition": 1.66353,
+          "cell_fall": 1.00124,
+          "fall_transition": 0.796222
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0005,
+          "cell_rise": 0.13925300000000002,
+          "rise_transition": 0.050615,
+          "cell_fall": 0.557322,
+          "fall_transition": 0.0511978
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00131655,
+          "cell_rise": 0.152367,
+          "rise_transition": 0.0588468,
+          "cell_fall": 0.5689489999999999,
+          "fall_transition": 0.0579303
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00346659,
+          "cell_rise": 0.17805500000000002,
+          "rise_transition": 0.07612519999999999,
+          "cell_fall": 0.592407,
+          "fall_transition": 0.0713573
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.00912787,
+          "cell_rise": 0.225019,
+          "rise_transition": 0.12003899999999999,
+          "cell_fall": 0.634306,
+          "fall_transition": 0.0963141
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0240345,
+          "cell_rise": 0.328459,
+          "rise_transition": 0.25673999999999997,
+          "cell_fall": 0.707049,
+          "fall_transition": 0.154571
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.0632852,
+          "cell_rise": 0.595465,
+          "rise_transition": 0.6428550000000001,
+          "cell_fall": 0.8567849999999999,
+          "fall_transition": 0.32269
+        },
+        {
+          "slew_ns": 1.5,
+          "load_pf": 0.166636,
+          "cell_rise": 1.29704,
+          "rise_transition": 1.66502,
+          "cell_fall": 1.22754,
+          "fall_transition": 0.8008460000000001
+        }
+      ],
+      "capacitance_pf": {
+        "rise_capacitance": 0.002381805555555556,
+        "fall_capacitance": 0.0020228611111111107,
+        "rise_until_settled": 0.0024485388888888884,
+        "fall_until_settled": 0.002448427777777778
+      }
+    }
+  ],
+  "timing": [
+    {
+      "pin": "A",
+      "sense": "positive_unate",
+      "slowest_side_inputs": {
+        "rise": {
+          "B": 1,
+          "C": 0
+        },
+        "fall": {
+          "B": 0,
+          "C": 1
+        }
+      },
+      "tables": {
+        "cell_rise": [
+          [
+            0.111768,
+            0.12038199999999999,
+            0.139502,
+            0.182471,
+            0.286356,
+            0.553623,
+            1.25434
+          ],
+          [
+            0.11665600000000001,
+            0.125266,
+            0.144378,
+            0.187334,
+            0.29121,
+            0.5584210000000001,
+            1.25904
+          ],
+          [
+            0.12648,
+            0.13509100000000002,
+            0.154202,
+            0.19712900000000003,
+            0.300993,
+            0.5681970000000001,
+            1.26875
+          ],
+          [
+            0.148314,
+            0.156884,
+            0.17590699999999998,
+            0.218672,
+            0.322452,
+            0.589734,
+            1.29032
+          ],
+          [
+            0.191317,
+            0.200235,
+            0.219763,
+            0.26303699999999997,
+            0.36680799999999997,
+            0.634203,
+            1.33495
+          ],
+          [
+            0.251251,
+            0.261263,
+            0.282252,
+            0.326685,
+            0.431429,
+            0.699762,
+            1.40069
+          ],
+          [
+            0.310819,
+            0.323637,
+            0.34907,
+            0.39743,
+            0.503287,
+            0.7715920000000001,
+            1.47403
+          ]
+        ],
+        "rise_transition": [
+          [
+            0.0287731,
+            0.0368546,
+            0.0572419,
+            0.11073,
+            0.25550900000000004,
+            0.642822,
+            1.6651399999999998
+          ],
+          [
+            0.0287701,
+            0.0368494,
+            0.0572298,
+            0.11069899999999999,
+            0.25544100000000003,
+            0.642715,
+            1.66502
+          ],
+          [
+            0.0287684,
+            0.0368456,
+            0.057218700000000004,
+            0.110687,
+            0.25540799999999997,
+            0.642651,
+            1.6649200000000002
+          ],
+          [
+            0.0286098,
+            0.0367067,
+            0.0571225,
+            0.110643,
+            0.25538,
+            0.642617,
+            1.66486
+          ],
+          [
+            0.0306154,
+            0.0386185,
+            0.05888619999999999,
+            0.111691,
+            0.255524,
+            0.6425960000000001,
+            1.66483
+          ],
+          [
+            0.036369,
+            0.0440473,
+            0.0632217,
+            0.114564,
+            0.25766500000000003,
+            0.643639,
+            1.66487
+          ],
+          [
+            0.0482547,
+            0.0566884,
+            0.0751941,
+            0.12225200000000001,
+            0.25981,
+            0.644864,
+            1.66648
+          ]
+        ],
+        "cell_fall": [
+          [
+            0.18788400000000002,
+            0.195941,
+            0.212585,
+            0.24497,
+            0.309554,
+            0.454903,
+            0.801853
+          ],
+          [
+            0.191201,
+            0.199247,
+            0.215889,
+            0.248279,
+            0.312866,
+            0.458198,
+            0.806216
+          ],
+          [
+            0.200799,
+            0.20882699999999998,
+            0.225441,
+            0.257808,
+            0.322389,
+            0.467719,
+            0.818154
+          ],
+          [
+            0.22717,
+            0.23519400000000001,
+            0.251789,
+            0.28411000000000003,
+            0.348673,
+            0.49401100000000003,
+            0.8491219999999999
+          ],
+          [
+            0.294431,
+            0.30241,
+            0.31890999999999997,
+            0.351109,
+            0.41564500000000004,
+            0.561033,
+            0.923022
+          ],
+          [
+            0.439149,
+            0.447981,
+            0.465701,
+            0.499284,
+            0.565486,
+            0.711577,
+            1.0790499999999998
+          ],
+          [
+            0.6747369999999999,
+            0.686052,
+            0.708453,
+            0.747935,
+            0.818559,
+            0.967929,
+            1.33957
+          ]
+        ],
+        "fall_transition": [
+          [
+            0.030515200000000003,
+            0.035664600000000005,
+            0.0472678,
+            0.0737698,
+            0.13901200000000002,
+            0.315213,
+            0.7982060000000001
+          ],
+          [
+            0.0305134,
+            0.0356583,
+            0.047260699999999996,
+            0.07375860000000001,
+            0.138992,
+            0.315166,
+            0.798083
+          ],
+          [
+            0.0305101,
+            0.0356579,
+            0.0472601,
+            0.0737599,
+            0.13899,
+            0.315159,
+            0.798028
+          ],
+          [
+            0.030490000000000003,
+            0.035636100000000004,
+            0.0472461,
+            0.0737665,
+            0.138994,
+            0.315157,
+            0.797958
+          ],
+          [
+            0.0303059,
+            0.0354895,
+            0.0471727,
+            0.0737656,
+            0.138991,
+            0.31514600000000004,
+            0.797863
+          ],
+          [
+            0.0361703,
+            0.04110200000000001,
+            0.0520769,
+            0.0777754,
+            0.141938,
+            0.316121,
+            0.797898
+          ],
+          [
+            0.050558599999999995,
+            0.056391000000000004,
+            0.068036,
+            0.0914991,
+            0.15112899999999999,
+            0.32228300000000004,
+            0.801579
+          ]
+        ]
+      }
+    },
+    {
+      "pin": "B",
+      "sense": "positive_unate",
+      "slowest_side_inputs": {
+        "rise": {
+          "A": 0,
+          "C": 1
+        },
+        "fall": {
+          "A": 0,
+          "C": 1
+        }
+      },
+      "tables": {
+        "cell_rise": [
+          [
+            0.0967416,
+            0.105474,
+            0.124767,
+            0.167824,
+            0.271395,
+            0.538106,
+            1.23827
+          ],
+          [
+            0.101462,
+            0.110195,
+            0.12948700000000002,
+            0.172542,
+            0.276129,
+            0.542844,
+            1.2429999999999999
+          ],
+          [
+            0.111759,
+            0.12048999999999999,
+            0.13977,
+            0.182771,
+            0.28634899999999996,
+            0.5530889999999999,
+            1.25325
+          ],
+          [
+            0.133049,
+            0.141713,
+            0.160863,
+            0.203695,
+            0.30722900000000003,
+            0.574065,
+            1.2743
+          ],
+          [
+            0.168831,
+            0.178138,
+            0.198353,
+            0.242539,
+            0.34657600000000005,
+            0.613545,
+            1.3139
+          ],
+          [
+            0.21697,
+            0.227116,
+            0.24904900000000002,
+            0.295141,
+            0.40083399999999997,
+            0.6694709999999999,
+            1.37
+          ],
+          [
+            0.256732,
+            0.269815,
+            0.296162,
+            0.34726900000000005,
+            0.455896,
+            0.7246560000000001,
+            1.42747
+          ]
+        ],
+        "rise_transition": [
+          [
+            0.0289169,
+            0.0369129,
+            0.0571724,
+            0.11043399999999999,
+            0.25478500000000004,
+            0.641822,
+            1.66409
+          ],
+          [
+            0.0289112,
+            0.0369106,
+            0.0571715,
+            0.11043399999999999,
+            0.25478500000000004,
+            0.641822,
+            1.66409
+          ],
+          [
+            0.0288396,
+            0.036850799999999996,
+            0.057133699999999996,
+            0.110425,
+            0.254783,
+            0.641822,
+            1.66409
+          ],
+          [
+            0.0286628,
+            0.0367155,
+            0.0570583,
+            0.110405,
+            0.254775,
+            0.64182,
+            1.66409
+          ],
+          [
+            0.030942300000000002,
+            0.039411,
+            0.059953799999999995,
+            0.112757,
+            0.25551500000000005,
+            0.641853,
+            1.6641000000000001
+          ],
+          [
+            0.035781900000000005,
+            0.0442259,
+            0.06479560000000001,
+            0.116692,
+            0.258542,
+            0.643582,
+            1.66415
+          ],
+          [
+            0.0479548,
+            0.056963400000000004,
+            0.0769423,
+            0.12634,
+            0.262556,
+            0.645076,
+            1.66648
+          ]
+        ],
+        "cell_fall": [
+          [
+            0.2055,
+            0.21356,
+            0.230208,
+            0.2626,
+            0.327193,
+            0.47252399999999994,
+            0.819336
+          ],
+          [
+            0.21013,
+            0.21817399999999998,
+            0.234811,
+            0.267204,
+            0.331803,
+            0.477132,
+            0.8250879999999999
+          ],
+          [
+            0.220558,
+            0.22858499999999998,
+            0.245194,
+            0.277563,
+            0.342159,
+            0.48748800000000003,
+            0.837893
+          ],
+          [
+            0.24414200000000003,
+            0.252166,
+            0.26876,
+            0.301092,
+            0.365671,
+            0.511007,
+            0.86605
+          ],
+          [
+            0.300485,
+            0.30847199999999997,
+            0.324992,
+            0.357231,
+            0.421786,
+            0.56716,
+            0.928986
+          ],
+          [
+            0.41732199999999997,
+            0.42606099999999997,
+            0.44393900000000003,
+            0.478121,
+            0.544809,
+            0.691141,
+            1.0585
+          ],
+          [
+            0.619989,
+            0.630317,
+            0.651233,
+            0.6901240000000001,
+            0.7623110000000001,
+            0.913019,
+            1.28409
+          ]
+        ],
+        "fall_transition": [
+          [
+            0.0305177,
+            0.0356652,
+            0.0472705,
+            0.0737666,
+            0.13899799999999998,
+            0.31518,
+            0.798134
+          ],
+          [
+            0.030517799999999998,
+            0.0356654,
+            0.047271200000000006,
+            0.07376590000000001,
+            0.13899,
+            0.315162,
+            0.798075
+          ],
+          [
+            0.030514200000000002,
+            0.035662900000000004,
+            0.047269399999999996,
+            0.07376569999999999,
+            0.13899,
+            0.315159,
+            0.7980269999999999
+          ],
+          [
+            0.0305026,
+            0.03565,
+            0.0472617,
+            0.0737726,
+            0.138993,
+            0.315157,
+            0.797958
+          ],
+          [
+            0.0303569,
+            0.0355285,
+            0.0471872,
+            0.0737506,
+            0.138973,
+            0.315142,
+            0.797864
+          ],
+          [
+            0.034718399999999996,
+            0.0400632,
+            0.051907,
+            0.07835109999999999,
+            0.142495,
+            0.31635,
+            0.797885
+          ],
+          [
+            0.0439945,
+            0.0498954,
+            0.06260210000000001,
+            0.0896093,
+            0.152641,
+            0.32300799999999996,
+            0.800843
+          ]
+        ]
+      }
+    },
+    {
+      "pin": "C",
+      "sense": "positive_unate",
+      "slowest_side_inputs": {
+        "rise": {
+          "A": 0,
+          "B": 1
+        },
+        "fall": {
+          "A": 0,
+          "B": 1
+        }
+      },
+      "tables": {
+        "cell_rise": [
+          [
+            0.0864342,
+            0.0952444,
+            0.114622,
+            0.157641,
+            0.261036,
+            0.527626,
+            1.2277399999999998
+          ],
+          [
+            0.0909565,
+            0.0997639,
+            0.11912799999999998,
+            0.162139,
+            0.26555599999999996,
+            0.532153,
+            1.2322600000000001
+          ],
+          [
+            0.10133,
+            0.110117,
+            0.129409,
+            0.172321,
+            0.275762,
+            0.542418,
+            1.24255
+          ],
+          [
+            0.12506799999999998,
+            0.13372499999999998,
+            0.152806,
+            0.19552,
+            0.298995,
+            0.565841,
+            1.26609
+          ],
+          [
+            0.162912,
+            0.172151,
+            0.191944,
+            0.235348,
+            0.33910300000000004,
+            0.606084,
+            1.3065
+          ],
+          [
+            0.204184,
+            0.215431,
+            0.23765399999999998,
+            0.282518,
+            0.38690199999999997,
+            0.654898,
+            1.35544
+          ],
+          [
+            0.223918,
+            0.23870199999999997,
+            0.267358,
+            0.318397,
+            0.424383,
+            0.691929,
+            1.39391
+          ]
+        ],
+        "rise_transition": [
+          [
+            0.0293725,
+            0.0371629,
+            0.057215,
+            0.110405,
+            0.254772,
+            0.64182,
+            1.66409
+          ],
+          [
+            0.029362,
+            0.0371579,
+            0.0572149,
+            0.11040699999999999,
+            0.254772,
+            0.64182,
+            1.66409
+          ],
+          [
+            0.0292942,
+            0.0371033,
+            0.0571969,
+            0.11041,
+            0.25476899999999997,
+            0.6418189999999999,
+            1.66409
+          ],
+          [
+            0.029399899999999996,
+            0.0371656,
+            0.0572145,
+            0.110389,
+            0.25473999999999997,
+            0.64181,
+            1.66409
+          ],
+          [
+            0.0335593,
+            0.0406509,
+            0.0598038,
+            0.112054,
+            0.255236,
+            0.641804,
+            1.66409
+          ],
+          [
+            0.0436176,
+            0.0500415,
+            0.0668821,
+            0.115546,
+            0.257079,
+            0.64296,
+            1.66408
+          ],
+          [
+            0.059334700000000004,
+            0.0671926,
+            0.0842999,
+            0.127192,
+            0.260129,
+            0.6438079999999999,
+            1.6656499999999999
+          ]
+        ],
+        "cell_fall": [
+          [
+            0.170758,
+            0.17976,
+            0.199195,
+            0.23829,
+            0.31233700000000003,
+            0.46591699999999997,
+            0.813837
+          ],
+          [
+            0.174759,
+            0.183751,
+            0.203183,
+            0.24229,
+            0.31634799999999996,
+            0.46993199999999996,
+            0.819037
+          ],
+          [
+            0.18517899999999998,
+            0.194156,
+            0.213564,
+            0.252655,
+            0.326715,
+            0.480302,
+            0.8319300000000001
+          ],
+          [
+            0.212594,
+            0.221566,
+            0.24094999999999997,
+            0.280001,
+            0.354066,
+            0.507673,
+            0.864092
+          ],
+          [
+            0.28119900000000003,
+            0.29011,
+            0.309377,
+            0.34833,
+            0.42243600000000003,
+            0.576131,
+            0.9396140000000001
+          ],
+          [
+            0.42185,
+            0.431957,
+            0.45315099999999997,
+            0.494882,
+            0.572017,
+            0.727124,
+            1.09644
+          ],
+          [
+            0.648611,
+            0.661346,
+            0.687792,
+            0.7390869999999999,
+            0.826818,
+            0.989633,
+            1.3647500000000001
+          ]
+        ],
+        "fall_transition": [
+          [
+            0.0330518,
+            0.0397536,
+            0.0552541,
+            0.087213,
+            0.154794,
+            0.325966,
+            0.800765
+          ],
+          [
+            0.0330538,
+            0.039753199999999995,
+            0.055256,
+            0.0872153,
+            0.154794,
+            0.325966,
+            0.800709
+          ],
+          [
+            0.0330518,
+            0.0397509,
+            0.055258299999999996,
+            0.0872256,
+            0.154802,
+            0.325968,
+            0.800593
+          ],
+          [
+            0.0330373,
+            0.0397424,
+            0.055272600000000005,
+            0.0872719,
+            0.154833,
+            0.325976,
+            0.80038
+          ],
+          [
+            0.032895299999999995,
+            0.0396586,
+            0.0552895,
+            0.0873804,
+            0.15490400000000001,
+            0.32598499999999997,
+            0.8000870000000001
+          ],
+          [
+            0.0407012,
+            0.047396400000000005,
+            0.0627784,
+            0.094419,
+            0.160088,
+            0.32796000000000003,
+            0.800167
+          ],
+          [
+            0.0561941,
+            0.06419889999999999,
+            0.08230889999999999,
+            0.11690999999999999,
+            0.179531,
+            0.340499,
+            0.8056300000000001
+          ]
+        ]
+      }
+    }
+  ],
+  "capacitance_pf": {
+    "A": {
+      "rise_capacitance": 0.004902888888888889,
+      "fall_capacitance": 0.004535222222222222,
+      "capacitance": 0.004719055555555555
+    },
+    "B": {
+      "rise_capacitance": 0.004848572222222222,
+      "fall_capacitance": 0.004825016666666667,
+      "capacitance": 0.004836794444444445
+    },
+    "C": {
+      "rise_capacitance": 0.002381805555555556,
+      "fall_capacitance": 0.0020228611111111107,
+      "capacitance": 0.002202333333333333
+    }
+  },
+  "area_um2": 12.512,
+  "nominal_point": {
+    "slew_ns": 0.122474,
+    "load_pf": 0.00912787
+  },
+  "liberty": "cells/dd2_g5__maj3_1/characterized.lib",
+  "rc_netlist": "cells/dd2_g5__maj3_1/characterized.pex.spice",
+  "extended_windows_ns": {}
+}

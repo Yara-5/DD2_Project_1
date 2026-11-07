@@ -1,0 +1,28 @@
+
+Subcircuit summary:
+Circuit 1: dd2_g5__maj4n_1                 |Circuit 2: dd2_g5__maj4n_1                 
+-------------------------------------------|-------------------------------------------
+sky130_fd_pr__nfet_01v8 (6)                |sky130_fd_pr__nfet_01v8 (6)                
+sky130_fd_pr__pfet_01v8_hvt (6)            |sky130_fd_pr__pfet_01v8_hvt (6)            
+Number of devices: 12                      |Number of devices: 12                      
+Number of nets: 14                         |Number of nets: 14                         
+---------------------------------------------------------------------------------------
+Circuits match uniquely.
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: dd2_g5__maj4n_1                 |Circuit 2: dd2_g5__maj4n_1                 
+-------------------------------------------|-------------------------------------------
+VGND                                       |VGND                                       
+VNB                                        |VNB                                        
+VPB                                        |VPB                                        
+Y                                          |Y                                          
+C                                          |C                                          
+D                                          |D                                          
+A                                          |A                                          
+B                                          |B                                          
+VPWR                                       |VPWR                                       
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes dd2_g5__maj4n_1 and dd2_g5__maj4n_1 are equivalent.
+Circuits match uniquely.

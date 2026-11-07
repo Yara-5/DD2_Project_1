@@ -1,0 +1,1855 @@
+{
+  "width_um": 2.76,
+  "width_sites": 6,
+  "height_um": 2.72,
+  "shapes": [
+    {
+      "layer": "boundary",
+      "box": [
+        0.0,
+        0.0,
+        2.76,
+        2.72
+      ],
+      "net": null,
+      "gds": [
+        236,
+        0
+      ]
+    },
+    {
+      "layer": "areaid_sc",
+      "box": [
+        0.0,
+        0.0,
+        2.76,
+        2.72
+      ],
+      "net": null,
+      "gds": [
+        81,
+        4
+      ]
+    },
+    {
+      "layer": "nwell",
+      "box": [
+        -0.19,
+        1.305,
+        2.95,
+        2.91
+      ],
+      "net": null,
+      "gds": [
+        64,
+        20
+      ]
+    },
+    {
+      "layer": "nsdm",
+      "box": [
+        0.0,
+        -0.19,
+        2.76,
+        1.015
+      ],
+      "net": null,
+      "gds": [
+        93,
+        44
+      ]
+    },
+    {
+      "layer": "psdm",
+      "box": [
+        0.0,
+        1.355,
+        2.76,
+        2.91
+      ],
+      "net": null,
+      "gds": [
+        94,
+        20
+      ]
+    },
+    {
+      "layer": "hvtp",
+      "box": [
+        0.0,
+        1.25,
+        2.76,
+        2.72
+      ],
+      "net": null,
+      "gds": [
+        78,
+        44
+      ]
+    },
+    {
+      "layer": "npc",
+      "box": [
+        0.0,
+        0.975,
+        2.76,
+        1.345
+      ],
+      "net": null,
+      "gds": [
+        95,
+        20
+      ]
+    },
+    {
+      "layer": "met1",
+      "box": [
+        0.0,
+        -0.24,
+        2.76,
+        0.24
+      ],
+      "net": "VGND",
+      "gds": [
+        68,
+        20
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        0.145,
+        -0.085,
+        0.315,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        0.605,
+        -0.085,
+        0.775,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.065,
+        -0.085,
+        1.235,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.525,
+        -0.085,
+        1.695,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.985,
+        -0.085,
+        2.155,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        2.445,
+        -0.085,
+        2.615,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "met1",
+      "box": [
+        0.0,
+        2.48,
+        2.76,
+        2.96
+      ],
+      "net": "VPWR",
+      "gds": [
+        68,
+        20
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        0.145,
+        2.635,
+        0.315,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        0.605,
+        2.635,
+        0.775,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.065,
+        2.635,
+        1.235,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.525,
+        2.635,
+        1.695,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        1.985,
+        2.635,
+        2.155,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "mcon",
+      "box": [
+        2.445,
+        2.635,
+        2.615,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        44
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        0.325,
+        0.235,
+        1.08,
+        0.885
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        0.66,
+        0.235,
+        1.56,
+        0.885
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        1.08,
+        0.235,
+        2.04,
+        0.885
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        1.56,
+        0.235,
+        2.375,
+        0.885
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        0.365,
+        0.575,
+        0.535,
+        0.745
+      ],
+      "net": "Y_d1",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        1.235,
+        0.295,
+        1.405,
+        0.465
+      ],
+      "net": "VGND",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        1.715,
+        0.575,
+        1.885,
+        0.745
+      ],
+      "net": "Y_d1",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        2.165,
+        0.575,
+        2.335,
+        0.745
+      ],
+      "net": "Y",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        0.325,
+        1.485,
+        1.08,
+        2.485
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        0.66,
+        1.485,
+        1.56,
+        2.485
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        1.08,
+        1.485,
+        2.04,
+        2.485
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "diff",
+      "box": [
+        1.56,
+        1.485,
+        2.375,
+        2.485
+      ],
+      "net": null,
+      "gds": [
+        65,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        0.365,
+        1.575,
+        0.535,
+        1.745
+      ],
+      "net": "Y_u1",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        0.785,
+        2.255,
+        0.955,
+        2.425
+      ],
+      "net": "VPWR",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        1.235,
+        1.575,
+        1.405,
+        1.745
+      ],
+      "net": "Y_u1",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        1.715,
+        1.575,
+        1.885,
+        1.745
+      ],
+      "net": "Y",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        2.165,
+        2.255,
+        2.335,
+        2.425
+      ],
+      "net": "VPWR",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        0.585,
+        0.105,
+        0.735,
+        2.615
+      ],
+      "net": "C",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        0.465,
+        0.995,
+        0.735,
+        1.325
+      ],
+      "net": "C",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        0.515,
+        1.075,
+        0.685,
+        1.245
+      ],
+      "net": "C",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        0.525,
+        1.085,
+        0.675,
+        1.235
+      ],
+      "net": "C",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        1.005,
+        0.105,
+        1.155,
+        2.615
+      ],
+      "net": "D",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        0.945,
+        0.995,
+        1.215,
+        1.325
+      ],
+      "net": "D",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        0.995,
+        1.075,
+        1.165,
+        1.245
+      ],
+      "net": "D",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        1.005,
+        1.085,
+        1.155,
+        1.235
+      ],
+      "net": "D",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        1.485,
+        0.105,
+        1.635,
+        2.615
+      ],
+      "net": "B",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        1.425,
+        0.995,
+        1.695,
+        1.325
+      ],
+      "net": "B",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        1.475,
+        1.075,
+        1.645,
+        1.245
+      ],
+      "net": "B",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        1.485,
+        1.085,
+        1.635,
+        1.235
+      ],
+      "net": "B",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        1.965,
+        0.105,
+        2.115,
+        2.615
+      ],
+      "net": "A",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "poly",
+      "box": [
+        1.905,
+        0.995,
+        2.175,
+        1.325
+      ],
+      "net": "A",
+      "gds": [
+        66,
+        20
+      ]
+    },
+    {
+      "layer": "licon",
+      "box": [
+        1.955,
+        1.075,
+        2.125,
+        1.245
+      ],
+      "net": "A",
+      "gds": [
+        66,
+        44
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        1.965,
+        1.085,
+        2.115,
+        1.235
+      ],
+      "net": "A",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        2.175,
+        0.585,
+        2.325,
+        0.735
+      ],
+      "net": "Y",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        0.145,
+        2.635,
+        0.315,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "met1_pin",
+      "box": [
+        0.145,
+        2.635,
+        0.315,
+        2.805
+      ],
+      "net": "VPWR",
+      "gds": [
+        68,
+        16
+      ]
+    },
+    {
+      "layer": "li1_pin",
+      "box": [
+        0.145,
+        -0.085,
+        0.315,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        67,
+        16
+      ]
+    },
+    {
+      "layer": "met1_pin",
+      "box": [
+        0.145,
+        -0.085,
+        0.315,
+        0.085
+      ],
+      "net": "VGND",
+      "gds": [
+        68,
+        16
+      ]
+    },
+    {
+      "layer": "vpb_pin",
+      "box": [
+        0.145,
+        2.635,
+        0.315,
+        2.805
+      ],
+      "net": "VPB",
+      "gds": [
+        64,
+        16
+      ]
+    },
+    {
+      "layer": "vnb_pin",
+      "box": [
+        0.145,
+        -0.085,
+        0.315,
+        0.085
+      ],
+      "net": "VNB",
+      "gds": [
+        122,
+        16
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VGND",
+      "box": [
+        0.0,
+        -0.085,
+        2.76,
+        0.085
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VGND",
+      "box": [
+        1.155,
+        0.085,
+        1.485,
+        0.465
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VPWR",
+      "box": [
+        0.785,
+        2.175,
+        0.955,
+        2.635
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VPWR",
+      "box": [
+        2.165,
+        2.175,
+        2.335,
+        2.635
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "VPWR",
+      "box": [
+        0.0,
+        2.635,
+        2.76,
+        2.805
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_d1",
+      "box": [
+        0.365,
+        0.495,
+        0.535,
+        0.575
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_d1",
+      "box": [
+        0.365,
+        0.575,
+        0.985,
+        0.635
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_d1",
+      "box": [
+        1.715,
+        0.495,
+        1.885,
+        0.635
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_d1",
+      "box": [
+        0.365,
+        0.635,
+        1.885,
+        0.745
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_d1",
+      "box": [
+        0.815,
+        0.745,
+        1.885,
+        0.805
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_d1",
+      "box": [
+        0.365,
+        0.745,
+        0.535,
+        0.825
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_d1",
+      "box": [
+        1.715,
+        0.805,
+        1.885,
+        0.825
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        2.165,
+        0.495,
+        2.335,
+        0.655
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        2.165,
+        0.655,
+        2.465,
+        0.825
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        2.295,
+        0.825,
+        2.465,
+        1.495
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        1.715,
+        1.495,
+        2.465,
+        1.665
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y",
+      "box": [
+        1.715,
+        1.665,
+        1.885,
+        1.825
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_u1",
+      "box": [
+        0.365,
+        1.495,
+        0.535,
+        1.575
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_u1",
+      "box": [
+        1.235,
+        1.495,
+        1.405,
+        1.575
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_u1",
+      "box": [
+        0.365,
+        1.575,
+        1.405,
+        1.745
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_u1",
+      "box": [
+        0.365,
+        1.745,
+        0.535,
+        1.825
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "Y_u1",
+      "box": [
+        1.235,
+        1.745,
+        1.405,
+        1.825
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "C",
+      "box": [
+        0.515,
+        0.995,
+        0.685,
+        1.325
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "D",
+      "box": [
+        0.995,
+        0.995,
+        1.165,
+        1.325
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "B",
+      "box": [
+        1.475,
+        0.995,
+        1.645,
+        1.325
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    },
+    {
+      "layer": "li1",
+      "net": "A",
+      "box": [
+        1.955,
+        0.995,
+        2.125,
+        1.325
+      ],
+      "gds": [
+        67,
+        20
+      ]
+    }
+  ],
+  "terminals": {
+    "Y_d1": [
+      [
+        0.45,
+        0.66
+      ],
+      [
+        1.8,
+        0.66
+      ]
+    ],
+    "VGND": [
+      [
+        1.32,
+        0.0
+      ],
+      [
+        1.32,
+        0.0
+      ]
+    ],
+    "Y": [
+      [
+        2.25,
+        0.66
+      ],
+      [
+        1.8,
+        1.66
+      ]
+    ],
+    "Y_u1": [
+      [
+        0.45,
+        1.66
+      ],
+      [
+        1.32,
+        1.66
+      ]
+    ],
+    "VPWR": [
+      [
+        0.87,
+        2.7199999999999998
+      ],
+      [
+        2.25,
+        2.7199999999999998
+      ],
+      [
+        0.87,
+        2.7199999999999998
+      ],
+      [
+        2.25,
+        2.7199999999999998
+      ]
+    ],
+    "C": [
+      [
+        0.6,
+        1.16
+      ]
+    ],
+    "D": [
+      [
+        1.08,
+        1.16
+      ]
+    ],
+    "B": [
+      [
+        1.56,
+        1.16
+      ]
+    ],
+    "A": [
+      [
+        2.04,
+        1.16
+      ]
+    ]
+  },
+  "contacts": [
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        0.23,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        0.6900000000000001,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        1.1500000000000001,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        1.61,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        2.0700000000000003,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VGND",
+      "point_um": [
+        2.5300000000000002,
+        0.0
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        0.6900000000000001,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        1.1500000000000001,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        1.61,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        2.0700000000000003,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "mcon",
+      "net": "VPWR",
+      "point_um": [
+        2.5300000000000002,
+        2.7199999999999998
+      ],
+      "source": "instructor frame: one rail contact per site"
+    },
+    {
+      "type": "diffusion",
+      "net": "Y_d1",
+      "point_um": [
+        0.45,
+        0.66
+      ],
+      "row": "nmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "VGND",
+      "point_um": [
+        1.32,
+        0.38
+      ],
+      "row": "nmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "Y_d1",
+      "point_um": [
+        1.8,
+        0.66
+      ],
+      "row": "nmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "Y",
+      "point_um": [
+        2.25,
+        0.66
+      ],
+      "row": "nmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "Y_u1",
+      "point_um": [
+        0.45,
+        1.66
+      ],
+      "row": "pmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "VPWR",
+      "point_um": [
+        0.87,
+        2.34
+      ],
+      "row": "pmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "Y_u1",
+      "point_um": [
+        1.32,
+        1.66
+      ],
+      "row": "pmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "Y",
+      "point_um": [
+        1.8,
+        1.66
+      ],
+      "row": "pmos"
+    },
+    {
+      "type": "diffusion",
+      "net": "VPWR",
+      "point_um": [
+        2.25,
+        2.34
+      ],
+      "row": "pmos"
+    },
+    {
+      "type": "poly",
+      "net": "C",
+      "point_um": [
+        0.6,
+        1.16
+      ],
+      "gate_x_um": 0.66
+    },
+    {
+      "type": "poly",
+      "net": "D",
+      "point_um": [
+        1.08,
+        1.16
+      ],
+      "gate_x_um": 1.08
+    },
+    {
+      "type": "poly",
+      "net": "B",
+      "point_um": [
+        1.56,
+        1.16
+      ],
+      "gate_x_um": 1.56
+    },
+    {
+      "type": "poly",
+      "net": "A",
+      "point_um": [
+        2.04,
+        1.16
+      ],
+      "gate_x_um": 2.04
+    }
+  ],
+  "devices": [
+    {
+      "id": "N2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "C",
+      "source": "Y_d2",
+      "drain": "Y_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 3,
+      "fingers": 1,
+      "gate_x_um": 0.66,
+      "diffusion_y_um": [
+        0.235,
+        0.885
+      ],
+      "segment": 0,
+      "left_net": "Y_d1",
+      "right_net": "Y_d2",
+      "diffusion_edge_distances_um": {
+        "left": 0.26,
+        "right": 1.64
+      }
+    },
+    {
+      "id": "N3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "D",
+      "source": "VGND",
+      "drain": "Y_d2",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 3,
+      "fingers": 1,
+      "gate_x_um": 1.08,
+      "diffusion_y_um": [
+        0.235,
+        0.885
+      ],
+      "segment": 0,
+      "left_net": "Y_d2",
+      "right_net": "VGND",
+      "diffusion_edge_distances_um": {
+        "left": 0.68,
+        "right": 1.22
+      }
+    },
+    {
+      "id": "N1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "VGND",
+      "drain": "Y_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 2,
+      "fingers": 1,
+      "gate_x_um": 1.56,
+      "diffusion_y_um": [
+        0.235,
+        0.885
+      ],
+      "segment": 0,
+      "left_net": "VGND",
+      "right_net": "Y_d1",
+      "diffusion_edge_distances_um": {
+        "left": 1.16,
+        "right": 0.74
+      }
+    },
+    {
+      "id": "N4",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "Y_d1",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 3,
+      "stack_depth": 3,
+      "fingers": 1,
+      "gate_x_um": 2.04,
+      "diffusion_y_um": [
+        0.235,
+        0.885
+      ],
+      "segment": 0,
+      "left_net": "Y_d1",
+      "right_net": "Y",
+      "diffusion_edge_distances_um": {
+        "left": 1.64,
+        "right": 0.26
+      }
+    },
+    {
+      "id": "P2",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "C",
+      "source": "Y_u1",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 2,
+      "fingers": 1,
+      "gate_x_um": 0.66,
+      "diffusion_y_um": [
+        1.485,
+        2.485
+      ],
+      "segment": 0,
+      "left_net": "Y_u1",
+      "right_net": "VPWR",
+      "diffusion_edge_distances_um": {
+        "left": 0.26,
+        "right": 1.64
+      }
+    },
+    {
+      "id": "P3",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "D",
+      "source": "Y_u1",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 2,
+      "fingers": 1,
+      "gate_x_um": 1.08,
+      "diffusion_y_um": [
+        1.485,
+        2.485
+      ],
+      "segment": 0,
+      "left_net": "VPWR",
+      "right_net": "Y_u1",
+      "diffusion_edge_distances_um": {
+        "left": 0.68,
+        "right": 1.22
+      }
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "B",
+      "source": "Y",
+      "drain": "Y_u1",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 2,
+      "fingers": 1,
+      "gate_x_um": 1.56,
+      "diffusion_y_um": [
+        1.485,
+        2.485
+      ],
+      "segment": 0,
+      "left_net": "Y_u1",
+      "right_net": "Y",
+      "diffusion_edge_distances_um": {
+        "left": 1.16,
+        "right": 0.74
+      }
+    },
+    {
+      "id": "P4",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "Y",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 3,
+      "stack_depth": 1,
+      "fingers": 1,
+      "gate_x_um": 2.04,
+      "diffusion_y_um": [
+        1.485,
+        2.485
+      ],
+      "segment": 0,
+      "left_net": "Y",
+      "right_net": "VPWR",
+      "diffusion_edge_distances_um": {
+        "left": 1.64,
+        "right": 0.26
+      }
+    }
+  ],
+  "output_pin_um": [
+    2.25,
+    0.66
+  ],
+  "gate_contact_y_um": 1.16,
+  "supply_pin_x_um": 0.23,
+  "routes": [
+    {
+      "net": "Y",
+      "layer": "li1",
+      "points_um": [
+        [
+          2.25,
+          0.66
+        ],
+        [
+          2.25,
+          0.74
+        ],
+        [
+          2.38,
+          0.74
+        ],
+        [
+          2.38,
+          1.58
+        ],
+        [
+          1.8,
+          1.58
+        ],
+        [
+          1.8,
+          1.66
+        ]
+      ]
+    },
+    {
+      "net": "Y_d1",
+      "layer": "li1",
+      "points_um": [
+        [
+          0.45,
+          0.66
+        ],
+        [
+          0.9,
+          0.66
+        ],
+        [
+          0.9,
+          0.72
+        ],
+        [
+          1.8,
+          0.72
+        ],
+        [
+          1.8,
+          0.66
+        ]
+      ]
+    },
+    {
+      "net": "Y_u1",
+      "layer": "li1",
+      "points_um": [
+        [
+          0.45,
+          1.66
+        ],
+        [
+          1.32,
+          1.66
+        ]
+      ]
+    }
+  ],
+  "vias": [],
+  "routing_order": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "Y",
+    "Y_d1",
+    "Y_u1"
+  ],
+  "li1_notch_fill_added_area_um2": {
+    "VGND": 0.0,
+    "VPWR": 0.0,
+    "Y_d1": 0.0,
+    "Y": 0.0,
+    "Y_u1": 0.0,
+    "C": 0.0,
+    "D": 0.0,
+    "B": 0.0,
+    "A": 0.0
+  },
+  "met1_notch_fill_added_area_um2": {},
+  "met1_in_single_stage_cell": false
+}

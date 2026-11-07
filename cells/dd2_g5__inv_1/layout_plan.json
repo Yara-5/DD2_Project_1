@@ -1,0 +1,1433 @@
+{
+  "schema": "dd2.cp1.layout-plan.v1",
+  "units": "um",
+  "name": "dd2_g5__inv_1",
+  "grid_um": 0.005,
+  "input": {
+    "schema": "dd2.layout-spec.v1",
+    "name": "dd2_g5__inv_1",
+    "request_id": "TEST-INV-1",
+    "inputs": [
+      "A"
+    ],
+    "output": "Y",
+    "truth_table": "0x1",
+    "sizing": "hd",
+    "devices": [
+      {
+        "id": "N1",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "A",
+        "source": "VGND",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1
+      },
+      {
+        "id": "P1",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "Y",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1
+      }
+    ],
+    "euler_paths": {
+      "nmos": [
+        {
+          "devices": [
+            "N1"
+          ],
+          "nodes": [
+            "VGND",
+            "Y"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P1"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y"
+          ]
+        }
+      ]
+    },
+    "alternative_euler_paths": [
+      {
+        "nmos": [
+          {
+            "devices": [
+              "N1"
+            ],
+            "nodes": [
+              "Y",
+              "VGND"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "devices": [
+              "P1"
+            ],
+            "nodes": [
+              "Y",
+              "VPWR"
+            ]
+          }
+        ]
+      }
+    ],
+    "placement": {
+      "stage_order": [
+        "Y"
+      ],
+      "mirrored": [],
+      "dual_trails_per_stage": {
+        "Y": 1
+      },
+      "diffusion_segments": 1,
+      "diffusion_breaks": 0,
+      "columns": 1,
+      "repeated_nets_in_rows": 0,
+      "folded": false,
+      "wiring_slots": 0,
+      "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+    },
+    "hd_reference": "sky130_fd_sc_hd__inv_1",
+    "hd_pin_mapping": {
+      "A": "A",
+      "Y": "Y"
+    },
+    "hd_same_circuit": true,
+    "placement_used": 0
+  },
+  "dimensions": {
+    "gate_length_um": 0.15,
+    "gate_pitches_um": [],
+    "gate_gaps": [],
+    "pitch_lower_bounds_um": {
+      "poly_stripe_spacing": 0.36,
+      "diffusion_contact_between_gates": 0.42000000000000004
+    },
+    "gate_contact_offset_um": [
+      0.0
+    ],
+    "li1_landing_um": [
+      0.17,
+      0.33
+    ],
+    "li1_pin_um": 0.15,
+    "poly_landing_um": [
+      0.27,
+      0.33
+    ],
+    "met1_landing_um": 0.29,
+    "diffusion_end_extension_um": 0.26,
+    "end_extension_lower_bounds_um": {
+      "diffusion_extension": 0.25,
+      "contact_fit": 0.26
+    },
+    "diffusion_break_um": 0.27,
+    "diffusion_break_lower_bounds_um": {
+      "diffusion_spacing": 0.27,
+      "end_landing_li1_spacing": 0.09000000000000002
+    },
+    "side_margin_um": 0.135,
+    "side_margin_lower_bounds_um": {
+      "half_diffusion_spacing": 0.135,
+      "implant_enclosure": 0.125
+    },
+    "left_edge_lower_bounds_um": {
+      "diffusion_margin": 0.47,
+      "poly_pad_to_edge": 0.24,
+      "gate_li1_to_edge": 0.17
+    },
+    "right_edge_lower_bounds_um": {
+      "diffusion_margin": 0.47,
+      "poly_pad_to_edge": 0.24,
+      "gate_li1_to_edge": 0.17
+    },
+    "li1_track_um": 0.52,
+    "channels": [],
+    "crossing_gaps": [],
+    "diffusion_segments": 1,
+    "active_x_um": [
+      [
+        0.355,
+        1.025
+      ]
+    ],
+    "centering_shift_um": 0.22,
+    "gate_x_um": [
+      0.69
+    ],
+    "diffusion_node_x_um": [
+      [
+        0.48,
+        0.9
+      ]
+    ],
+    "row_active_x_um": {
+      "nmos": [
+        [
+          0.355,
+          1.025
+        ]
+      ],
+      "pmos": [
+        [
+          0.355,
+          1.025
+        ]
+      ]
+    },
+    "row_node_x_um": {
+      "nmos": [
+        [
+          0.48,
+          0.9
+        ]
+      ],
+      "pmos": [
+        [
+          0.48,
+          0.9
+        ]
+      ]
+    },
+    "raw_width_um": 0.94,
+    "minimum_width_sites": 3,
+    "width_sites": 3,
+    "formulas": {
+      "pitch": "per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, gate li1 spacing li.3, li1 track at a channel), 2 routing steps)",
+      "gate_contact_offset": "chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe",
+      "li1_landing": "licon wide (li1 covers it), licon + 2 li.5 tall, at least li.6 in area",
+      "poly_landing": "licon + 2 licon.8 wide, licon + 2 licon.8a tall, joined to the stripe",
+      "end_extension": "max(poly.7, licon.11 + licon + licon.5a)",
+      "diffusion_break": "snap_up(max(diff/tap.3, end-landing li1 spacing))",
+      "side_margin": "max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half",
+      "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
+    },
+    "cell_width_um": 1.38,
+    "cell_height_um": 2.72,
+    "routing_retries": [],
+    "rule_values_and_sources": {
+      "grid": {
+        "value": 0.005,
+        "source": "manufacturing grid, given/plan_hd.json 'grid'",
+        "check": {
+          "kind": "frame",
+          "key": "grid"
+        }
+      },
+      "poly_min_width": {
+        "value": 0.15,
+        "source": "poly.1a",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.1a",
+          "message": "poly width"
+        }
+      },
+      "poly_space": {
+        "value": 0.21,
+        "source": "poly.2",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.2",
+          "message": "poly spacing"
+        }
+      },
+      "diff_end_extension": {
+        "value": 0.25,
+        "source": "poly.7, diffusion extension past the gate",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.7",
+          "message": "N-Diffusion overhang of nFET"
+        }
+      },
+      "poly_endcap": {
+        "value": 0.13,
+        "source": "poly.8, poly extension past the diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.8",
+          "message": "poly overhang of transistor"
+        }
+      },
+      "channel_min_width": {
+        "value": 0.36,
+        "source": "diff/tap.2, transistor width inside a standard cell",
+        "check": {
+          "kind": "drc",
+          "rule": "diff/tap.2",
+          "message": "Transistor in standard cell width"
+        }
+      },
+      "diff_space": {
+        "value": 0.27,
+        "source": "diff/tap.3, spacing between diffusion strips (a diffusion break)",
+        "check": {
+          "kind": "drc",
+          "rule": "diff/tap.3",
+          "message": "Diffusion spacing"
+        }
+      },
+      "implant_enclosure": {
+        "value": 0.125,
+        "source": "nsd.5a / psd.5a, implant enclosure of diffusion (Magic does not check drawn implants; src/verify_drc.py layer check does)",
+        "check": {
+          "kind": "drc",
+          "rule": "psd.5a",
+          "message": "N-Diffusion to P-tap spacing"
+        }
+      },
+      "licon_size": {
+        "value": 0.17,
+        "source": "licon.1",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.1",
+          "message": "N-diffusion contact width"
+        }
+      },
+      "licon_diff_enclosure": {
+        "value": 0.06,
+        "source": "licon.5c, diffusion overlap of a diffusion contact in one direction (applied above and below it)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.5c",
+          "message": "N-diffusion overlap of N-diffusion contact"
+        }
+      },
+      "licon_diff_enclosure_min": {
+        "value": 0.04,
+        "source": "licon.5a, diffusion overlap of a diffusion contact on every side (licon.5c's 0.06 then holds in the other direction)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.5a",
+          "message": "N-diffusion overlap of N-diffusion contact"
+        }
+      },
+      "licon_poly_enclosure": {
+        "value": 0.08,
+        "source": "licon.8a, poly overlap of a poly contact in one direction (applied above and below it)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.8a",
+          "message": "poly overlap of poly contact"
+        }
+      },
+      "licon_poly_enclosure_min": {
+        "value": 0.05,
+        "source": "licon.8, poly overlap of a poly contact on every side",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.8",
+          "message": "poly overlap of poly contact"
+        }
+      },
+      "poly_diff_space": {
+        "value": 0.075,
+        "source": "poly.4, poly (the gate contact pad) to diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.4",
+          "message": "poly spacing to Diffusion"
+        }
+      },
+      "poly_contact_diff_space": {
+        "value": 0.19,
+        "source": "licon.14, poly contact to diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.14",
+          "message": "poly contact spacing to diffusion"
+        }
+      },
+      "poly_contact_pdiff_space": {
+        "value": 0.235,
+        "source": "licon.9 + psdm.5a, poly contact to P-diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.9 + psdm.5a",
+          "message": "poly contact spacing to P-diffusion"
+        }
+      },
+      "licon_gate_space": {
+        "value": 0.05,
+        "source": "licon.11, diffusion contact to standard-cell gate",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.11",
+          "message": "Diffusion contact to standard cell gate"
+        }
+      },
+      "licon_npc_enclosure": {
+        "value": 0.1,
+        "source": "NPC grown 0.1 um around every poly contact (npc.1/npc.5 as Magic generates it; drawn NPC is checked by src/verify_drc.py)",
+        "check": {
+          "kind": "cif",
+          "layer": "NPC pc",
+          "operation": "grow",
+          "occurrence": 1
+        }
+      },
+      "npc_space": {
+        "value": 0.27,
+        "source": "npc.2, NPC openings closer than 0.27 um are bridged by Magic's NPC generation",
+        "check": {
+          "kind": "cif",
+          "layer": "NPC pc",
+          "operation": "bridge",
+          "occurrence": 1
+        }
+      },
+      "li_width": {
+        "value": 0.17,
+        "source": "li.1",
+        "check": {
+          "kind": "drc",
+          "rule": "li.1",
+          "message": "Local interconnect width"
+        }
+      },
+      "li_space": {
+        "value": 0.17,
+        "source": "li.3",
+        "check": {
+          "kind": "drc",
+          "rule": "li.3",
+          "message": "Local interconnect spacing"
+        }
+      },
+      "li_contact_enclosure": {
+        "value": 0.08,
+        "source": "li.5, li1 overlap of a contact in one direction (landings extend 0.08 um above and below; li1 covers the contact on the other two sides)",
+        "check": {
+          "kind": "drc",
+          "rule": "li.5",
+          "message": "Local interconnect overlap of poly contact"
+        }
+      },
+      "li_min_area": {
+        "value": 0.0561,
+        "source": "li.6 (um^2)",
+        "check": {
+          "kind": "drc",
+          "rule": "li.6",
+          "message": "Local interconnect minimum area",
+          "area": true
+        }
+      },
+      "mcon_size": {
+        "value": 0.17,
+        "source": "mcon.1 (ct.1)",
+        "check": {
+          "kind": "drc",
+          "rule": "mcon.1",
+          "message": "mcon.width"
+        }
+      },
+      "mcon_space": {
+        "value": 0.19,
+        "source": "mcon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "mcon.2",
+          "message": "mcon.spacing"
+        }
+      },
+      "met1_width": {
+        "value": 0.14,
+        "source": "met1.1",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.1",
+          "message": "Metal1 width"
+        }
+      },
+      "met1_space": {
+        "value": 0.14,
+        "source": "met1.2",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.2",
+          "message": "Metal1 spacing"
+        }
+      },
+      "met1_contact_enclosure": {
+        "value": 0.06,
+        "source": "met1.5, applied on all four sides (conservative)",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.5",
+          "message": "Metal1 overlap of local interconnect contact"
+        }
+      },
+      "met1_min_area": {
+        "value": 0.083,
+        "source": "met1.6 (um^2)",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.6",
+          "message": "Metal1 minimum area",
+          "area": true
+        }
+      }
+    },
+    "frame_source": "plan_hd.json",
+    "frame_sha256": "d22bd12109df202fa34c590c2402030e2b38952a6962b806499f2ed3aa2a11df"
+  },
+  "geometry": {
+    "width_um": 1.38,
+    "width_sites": 3,
+    "height_um": 2.72,
+    "shapes": [
+      {
+        "layer": "boundary",
+        "box": [
+          0.0,
+          0.0,
+          1.38,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          236,
+          0
+        ]
+      },
+      {
+        "layer": "areaid_sc",
+        "box": [
+          0.0,
+          0.0,
+          1.38,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          81,
+          4
+        ]
+      },
+      {
+        "layer": "nwell",
+        "box": [
+          -0.19,
+          1.305,
+          1.57,
+          2.91
+        ],
+        "net": null,
+        "gds": [
+          64,
+          20
+        ]
+      },
+      {
+        "layer": "nsdm",
+        "box": [
+          0.0,
+          -0.19,
+          1.38,
+          1.015
+        ],
+        "net": null,
+        "gds": [
+          93,
+          44
+        ]
+      },
+      {
+        "layer": "psdm",
+        "box": [
+          0.0,
+          1.355,
+          1.38,
+          2.91
+        ],
+        "net": null,
+        "gds": [
+          94,
+          20
+        ]
+      },
+      {
+        "layer": "hvtp",
+        "box": [
+          0.0,
+          1.25,
+          1.38,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          78,
+          44
+        ]
+      },
+      {
+        "layer": "npc",
+        "box": [
+          0.0,
+          0.975,
+          1.38,
+          1.345
+        ],
+        "net": null,
+        "gds": [
+          95,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "box": [
+          0.0,
+          -0.24,
+          1.38,
+          0.24
+        ],
+        "net": "VGND",
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.605,
+          -0.085,
+          0.775,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.065,
+          -0.085,
+          1.235,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "met1",
+        "box": [
+          0.0,
+          2.48,
+          1.38,
+          2.96
+        ],
+        "net": "VPWR",
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.605,
+          2.635,
+          0.775,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.065,
+          2.635,
+          1.235,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.355,
+          0.235,
+          1.025,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.395,
+          0.295,
+          0.565,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.815,
+          0.575,
+          0.985,
+          0.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.355,
+          1.485,
+          1.025,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.395,
+          2.255,
+          0.565,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.815,
+          1.575,
+          0.985,
+          1.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.615,
+          0.105,
+          0.765,
+          2.615
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.555,
+          0.995,
+          0.825,
+          1.325
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.605,
+          1.075,
+          0.775,
+          1.245
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.615,
+          1.085,
+          0.765,
+          1.235
+        ],
+        "net": "A",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.825,
+          0.585,
+          0.975,
+          0.735
+        ],
+        "net": "Y",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "met1_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          68,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "met1_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          68,
+          16
+        ]
+      },
+      {
+        "layer": "vpb_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPB",
+        "gds": [
+          64,
+          16
+        ]
+      },
+      {
+        "layer": "vnb_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VNB",
+        "gds": [
+          122,
+          16
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          0.0,
+          -0.085,
+          1.38,
+          0.085
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          0.315,
+          0.085,
+          0.645,
+          0.465
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          0.395,
+          2.175,
+          0.565,
+          2.635
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          0.0,
+          2.635,
+          1.38,
+          2.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.815,
+          0.495,
+          0.985,
+          0.655
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.815,
+          0.655,
+          1.115,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.945,
+          0.825,
+          1.115,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.815,
+          1.495,
+          1.115,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.815,
+          1.665,
+          0.985,
+          1.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "A",
+        "box": [
+          0.605,
+          0.995,
+          0.775,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      }
+    ],
+    "terminals": {
+      "VGND": [
+        [
+          0.48,
+          0.0
+        ],
+        [
+          0.48,
+          0.0
+        ]
+      ],
+      "Y": [
+        [
+          0.9,
+          0.66
+        ],
+        [
+          0.9,
+          1.66
+        ]
+      ],
+      "VPWR": [
+        [
+          0.48,
+          2.7199999999999998
+        ],
+        [
+          0.48,
+          2.7199999999999998
+        ]
+      ],
+      "A": [
+        [
+          0.69,
+          1.16
+        ]
+      ]
+    },
+    "contacts": [
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          0.23,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          0.6900000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          1.1500000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          0.23,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          0.6900000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          1.1500000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "diffusion",
+        "net": "VGND",
+        "point_um": [
+          0.48,
+          0.38
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          0.9,
+          0.66
+        ],
+        "row": "nmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "VPWR",
+        "point_um": [
+          0.48,
+          2.34
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          0.9,
+          1.66
+        ],
+        "row": "pmos"
+      },
+      {
+        "type": "poly",
+        "net": "A",
+        "point_um": [
+          0.69,
+          1.16
+        ],
+        "gate_x_um": 0.69
+      }
+    ],
+    "devices": [
+      {
+        "id": "N1",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "A",
+        "source": "VGND",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1,
+        "gate_x_um": 0.69,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 0,
+        "left_net": "VGND",
+        "right_net": "Y",
+        "diffusion_edge_distances_um": {
+          "left": 0.26,
+          "right": 0.26
+        }
+      },
+      {
+        "id": "P1",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "Y",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1,
+        "gate_x_um": 0.69,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "VPWR",
+        "right_net": "Y",
+        "diffusion_edge_distances_um": {
+          "left": 0.26,
+          "right": 0.26
+        }
+      }
+    ],
+    "output_pin_um": [
+      0.9,
+      0.66
+    ],
+    "gate_contact_y_um": 1.16,
+    "supply_pin_x_um": 0.23,
+    "routes": [
+      {
+        "net": "Y",
+        "layer": "li1",
+        "points_um": [
+          [
+            0.9,
+            0.66
+          ],
+          [
+            0.9,
+            0.74
+          ],
+          [
+            1.03,
+            0.74
+          ],
+          [
+            1.03,
+            1.58
+          ],
+          [
+            0.9,
+            1.58
+          ],
+          [
+            0.9,
+            1.66
+          ]
+        ]
+      }
+    ],
+    "vias": [],
+    "routing_order": [
+      "A",
+      "Y"
+    ],
+    "li1_notch_fill_added_area_um2": {
+      "VGND": 0.0,
+      "VPWR": 0.0,
+      "Y": 0.0,
+      "A": 0.0
+    },
+    "met1_notch_fill_added_area_um2": {},
+    "met1_in_single_stage_cell": false
+  },
+  "labels": [
+    {
+      "text": "VPWR",
+      "position_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "gds": [
+        68,
+        5
+      ]
+    },
+    {
+      "text": "VPWR",
+      "position_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "VGND",
+      "position_um": [
+        0.23,
+        0.0
+      ],
+      "gds": [
+        68,
+        5
+      ]
+    },
+    {
+      "text": "VGND",
+      "position_um": [
+        0.23,
+        0.0
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "A",
+      "position_um": [
+        0.69,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "Y",
+      "position_um": [
+        0.9,
+        0.66
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "VPB",
+      "position_um": [
+        0.23,
+        2.72
+      ],
+      "gds": [
+        64,
+        5
+      ]
+    },
+    {
+      "text": "VNB",
+      "position_um": [
+        0.23,
+        0
+      ],
+      "gds": [
+        64,
+        59
+      ]
+    }
+  ],
+  "status": "prepared_unverified"
+}

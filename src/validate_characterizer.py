@@ -14,10 +14,17 @@ Checks (Table 5), per directory:
                every arc, relative to the shipped value: median (must be <= 5 % for the
                --fixed build), maximum and where it occurs, pooled over the six cells;
   input cap    every input pin within 10 % of the shipped capacitance (--fixed build);
-  syntax       with --syntax-check, the generated .lib loads in Yosys and OpenSTA;
+  syntax       the generated .lib loads in Yosys and OpenSTA;
+  design level --design-level, design_level.py's report: the six cells in a copy of the HD
+               Liberty, Tutorial 4's SPM mapped again and timed with OpenSTA; the change
+               in worst delay is reported, the run itself is required;
   broken case  --broken DIR (tables indexed by the full ramp) must be flagged: its median
                must exceed the limit. A broken case that is not flagged is a FAIL.
-The --stock build is reported, not judged. Standard library only.
+The --stock build is reported, not judged. Every part of Table 5 is required: a missing
+--stock or --broken directory, no --syntax-check, a syntax tool that is not installed, or
+no passing --design-level report is reported as not run, and the validation then fails
+(AGENTS.md rule 5).
+Writes results/characterization/validation.json. Standard library only.
 """
 from __future__ import annotations
 import argparse
@@ -141,7 +148,9 @@ def syntax_check(lib, tools):
     for name, cmd in tools.items():
         proc = subprocess.run(cmd.format(lib=lib), shell=True, text=True, stdout=subprocess.PIPE,
                               stderr=subprocess.STDOUT, check=False)
-        results[name] = {'passed': proc.returncode == 0 and not re.search(r'\berror\b', proc.stdout, re.I),
+        # The shell answers 127 when the tool is not installed: not run, not failed.
+        results[name] = {'ran': proc.returncode != 127,
+                         'passed': proc.returncode == 0 and not re.search(r'\berror\b', proc.stdout, re.I),
                          'tail': proc.stdout[-300:]}
     return results
 
@@ -183,9 +192,11 @@ def main():
     ap.add_argument('--stock', type=Path, help='reports made with the stock ngspice (reported)')
     ap.add_argument('--broken', type=Path, help='reports indexed by the full ramp (must be flagged)')
     ap.add_argument('--syntax-check', action='store_true', help='load every generated .lib in Yosys and OpenSTA')
+    ap.add_argument('--design-level', type=Path, help="design_level.py's report (SPM timed with OpenSTA)")
     ap.add_argument('--yosys', default='yosys -q -p "read_liberty -lib {lib}"')
     ap.add_argument('--sta', default="printf 'read_liberty {lib}\\nexit\\n' | sta -no_init")
-    ap.add_argument('--out', type=Path, default=Path(__file__).resolve().parent.parent / 'results' / 'characterizer_validation.json')
+    ap.add_argument('--out', type=Path,
+                    default=Path(__file__).resolve().parent.parent / 'results' / 'characterization' / 'validation.json')
     args = ap.parse_args()
     text = args.liberty.read_text(encoding='utf-8', errors='replace')
     syntax = {'yosys': args.yosys, 'opensta': args.sta} if args.syntax_check else None
@@ -202,13 +213,33 @@ def main():
                   'input_capacitance_within_10_percent': fixed['max_capacitance_error'] <= CAP_LIMIT,
                   'cells_are_the_six': sorted(c.split('__')[-1] for c in fixed['cells']) ==
                   sorted(['inv_1', 'nand2_1', 'nor2_1', 'nand3_1', 'a21oi_1', 'o21ai_1'])}
+        not_run = []
+        if not args.stock:
+            not_run.append('stock ngspice build (--stock)')
         if syntax:
-            checks['liberty_loads_in_yosys_and_opensta'] = all(v['passed'] for c in fixed['syntax'].values() for v in c.values())
+            for tool in syntax:
+                results = [c[tool] for c in fixed['syntax'].values()]
+                if not all(r['ran'] for r in results):
+                    not_run.append(f'{tool} (not installed)')
+                else:
+                    checks[f'liberty_loads_in_{tool}'] = all(r['passed'] for r in results)
+        else:
+            not_run.append('Yosys and OpenSTA syntax check (--syntax-check)')
+        design = json.loads(args.design_level.read_text()) if args.design_level and args.design_level.is_file() else None
+        if design and design.get('passed'):
+            report['design_level'] = {k: design[k] for k in ('clock_period_ns', 'worst_delay_change_ns',
+                                                           'worst_delay_change_percent', 'same_netlist_change_percent')}
+            report['design_level']['worst_delay_ns'] = {k: v['worst_delay_ns'] for k, v in design['timing'].items()}
+        else:
+            not_run.append('SPM design level (--design-level)' +
+                           (f": {design.get('error')}" if design else ''))
         if args.broken:
             broken = report['broken'] = evaluate(args.broken, args.liberty, text, None)
             checks['broken_case_flagged'] = broken['index_by_ramp'] and broken['median_error'] > MEDIAN_LIMIT
-        report['checks'] = checks
-        report['passed'] = all(checks.values())
+        else:
+            not_run.append('full-ramp broken case (--broken)')
+        report['checks'], report['not_run'] = checks, not_run
+        report['passed'] = all(checks.values()) and not not_run
     except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
         report.update(passed=False, error=f'{type(exc).__name__}: {exc}')
     args.out.parent.mkdir(parents=True, exist_ok=True)
@@ -220,8 +251,15 @@ def main():
             print(f"{label:6} {r['simulator']['version']}: median {100 * r['median_error']:.2f}% over {r['entries']} entries, "
                   f"max {100 * r['max_error']:.1f}% ({w['cell'].split('__')[-1]} {w['pin']} {w['table']} "
                   f"slew {w['slew_ns']} load {w['load_pf']}), worst input cap {100 * r['max_capacitance_error']:.1f}%")
+    d = report.get('design_level')
+    if d:
+        w = d['worst_delay_ns']
+        print(f"design level: SPM worst delay {w['shipped']} ns shipped, {w['ours']} ns with ours "
+              f"({d['worst_delay_change_percent']:+.2f} %; same netlist {d['same_netlist_change_percent']:+.2f} %)")
     for k, v in report.get('checks', {}).items():
         print(f"  {'ok  ' if v else 'FAIL'} {k}")
+    for item in report.get('not_run', []):
+        print(f'  NOT RUN {item}')
     print('PASS' if report['passed'] else 'FAIL' + (f": {report['error']}" if 'error' in report else ''))
     return 0 if report['passed'] else 1
 

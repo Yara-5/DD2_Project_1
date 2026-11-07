@@ -1,0 +1,212 @@
+{
+  "check": "pdk_rules",
+  "tech": "/home/youssef/work/pdks/sky130A/libs.tech/magic/sky130A.tech",
+  "tech_sha256": "55fdebfa329544c1cb1e22a3817461603f1dea9a41638b26af8c7751b3e0cc6a",
+  "frame_sha256": "d22bd12109df202fa34c590c2402030e2b38952a6962b806499f2ed3aa2a11df",
+  "rules": {
+    "grid": {
+      "passed": true,
+      "frame_value": 0.005,
+      "value": 0.005
+    },
+    "poly_min_width": {
+      "passed": true,
+      "line": 4333,
+      "text": "width allpoly,polyfill 150 \"poly width < %d (poly.1a)\"",
+      "pdk_value": 150,
+      "value": 0.15
+    },
+    "poly_space": {
+      "passed": true,
+      "line": 4334,
+      "text": "spacing allpoly,polyfill allpoly,polyfill 210 touching_ok \"poly spacing < %d (poly.2)\"",
+      "pdk_value": 210,
+      "value": 0.21
+    },
+    "diff_end_extension": {
+      "passed": true,
+      "line": 4342,
+      "text": "overhang *ndiff,rndiff nfet,scnfet,scnfetlvt,npd,npass,nsonos 250 \"N-Diffusion overhang of nFET < %d (poly.7)\"",
+      "pdk_value": 250,
+      "value": 0.25
+    },
+    "poly_endcap": {
+      "passed": true,
+      "line": 4347,
+      "text": "overhang *poly allfetsstd,allfetsspecial 130 \"poly overhang of transistor < %d (poly.8)\"",
+      "pdk_value": 130,
+      "value": 0.13
+    },
+    "channel_min_width": {
+      "passed": true,
+      "line": 4773,
+      "text": "edge4way *poly allfetsspecial 360 allfets 0 0 \"Transistor in standard cell width < %d (diff/tap.2)\"",
+      "pdk_value": 360,
+      "value": 0.36
+    },
+    "diff_space": {
+      "passed": true,
+      "line": 4227,
+      "text": "spacing alldifflv,var,varhvt,corenvar,corepvar,fomfill alldifflv,var,varhvt,corenvar,corepvar,fomfill 270 touching_ok \"Diffusion spacing < %d (diff/tap.3)\"",
+      "pdk_value": 270,
+      "value": 0.27
+    },
+    "implant_enclosure": {
+      "passed": true,
+      "line": 4282,
+      "text": "edge4way (*ndiff)/a ~(*ndiff,*psd)/a 125 ~(*psd)/a (*psd)/a 125 \"N-Diffusion to P-tap spacing < %d across butted junction (psd.5a)\"",
+      "pdk_value": 125,
+      "value": 0.125
+    },
+    "licon_size": {
+      "passed": true,
+      "line": 4442,
+      "text": "width ndc/li 170 \"N-diffusion contact width < %d (licon.1)\"",
+      "pdk_value": 170,
+      "value": 0.17
+    },
+    "licon_diff_enclosure": {
+      "passed": true,
+      "line": 4504,
+      "text": "surround ndc/a *ndiff,nfet,scnfet,scnfetlvt,npd,npass,nfetlvt,rnd 60 directional \"N-diffusion overlap of N-diffusion contact < %d in one direction (licon.5c)\"",
+      "pdk_value": 60,
+      "value": 0.06
+    },
+    "licon_diff_enclosure_min": {
+      "passed": true,
+      "line": 4489,
+      "text": "surround ndc/a *ndiff,nfet,scnfet,scnfetlvt,npd,npass,nfetlvt,rnd 40 absence_illegal \"N-diffusion overlap of N-diffusion contact < %d (licon.5a)\"",
+      "pdk_value": 40,
+      "value": 0.04
+    },
+    "licon_poly_enclosure": {
+      "passed": true,
+      "line": 4549,
+      "text": "surround pc/a *poly,mrp1,xhrpoly,uhrpoly 80 directional \"poly overlap of poly contact < %d in one direction (licon.8a)\"",
+      "pdk_value": 80,
+      "value": 0.08
+    },
+    "licon_poly_enclosure_min": {
+      "passed": true,
+      "line": 4547,
+      "text": "surround pc/a *poly,mrp1,xhrpoly,uhrpoly 50 absence_illegal \"poly overlap of poly contact < %d (licon.8)\"",
+      "pdk_value": 50,
+      "value": 0.05
+    },
+    "poly_diff_space": {
+      "passed": true,
+      "line": 4336,
+      "text": "spacing allpolynonfet,polyfill *ndiff,*mvndiff,*ndiode,*nndiode,ndiffres,*ndiodelvt,*pdiff,*mvpdiff,*pdiode,pdiffres,*pdiodelvt,*pdiodehvt 75 corner_ok allfets \"poly spacing to Diffusion < %d (poly.4)\"",
+      "pdk_value": 75,
+      "value": 0.075
+    },
+    "poly_contact_diff_space": {
+      "passed": true,
+      "line": 4469,
+      "text": "spacing pc alldiff 190 touching_illegal \"poly contact spacing to diffusion < %d (licon.14)\"",
+      "pdk_value": 190,
+      "value": 0.19
+    },
+    "poly_contact_pdiff_space": {
+      "passed": true,
+      "line": 4471,
+      "text": "spacing pc allpdifflv,allpdiffmv 235 touching_illegal \"poly contact spacing to P-diffusion < %d (licon.9 + psdm.5a)\"",
+      "pdk_value": 235,
+      "value": 0.235
+    },
+    "licon_gate_space": {
+      "passed": true,
+      "line": 4476,
+      "text": "spacing ndc,pdc scnfet,scpfet,scnfetlvt,scpfethvt 50 touching_illegal \"Diffusion contact to standard cell gate < %d (licon.11)\"",
+      "pdk_value": 50,
+      "value": 0.05
+    },
+    "licon_npc_enclosure": {
+      "passed": true,
+      "line": 1128,
+      "text": "grow 100",
+      "pdk_value": 100,
+      "expected_pdk_value": 100,
+      "value": 0.1
+    },
+    "npc_space": {
+      "passed": true,
+      "line": 1129,
+      "text": "bridge 270 270",
+      "pdk_value": 270,
+      "expected_pdk_value": 270,
+      "value": 0.27
+    },
+    "li_width": {
+      "passed": true,
+      "line": 4560,
+      "text": "width *li 170 \"Local interconnect width < %d (li.1)\"",
+      "pdk_value": 170,
+      "value": 0.17
+    },
+    "li_space": {
+      "passed": true,
+      "line": 4563,
+      "text": "spacing *locali,rli *locali,rli,*obsli 170 touching_ok \"Local interconnect spacing < %d (li.3)\"",
+      "pdk_value": 170,
+      "value": 0.17
+    },
+    "li_contact_enclosure": {
+      "passed": true,
+      "line": 4575,
+      "text": "surround pc/li *li,coreli 80 directional \"Local interconnect overlap of poly contact < %d in one direction (li.5)\"",
+      "pdk_value": 80,
+      "value": 0.08
+    },
+    "li_min_area": {
+      "passed": true,
+      "line": 4452,
+      "text": "area allli,*obsli 56100 170 \"Local interconnect minimum area < %a (li.6)\"",
+      "pdk_value": 56100,
+      "value": 0.0561
+    },
+    "mcon_size": {
+      "passed": true,
+      "line": 4592,
+      "text": "width mcon/m1 170 \"mcon.width < %d (mcon.1)\"",
+      "pdk_value": 170,
+      "value": 0.17
+    },
+    "mcon_space": {
+      "passed": true,
+      "line": 4593,
+      "text": "spacing mcon/m1 mcon/m1,obsmcon/m1 190 touching_ok \"mcon.spacing < %d (mcon.2)\"",
+      "pdk_value": 190,
+      "value": 0.19
+    },
+    "met1_width": {
+      "passed": true,
+      "line": 4601,
+      "text": "width *m1,rm1 140 \"Metal1 width < %d (met1.1)\"",
+      "pdk_value": 140,
+      "value": 0.14
+    },
+    "met1_space": {
+      "passed": true,
+      "line": 4602,
+      "text": "spacing allm1,m1fill allm1,*obsm1,m1fill 140 touching_ok \"Metal1 spacing < %d (met1.2)\"",
+      "pdk_value": 140,
+      "value": 0.14
+    },
+    "met1_contact_enclosure": {
+      "passed": true,
+      "line": 4607,
+      "text": "surround mcon/m1 *met1 60 directional \"Metal1 overlap of local interconnect contact < %d in one direction (met1.5)\"",
+      "pdk_value": 60,
+      "value": 0.06
+    },
+    "met1_min_area": {
+      "passed": true,
+      "line": 4603,
+      "text": "area allm1,*obsm1 83000 140 \"Metal1 minimum area < %a (met1.6)\"",
+      "pdk_value": 83000,
+      "value": 0.083
+    }
+  },
+  "passed": true
+}

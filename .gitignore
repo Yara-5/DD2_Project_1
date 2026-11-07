@@ -3,16 +3,12 @@ pdk
 given
 # machine-specific make settings
 local.mk
-# everything the flow generates: make all writes it again
-# (cells/<name>/ views, results/<check>/ reports; the folders themselves stay)
-cells/*
-!cells/.gitkeep
-results/*
-!results/.gitkeep
 # build trees and local environments
 build/
 .venv/
 __pycache__/
+# OpenSTA command history (design_level.py runs sta from the repo root)
+.history_sta
 *.pyc
 # never commit files over 50 MB (overview, section 5.1)
 docs/TECHNICAL.md

@@ -1,0 +1,42 @@
+* NGSPICE file created from dd2_g5__and2_1.ext - technology: sky130A
+
+.subckt dd2_g5__and2_1 A B VGND VNB VPB VPWR Y
+X0 VGND A a_149_47# VNB sky130_fd_pr__nfet_01v8 ad=0.10725 pd=0.98 as=0.08775 ps=0.92 w=0.65 l=0.15
+X1 a_149_47# B a_67_47# VNB sky130_fd_pr__nfet_01v8 ad=0.08775 pd=0.92 as=0.169 ps=1.82 w=0.65 l=0.15
+X2 Y a_67_47# VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.26 pd=2.52 as=0.165 ps=1.33 w=1 l=0.15
+X3 Y a_67_47# VGND VNB sky130_fd_pr__nfet_01v8 ad=0.169 pd=1.82 as=0.10725 ps=0.98 w=0.65 l=0.15
+X4 VPWR A a_67_47# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.165 pd=1.33 as=0.135 ps=1.27 w=1 l=0.15
+X5 a_67_47# B VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.26 ps=2.52 w=1 l=0.15
+C0 VPB A 0.02588f
+C1 VPWR a_67_47# 0.07769f
+C2 VPB Y 0.01138f
+C3 a_149_47# VPWR 0.00122f
+C4 Y A 0.00254f
+C5 VGND B 0.01767f
+C6 VGND VPWR 0.02776f
+C7 VPB B 0.03068f
+C8 A B 0.03922f
+C9 VPB VPWR 0.08966f
+C10 Y B 0
+C11 A VPWR 0.01894f
+C12 a_149_47# a_67_47# 0.00541f
+C13 Y VPWR 0.01942f
+C14 VGND a_67_47# 0.05672f
+C15 VGND a_149_47# 0.00909f
+C16 VPWR B 0.0194f
+C17 VPB a_67_47# 0.05095f
+C18 A a_67_47# 0.06235f
+C19 a_149_47# A 0
+C20 Y a_67_47# 0.0459f
+C21 Y a_149_47# 0.00178f
+C22 VPB VGND 0.01314f
+C23 VGND A 0.02057f
+C24 B a_67_47# 0.04605f
+C25 VGND Y 0.02463f
+C26 VGND VNB 0.34794f
+C27 Y VNB 0.15096f
+C28 VPWR VNB 0.35552f
+C29 VPB VNB 0.51617f
+C30 a_149_47# VNB 0.06847f
+.ends
+

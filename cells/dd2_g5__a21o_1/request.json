@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "reason": null,
+  "request": {
+    "request_id": "T6-09",
+    "name": "dd2_g5__a21o_1",
+    "inputs": [
+      "A1",
+      "A2",
+      "B1"
+    ],
+    "output": "X",
+    "expression": "(A1 & A2) | B1",
+    "sizing": "hd",
+    "truth_table": "0xF8",
+    "truth_table_value": 248,
+    "recognized": null,
+    "supported_by_prototype": false
+  }
+}

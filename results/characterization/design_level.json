@@ -1,0 +1,93 @@
+{
+  "check": "design_level",
+  "shipped_liberty": "/home/youssef/work/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib",
+  "cells": [
+    "inv_1",
+    "nand2_1",
+    "nor2_1",
+    "nand3_1",
+    "a21oi_1",
+    "o21ai_1"
+  ],
+  "tutorial4_synth_sha256": "a6764034978b2534839dab2f1efd5bda88718d5d100ea9379fcd246eb6bf9ba4",
+  "clock_period_ns": 1.25,
+  "ours_liberty": "/mnt/c/Users/youss/Downloads/DD2_Project_1/build/design_level/sky130_fd_sc_hd__tt_025C_1v80_ours.lib",
+  "mapping": {
+    "shipped": {
+      "netlist": "build/design_level/shipped/SPM.mapped.gl.v",
+      "cell_counts": {
+        "sky130_fd_sc_hd__xor2_1": 31,
+        "sky130_fd_sc_hd__clkbuf_1": 10,
+        "sky130_fd_sc_hd__nand2_1": 62,
+        "sky130_fd_sc_hd__xnor2_1": 31,
+        "sky130_fd_sc_hd__nor2_1": 31,
+        "sky130_fd_sc_hd__o21ai_0": 31,
+        "sky130_fd_sc_hd__inv_1": 64,
+        "sky130_fd_sc_hd__a21o_1": 1,
+        "sky130_fd_sc_hd__nand3_1": 1,
+        "sky130_fd_sc_hd__and2_1": 1,
+        "sky130_fd_sc_hd__dfrtp_1": 64
+      },
+      "reference_cells_used": {
+        "sky130_fd_sc_hd__inv_1": 64,
+        "sky130_fd_sc_hd__nand2_1": 62,
+        "sky130_fd_sc_hd__nor2_1": 31,
+        "sky130_fd_sc_hd__nand3_1": 1,
+        "sky130_fd_sc_hd__a21oi_1": 0,
+        "sky130_fd_sc_hd__o21ai_1": 0
+      }
+    },
+    "ours": {
+      "netlist": "build/design_level/ours/SPM.mapped.gl.v",
+      "cell_counts": {
+        "sky130_fd_sc_hd__xor2_1": 31,
+        "sky130_fd_sc_hd__clkbuf_1": 9,
+        "sky130_fd_sc_hd__nand2_1": 62,
+        "sky130_fd_sc_hd__xnor2_1": 31,
+        "sky130_fd_sc_hd__nor2_1": 31,
+        "sky130_fd_sc_hd__o21ai_0": 31,
+        "sky130_fd_sc_hd__inv_2": 64,
+        "sky130_fd_sc_hd__buf_1": 1,
+        "sky130_fd_sc_hd__a21o_1": 1,
+        "sky130_fd_sc_hd__nand3_1": 1,
+        "sky130_fd_sc_hd__and2_1": 1,
+        "sky130_fd_sc_hd__dfrtp_1": 64
+      },
+      "reference_cells_used": {
+        "sky130_fd_sc_hd__inv_1": 0,
+        "sky130_fd_sc_hd__nand2_1": 62,
+        "sky130_fd_sc_hd__nor2_1": 31,
+        "sky130_fd_sc_hd__nand3_1": 1,
+        "sky130_fd_sc_hd__a21oi_1": 0,
+        "sky130_fd_sc_hd__o21ai_1": 0
+      }
+    }
+  },
+  "timing": {
+    "shipped": {
+      "worst_delay_ns": 0.6883,
+      "slack_ns": 0.4352,
+      "startpoint": "_496_",
+      "endpoint": "_495_",
+      "log": "build/design_level/shipped/sta_shipped.log"
+    },
+    "ours": {
+      "worst_delay_ns": 0.689,
+      "slack_ns": 0.4345,
+      "startpoint": "_496_",
+      "endpoint": "_495_",
+      "log": "build/design_level/ours/sta_ours.log"
+    },
+    "shipped_netlist_ours_timing": {
+      "worst_delay_ns": 0.689,
+      "slack_ns": 0.4345,
+      "startpoint": "_496_",
+      "endpoint": "_495_",
+      "log": "build/design_level/shipped/sta_ours_timing.log"
+    }
+  },
+  "worst_delay_change_ns": 0.0007,
+  "worst_delay_change_percent": 0.102,
+  "same_netlist_change_percent": 0.102,
+  "passed": true
+}

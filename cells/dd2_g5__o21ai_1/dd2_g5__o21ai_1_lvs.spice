@@ -1,0 +1,11 @@
+* NGSPICE file created from dd2_g5__o21ai_1.ext - technology: sky130A
+
+.subckt dd2_g5__o21ai_1 A1 A2 B1 VGND VNB VPB VPWR Y
+X0 a_67_47# A2 VGND VNB sky130_fd_pr__nfet_01v8 ad=0.10725 pd=0.98 as=0.08775 ps=0.92 w=0.65 l=0.15
+X1 VGND A1 a_67_47# VNB sky130_fd_pr__nfet_01v8 ad=0.08775 pd=0.92 as=0.169 ps=1.82 w=0.65 l=0.15
+X2 VPWR B1 Y VPB sky130_fd_pr__pfet_01v8_hvt ad=0.182 pd=1.92 as=0.153 ps=1.33 w=0.7 l=0.15
+X3 Y B1 a_67_47# VNB sky130_fd_pr__nfet_01v8 ad=0.169 pd=1.82 as=0.10725 ps=0.98 w=0.65 l=0.15
+X4 Y A2 a_149_297# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.153 pd=1.33 as=0.135 ps=1.27 w=1 l=0.15
+X5 a_149_297# A1 VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.26 ps=2.52 w=1 l=0.15
+.ends
+
