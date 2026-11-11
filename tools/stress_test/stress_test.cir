@@ -1,0 +1,23 @@
+* ngspice BSIM4 stress-mobility test (DD2 Project 1)
+* Two identical NMOS that differ only in their stress distances SA and SB.
+* The model card has mobility stress (KU0) and no other stress effect, so the
+* two drain currents must differ. A stock ngspice discards the mobility stress
+* and gives the same current twice; the fixed build does not.
+.model nst nmos level=54 version=4.8 toxe=4.1e-9 vth0=0.45 u0=0.03 vsat=8e4
++ saref=1e-6 sbref=1e-6 wlod=0 ku0=1e-8 kvsat=0 kvth0=0 tku0=0
++ lku0=0 wku0=0 pku0=0 llodku0=0 wlodku0=0 stk2=0 lodk2=1 steta0=0 lodeta0=1
+vd d 0 0.05
+vg g 0 1.8
+* near: stress distances of an HD x1 inverter (0.26 um); far: at the reference
+mnear d g 0 0 nst w=0.65u l=0.15u sa=0.26u sb=0.26u sd=0 nf=1
+vsense dn d 0
+mfar dn g 0 0 nst w=0.65u l=0.15u sa=1u sb=1u sd=0 nf=1
+.control
+op
+let inear = -i(vd) - (-i(vsense))
+let ifar  = -i(vsense)
+let ratio = inear / ifar
+print inear ifar ratio
+echo "RATIO" $&ratio
+.endc
+.end

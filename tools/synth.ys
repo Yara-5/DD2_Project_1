@@ -1,0 +1,91 @@
+# Tutorial 4 - synthesis of the serial-parallel multiplier (SPM)
+#
+#   yosys synth.ys > synth.log
+#
+# The script is split into the three stages of synthesis, each one leaving
+# behind a netlist and a statistics report you can read:
+#
+#   stage 1  RTL synthesis        SPM.rtl.v          rpt/stat_rtl.txt
+#   stage 2  generic gate netlist SPM.unmapped.gl.v  rpt/stat_generic.txt
+#   stage 3  technology mapping   SPM.mapped.gl.v    rpt/stat_mapped.txt
+#
+# Section 6 of the tutorial asks you to compare the three.
+
+# ---------------------------------------------------------------------------
+# 0. reading and elaborating the RTL
+# ---------------------------------------------------------------------------
+read_verilog SPM.v CSADD.v TCMP.v
+hierarchy -check
+
+# ---------------------------------------------------------------------------
+# 1. RTL synthesis
+#
+# proc converts the always blocks into logic plus registers. What comes out is
+# technology-independent and still word-level: one cell per RTL operator --
+# $adff, $and, $or, $xor -- each with a WIDTH parameter, and the module
+# hierarchy still intact. This is the "circuit made of generic digital
+# building blocks" of section 1.
+# ---------------------------------------------------------------------------
+proc
+opt
+
+tee -o rpt/stat_rtl.txt stat
+
+# The Verilog backend runs bmuxmap and demuxmap over the design before writing,
+# so it is not read-only. Snapshot the design, write, then restore it, or the
+# rest of the flow starts from a different netlist than it would have.
+design -save rtl_stage
+write_verilog -noattr SPM.rtl.v
+design -load rtl_stage
+
+# ---------------------------------------------------------------------------
+# 2. logic optimization down to a generic gate-level netlist
+#
+# synth runs the whole coarse-to-fine script: it re-runs proc, optimizes,
+# extracts FSMs and arithmetic, maps memories, then techmaps the word-level
+# cells to single-bit ones and calls ABC once with no liberty file. The result
+# is generic gates -- $_AND_, $_NAND_, $_OR_, $_XOR_, $_DFF_PP0_ -- with no
+# technology attached yet.
+# ---------------------------------------------------------------------------
+# NOTE: the module is SPM, not spm. Verilog is case-sensitive and yosys will
+# stop with "ERROR: Module `spm' not found!" if the case does not match.
+synth -top SPM
+
+# flattening the resultant generic gate level netlist; this removes the hierarchy
+flatten; opt
+
+tee -o rpt/stat_generic.txt stat
+
+# Write the synthesized Verilog before mapping it
+write_verilog SPM.unmapped.gl.v
+
+# ---------------------------------------------------------------------------
+# 3. technology mapping to SKY130
+#
+# dfflibmap picks a real flip-flop out of the liberty for every generic
+# register. abc maps the combinational logic, choosing cell functions and
+# drive strengths to meet the delay target it is given:
+#
+#   -D 1250          target clock period, in picoseconds
+#   -constr FILE     boundary conditions: input driving cell, output load
+#   -liberty FILE    the cells it may choose from
+#
+# NOTE the -dont_use flags. The liberty describes 428 cells, and a few of them
+# have no business in a plain synthesis flow: the lpflow family are low-power
+# cells that need a KAPWR secondary supply or an isolation enable, and
+# macro_sparecell is a placeholder for a spare gate. Without these flags ABC
+# picks lpflow_inputiso0n_1 as a buffer -- an isolation cell with nothing to
+# isolate. See the note after the script in section 5.1.
+# ---------------------------------------------------------------------------
+dfflibmap -liberty pdk/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+# -dont_use needs Yosys 0.34 or newer (Ubuntu 24.04 packages 0.33). An older
+# Yosys stops with an unknown-option error; drop the two flags and ABC picks an
+# lpflow isolation cell as a buffer -- the netlist still simulates, 0.25% larger.
+abc -D 1250 -constr abc_constr.txt -liberty pdk/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -dont_use sky130_fd_sc_hd__lpflow_* -dont_use sky130_fd_sc_hd__macro_sparecell
+
+# Clean up and write the synthesized design (gate-level netlist)
+opt_clean -purge
+write_verilog -noattr -noexpr SPM.mapped.gl.v
+
+# Report design statistics, now with areas taken from the liberty file
+tee -o rpt/stat_mapped.txt stat -liberty pdk/lib/sky130_fd_sc_hd__tt_025C_1v80.lib

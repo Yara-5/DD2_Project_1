@@ -142,6 +142,7 @@ def main():
     ap.add_argument('--outdir',type=Path,default=base.parent/'results'/'drc')
     ap.add_argument('--image',default='dd2-layout-tools')
     ap.add_argument('--linux',default='',help='Command prefix that runs a command on Linux; empty on Linux')
+    ap.add_argument('--cells', nargs='*', help='Specific cell folder names to verify (default: all)')
     args=ap.parse_args()
     rules={k:v['value'] for k,v in json.loads(args.rules.read_text())['rules'].items()}
     height=json.loads(args.frame.read_text())['frame']['site']['height']
@@ -152,9 +153,12 @@ def main():
     library=db.Layout();library.read(str(args.reference_gds))
     references=['sky130_fd_sc_hd__'+s for s in ('tapvpwrvgnd_1','inv_1','fill_1')]
     cases=[];layer_results={};broken_layers=[]
+    target_cells = set(args.cells) if args.cells else None
     for folder in sorted(args.generated.iterdir()):
-        gds=folder/'cell.gds'
-        if not gds.is_file():continue
+        if target_cells and folder.name not in target_cells and folder.name.replace("dd2_g5__", "") not in target_cells:
+            continue
+        gds = folder / 'cell.gds'
+        if not gds.is_file(): continue        
         name=folder.name
         layer_results[name]=layer_check(gds,rules)
         for neighbor in references:

@@ -1,0 +1,44 @@
+--- a/src/spicelib/devices/bsim4/b4temp.c
++++ b/src/spicelib/devices/bsim4/b4temp.c
+@@ -1760,7 +1760,7 @@
+             here->BSIM4vfb = pParam->BSIM4vfb + model->BSIM4type * here->BSIM4delvto;
+ 
+             /* low field mobility multiplier */
+-            here->BSIM4u0temp = pParam->BSIM4u0temp * here->BSIM4mulu0;
++            here->BSIM4u0temp *= here->BSIM4mulu0;
+ 
+         /* Instance variables calculation  */
+             T3 = model->BSIM4type * here->BSIM4vth0
+--- a/src/spicelib/devices/bsim4v5/b4v5temp.c
++++ b/src/spicelib/devices/bsim4v5/b4v5temp.c
+@@ -1417,7 +1417,7 @@
+             here->BSIM4v5vfb = pParam->BSIM4v5vfb + model->BSIM4v5type * here->BSIM4v5delvto;
+ 
+             /* low field mobility multiplier */
+-            here->BSIM4v5u0temp = pParam->BSIM4v5u0temp * here->BSIM4v5mulu0;
++            here->BSIM4v5u0temp *= here->BSIM4v5mulu0;
+ 
+             /* Instance variables calculation  */
+             T3 = model->BSIM4v5type * here->BSIM4v5vth0
+--- a/src/spicelib/devices/bsim4v6/b4v6temp.c
++++ b/src/spicelib/devices/bsim4v6/b4v6temp.c
+@@ -1575,7 +1575,7 @@
+             here->BSIM4v6vfb = pParam->BSIM4v6vfb + model->BSIM4v6type * here->BSIM4v6delvto;
+ 
+             /* low field mobility multiplier */
+-            here->BSIM4v6u0temp = pParam->BSIM4v6u0temp * here->BSIM4v6mulu0;
++            here->BSIM4v6u0temp *= here->BSIM4v6mulu0;
+ 
+             /* Instance variables calculation  */
+             T3 = model->BSIM4v6type * here->BSIM4v6vth0
+--- a/src/spicelib/devices/bsim4v7/b4v7temp.c
++++ b/src/spicelib/devices/bsim4v7/b4v7temp.c
+@@ -1658,7 +1658,7 @@
+             here->BSIM4v7vfb = pParam->BSIM4v7vfb + model->BSIM4v7type * here->BSIM4v7delvto;
+ 
+             /* low field mobility multiplier */
+-            here->BSIM4v7u0temp = pParam->BSIM4v7u0temp * here->BSIM4v7mulu0;
++            here->BSIM4v7u0temp *= here->BSIM4v7mulu0;
+ 
+             /* Instance variables calculation  */
+             T3 = model->BSIM4v7type * here->BSIM4v7vth0
