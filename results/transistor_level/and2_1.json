@@ -24,7 +24,7 @@
         "B": 0
       },
       "expected": 0,
-      "voltage_v": 3.839243e-09,
+      "voltage_v": 3.604354e-09,
       "passed": true
     },
     {
@@ -33,7 +33,7 @@
         "B": 1
       },
       "expected": 0,
-      "voltage_v": 3.852573e-09,
+      "voltage_v": 3.611898e-09,
       "passed": true
     },
     {
@@ -42,7 +42,7 @@
         "B": 0
       },
       "expected": 0,
-      "voltage_v": 3.859346e-09,
+      "voltage_v": 3.615533e-09,
       "passed": true
     },
     {
@@ -70,7 +70,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0024226265,
+      "worst_glitch_v": 0.00137516588,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -88,7 +88,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000612855751,
+      "worst_glitch_v": 0.000513930598,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -124,7 +124,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00061434305,
+      "worst_glitch_v": 0.00051989015,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -142,7 +142,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000410802263,
+      "worst_glitch_v": 0.000408073803,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -201,6 +201,10 @@
       "passed": true
     }
   ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
   "dc_passed": true,
   "transient_passed": true
 }

@@ -1,0 +1,105 @@
+{
+  "check": "liberty_view",
+  "cell": "dd2_g5__a21oi_stack_1",
+  "passed": true,
+  "liberty": "cells/dd2_g5__a21oi_stack_1/characterized.lib",
+  "checks": {
+    "parses": {
+      "passed": true
+    },
+    "one_library_group": {
+      "passed": true,
+      "detail": "1 top-level groups"
+    },
+    "one_cell_group": {
+      "passed": true,
+      "detail": "1 cell groups"
+    },
+    "cell_name": {
+      "passed": true,
+      "detail": "'dd2_g5__a21oi_stack_1' against 'dd2_g5__a21oi_stack_1'"
+    },
+    "units_ns_pf": {
+      "passed": true,
+      "detail": {
+        "time_unit": "1ns",
+        "capacitive_load_unit": [
+          "1.0000000000",
+          "pf"
+        ]
+      }
+    },
+    "pins_are_the_request": {
+      "passed": true,
+      "detail": {
+        "liberty": [
+          "A",
+          "B",
+          "C",
+          "Y"
+        ],
+        "request": [
+          "A",
+          "B",
+          "C",
+          "Y"
+        ]
+      }
+    },
+    "pg_pins": {
+      "passed": true,
+      "detail": [
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR"
+      ]
+    },
+    "pin_directions": {
+      "passed": true
+    },
+    "function_is_the_request": {
+      "passed": true,
+      "detail": {
+        "function": "!((A & B) | C)",
+        "function_truth_table": "0x7",
+        "request_truth_table": "0x07"
+      }
+    },
+    "full_timing_tables": {
+      "passed": true,
+      "detail": "3 arcs, 7 x 7"
+    },
+    "input_capacitance": {
+      "passed": true,
+      "detail": {
+        "A": "0.0042287000",
+        "B": "0.0042985611",
+        "C": "0.0033497639"
+      }
+    },
+    "area_is_the_layout": {
+      "passed": true,
+      "detail": {
+        "liberty_um2": 8.7584,
+        "layout_um2": 8.758400000000002
+      }
+    },
+    "simulator_recorded": {
+      "passed": true,
+      "detail": {
+        "image": "dd2-project1-tools",
+        "version": "ngspice-47",
+        "sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660"
+      }
+    },
+    "simulator_is_the_checked_build": {
+      "passed": true,
+      "detail": {
+        "liberty": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
+        "make_check_stress_test": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660"
+      }
+    }
+  },
+  "written": "cells/dd2_g5__a21oi_stack_1/cell.lib"
+}

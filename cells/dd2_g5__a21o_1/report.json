@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-09",
@@ -104,7 +104,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 6
+    "routing_attempts_failed": 16
   },
   "verification": {
     "drc_contexts": 24,
@@ -114,7 +114,7 @@
     "lvs": "match",
     "rc_lvs": "match",
     "rc_elements": {
-      "resistors": 52,
+      "resistors": 51,
       "capacitors": 64,
       "collapsed_lvs_passed": true
     },
@@ -150,32 +150,32 @@
       {
         "pin": "A1",
         "sense": "positive_unate",
-        "cell_rise": 0.168433,
-        "rise_transition": 0.111064,
-        "cell_fall": 0.223096,
-        "fall_transition": 0.0664761
+        "cell_rise": 0.16072899999999998,
+        "rise_transition": 0.101099,
+        "cell_fall": 0.21160299999999999,
+        "fall_transition": 0.06388150000000001
       },
       {
         "pin": "A2",
         "sense": "positive_unate",
-        "cell_rise": 0.163299,
-        "rise_transition": 0.111135,
-        "cell_fall": 0.191598,
-        "fall_transition": 0.06252980000000001
+        "cell_rise": 0.15620699999999998,
+        "rise_transition": 0.101189,
+        "cell_fall": 0.190443,
+        "fall_transition": 0.061929899999999996
       },
       {
         "pin": "B1",
         "sense": "positive_unate",
-        "cell_rise": 0.16240000000000002,
-        "rise_transition": 0.110752,
-        "cell_fall": 0.24935699999999997,
-        "fall_transition": 0.0667225
+        "cell_rise": 0.156966,
+        "rise_transition": 0.10099000000000001,
+        "cell_fall": 0.237827,
+        "fall_transition": 0.0640101
       }
     ],
     "input_capacitance_pf": {
-      "A1": 0.002174433333333333,
-      "A2": 0.002215372222222222,
-      "B1": 0.002241058333333334
+      "A1": 0.0021992055555555556,
+      "A2": 0.0022244833333333333,
+      "B1": 0.0022513111111111114
     },
     "extended_windows_ns": {}
   },
@@ -184,6 +184,6 @@
     "extra_sites": 0,
     "area_increase_percent": 0.0,
     "installed_width_sites": 6,
-    "median_timing_difference_percent": 10.187
+    "median_timing_difference_percent": 5.322
   }
 }

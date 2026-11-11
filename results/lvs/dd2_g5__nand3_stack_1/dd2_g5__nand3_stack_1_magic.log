@@ -1,0 +1,61 @@
+
+Magic 8.3.684 revision 684 - Compiled on Fri Oct 30 18:18:19 UTC 2026.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Switching to WIRING tool.
+Switching to NETLIST tool.
+Switching to PICK tool.
+Switching to BOX tool.
+Using technology "minimum", version 0.0
+Input style sky130(): scaleFactor=2, multiplier=2
+The following types are not handled by extraction and will be treated as non-electrical types:
+    ubm 
+Warning: Calma reading is not undoable!  I hope that's OK.
+Library written using GDS-II Release 6.0
+Library name: LIB
+Reading "dd2_g5__nand3_stack_1".
+CIF file read warning: Input off lambda grid by 1/2; grid redefined.
+DRC style is now "drc(full)"
+Loading DRC CIF style.
+DRC_COUNT 11
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 958 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{225 297 277 497} {307 297 529 497} {559 297 613 497} {643 297 695 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{57 47 109 177} {139 47 193 177} {223 47 277 177} {307 47 361 177} {391 47 445 177} {475 47 529 177} {559 47 613 177} {643 47 697 177} {727 47 781 177} {811 47 863 177}}
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+The selected label is already a port.
+Do "port help" to get a list of options.
+Extracting dd2_g5__nand3_stack_1 into dd2_g5__nand3_stack_1.ext:
+Processing dd2_g5__nand3_stack_1
+exttospice finished.
+exttospice finished.
+Extracting dd2_g5__nand3_stack_1 into dd2_g5__nand3_stack_1.ext:
+Processing dd2_g5__nand3_stack_1
+Processing cell dd2_g5__nand3_stack_1 for resistance extraction.
+Extracting a_139_47#
+Extracting a_391_47#
+Extracting VNB
+Extracting VPB
+Extracting C
+Extracting B
+Extracting A
+Extracting Y
+Extracting VPWR
+Extracting VGND
+Total Nets: 10
+Nets extracted: 10 (1.000000)
+Nets output: 10 (1.000000)
+exttospice finished.
+MAGIC_DONE

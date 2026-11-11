@@ -289,6 +289,13 @@
       0.0,
       0.06
     ],
+    "gate_has_contact": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "poly_bar_runs": [],
     "li1_landing_um": [
       0.17,
       0.33
@@ -413,7 +420,19 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
-        "reason": "No li1 route found for Y at this width"
+        "router": "fixed",
+        "pin_access": null,
+        "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
+      },
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": null,
+        "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
       }
     ],
     "rule_values_and_sources": {
@@ -486,6 +505,15 @@
           "kind": "drc",
           "rule": "psd.5a",
           "message": "N-Diffusion to P-tap spacing"
+        }
+      },
+      "licon_space": {
+        "value": 0.17,
+        "source": "licon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.2",
+          "message": "Diffusion contact spacing"
         }
       },
       "licon_size": {
@@ -1141,54 +1169,12 @@
       {
         "layer": "licon",
         "box": [
-          0.175,
-          2.255,
-          0.345,
-          2.425
-        ],
-        "net": "VPWR",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          0.615,
-          2.255,
-          0.785,
-          2.425
-        ],
-        "net": "Y_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
           1.085,
           1.575,
           1.255,
           1.745
         ],
         "net": "Y",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          1.955,
-          2.255,
-          2.125,
-          2.425
-        ],
-        "net": "Y_u1",
         "gds": [
           66,
           44
@@ -1517,6 +1503,104 @@
         ]
       },
       {
+        "layer": "licon",
+        "box": [
+          0.175,
+          1.915,
+          0.345,
+          2.085
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.175,
+          2.255,
+          0.345,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.615,
+          1.915,
+          0.785,
+          2.085
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.615,
+          2.255,
+          0.785,
+          2.425
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.955,
+          1.575,
+          2.125,
+          1.745
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.955,
+          1.915,
+          2.125,
+          2.085
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.955,
+          2.255,
+          2.125,
+          2.425
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
         "layer": "li1",
         "net": "VGND",
         "box": [
@@ -1563,7 +1647,7 @@
         "net": "VPWR",
         "box": [
           0.175,
-          2.175,
+          1.835,
           0.345,
           2.635
         ],
@@ -1734,6 +1818,34 @@
           0.805,
           2.125,
           0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          0.535,
+          1.915,
+          0.865,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.875,
+          1.575,
+          2.205,
+          2.255
         ],
         "gds": [
           67,
@@ -1993,7 +2105,12 @@
           0.26,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2002,7 +2119,18 @@
           0.7,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          0.615,
+          0.495,
+          0.785,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2011,7 +2139,18 @@
           1.17,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          1.085,
+          0.495,
+          1.255,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2020,7 +2159,12 @@
           1.62,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2029,7 +2173,18 @@
           2.04,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          1.955,
+          0.495,
+          2.125,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2038,7 +2193,22 @@
           0.26,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          0.175,
+          1.835,
+          0.345,
+          2.505
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -2047,7 +2217,28 @@
           0.7,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          0.535,
+          2.255,
+          0.865,
+          2.425
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          0.535,
+          1.915,
+          0.865,
+          2.425
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -2056,7 +2247,18 @@
           1.17,
           1.66
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.085,
+          1.495,
+          1.255,
+          1.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2065,7 +2267,29 @@
           2.04,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.875,
+          2.255,
+          2.205,
+          2.425
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          1.875,
+          1.575,
+          2.205,
+          2.425
+        ],
+        "licons": 3
       },
       {
         "type": "poly",
@@ -2400,6 +2624,74 @@
         ]
       }
     ],
+    "pin_access_mode": "every_pin",
+    "pin_access": [
+      {
+        "net": "A",
+        "point_um": [
+          0.24,
+          1.16
+        ],
+        "met1_box": [
+          0.095,
+          1.015,
+          0.385,
+          1.305
+        ]
+      },
+      {
+        "net": "B",
+        "point_um": [
+          0.93,
+          1.16
+        ],
+        "met1_box": [
+          0.785,
+          1.015,
+          1.075,
+          1.305
+        ]
+      },
+      {
+        "net": "C",
+        "point_um": [
+          1.41,
+          1.16
+        ],
+        "met1_box": [
+          1.265,
+          1.015,
+          1.555,
+          1.305
+        ]
+      },
+      {
+        "net": "D",
+        "point_um": [
+          1.89,
+          1.16
+        ],
+        "met1_box": [
+          1.745,
+          1.015,
+          2.035,
+          1.305
+        ]
+      },
+      {
+        "net": "Y",
+        "point_um": [
+          0.7,
+          0.66
+        ],
+        "met1_box": [
+          0.555,
+          0.515,
+          0.845,
+          0.805
+        ]
+      }
+    ],
     "vias": [],
     "routing_order": [
       "A",
@@ -2410,6 +2702,86 @@
       "Y_d1",
       "Y_u1"
     ],
+    "router": "fixed",
+    "parallel_cuts": {
+      "licons_added": 4,
+      "contacts": [
+        {
+          "net": "VGND",
+          "point_um": [
+            0.26,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            0.7,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y_d1",
+          "point_um": [
+            1.17,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            1.62,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y_d1",
+          "point_um": [
+            2.04,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            0.26,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            0.7,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            1.17,
+            1.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            2.04,
+            2.34
+          ],
+          "licons": 3
+        }
+      ],
+      "mcons_added": 0,
+      "vias": []
+    },
     "li1_notch_fill_added_area_um2": {
       "VGND": 0.0,
       "VPWR": 0.0,

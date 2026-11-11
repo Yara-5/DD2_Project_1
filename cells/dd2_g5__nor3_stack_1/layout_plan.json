@@ -66,8 +66,8 @@
         "type": "pmos",
         "model": "sky130_fd_pr__pfet_01v8_hvt",
         "gate": "A",
-        "source": "Y",
-        "drain": "Y_u2",
+        "source": "Y_u1",
+        "drain": "VPWR",
         "bulk": "VPB",
         "w_um": 1.0,
         "l_um": 0.15,
@@ -82,8 +82,8 @@
         "type": "pmos",
         "model": "sky130_fd_pr__pfet_01v8_hvt",
         "gate": "A",
-        "source": "Y",
-        "drain": "Y_u2",
+        "source": "Y_u1",
+        "drain": "VPWR",
         "bulk": "VPB",
         "w_um": 1.0,
         "l_um": 0.15,
@@ -98,8 +98,8 @@
         "type": "pmos",
         "model": "sky130_fd_pr__pfet_01v8_hvt",
         "gate": "A",
-        "source": "Y",
-        "drain": "Y_u2",
+        "source": "Y_u1",
+        "drain": "VPWR",
         "bulk": "VPB",
         "w_um": 1.0,
         "l_um": 0.15,
@@ -162,8 +162,8 @@
         "type": "pmos",
         "model": "sky130_fd_pr__pfet_01v8_hvt",
         "gate": "C",
-        "source": "Y_u1",
-        "drain": "VPWR",
+        "source": "Y",
+        "drain": "Y_u2",
         "bulk": "VPB",
         "w_um": 1.0,
         "l_um": 0.15,
@@ -178,8 +178,8 @@
         "type": "pmos",
         "model": "sky130_fd_pr__pfet_01v8_hvt",
         "gate": "C",
-        "source": "Y_u1",
-        "drain": "VPWR",
+        "source": "Y",
+        "drain": "Y_u2",
         "bulk": "VPB",
         "w_um": 1.0,
         "l_um": 0.15,
@@ -194,8 +194,8 @@
         "type": "pmos",
         "model": "sky130_fd_pr__pfet_01v8_hvt",
         "gate": "C",
-        "source": "Y_u1",
-        "drain": "VPWR",
+        "source": "Y",
+        "drain": "Y_u2",
         "bulk": "VPB",
         "w_um": 1.0,
         "l_um": 0.15,
@@ -210,25 +210,25 @@
       "nmos": [
         {
           "devices": [
+            null,
+            null,
             "N1",
             "N2",
+            null,
+            null,
             "N3",
-            null,
-            null,
-            null,
-            null,
             null,
             null
           ],
           "nodes": [
+            null,
+            null,
             "Y",
             "VGND",
             "Y",
+            "Y",
+            "Y",
             "VGND",
-            null,
-            null,
-            null,
-            null,
             null,
             null
           ]
@@ -238,26 +238,26 @@
         {
           "devices": [
             "P1_f1",
-            "P2_f1",
-            "P3_f1",
-            "P3_f2",
-            "P2_f2",
             "P1_f2",
             "P1_f3",
+            "P2_f1",
+            "P2_f2",
             "P2_f3",
+            "P3_f1",
+            "P3_f2",
             "P3_f3"
           ],
           "nodes": [
-            "Y",
-            "Y_u2",
+            "VPWR",
             "Y_u1",
             "VPWR",
             "Y_u1",
             "Y_u2",
+            "Y_u1",
+            "Y_u2",
             "Y",
             "Y_u2",
-            "Y_u1",
-            "VPWR"
+            "Y"
           ]
         }
       ]
@@ -269,25 +269,25 @@
             "devices": [
               null,
               null,
-              null,
-              null,
-              null,
-              null,
               "N3",
+              null,
+              null,
               "N2",
-              "N1"
+              "N1",
+              null,
+              null
             ],
             "nodes": [
               null,
               null,
-              null,
-              null,
-              null,
-              null,
               "VGND",
               "Y",
+              "Y",
+              "Y",
               "VGND",
-              "Y"
+              "Y",
+              null,
+              null
             ]
           }
         ],
@@ -295,26 +295,26 @@
           {
             "devices": [
               "P3_f1",
-              "P2_f1",
-              "P1_f1",
-              "P1_f2",
-              "P2_f2",
               "P3_f2",
               "P3_f3",
+              "P2_f1",
+              "P2_f2",
               "P2_f3",
+              "P1_f1",
+              "P1_f2",
               "P1_f3"
             ],
             "nodes": [
-              "VPWR",
-              "Y_u1",
+              "Y",
               "Y_u2",
               "Y",
               "Y_u2",
               "Y_u1",
+              "Y_u2",
+              "Y_u1",
               "VPWR",
               "Y_u1",
-              "Y_u2",
-              "Y"
+              "VPWR"
             ]
           }
         ]
@@ -331,9 +331,9 @@
       "diffusion_segments": 1,
       "diffusion_breaks": 0,
       "columns": 9,
-      "repeated_nets_in_rows": 12,
+      "repeated_nets_in_rows": 7,
       "folded": true,
-      "wiring_slots": 72,
+      "wiring_slots": 38,
       "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
     },
     "placement_used": 0
@@ -341,14 +341,14 @@
   "dimensions": {
     "gate_length_um": 0.15,
     "gate_pitches_um": [
-      0.7,
-      0.68,
-      0.7,
-      0.68,
-      0.7,
-      0.68,
-      0.7,
-      0.68
+      0.42,
+      0.42,
+      0.42,
+      0.42,
+      0.42,
+      0.42,
+      0.42,
+      0.42
     ],
     "gate_gaps": [
       {
@@ -356,13 +356,10 @@
           0,
           1
         ],
-        "pitch_um": 0.7,
-        "binding": "li1_track_through_band",
+        "pitch_um": 0.42,
+        "binding": "diffusion_contact_between_gates",
         "lower_bounds_um": {
-          "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.49,
-          "gate_li1_spacing": 0.35,
-          "li1_track_through_band": 0.7
+          "diffusion_contact_between_gates": 0.42
         }
       },
       {
@@ -370,13 +367,10 @@
           1,
           2
         ],
-        "pitch_um": 0.68,
-        "binding": "li1_track_through_band",
+        "pitch_um": 0.42,
+        "binding": "diffusion_contact_between_gates",
         "lower_bounds_um": {
-          "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.47,
-          "gate_li1_spacing": 0.33,
-          "li1_track_through_band": 0.68
+          "diffusion_contact_between_gates": 0.42
         }
       },
       {
@@ -384,13 +378,12 @@
           2,
           3
         ],
-        "pitch_um": 0.7,
-        "binding": "li1_track_through_band",
+        "pitch_um": 0.42,
+        "binding": "diffusion_contact_between_gates",
         "lower_bounds_um": {
           "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.49,
-          "gate_li1_spacing": 0.35,
-          "li1_track_through_band": 0.7
+          "poly_pad_spacing": 0.42,
+          "gate_li1_spacing": 0.28
         }
       },
       {
@@ -398,13 +391,10 @@
           3,
           4
         ],
-        "pitch_um": 0.68,
-        "binding": "li1_track_through_band",
+        "pitch_um": 0.42,
+        "binding": "diffusion_contact_between_gates",
         "lower_bounds_um": {
-          "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.47,
-          "gate_li1_spacing": 0.33,
-          "li1_track_through_band": 0.68
+          "diffusion_contact_between_gates": 0.42
         }
       },
       {
@@ -412,13 +402,10 @@
           4,
           5
         ],
-        "pitch_um": 0.7,
-        "binding": "li1_track_through_band",
+        "pitch_um": 0.42,
+        "binding": "diffusion_contact_between_gates",
         "lower_bounds_um": {
-          "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.49,
-          "gate_li1_spacing": 0.35,
-          "li1_track_through_band": 0.7
+          "diffusion_contact_between_gates": 0.42
         }
       },
       {
@@ -426,13 +413,11 @@
           5,
           6
         ],
-        "pitch_um": 0.68,
-        "binding": "li1_track_through_band",
+        "pitch_um": 0.42,
+        "binding": "diffusion_contact_between_gates",
         "lower_bounds_um": {
           "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.47,
-          "gate_li1_spacing": 0.33,
-          "li1_track_through_band": 0.68
+          "poly_pad_spacing": 0.42
         }
       },
       {
@@ -440,13 +425,10 @@
           6,
           7
         ],
-        "pitch_um": 0.7,
-        "binding": "li1_track_through_band",
+        "pitch_um": 0.42,
+        "binding": "diffusion_contact_between_gates",
         "lower_bounds_um": {
-          "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.49,
-          "gate_li1_spacing": 0.35,
-          "li1_track_through_band": 0.7
+          "diffusion_contact_between_gates": 0.42
         }
       },
       {
@@ -454,13 +436,10 @@
           7,
           8
         ],
-        "pitch_um": 0.68,
-        "binding": "li1_track_through_band",
+        "pitch_um": 0.42,
+        "binding": "diffusion_contact_between_gates",
         "lower_bounds_um": {
-          "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.47,
-          "gate_li1_spacing": 0.33,
-          "li1_track_through_band": 0.68
+          "diffusion_contact_between_gates": 0.42
         }
       }
     ],
@@ -470,14 +449,39 @@
     },
     "gate_contact_offset_um": [
       0.0,
-      -0.01,
       0.0,
-      -0.01,
+      -0.06,
       0.0,
-      -0.01,
       0.0,
-      -0.01,
+      0.0,
+      0.0,
+      0.0,
       0.0
+    ],
+    "gate_has_contact": [
+      false,
+      false,
+      true,
+      true,
+      false,
+      false,
+      true,
+      false,
+      false
+    ],
+    "poly_bar_runs": [
+      [
+        0,
+        2
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        6,
+        8
+      ]
     ],
     "li1_landing_um": [
       0.17,
@@ -506,151 +510,95 @@
     },
     "left_edge_lower_bounds_um": {
       "diffusion_margin": 0.47,
-      "poly_pad_to_edge": 0.24,
-      "gate_li1_to_edge": 0.17,
-      "li1_track_through_band": 0.52
+      "poly_pad_to_edge": 0.18
     },
     "right_edge_lower_bounds_um": {
       "diffusion_margin": 0.47,
-      "poly_pad_to_edge": 0.24,
-      "gate_li1_to_edge": 0.17,
-      "li1_track_through_band": 0.52
+      "poly_pad_to_edge": 0.18
     },
     "li1_track_um": 0.52,
-    "channels": [
-      [
-        0,
-        0
-      ],
-      [
-        0,
-        1
-      ],
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        3
-      ],
-      [
-        0,
-        4
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        0,
-        6
-      ],
-      [
-        0,
-        7
-      ],
-      [
-        0,
-        8
-      ],
-      [
-        0,
-        9
-      ]
-    ],
-    "crossing_gaps": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9
-    ],
+    "channels": [],
+    "crossing_gaps": [],
     "diffusion_segments": 1,
     "active_x_um": [
       [
-        0.355,
-        6.545
+        0.285,
+        4.315
       ]
     ],
-    "centering_shift_um": 0.17,
+    "centering_shift_um": 0.15,
     "gate_x_um": [
-      0.69,
-      1.39,
-      2.07,
-      2.77,
-      3.45,
-      4.15,
-      4.83,
-      5.53,
-      6.21
+      0.62,
+      1.04,
+      1.46,
+      1.88,
+      2.3,
+      2.72,
+      3.14,
+      3.56,
+      3.98
     ],
     "diffusion_node_x_um": [
       [
-        0.48,
-        1.04,
-        1.73,
-        2.42,
-        3.11,
-        3.8,
-        4.49,
-        5.18,
-        5.87,
-        6.42
+        0.41,
+        0.83,
+        1.25,
+        1.67,
+        2.09,
+        2.51,
+        2.93,
+        3.35,
+        3.77,
+        4.19
       ]
     ],
     "row_active_x_um": {
       "nmos": [
         [
-          0.355,
-          2.405
+          1.125,
+          3.475
         ]
       ],
       "pmos": [
         [
-          0.355,
-          6.545
+          0.285,
+          4.315
         ]
       ]
     },
     "row_node_x_um": {
       "nmos": [
         [
-          0.48,
-          1.04,
-          1.73,
-          2.28,
           null,
           null,
-          null,
-          null,
+          1.25,
+          1.67,
+          2.09,
+          2.51,
+          2.93,
+          3.35,
           null,
           null
         ]
       ],
       "pmos": [
         [
-          0.48,
-          1.04,
-          1.73,
-          2.42,
-          3.11,
-          3.8,
-          4.49,
-          5.18,
-          5.87,
-          6.42
+          0.41,
+          0.83,
+          1.25,
+          1.67,
+          2.09,
+          2.51,
+          2.93,
+          3.35,
+          3.77,
+          4.19
         ]
       ]
     },
-    "raw_width_um": 6.56,
-    "minimum_width_sites": 15,
-    "width_sites": 15,
+    "raw_width_um": 4.3,
+    "minimum_width_sites": 10,
+    "width_sites": 10,
     "formulas": {
       "pitch": "per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, gate li1 spacing li.3, li1 track at a channel), 2 routing steps)",
       "gate_contact_offset": "chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe",
@@ -661,1182 +609,9 @@
       "side_margin": "max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half",
       "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
     },
-    "cell_width_um": 6.9,
+    "cell_width_um": 4.6,
     "cell_height_um": 2.72,
-    "routing_retries": [
-      {
-        "placement": 0,
-        "channels": [],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            0
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            2
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            6
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            1
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            3
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            4
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            5
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            7
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            3
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            7
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            0
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            1
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            2
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            4
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            5
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            6
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            8
-          ],
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            9
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for A at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            8
-          ],
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 2,
-        "rip_up": false,
-        "reason": "No li1 route found for B at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            9
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 2,
-        "rip_up": false,
-        "reason": "No li1 route found for B at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            0
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            2
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            6
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            1
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            3
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            4
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            5
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            7
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            3
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            7
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            0
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            1
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            2
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            4
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            5
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            6
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            8
-          ],
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            9
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            8
-          ],
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 2,
-        "rip_up": true,
-        "reason": "rip-up and reroute gave up after 81 rip-ups (first failure: No li1 route found for B at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            9
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 2,
-        "rip_up": true,
-        "reason": "rip-up and reroute gave up after 81 rip-ups (first failure: No li1 route found for B at this width)"
-      },
-      {
-        "placement": 0,
-        "channels": [],
-        "met1": true,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1/met1 route found for B at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [],
-        "met1": true,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1/met1 route found for C at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            8
-          ],
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": true,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1/met1 route found for Y at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            9
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": true,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1/met1 route found for Y at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            8
-          ],
-          [
-            0,
-            9
-          ]
-        ],
-        "met1": true,
-        "extra_sites": 2,
-        "rip_up": false,
-        "reason": "No li1/met1 route found for Y_u1 at this width"
-      },
-      {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            3
-          ],
-          [
-            0,
-            7
-          ],
-          [
-            0,
-            9
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            4
-          ],
-          [
-            0,
-            5
-          ],
-          [
-            0,
-            6
-          ],
-          [
-            0,
-            8
-          ]
-        ],
-        "met1": true,
-        "extra_sites": 2,
-        "rip_up": false,
-        "reason": "No li1/met1 route found for C at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [],
-        "met1": true,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "no route for B with its vias spaced (rip-up and reroute; first failure: No li1/met1 route found for B at this width)"
-      },
-      {
-        "placement": 1,
-        "channels": [],
-        "met1": true,
-        "extra_sites": 0,
-        "rip_up": true,
-        "reason": "rip-up and reroute gave up after 82 rip-ups (first failure: No li1/met1 route found for C at this width)"
-      }
-    ],
+    "routing_retries": [],
     "rule_values_and_sources": {
       "grid": {
         "value": 0.005,
@@ -1907,6 +682,15 @@
           "kind": "drc",
           "rule": "psd.5a",
           "message": "N-Diffusion to P-tap spacing"
+        }
+      },
+      "licon_space": {
+        "value": 0.17,
+        "source": "licon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.2",
+          "message": "Diffusion contact spacing"
         }
       },
       "licon_size": {
@@ -2107,8 +891,8 @@
     "frame_sha256": "d22bd12109df202fa34c590c2402030e2b38952a6962b806499f2ed3aa2a11df"
   },
   "geometry": {
-    "width_um": 6.9,
-    "width_sites": 15,
+    "width_um": 4.6,
+    "width_sites": 10,
     "height_um": 2.72,
     "shapes": [
       {
@@ -2116,7 +900,7 @@
         "box": [
           0.0,
           0.0,
-          6.9,
+          4.6,
           2.72
         ],
         "net": null,
@@ -2130,7 +914,7 @@
         "box": [
           0.0,
           0.0,
-          6.9,
+          4.6,
           2.72
         ],
         "net": null,
@@ -2144,7 +928,7 @@
         "box": [
           -0.19,
           1.305,
-          7.09,
+          4.79,
           2.91
         ],
         "net": null,
@@ -2158,7 +942,7 @@
         "box": [
           0.0,
           -0.19,
-          6.9,
+          4.6,
           1.015
         ],
         "net": null,
@@ -2172,7 +956,7 @@
         "box": [
           0.0,
           1.355,
-          6.9,
+          4.6,
           2.91
         ],
         "net": null,
@@ -2186,7 +970,7 @@
         "box": [
           0.0,
           1.25,
-          6.9,
+          4.6,
           2.72
         ],
         "net": null,
@@ -2200,7 +984,7 @@
         "box": [
           0.0,
           0.975,
-          6.9,
+          4.6,
           1.345
         ],
         "net": null,
@@ -2214,7 +998,7 @@
         "box": [
           0.0,
           -0.24,
-          6.9,
+          4.6,
           0.24
         ],
         "net": "VGND",
@@ -2364,81 +1148,11 @@
         ]
       },
       {
-        "layer": "mcon",
-        "box": [
-          4.745,
-          -0.085,
-          4.915,
-          0.085
-        ],
-        "net": "VGND",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          5.205,
-          -0.085,
-          5.375,
-          0.085
-        ],
-        "net": "VGND",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          5.665,
-          -0.085,
-          5.835,
-          0.085
-        ],
-        "net": "VGND",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          6.125,
-          -0.085,
-          6.295,
-          0.085
-        ],
-        "net": "VGND",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          6.585,
-          -0.085,
-          6.755,
-          0.085
-        ],
-        "net": "VGND",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
         "layer": "met1",
         "box": [
           0.0,
           2.48,
-          6.9,
+          4.6,
           2.96
         ],
         "net": "VPWR",
@@ -2588,81 +1302,11 @@
         ]
       },
       {
-        "layer": "mcon",
-        "box": [
-          4.745,
-          2.635,
-          4.915,
-          2.805
-        ],
-        "net": "VPWR",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          5.205,
-          2.635,
-          5.375,
-          2.805
-        ],
-        "net": "VPWR",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          5.665,
-          2.635,
-          5.835,
-          2.805
-        ],
-        "net": "VPWR",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          6.125,
-          2.635,
-          6.295,
-          2.805
-        ],
-        "net": "VPWR",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          6.585,
-          2.635,
-          6.755,
-          2.805
-        ],
-        "net": "VPWR",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
         "layer": "diff",
         "box": [
-          0.355,
+          1.125,
           0.235,
-          1.39,
+          1.88,
           0.885
         ],
         "net": null,
@@ -2674,9 +1318,9 @@
       {
         "layer": "diff",
         "box": [
-          0.69,
+          1.46,
           0.235,
-          2.07,
+          2.3,
           0.885
         ],
         "net": null,
@@ -2688,9 +1332,37 @@
       {
         "layer": "diff",
         "box": [
-          1.39,
+          1.88,
           0.235,
-          2.405,
+          2.72,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          2.3,
+          0.235,
+          3.14,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          2.72,
+          0.235,
+          3.475,
           0.885
         ],
         "net": null,
@@ -2702,9 +1374,9 @@
       {
         "layer": "licon",
         "box": [
-          0.395,
+          1.165,
           0.575,
-          0.565,
+          1.335,
           0.745
         ],
         "net": "Y",
@@ -2716,9 +1388,9 @@
       {
         "layer": "licon",
         "box": [
-          0.955,
+          1.585,
           0.295,
-          1.125,
+          1.755,
           0.465
         ],
         "net": "VGND",
@@ -2730,9 +1402,9 @@
       {
         "layer": "licon",
         "box": [
-          1.645,
+          2.005,
           0.575,
-          1.815,
+          2.175,
           0.745
         ],
         "net": "Y",
@@ -2744,9 +1416,9 @@
       {
         "layer": "licon",
         "box": [
-          2.195,
+          3.265,
           0.295,
-          2.365,
+          3.435,
           0.465
         ],
         "net": "VGND",
@@ -2758,9 +1430,9 @@
       {
         "layer": "diff",
         "box": [
-          0.355,
+          0.285,
           1.485,
-          1.39,
+          1.04,
           2.485
         ],
         "net": null,
@@ -2772,9 +1444,9 @@
       {
         "layer": "diff",
         "box": [
-          0.69,
+          0.62,
           1.485,
-          2.07,
+          1.46,
           2.485
         ],
         "net": null,
@@ -2786,9 +1458,9 @@
       {
         "layer": "diff",
         "box": [
-          1.39,
+          1.04,
           1.485,
-          2.77,
+          1.88,
           2.485
         ],
         "net": null,
@@ -2800,9 +1472,9 @@
       {
         "layer": "diff",
         "box": [
-          2.07,
+          1.46,
           1.485,
-          3.45,
+          2.3,
           2.485
         ],
         "net": null,
@@ -2814,9 +1486,9 @@
       {
         "layer": "diff",
         "box": [
-          2.77,
+          1.88,
           1.485,
-          4.15,
+          2.72,
           2.485
         ],
         "net": null,
@@ -2828,9 +1500,9 @@
       {
         "layer": "diff",
         "box": [
-          3.45,
+          2.3,
           1.485,
-          4.83,
+          3.14,
           2.485
         ],
         "net": null,
@@ -2842,9 +1514,9 @@
       {
         "layer": "diff",
         "box": [
-          4.15,
+          2.72,
           1.485,
-          5.53,
+          3.56,
           2.485
         ],
         "net": null,
@@ -2856,9 +1528,9 @@
       {
         "layer": "diff",
         "box": [
-          4.83,
+          3.14,
           1.485,
-          6.21,
+          3.98,
           2.485
         ],
         "net": null,
@@ -2870,9 +1542,9 @@
       {
         "layer": "diff",
         "box": [
-          5.53,
+          3.56,
           1.485,
-          6.545,
+          4.315,
           2.485
         ],
         "net": null,
@@ -2884,51 +1556,9 @@
       {
         "layer": "licon",
         "box": [
-          0.395,
-          1.575,
-          0.565,
-          1.745
-        ],
-        "net": "Y",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          0.955,
-          1.575,
-          1.125,
-          1.745
-        ],
-        "net": "Y_u2",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          1.645,
-          1.575,
-          1.815,
-          1.745
-        ],
-        "net": "Y_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          2.335,
+          1.165,
           2.255,
-          2.505,
+          1.335,
           2.425
         ],
         "net": "VPWR",
@@ -2940,53 +1570,11 @@
       {
         "layer": "licon",
         "box": [
-          3.025,
-          2.255,
-          3.195,
-          2.425
-        ],
-        "net": "Y_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          3.715,
-          2.255,
-          3.885,
-          2.425
-        ],
-        "net": "Y_u2",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          4.405,
+          2.005,
           1.575,
-          4.575,
+          2.175,
           1.745
         ],
-        "net": "Y",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          5.095,
-          2.255,
-          5.265,
-          2.425
-        ],
         "net": "Y_u2",
         "gds": [
           66,
@@ -2996,26 +1584,12 @@
       {
         "layer": "licon",
         "box": [
-          5.785,
-          2.255,
-          5.955,
-          2.425
+          3.685,
+          1.575,
+          3.855,
+          1.745
         ],
-        "net": "Y_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          6.335,
-          2.255,
-          6.505,
-          2.425
-        ],
-        "net": "VPWR",
+        "net": "Y_u2",
         "gds": [
           66,
           44
@@ -3024,9 +1598,51 @@
       {
         "layer": "poly",
         "box": [
-          0.615,
-          0.105,
-          0.765,
+          0.545,
+          0.995,
+          1.535,
+          1.325
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.805,
+          0.995,
+          2.795,
+          1.325
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.065,
+          0.995,
+          4.055,
+          1.325
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.545,
+          0.995,
+          0.695,
           2.615
         ],
         "net": "A",
@@ -3038,9 +1654,37 @@
       {
         "layer": "poly",
         "box": [
-          0.555,
+          0.965,
           0.995,
-          0.825,
+          1.115,
+          2.615
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.385,
+          0.105,
+          1.535,
+          2.615
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.265,
+          0.995,
+          1.535,
           1.325
         ],
         "net": "A",
@@ -3051,279 +1695,55 @@
       },
       {
         "layer": "licon",
-        "box": [
-          0.605,
-          1.075,
-          0.775,
-          1.245
-        ],
-        "net": "A",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          0.615,
-          1.085,
-          0.765,
-          1.235
-        ],
-        "net": "A",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
         "box": [
           1.315,
-          0.105,
-          1.465,
-          2.615
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          1.245,
-          0.995,
-          1.515,
-          1.325
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          1.295,
           1.075,
-          1.465,
+          1.485,
           1.245
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          1.305,
-          1.085,
-          1.455,
-          1.235
-        ],
-        "net": "B",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          1.995,
-          0.105,
-          2.145,
-          2.615
-        ],
-        "net": "C",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          1.935,
-          0.995,
-          2.205,
-          1.325
-        ],
-        "net": "C",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          1.985,
-          1.075,
-          2.155,
-          1.245
-        ],
-        "net": "C",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          1.995,
-          1.085,
-          2.145,
-          1.235
-        ],
-        "net": "C",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          2.695,
-          0.995,
-          2.845,
-          2.615
-        ],
-        "net": "C",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          2.625,
-          0.995,
-          2.895,
-          1.325
-        ],
-        "net": "C",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          2.675,
-          1.075,
-          2.845,
-          1.245
-        ],
-        "net": "C",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          2.685,
-          1.085,
-          2.835,
-          1.235
-        ],
-        "net": "C",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          3.375,
-          0.995,
-          3.525,
-          2.615
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          3.315,
-          0.995,
-          3.585,
-          1.325
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          3.365,
-          1.075,
-          3.535,
-          1.245
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          3.375,
-          1.085,
-          3.525,
-          1.235
-        ],
-        "net": "B",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          4.075,
-          0.995,
-          4.225,
-          2.615
         ],
         "net": "A",
         "gds": [
           66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          1.325,
+          1.085,
+          1.475,
+          1.235
+        ],
+        "net": "A",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.805,
+          0.105,
+          1.955,
+          2.615
+        ],
+        "net": "B",
+        "gds": [
+          66,
           20
         ]
       },
       {
         "layer": "poly",
         "box": [
-          4.005,
+          1.745,
           0.995,
-          4.275,
+          2.015,
           1.325
         ],
-        "net": "A",
+        "net": "B",
         "gds": [
           66,
           20
@@ -3332,149 +1752,135 @@
       {
         "layer": "licon",
         "box": [
+          1.795,
+          1.075,
+          1.965,
+          1.245
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          1.805,
+          1.085,
+          1.955,
+          1.235
+        ],
+        "net": "B",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          2.225,
+          0.995,
+          2.375,
+          2.615
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          2.645,
+          0.995,
+          2.795,
+          2.615
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.065,
+          0.105,
+          3.215,
+          2.615
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.005,
+          0.995,
+          3.275,
+          1.325
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.055,
+          1.075,
+          3.225,
+          1.245
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          3.065,
+          1.085,
+          3.215,
+          1.235
+        ],
+        "net": "C",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.485,
+          0.995,
+          3.635,
+          2.615
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.905,
+          0.995,
           4.055,
-          1.075,
-          4.225,
-          1.245
-        ],
-        "net": "A",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          4.065,
-          1.085,
-          4.215,
-          1.235
-        ],
-        "net": "A",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          4.755,
-          0.995,
-          4.905,
-          2.615
-        ],
-        "net": "A",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          4.695,
-          0.995,
-          4.965,
-          1.325
-        ],
-        "net": "A",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          4.745,
-          1.075,
-          4.915,
-          1.245
-        ],
-        "net": "A",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          4.755,
-          1.085,
-          4.905,
-          1.235
-        ],
-        "net": "A",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          5.455,
-          0.995,
-          5.605,
-          2.615
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          5.385,
-          0.995,
-          5.655,
-          1.325
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          5.435,
-          1.075,
-          5.605,
-          1.245
-        ],
-        "net": "B",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          5.445,
-          1.085,
-          5.595,
-          1.235
-        ],
-        "net": "B",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          6.135,
-          0.995,
-          6.285,
           2.615
         ],
         "net": "C",
@@ -3484,53 +1890,11 @@
         ]
       },
       {
-        "layer": "poly",
-        "box": [
-          6.075,
-          0.995,
-          6.345,
-          1.325
-        ],
-        "net": "C",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          6.125,
-          1.075,
-          6.295,
-          1.245
-        ],
-        "net": "C",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
         "layer": "li1_pin",
         "box": [
-          6.135,
-          1.085,
-          6.285,
-          1.235
-        ],
-        "net": "C",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          0.405,
+          1.175,
           0.585,
-          0.555,
+          1.325,
           0.735
         ],
         "net": "Y",
@@ -3624,226 +1988,254 @@
         ]
       },
       {
-        "layer": "mcon",
+        "layer": "licon",
         "box": [
-          0.605,
-          1.155,
-          0.775,
-          1.325
+          0.325,
+          1.575,
+          0.495,
+          1.745
         ],
-        "net": "A",
+        "net": "VPWR",
         "gds": [
-          67,
+          66,
           44
         ]
       },
       {
-        "layer": "mcon",
+        "layer": "licon",
         "box": [
-          3.705,
-          1.245,
-          3.875,
-          1.415
-        ],
-        "net": "A",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          1.305,
-          0.915,
-          1.475,
-          1.085
-        ],
-        "net": "B",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          3.015,
-          0.915,
-          3.185,
-          1.085
-        ],
-        "net": "B",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          0.875,
-          0.635,
-          1.045,
-          0.805
-        ],
-        "net": "Y",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          1.375,
-          0.485,
-          1.545,
-          0.655
-        ],
-        "net": "Y",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          1.775,
-          0.555,
-          1.945,
-          0.725
-        ],
-        "net": "Y",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          4.135,
-          1.585,
-          4.305,
-          1.755
-        ],
-        "net": "Y",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          1.995,
-          2.105,
-          2.165,
-          2.275
-        ],
-        "net": "Y_u1",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          2.675,
-          2.105,
-          2.845,
-          2.275
-        ],
-        "net": "Y_u1",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          3.295,
-          2.105,
-          3.465,
-          2.275
-        ],
-        "net": "Y_u1",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
-        "layer": "mcon",
-        "box": [
-          4.745,
+          0.325,
           1.915,
-          4.915,
+          0.495,
+          2.085
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.325,
+          2.255,
+          0.495,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.745,
+          1.545,
+          0.915,
+          1.715
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.745,
+          1.885,
+          0.915,
+          2.055
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.745,
+          2.225,
+          0.915,
+          2.395
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.585,
+          1.575,
+          1.755,
+          1.745
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.585,
+          1.915,
+          1.755,
           2.085
         ],
         "net": "Y_u1",
         "gds": [
-          67,
+          66,
           44
         ]
       },
       {
-        "layer": "mcon",
+        "layer": "licon",
         "box": [
-          1.305,
-          1.675,
-          1.475,
-          1.845
+          1.585,
+          2.255,
+          1.755,
+          2.425
         ],
-        "net": "Y_u2",
+        "net": "Y_u1",
         "gds": [
-          67,
+          66,
           44
         ]
       },
       {
-        "layer": "mcon",
+        "layer": "licon",
         "box": [
-          1.985,
-          1.675,
-          2.155,
-          1.845
+          2.425,
+          1.915,
+          2.595,
+          2.085
         ],
-        "net": "Y_u2",
+        "net": "Y_u1",
         "gds": [
-          67,
+          66,
           44
         ]
       },
       {
-        "layer": "mcon",
+        "layer": "licon",
         "box": [
-          2.685,
-          1.675,
-          2.855,
-          1.845
+          2.425,
+          2.255,
+          2.595,
+          2.425
         ],
-        "net": "Y_u2",
+        "net": "Y_u1",
         "gds": [
-          67,
+          66,
           44
         ]
       },
       {
-        "layer": "mcon",
+        "layer": "licon",
         "box": [
-          3.365,
-          1.675,
-          3.535,
-          1.845
+          2.845,
+          1.575,
+          3.015,
+          1.745
         ],
         "net": "Y_u2",
         "gds": [
-          67,
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.845,
+          1.915,
+          3.015,
+          2.085
+        ],
+        "net": "Y_u2",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.265,
+          1.915,
+          3.435,
+          2.085
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.265,
+          2.255,
+          3.435,
+          2.425
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.105,
+          1.575,
+          4.275,
+          1.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.105,
+          1.915,
+          4.275,
+          2.085
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.105,
+          2.255,
+          4.275,
+          2.425
+        ],
+        "net": "Y",
+        "gds": [
+          66,
           44
         ]
       },
@@ -3853,7 +2245,7 @@
         "box": [
           0.0,
           -0.085,
-          6.9,
+          4.6,
           0.085
         ],
         "gds": [
@@ -3865,9 +2257,9 @@
         "layer": "li1",
         "net": "VGND",
         "box": [
-          0.875,
+          1.505,
           0.085,
-          1.205,
+          1.835,
           0.465
         ],
         "gds": [
@@ -3879,9 +2271,9 @@
         "layer": "li1",
         "net": "VGND",
         "box": [
-          2.115,
+          3.185,
           0.085,
-          2.445,
+          3.515,
           0.465
         ],
         "gds": [
@@ -3893,9 +2285,9 @@
         "layer": "li1",
         "net": "VPWR",
         "box": [
-          2.335,
-          2.175,
-          2.505,
+          0.325,
+          1.495,
+          0.495,
           2.635
         ],
         "gds": [
@@ -3907,9 +2299,9 @@
         "layer": "li1",
         "net": "VPWR",
         "box": [
-          6.335,
+          1.165,
           2.175,
-          6.505,
+          1.335,
           2.635
         ],
         "gds": [
@@ -3923,7 +2315,7 @@
         "box": [
           0.0,
           2.635,
-          6.9,
+          4.6,
           2.805
         ],
         "gds": [
@@ -3935,79 +2327,9 @@
         "layer": "li1",
         "net": "Y",
         "box": [
-          1.375,
-          0.485,
-          1.815,
-          0.555
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          1.375,
-          0.555,
-          1.945,
-          0.655
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          1.645,
-          0.655,
-          1.945,
-          0.745
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          1.645,
-          0.745,
-          1.815,
-          0.825
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.395,
+          1.165,
           0.495,
-          0.565,
-          0.575
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.395,
-          0.575,
-          0.705,
+          1.335,
           0.635
         ],
         "gds": [
@@ -4019,9 +2341,23 @@
         "layer": "li1",
         "net": "Y",
         "box": [
-          0.395,
+          2.005,
+          0.495,
+          2.175,
+          0.635
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.165,
           0.635,
-          1.045,
+          3.435,
           0.655
         ],
         "gds": [
@@ -4033,9 +2369,9 @@
         "layer": "li1",
         "net": "Y",
         "box": [
-          0.265,
+          1.165,
           0.655,
-          1.045,
+          3.565,
           0.805
         ],
         "gds": [
@@ -4047,9 +2383,9 @@
         "layer": "li1",
         "net": "Y",
         "box": [
-          0.265,
+          1.165,
           0.805,
-          0.565,
+          1.335,
           0.825
         ],
         "gds": [
@@ -4061,10 +2397,38 @@
         "layer": "li1",
         "net": "Y",
         "box": [
-          0.265,
+          2.005,
+          0.805,
+          2.175,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          3.265,
+          0.805,
+          3.565,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          3.395,
           0.825,
-          0.435,
-          1.495
+          3.565,
+          1.155
         ],
         "gds": [
           67,
@@ -4075,10 +2439,108 @@
         "layer": "li1",
         "net": "Y",
         "box": [
-          0.265,
+          3.395,
+          1.155,
+          4.195,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          4.025,
+          1.325,
+          4.195,
+          1.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          3.185,
+          1.915,
+          3.515,
+          1.995
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          4.025,
+          1.575,
+          4.355,
+          1.995
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          3.185,
+          1.995,
+          4.355,
+          2.165
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          3.185,
+          2.165,
+          3.515,
+          2.425
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          4.025,
+          2.165,
+          4.355,
+          2.425
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          0.745,
           1.495,
-          0.565,
-          1.665
+          0.915,
+          1.545
         ],
         "gds": [
           67,
@@ -4087,12 +2549,12 @@
       },
       {
         "layer": "li1",
-        "net": "Y",
+        "net": "Y_u1",
         "box": [
-          0.395,
-          1.665,
-          0.565,
-          1.825
+          0.665,
+          1.545,
+          0.995,
+          1.575
         ],
         "gds": [
           67,
@@ -4101,12 +2563,12 @@
       },
       {
         "layer": "li1",
-        "net": "Y",
+        "net": "Y_u1",
         "box": [
-          4.405,
-          1.495,
-          4.575,
-          1.585
+          0.665,
+          1.575,
+          1.835,
+          1.745
         ],
         "gds": [
           67,
@@ -4115,12 +2577,12 @@
       },
       {
         "layer": "li1",
-        "net": "Y",
+        "net": "Y_u1",
         "box": [
-          4.135,
-          1.585,
-          4.575,
-          1.755
+          1.505,
+          1.745,
+          1.835,
+          2.255
         ],
         "gds": [
           67,
@@ -4129,12 +2591,40 @@
       },
       {
         "layer": "li1",
-        "net": "Y",
+        "net": "Y_u1",
         "box": [
-          4.405,
-          1.755,
-          4.575,
-          1.825
+          2.345,
+          1.915,
+          2.675,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          0.665,
+          1.745,
+          0.995,
+          2.395
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.505,
+          2.255,
+          2.675,
+          2.425
         ],
         "gds": [
           67,
@@ -4145,9 +2635,9 @@
         "layer": "li1",
         "net": "Y_u2",
         "box": [
-          0.955,
+          2.005,
           1.495,
-          1.125,
+          2.175,
           1.575
         ],
         "gds": [
@@ -4159,9 +2649,51 @@
         "layer": "li1",
         "net": "Y_u2",
         "box": [
-          0.955,
+          2.845,
+          1.495,
+          3.015,
+          1.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u2",
+        "box": [
+          3.685,
+          1.495,
+          3.855,
+          1.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u2",
+        "box": [
+          2.005,
           1.575,
-          1.475,
+          3.855,
+          1.745
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u2",
+        "box": [
+          2.005,
+          1.745,
+          2.175,
           1.825
         ],
         "gds": [
@@ -4173,10 +2705,10 @@
         "layer": "li1",
         "net": "Y_u2",
         "box": [
-          1.305,
-          1.825,
-          1.475,
-          1.845
+          3.685,
+          1.745,
+          3.855,
+          1.825
         ],
         "gds": [
           67,
@@ -4187,346 +2719,10 @@
         "layer": "li1",
         "net": "Y_u2",
         "box": [
-          1.985,
-          1.675,
-          2.855,
-          1.845
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u2",
-        "box": [
-          3.365,
-          1.675,
-          3.885,
-          1.845
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u2",
-        "box": [
-          3.715,
-          1.845,
-          3.885,
-          2.255
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u2",
-        "box": [
-          3.635,
-          2.255,
-          5.345,
-          2.425
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          1.645,
-          1.495,
-          1.815,
-          2.015
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          1.645,
-          2.015,
-          2.165,
-          2.185
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          1.995,
-          2.185,
-          2.165,
-          2.275
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          2.675,
-          2.105,
-          3.465,
-          2.275
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          2.945,
-          2.275,
-          3.465,
-          2.425
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          4.745,
-          1.915,
-          5.955,
-          2.085
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          5.705,
-          2.085,
-          5.955,
-          2.255
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          5.705,
-          2.255,
-          6.035,
-          2.425
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "A",
-        "box": [
-          0.605,
-          0.995,
-          0.775,
-          1.325
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "A",
-        "box": [
-          4.055,
-          0.995,
-          4.225,
-          1.075
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "A",
-        "box": [
-          4.745,
-          0.995,
-          4.915,
-          1.075
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "A",
-        "box": [
-          4.055,
-          1.075,
-          4.915,
-          1.245
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "A",
-        "box": [
-          4.745,
-          1.245,
-          4.915,
-          1.325
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "A",
-        "box": [
-          3.705,
-          1.245,
-          4.225,
-          1.415
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
-          1.305,
-          0.915,
-          1.475,
-          0.995
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
-          1.295,
-          0.995,
-          1.475,
-          1.245
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
-          1.295,
-          1.245,
-          1.465,
-          1.325
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
-          3.715,
-          0.655,
-          5.605,
-          0.825
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
-          3.715,
-          0.825,
-          3.885,
-          0.905
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
-          3.365,
-          0.905,
-          3.885,
-          0.915
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
+          2.845,
+          1.745,
           3.015,
-          0.915,
-          3.885,
-          1.075
+          2.165
         ],
         "gds": [
           67,
@@ -4535,96 +2731,12 @@
       },
       {
         "layer": "li1",
-        "net": "B",
+        "net": "A",
         "box": [
-          3.015,
-          1.075,
-          3.535,
-          1.085
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
-          3.365,
-          1.085,
-          3.535,
-          1.325
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "B",
-        "box": [
-          5.435,
-          0.825,
-          5.605,
-          1.325
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "C",
-        "box": [
-          3.375,
-          0.315,
-          6.295,
-          0.455
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "C",
-        "box": [
-          2.675,
-          0.455,
-          6.295,
-          0.485
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "C",
-        "box": [
-          2.675,
-          0.485,
-          3.545,
-          0.625
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "C",
-        "box": [
-          1.985,
+          1.315,
           0.995,
-          2.155,
-          1.075
+          1.485,
+          1.325
         ],
         "gds": [
           67,
@@ -4633,39 +2745,11 @@
       },
       {
         "layer": "li1",
-        "net": "C",
+        "net": "B",
         "box": [
-          2.675,
-          0.625,
-          2.845,
-          1.075
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "C",
-        "box": [
-          1.985,
-          1.075,
-          2.845,
-          1.245
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "C",
-        "box": [
-          1.985,
-          1.245,
-          2.155,
+          1.795,
+          0.995,
+          1.965,
           1.325
         ],
         "gds": [
@@ -4677,573 +2761,13 @@
         "layer": "li1",
         "net": "C",
         "box": [
-          2.675,
-          1.245,
-          2.845,
+          3.055,
+          0.995,
+          3.225,
           1.325
         ],
         "gds": [
           67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "C",
-        "box": [
-          6.125,
-          0.485,
-          6.295,
-          1.325
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "A",
-        "box": [
-          0.545,
-          1.095,
-          0.835,
-          1.29
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "A",
-        "box": [
-          3.645,
-          1.185,
-          3.935,
-          1.29
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "A",
-        "box": [
-          0.545,
-          1.29,
-          3.935,
-          1.385
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "A",
-        "box": [
-          0.59,
-          1.385,
-          3.935,
-          1.43
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "A",
-        "box": [
-          3.645,
-          1.43,
-          3.935,
-          1.475
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "B",
-        "box": [
-          1.245,
-          0.855,
-          1.535,
-          0.93
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "B",
-        "box": [
-          2.955,
-          0.855,
-          3.245,
-          0.93
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "B",
-        "box": [
-          1.245,
-          0.93,
-          3.245,
-          1.07
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "B",
-        "box": [
-          1.245,
-          1.07,
-          1.535,
-          1.145
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "B",
-        "box": [
-          2.955,
-          1.07,
-          3.245,
-          1.145
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          1.315,
-          0.425,
-          1.605,
-          0.495
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          1.315,
-          0.495,
-          2.005,
-          0.57
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          0.96,
-          0.57,
-          4.29,
-          0.575
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          0.815,
-          0.575,
-          4.29,
-          0.71
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          1.315,
-          0.71,
-          2.005,
-          0.715
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          1.715,
-          0.715,
-          2.005,
-          0.785
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          0.815,
-          0.71,
-          1.105,
-          0.865
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          4.15,
-          0.71,
-          4.29,
-          1.525
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y",
-        "box": [
-          4.075,
-          1.525,
-          4.365,
-          1.815
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          1.935,
-          2.045,
-          2.225,
-          2.12
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          2.615,
-          2.045,
-          2.905,
-          2.12
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          1.935,
-          2.12,
-          2.905,
-          2.26
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          1.935,
-          2.26,
-          2.225,
-          2.335
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          2.615,
-          2.26,
-          2.905,
-          2.335
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          3.235,
-          2.045,
-          3.525,
-          2.12
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          4.685,
-          1.855,
-          4.975,
-          2.12
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          3.235,
-          2.12,
-          4.975,
-          2.145
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          3.235,
-          2.145,
-          4.9,
-          2.26
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u1",
-        "box": [
-          3.235,
-          2.26,
-          3.525,
-          2.335
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          1.245,
-          1.615,
-          1.535,
-          1.69
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          1.925,
-          1.615,
-          2.215,
-          1.69
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          1.245,
-          1.69,
-          2.215,
-          1.83
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          1.245,
-          1.83,
-          1.535,
-          1.905
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          1.925,
-          1.83,
-          2.215,
-          1.905
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          2.625,
-          1.615,
-          2.915,
-          1.69
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          3.305,
-          1.615,
-          3.595,
-          1.69
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          2.625,
-          1.69,
-          3.595,
-          1.83
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          2.625,
-          1.83,
-          2.915,
-          1.905
-        ],
-        "gds": [
-          68,
-          20
-        ]
-      },
-      {
-        "layer": "met1",
-        "net": "Y_u2",
-        "box": [
-          3.305,
-          1.83,
-          3.595,
-          1.905
-        ],
-        "gds": [
-          68,
           20
         ]
       }
@@ -5251,125 +2775,101 @@
     "terminals": {
       "Y": [
         [
-          0.48,
+          1.25,
           0.66
         ],
         [
-          1.73,
+          2.09,
           0.66
         ],
         [
-          0.48,
-          1.66
+          3.35,
+          2.34
         ],
         [
-          4.49,
-          1.66
+          4.19,
+          2.34
         ]
       ],
       "VGND": [
         [
-          1.04,
+          1.67,
           0.0
         ],
         [
-          2.28,
+          3.35,
           0.0
         ],
         [
-          1.04,
+          1.67,
           0.0
         ],
         [
-          2.28,
+          3.35,
           0.0
-        ]
-      ],
-      "Y_u2": [
-        [
-          1.04,
-          1.66
-        ],
-        [
-          3.8,
-          2.34
-        ],
-        [
-          5.18,
-          2.34
-        ]
-      ],
-      "Y_u1": [
-        [
-          1.73,
-          1.66
-        ],
-        [
-          3.11,
-          2.34
-        ],
-        [
-          5.87,
-          2.34
         ]
       ],
       "VPWR": [
         [
-          2.42,
+          0.41,
           2.7199999999999998
         ],
         [
-          6.42,
+          1.25,
           2.7199999999999998
         ],
         [
-          2.42,
+          0.41,
           2.7199999999999998
         ],
         [
-          6.42,
+          1.25,
           2.7199999999999998
+        ]
+      ],
+      "Y_u1": [
+        [
+          0.83,
+          1.66
+        ],
+        [
+          1.67,
+          2.34
+        ],
+        [
+          2.51,
+          2.34
+        ]
+      ],
+      "Y_u2": [
+        [
+          2.09,
+          1.66
+        ],
+        [
+          2.93,
+          1.66
+        ],
+        [
+          3.77,
+          1.66
         ]
       ],
       "A": [
         [
-          0.69,
-          1.16
-        ],
-        [
-          4.14,
-          1.16
-        ],
-        [
-          4.83,
+          1.4,
           1.16
         ]
       ],
       "B": [
         [
-          1.38,
-          1.16
-        ],
-        [
-          3.45,
-          1.16
-        ],
-        [
-          5.52,
+          1.88,
           1.16
         ]
       ],
       "C": [
         [
-          2.07,
-          1.16
-        ],
-        [
-          2.76,
-          1.16
-        ],
-        [
-          6.21,
+          3.14,
           1.16
         ]
       ]
@@ -5467,51 +2967,6 @@
       },
       {
         "type": "mcon",
-        "net": "VGND",
-        "point_um": [
-          4.830000000000001,
-          0.0
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
-        "net": "VGND",
-        "point_um": [
-          5.290000000000001,
-          0.0
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
-        "net": "VGND",
-        "point_um": [
-          5.750000000000001,
-          0.0
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
-        "net": "VGND",
-        "point_um": [
-          6.210000000000001,
-          0.0
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
-        "net": "VGND",
-        "point_um": [
-          6.670000000000001,
-          0.0
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
         "net": "VPWR",
         "point_um": [
           0.23,
@@ -5601,256 +3056,361 @@
         "source": "instructor frame: one rail contact per site"
       },
       {
-        "type": "mcon",
-        "net": "VPWR",
-        "point_um": [
-          4.830000000000001,
-          2.7199999999999998
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
-        "net": "VPWR",
-        "point_um": [
-          5.290000000000001,
-          2.7199999999999998
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
-        "net": "VPWR",
-        "point_um": [
-          5.750000000000001,
-          2.7199999999999998
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
-        "net": "VPWR",
-        "point_um": [
-          6.210000000000001,
-          2.7199999999999998
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
-        "net": "VPWR",
-        "point_um": [
-          6.670000000000001,
-          2.7199999999999998
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
         "type": "diffusion",
         "net": "Y",
         "point_um": [
-          0.48,
+          1.25,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          1.165,
+          0.495,
+          1.335,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
         "net": "VGND",
         "point_um": [
-          1.04,
+          1.67,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
         "net": "Y",
         "point_um": [
-          1.73,
+          2.09,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          2.005,
+          0.495,
+          2.175,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
         "net": "VGND",
         "point_um": [
-          2.28,
+          3.35,
           0.38
         ],
-        "row": "nmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "Y",
-        "point_um": [
-          0.48,
-          1.66
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
         ],
-        "row": "pmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "Y_u2",
-        "point_um": [
-          1.04,
-          1.66
-        ],
-        "row": "pmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "Y_u1",
-        "point_um": [
-          1.73,
-          1.66
-        ],
-        "row": "pmos"
+        "licons": 1
       },
       {
         "type": "diffusion",
         "net": "VPWR",
         "point_um": [
-          2.42,
+          0.41,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          0.325,
+          1.495,
+          0.495,
+          2.505
+        ],
+        "licons": 3
       },
       {
         "type": "diffusion",
         "net": "Y_u1",
         "point_um": [
-          3.11,
-          2.34
-        ],
-        "row": "pmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "Y_u2",
-        "point_um": [
-          3.8,
-          2.34
-        ],
-        "row": "pmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "Y",
-        "point_um": [
-          4.49,
+          0.83,
           1.66
         ],
-        "row": "pmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "Y_u2",
-        "point_um": [
-          5.18,
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
           2.34
         ],
-        "row": "pmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "Y_u1",
-        "point_um": [
-          5.87,
-          2.34
+        "landing_box": [
+          0.745,
+          1.495,
+          0.915,
+          1.825
         ],
-        "row": "pmos"
+        "licon_y_um": [
+          1.63,
+          1.97,
+          2.31
+        ],
+        "li1_bar_box": [
+          0.665,
+          1.545,
+          0.995,
+          2.395
+        ],
+        "licons": 3
       },
       {
         "type": "diffusion",
         "net": "VPWR",
         "point_um": [
-          6.42,
+          1.25,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u1",
+        "point_um": [
+          1.67,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.505,
+          2.255,
+          1.835,
+          2.425
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          1.505,
+          1.575,
+          1.835,
+          2.425
+        ],
+        "licons": 3
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u2",
+        "point_um": [
+          2.09,
+          1.66
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          2.005,
+          1.495,
+          2.175,
+          1.825
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u1",
+        "point_um": [
+          2.51,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          2.345,
+          2.255,
+          2.675,
+          2.425
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          2.345,
+          1.915,
+          2.675,
+          2.425
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u2",
+        "point_um": [
+          2.93,
+          1.66
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          2.845,
+          1.495,
+          3.015,
+          1.825
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0
+        ],
+        "li1_bar_box": [
+          2.845,
+          1.495,
+          3.015,
+          2.165
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          3.35,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          3.185,
+          2.255,
+          3.515,
+          2.425
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          3.185,
+          1.915,
+          3.515,
+          2.425
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u2",
+        "point_um": [
+          3.77,
+          1.66
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          3.685,
+          1.495,
+          3.855,
+          1.825
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          4.19,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          4.025,
+          2.255,
+          4.355,
+          2.425
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          4.025,
+          1.575,
+          4.355,
+          2.425
+        ],
+        "licons": 3
       },
       {
         "type": "poly",
         "net": "A",
         "point_um": [
-          0.69,
+          1.4,
           1.16
         ],
-        "gate_x_um": 0.69
+        "gate_x_um": 1.46
       },
       {
         "type": "poly",
         "net": "B",
         "point_um": [
-          1.38,
+          1.88,
           1.16
         ],
-        "gate_x_um": 1.39
+        "gate_x_um": 1.88
       },
       {
         "type": "poly",
         "net": "C",
         "point_um": [
-          2.07,
+          3.14,
           1.16
         ],
-        "gate_x_um": 2.07
-      },
-      {
-        "type": "poly",
-        "net": "C",
-        "point_um": [
-          2.76,
-          1.16
-        ],
-        "gate_x_um": 2.77
-      },
-      {
-        "type": "poly",
-        "net": "B",
-        "point_um": [
-          3.45,
-          1.16
-        ],
-        "gate_x_um": 3.45
-      },
-      {
-        "type": "poly",
-        "net": "A",
-        "point_um": [
-          4.14,
-          1.16
-        ],
-        "gate_x_um": 4.15
-      },
-      {
-        "type": "poly",
-        "net": "A",
-        "point_um": [
-          4.83,
-          1.16
-        ],
-        "gate_x_um": 4.83
-      },
-      {
-        "type": "poly",
-        "net": "B",
-        "point_um": [
-          5.52,
-          1.16
-        ],
-        "gate_x_um": 5.53
-      },
-      {
-        "type": "poly",
-        "net": "C",
-        "point_um": [
-          6.21,
-          1.16
-        ],
-        "gate_x_um": 6.21
+        "gate_x_um": 3.14
       }
     ],
     "devices": [
@@ -5868,7 +3428,7 @@
         "leaf": 0,
         "stack_depth": 1,
         "fingers": 1,
-        "gate_x_um": 0.69,
+        "gate_x_um": 1.46,
         "diffusion_y_um": [
           0.235,
           0.885
@@ -5878,7 +3438,7 @@
         "right_net": "VGND",
         "diffusion_edge_distances_um": {
           "left": 0.26,
-          "right": 1.64
+          "right": 1.94
         }
       },
       {
@@ -5895,7 +3455,7 @@
         "leaf": 1,
         "stack_depth": 1,
         "fingers": 1,
-        "gate_x_um": 1.39,
+        "gate_x_um": 1.88,
         "diffusion_y_um": [
           0.235,
           0.885
@@ -5904,8 +3464,8 @@
         "left_net": "VGND",
         "right_net": "Y",
         "diffusion_edge_distances_um": {
-          "left": 0.96,
-          "right": 0.94
+          "left": 0.68,
+          "right": 1.52
         }
       },
       {
@@ -5922,7 +3482,7 @@
         "leaf": 2,
         "stack_depth": 1,
         "fingers": 1,
-        "gate_x_um": 2.07,
+        "gate_x_um": 3.14,
         "diffusion_y_um": [
           0.235,
           0.885
@@ -5931,7 +3491,7 @@
         "left_net": "Y",
         "right_net": "VGND",
         "diffusion_edge_distances_um": {
-          "left": 1.64,
+          "left": 1.94,
           "right": 0.26
         }
       },
@@ -5940,8 +3500,8 @@
         "type": "pmos",
         "model": "sky130_fd_pr__pfet_01v8_hvt",
         "gate": "A",
-        "source": "Y",
-        "drain": "Y_u2",
+        "source": "Y_u1",
+        "drain": "VPWR",
         "bulk": "VPB",
         "w_um": 1.0,
         "l_um": 0.15,
@@ -5950,17 +3510,73 @@
         "stack_depth": 3,
         "fingers": 1,
         "finger_of": "P1",
-        "gate_x_um": 0.69,
+        "gate_x_um": 0.62,
         "diffusion_y_um": [
           1.485,
           2.485
         ],
         "segment": 0,
-        "left_net": "Y",
-        "right_net": "Y_u2",
+        "left_net": "VPWR",
+        "right_net": "Y_u1",
         "diffusion_edge_distances_um": {
           "left": 0.26,
-          "right": 5.78
+          "right": 3.62
+        }
+      },
+      {
+        "id": "P1_f2",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "Y_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 3,
+        "fingers": 1,
+        "finger_of": "P1",
+        "gate_x_um": 1.04,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "Y_u1",
+        "right_net": "VPWR",
+        "diffusion_edge_distances_um": {
+          "left": 0.68,
+          "right": 3.2
+        }
+      },
+      {
+        "id": "P1_f3",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "Y_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 3,
+        "fingers": 1,
+        "finger_of": "P1",
+        "gate_x_um": 1.46,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "VPWR",
+        "right_net": "Y_u1",
+        "diffusion_edge_distances_um": {
+          "left": 1.1,
+          "right": 2.78
         }
       },
       {
@@ -5978,73 +3594,17 @@
         "stack_depth": 3,
         "fingers": 1,
         "finger_of": "P2",
-        "gate_x_um": 1.39,
-        "diffusion_y_um": [
-          1.485,
-          2.485
-        ],
-        "segment": 0,
-        "left_net": "Y_u2",
-        "right_net": "Y_u1",
-        "diffusion_edge_distances_um": {
-          "left": 0.96,
-          "right": 5.08
-        }
-      },
-      {
-        "id": "P3_f1",
-        "type": "pmos",
-        "model": "sky130_fd_pr__pfet_01v8_hvt",
-        "gate": "C",
-        "source": "Y_u1",
-        "drain": "VPWR",
-        "bulk": "VPB",
-        "w_um": 1.0,
-        "l_um": 0.15,
-        "stage": "Y",
-        "leaf": 2,
-        "stack_depth": 3,
-        "fingers": 1,
-        "finger_of": "P3",
-        "gate_x_um": 2.07,
+        "gate_x_um": 1.88,
         "diffusion_y_um": [
           1.485,
           2.485
         ],
         "segment": 0,
         "left_net": "Y_u1",
-        "right_net": "VPWR",
+        "right_net": "Y_u2",
         "diffusion_edge_distances_um": {
-          "left": 1.64,
-          "right": 4.4
-        }
-      },
-      {
-        "id": "P3_f2",
-        "type": "pmos",
-        "model": "sky130_fd_pr__pfet_01v8_hvt",
-        "gate": "C",
-        "source": "Y_u1",
-        "drain": "VPWR",
-        "bulk": "VPB",
-        "w_um": 1.0,
-        "l_um": 0.15,
-        "stage": "Y",
-        "leaf": 2,
-        "stack_depth": 3,
-        "fingers": 1,
-        "finger_of": "P3",
-        "gate_x_um": 2.77,
-        "diffusion_y_um": [
-          1.485,
-          2.485
-        ],
-        "segment": 0,
-        "left_net": "VPWR",
-        "right_net": "Y_u1",
-        "diffusion_edge_distances_um": {
-          "left": 2.34,
-          "right": 3.7
+          "left": 1.52,
+          "right": 2.36
         }
       },
       {
@@ -6062,73 +3622,17 @@
         "stack_depth": 3,
         "fingers": 1,
         "finger_of": "P2",
-        "gate_x_um": 3.45,
-        "diffusion_y_um": [
-          1.485,
-          2.485
-        ],
-        "segment": 0,
-        "left_net": "Y_u1",
-        "right_net": "Y_u2",
-        "diffusion_edge_distances_um": {
-          "left": 3.02,
-          "right": 3.02
-        }
-      },
-      {
-        "id": "P1_f2",
-        "type": "pmos",
-        "model": "sky130_fd_pr__pfet_01v8_hvt",
-        "gate": "A",
-        "source": "Y",
-        "drain": "Y_u2",
-        "bulk": "VPB",
-        "w_um": 1.0,
-        "l_um": 0.15,
-        "stage": "Y",
-        "leaf": 0,
-        "stack_depth": 3,
-        "fingers": 1,
-        "finger_of": "P1",
-        "gate_x_um": 4.15,
+        "gate_x_um": 2.3,
         "diffusion_y_um": [
           1.485,
           2.485
         ],
         "segment": 0,
         "left_net": "Y_u2",
-        "right_net": "Y",
+        "right_net": "Y_u1",
         "diffusion_edge_distances_um": {
-          "left": 3.72,
-          "right": 2.32
-        }
-      },
-      {
-        "id": "P1_f3",
-        "type": "pmos",
-        "model": "sky130_fd_pr__pfet_01v8_hvt",
-        "gate": "A",
-        "source": "Y",
-        "drain": "Y_u2",
-        "bulk": "VPB",
-        "w_um": 1.0,
-        "l_um": 0.15,
-        "stage": "Y",
-        "leaf": 0,
-        "stack_depth": 3,
-        "fingers": 1,
-        "finger_of": "P1",
-        "gate_x_um": 4.83,
-        "diffusion_y_um": [
-          1.485,
-          2.485
-        ],
-        "segment": 0,
-        "left_net": "Y",
-        "right_net": "Y_u2",
-        "diffusion_edge_distances_um": {
-          "left": 4.4,
-          "right": 1.64
+          "left": 1.94,
+          "right": 1.94
         }
       },
       {
@@ -6146,26 +3650,26 @@
         "stack_depth": 3,
         "fingers": 1,
         "finger_of": "P2",
-        "gate_x_um": 5.53,
+        "gate_x_um": 2.72,
         "diffusion_y_um": [
           1.485,
           2.485
         ],
         "segment": 0,
-        "left_net": "Y_u2",
-        "right_net": "Y_u1",
+        "left_net": "Y_u1",
+        "right_net": "Y_u2",
         "diffusion_edge_distances_um": {
-          "left": 5.1,
-          "right": 0.94
+          "left": 2.36,
+          "right": 1.52
         }
       },
       {
-        "id": "P3_f3",
+        "id": "P3_f1",
         "type": "pmos",
         "model": "sky130_fd_pr__pfet_01v8_hvt",
         "gate": "C",
-        "source": "Y_u1",
-        "drain": "VPWR",
+        "source": "Y",
+        "drain": "Y_u2",
         "bulk": "VPB",
         "w_um": 1.0,
         "l_um": 0.15,
@@ -6174,220 +3678,144 @@
         "stack_depth": 3,
         "fingers": 1,
         "finger_of": "P3",
-        "gate_x_um": 6.21,
+        "gate_x_um": 3.14,
         "diffusion_y_um": [
           1.485,
           2.485
         ],
         "segment": 0,
-        "left_net": "Y_u1",
-        "right_net": "VPWR",
+        "left_net": "Y_u2",
+        "right_net": "Y",
         "diffusion_edge_distances_um": {
-          "left": 5.78,
+          "left": 2.78,
+          "right": 1.1
+        }
+      },
+      {
+        "id": "P3_f2",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "Y",
+        "drain": "Y_u2",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 3,
+        "fingers": 1,
+        "finger_of": "P3",
+        "gate_x_um": 3.56,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "Y",
+        "right_net": "Y_u2",
+        "diffusion_edge_distances_um": {
+          "left": 3.2,
+          "right": 0.68
+        }
+      },
+      {
+        "id": "P3_f3",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "Y",
+        "drain": "Y_u2",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 3,
+        "fingers": 1,
+        "finger_of": "P3",
+        "gate_x_um": 3.98,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "Y_u2",
+        "right_net": "Y",
+        "diffusion_edge_distances_um": {
+          "left": 3.62,
           "right": 0.26
         }
       }
     ],
     "output_pin_um": [
-      0.48,
+      1.25,
       0.66
     ],
     "gate_contact_y_um": 1.16,
     "supply_pin_x_um": 0.23,
     "routes": [
       {
-        "net": "A",
+        "net": "Y",
         "layer": "li1",
         "points_um": [
           [
-            0.69,
-            1.16
+            1.25,
+            0.66
           ],
           [
-            0.69,
+            1.25,
+            0.72
+          ],
+          [
+            2.09,
+            0.72
+          ],
+          [
+            2.09,
+            0.66
+          ]
+        ]
+      },
+      {
+        "net": "Y",
+        "layer": "li1",
+        "points_um": [
+          [
+            2.09,
+            0.72
+          ],
+          [
+            3.35,
+            0.72
+          ],
+          [
+            3.35,
+            0.74
+          ],
+          [
+            3.48,
+            0.74
+          ],
+          [
+            3.48,
             1.24
-          ]
-        ]
-      },
-      {
-        "net": "A",
-        "layer": "met1",
-        "points_um": [
+          ],
           [
-            0.69,
+            4.11,
             1.24
           ],
           [
-            0.66,
-            1.24
+            4.11,
+            2.08
           ],
           [
-            0.66,
-            1.36
+            3.35,
+            2.08
           ],
           [
-            3.79,
-            1.36
-          ],
-          [
-            3.79,
-            1.33
-          ]
-        ]
-      },
-      {
-        "net": "A",
-        "layer": "li1",
-        "points_um": [
-          [
-            3.79,
-            1.33
-          ],
-          [
-            4.14,
-            1.33
-          ],
-          [
-            4.14,
-            1.16
-          ]
-        ]
-      },
-      {
-        "net": "A",
-        "layer": "li1",
-        "points_um": [
-          [
-            4.14,
-            1.16
-          ],
-          [
-            4.83,
-            1.16
-          ]
-        ]
-      },
-      {
-        "net": "B",
-        "layer": "li1",
-        "points_um": [
-          [
-            1.38,
-            1.16
-          ],
-          [
-            1.39,
-            1.16
-          ],
-          [
-            1.39,
-            1.0
-          ]
-        ]
-      },
-      {
-        "net": "B",
-        "layer": "met1",
-        "points_um": [
-          [
-            1.39,
-            1.0
-          ],
-          [
-            3.1,
-            1.0
-          ]
-        ]
-      },
-      {
-        "net": "B",
-        "layer": "li1",
-        "points_um": [
-          [
-            3.1,
-            1.0
-          ],
-          [
-            3.45,
-            1.0
-          ],
-          [
-            3.45,
-            1.16
-          ]
-        ]
-      },
-      {
-        "net": "B",
-        "layer": "li1",
-        "points_um": [
-          [
-            3.45,
-            1.16
-          ],
-          [
-            3.45,
-            0.99
-          ],
-          [
-            3.8,
-            0.99
-          ],
-          [
-            3.8,
-            0.74
-          ],
-          [
-            5.52,
-            0.74
-          ],
-          [
-            5.52,
-            1.16
-          ]
-        ]
-      },
-      {
-        "net": "C",
-        "layer": "li1",
-        "points_um": [
-          [
-            2.07,
-            1.16
-          ],
-          [
-            2.76,
-            1.16
-          ]
-        ]
-      },
-      {
-        "net": "C",
-        "layer": "li1",
-        "points_um": [
-          [
-            2.76,
-            1.16
-          ],
-          [
-            2.76,
-            0.54
-          ],
-          [
-            3.46,
-            0.54
-          ],
-          [
-            3.46,
-            0.4
-          ],
-          [
-            6.21,
-            0.4
-          ],
-          [
-            6.21,
-            1.16
+            3.35,
+            2.34
           ]
         ]
       },
@@ -6396,466 +3824,136 @@
         "layer": "li1",
         "points_um": [
           [
-            0.48,
-            0.66
+            4.11,
+            2.08
           ],
           [
-            0.62,
-            0.66
+            4.19,
+            2.08
           ],
           [
-            0.62,
-            0.72
-          ],
-          [
-            0.96,
-            0.72
+            4.19,
+            2.34
           ]
         ]
       },
       {
-        "net": "Y",
-        "layer": "met1",
-        "points_um": [
-          [
-            0.96,
-            0.72
-          ],
-          [
-            1.03,
-            0.72
-          ],
-          [
-            1.03,
-            0.64
-          ],
-          [
-            1.46,
-            0.64
-          ],
-          [
-            1.46,
-            0.57
-          ]
-        ]
-      },
-      {
-        "net": "Y",
+        "net": "Y_u1",
         "layer": "li1",
         "points_um": [
           [
-            1.46,
-            0.57
+            0.83,
+            1.66
           ],
           [
-            1.73,
-            0.57
+            1.67,
+            1.66
           ],
           [
-            1.73,
-            0.66
+            1.67,
+            2.34
           ]
         ]
       },
       {
-        "net": "Y",
+        "net": "Y_u1",
         "layer": "li1",
         "points_um": [
           [
-            0.48,
-            0.66
+            1.67,
+            2.34
           ],
           [
-            0.48,
-            0.74
+            2.51,
+            2.34
+          ]
+        ]
+      },
+      {
+        "net": "Y_u2",
+        "layer": "li1",
+        "points_um": [
+          [
+            2.09,
+            1.66
           ],
           [
-            0.35,
-            0.74
-          ],
-          [
-            0.35,
-            1.58
-          ],
-          [
-            0.48,
-            1.58
-          ],
-          [
-            0.48,
+            2.93,
             1.66
           ]
         ]
       },
       {
-        "net": "Y",
+        "net": "Y_u2",
         "layer": "li1",
         "points_um": [
           [
-            1.73,
-            0.66
-          ],
-          [
-            1.86,
-            0.66
-          ],
-          [
-            1.86,
-            0.64
-          ]
-        ]
-      },
-      {
-        "net": "Y",
-        "layer": "met1",
-        "points_um": [
-          [
-            1.86,
-            0.64
-          ],
-          [
-            4.22,
-            0.64
-          ],
-          [
-            4.22,
-            1.67
-          ]
-        ]
-      },
-      {
-        "net": "Y",
-        "layer": "li1",
-        "points_um": [
-          [
-            4.22,
-            1.67
-          ],
-          [
-            4.49,
-            1.67
-          ],
-          [
-            4.49,
-            1.66
-          ]
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "layer": "li1",
-        "points_um": [
-          [
-            1.73,
+            2.93,
             1.66
           ],
           [
-            1.73,
-            2.1
-          ],
-          [
-            2.08,
-            2.1
-          ],
-          [
-            2.08,
-            2.19
-          ]
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "layer": "met1",
-        "points_um": [
-          [
-            2.08,
-            2.19
-          ],
-          [
-            2.76,
-            2.19
-          ]
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "layer": "li1",
-        "points_um": [
-          [
-            2.76,
-            2.19
-          ],
-          [
-            3.11,
-            2.19
-          ],
-          [
-            3.11,
-            2.34
-          ]
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "layer": "li1",
-        "points_um": [
-          [
-            3.11,
-            2.34
-          ],
-          [
-            3.38,
-            2.34
-          ],
-          [
-            3.38,
-            2.19
-          ]
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "layer": "met1",
-        "points_um": [
-          [
-            3.38,
-            2.19
-          ],
-          [
-            4.83,
-            2.19
-          ],
-          [
-            4.83,
-            2.0
-          ]
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "layer": "li1",
-        "points_um": [
-          [
-            4.83,
-            2.0
-          ],
-          [
-            5.87,
-            2.0
-          ],
-          [
-            5.87,
-            2.34
-          ]
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "layer": "li1",
-        "points_um": [
-          [
-            1.04,
+            3.77,
             1.66
-          ],
-          [
-            1.39,
-            1.66
-          ],
-          [
-            1.39,
-            1.76
-          ]
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "layer": "met1",
-        "points_um": [
-          [
-            1.39,
-            1.76
-          ],
-          [
-            2.07,
-            1.76
-          ]
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "layer": "li1",
-        "points_um": [
-          [
-            2.07,
-            1.76
-          ],
-          [
-            2.77,
-            1.76
-          ]
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "layer": "met1",
-        "points_um": [
-          [
-            2.77,
-            1.76
-          ],
-          [
-            3.45,
-            1.76
-          ]
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "layer": "li1",
-        "points_um": [
-          [
-            3.45,
-            1.76
-          ],
-          [
-            3.8,
-            1.76
-          ],
-          [
-            3.8,
-            2.34
-          ]
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "layer": "li1",
-        "points_um": [
-          [
-            3.8,
-            2.34
-          ],
-          [
-            5.18,
-            2.34
           ]
         ]
       }
     ],
-    "vias": [
+    "pin_access_mode": "every_pin",
+    "pin_access": [
       {
         "net": "A",
         "point_um": [
-          0.69,
-          1.24
-        ]
-      },
-      {
-        "net": "A",
-        "point_um": [
-          3.79,
-          1.33
+          1.4,
+          1.16
+        ],
+        "met1_box": [
+          1.255,
+          1.015,
+          1.545,
+          1.305
         ]
       },
       {
         "net": "B",
         "point_um": [
-          1.39,
-          1.0
+          1.88,
+          1.16
+        ],
+        "met1_box": [
+          1.735,
+          1.015,
+          2.025,
+          1.305
         ]
       },
       {
-        "net": "B",
+        "net": "C",
         "point_um": [
-          3.1,
-          1.0
-        ]
-      },
-      {
-        "net": "Y",
-        "point_um": [
-          0.96,
-          0.72
-        ]
-      },
-      {
-        "net": "Y",
-        "point_um": [
-          1.46,
-          0.57
-        ]
-      },
-      {
-        "net": "Y",
-        "point_um": [
-          1.86,
-          0.64
+          3.14,
+          1.16
+        ],
+        "met1_box": [
+          2.995,
+          1.015,
+          3.285,
+          1.305
         ]
       },
       {
         "net": "Y",
         "point_um": [
-          4.22,
-          1.67
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "point_um": [
-          2.08,
-          2.19
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "point_um": [
-          2.76,
-          2.19
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "point_um": [
-          3.38,
-          2.19
-        ]
-      },
-      {
-        "net": "Y_u1",
-        "point_um": [
-          4.83,
-          2.0
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "point_um": [
-          1.39,
-          1.76
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "point_um": [
-          2.07,
-          1.76
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "point_um": [
-          2.77,
-          1.76
-        ]
-      },
-      {
-        "net": "Y_u2",
-        "point_um": [
-          3.45,
-          1.76
+          1.25,
+          0.66
+        ],
+        "met1_box": [
+          1.105,
+          0.515,
+          1.395,
+          0.805
         ]
       }
     ],
+    "vias": [],
     "routing_order": [
       "A",
       "B",
@@ -6864,25 +3962,138 @@
       "Y_u1",
       "Y_u2"
     ],
-    "rip_ups": 63,
+    "router": "fixed",
+    "parallel_cuts": {
+      "licons_added": 11,
+      "contacts": [
+        {
+          "net": "Y",
+          "point_um": [
+            1.25,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            1.67,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            2.09,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            3.35,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            0.41,
+            2.34
+          ],
+          "licons": 3
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            0.83,
+            1.66
+          ],
+          "licons": 3
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            1.25,
+            2.34
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            1.67,
+            2.34
+          ],
+          "licons": 3
+        },
+        {
+          "net": "Y_u2",
+          "point_um": [
+            2.09,
+            1.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            2.51,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "Y_u2",
+          "point_um": [
+            2.93,
+            1.66
+          ],
+          "licons": 2
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            3.35,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "Y_u2",
+          "point_um": [
+            3.77,
+            1.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            4.19,
+            2.34
+          ],
+          "licons": 3
+        }
+      ],
+      "mcons_added": 0,
+      "vias": []
+    },
     "li1_notch_fill_added_area_um2": {
       "VGND": 0.0,
       "VPWR": 0.0,
       "Y": 0.0,
-      "Y_u2": 0.0144,
-      "Y_u1": 0.0286,
+      "Y_u1": 0.0,
+      "Y_u2": 0.0,
       "A": 0.0,
       "B": 0.0,
       "C": 0.0
     },
-    "met1_notch_fill_added_area_um2": {
-      "A": 0.0,
-      "B": 0.0,
-      "Y": 0.0242,
-      "Y_u1": 0.0,
-      "Y_u2": 0.0
-    },
-    "met1_in_single_stage_cell": true
+    "met1_notch_fill_added_area_um2": {},
+    "met1_in_single_stage_cell": false
   },
   "labels": [
     {
@@ -6932,7 +4143,7 @@
     {
       "text": "A",
       "position_um": [
-        0.69,
+        1.4,
         1.16
       ],
       "gds": [
@@ -6943,7 +4154,7 @@
     {
       "text": "B",
       "position_um": [
-        1.38,
+        1.88,
         1.16
       ],
       "gds": [
@@ -6954,7 +4165,7 @@
     {
       "text": "C",
       "position_um": [
-        2.07,
+        3.14,
         1.16
       ],
       "gds": [
@@ -6965,7 +4176,7 @@
     {
       "text": "Y",
       "position_um": [
-        0.48,
+        1.25,
         0.66
       ],
       "gds": [

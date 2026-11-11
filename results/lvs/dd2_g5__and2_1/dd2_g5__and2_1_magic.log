@@ -20,9 +20,9 @@ CIF file read warning: Input off lambda grid by 1/2; grid redefined.
 DRC style is now "drc(full)"
 Loading DRC CIF style.
 DRC_COUNT 5
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 498 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{67 297 119 497} {149 297 203 497} {233 297 299 497} {329 297 381 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{67 47 119 177} {149 47 203 177} {233 47 299 177} {329 47 381 177}}
 The selected label is already a port.
 Do "port help" to get a list of options.
-DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 498 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{67 297 119 497} {149 297 203 497} {233 297 299 497} {329 297 381 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{67 47 119 177} {149 47 203 177} {233 47 299 177} {329 47 381 177}}
 The selected label is already a port.
 Do "port help" to get a list of options.
 The selected label is already a port.

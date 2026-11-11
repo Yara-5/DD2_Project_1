@@ -136,7 +136,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000276316327,
+      "worst_glitch_v": 0.000274412059,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -156,7 +156,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0119693092,
+      "worst_glitch_v": 0.0116368097,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -176,7 +176,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000484901839,
+      "worst_glitch_v": 0.000483810148,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -216,7 +216,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.363540723,
+      "worst_glitch_v": 0.369917156,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -256,7 +256,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00276675983,
+      "worst_glitch_v": 0.00289137346,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -296,7 +296,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79944154,
+      "worst_glitch_v": 1.79944085,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -376,7 +376,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.73553999,
+      "worst_glitch_v": 1.73710646,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -416,7 +416,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000250281865,
+      "worst_glitch_v": 0.000251625641,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -496,7 +496,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79895276,
+      "worst_glitch_v": 1.79906176,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -516,7 +516,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79938031,
+      "worst_glitch_v": 1.7992478,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -536,7 +536,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79926997,
+      "worst_glitch_v": 1.79931014,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -576,11 +576,15 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.73469371,
+      "worst_glitch_v": 1.73907058,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     }
   ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
   "dc_passed": true,
   "transient_passed": true
 }

@@ -1,0 +1,28 @@
+{
+  "status": "generated_unverified",
+  "prepared_plan_sha256": "e9ec6a7d86ad0b7be18753f14e09d4acec8527dad02108ccc77c22f8a1855b35",
+  "gds_sha256": "21c8ac9cdd15d15fc978ecc796cc08e1a9161c78f8a69634b7861833443f1464",
+  "png_sha256": "affa1bb09033179c28e76090176aa03cf73a34909081e0a0592a0ce8cdcea81c",
+  "preview_source": "cell.gds read back with KLayout",
+  "gdsfactory_version": "9.51.0",
+  "klayout_version": "0.30.12",
+  "tutorial_source": {
+    "root": "student",
+    "cells_sha256": "70aa336657bfe7975a56d1b25f3aedbfd3692f3bcda7a9e872a35c740d858983",
+    "plan_sha256": "223c3e29691a0781f50c2ebd78679003c3d8cb7e76e34109a5c07b5389981365",
+    "python_packages": {
+      "gdsfactory": "9.51.0",
+      "klayout": "0.30.12",
+      "matplotlib": "3.11.2"
+    },
+    "reused_function": "cells.py::rect"
+  },
+  "preparation_performed_here": false,
+  "checks_not_implied": [
+    "DRC",
+    "LVS",
+    "RC-LVS",
+    "functional simulation",
+    "HD abutment"
+  ]
+}

@@ -12,6 +12,14 @@ The expected function is the request's truth table. Supply, temperature, slew
 thresholds and the table point all come from the Liberty file (AGENTS.md,
 rule 7). The subcircuit port order is read from the netlist's .subckt line.
 Exits 0 only if every case passes; a simulator error is a failure.
+
+Every case is its own copy of the cell, with its own input sources and its own load,
+all sharing only the ideal supply source, so the copies cannot affect one another.
+The copies are simulated together in --jobs decks (one ngspice run each: one
+operating point for the DC rows, one transient for the edges), instead of one
+ngspice run per case: loading the SKY130 models took most of each run's time
+(10 November: 80 runs of about 45 s for a four-input cell). The cases, the
+transient's timing and every verdict are unchanged.
 """
 
 import argparse
@@ -118,15 +126,21 @@ class Simulator:
 
     def header(self):
         vdd = self.setup['supply_v']
-        nodes = [f'IN_{p}' if p in self.inputs else 'Y' if p == self.output else SUPPLY_NODES[p]
-                 for p in self.ports]
         return (f'* functional check of {self.name}\n'
                 f'.lib "{self.models}" {self.corner}\n'
                 f'.include "{self.pex}"\n'
                 f'.temp {self.setup["temperature_c"]:g}\n'
-                f'V_SUPPLY VPWR 0 {vdd}\n'
-                f'XU {" ".join(nodes)} {self.name}\n'
-                f'CL Y 0 {self.setup["load_table_pf"]}p\n')
+                f'V_SUPPLY VPWR 0 {vdd}\n')
+
+    def copy(self, tag, sources):
+        """One copy of the cell for one case: its inputs IN_<tag>_<pin> driven by
+        sources {pin: source value}, its output Y_<tag> loaded as in the tables."""
+        nodes = [f'IN_{tag}_{p}' if p in self.inputs else f'Y_{tag}' if p == self.output else SUPPLY_NODES[p]
+                 for p in self.ports]
+        lines = [f'V_{tag}_{p} IN_{tag}_{p} 0 {sources[p]}' for p in self.inputs]
+        lines.append(f'X_{tag} {" ".join(nodes)} {self.name}')
+        lines.append(f'CL_{tag} Y_{tag} 0 {self.setup["load_table_pf"]}p')
+        return '\n'.join(lines) + '\n'
 
     def run(self, deck_text, workdir):
         workdir.mkdir(parents=True, exist_ok=True)
@@ -145,48 +159,76 @@ def level(v, vdd, bit):
     return v <= 0.1 * vdd if bit == 0 else v >= 0.9 * vdd
 
 
-def dc_check(sim, truth_table, values, workdir):
+NUMBER = r'([-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)'
+
+
+def simulate(sim, dc_cases, edge_cases, workdir):
+    """One ngspice run for a group of cases. dc_cases: [(tag, input values)];
+    edge_cases: [(tag, start values, toggled input)]. Returns ({tag: DC voltage of Y},
+    {tag: [(t ns, v)]} for the transient)."""
     vdd = sim.setup['supply_v']
-    sources = ''.join(f'V_{p} IN_{p} 0 {vdd if values[p] else 0}\n' for p in sim.inputs)
-    deck = sim.header() + sources + '.control\nop\nprint v(Y)\nquit\n.endc\n.end\n'
+    ramp = sim.setup['input_ramp_full_ns']
+    stop = EDGE_NS + ramp + SETTLE_NS + 1.0
+    deck = sim.header()
+    for tag, values in dc_cases:
+        deck += sim.copy(tag, {p: vdd if values[p] else 0 for p in sim.inputs})
+    for tag, start, toggled in edge_cases:
+        sources = {}
+        for p in sim.inputs:
+            v0 = vdd if start[p] else 0
+            if p == toggled:
+                v1 = 0 if start[p] else vdd
+                sources[p] = f'PWL(0 {v0} {EDGE_NS}n {v0} {EDGE_NS + ramp:.6g}n {v1})'
+            else:
+                sources[p] = v0
+        deck += sim.copy(tag, sources)
+    control = '.control\n'
+    if dc_cases:
+        control += 'op\n' + ''.join(f'print v(Y_{tag})\n' for tag, _ in dc_cases)
+    if edge_cases:
+        control += ('set wr_singlescale\n'
+                    f'tran 1p {stop:.6g}n\n'
+                    'wrdata waveform.dat ' + ' '.join(f'v(Y_{tag})' for tag, _, _ in edge_cases) + '\n')
+    deck += control + 'quit\n.endc\n.end\n'
     log = sim.run(deck, workdir)
+    dc = {}
+    for tag, _ in dc_cases:
+        match = re.search(rf'v\(y_{re.escape(tag.lower())}\)\s*=\s*{NUMBER}', log, re.I)
+        dc[tag] = float(match[1]) if match else None
+    waves = {tag: [] for tag, _, _ in edge_cases}
+    if edge_cases:
+        for line in (workdir / 'waveform.dat').read_text(encoding='utf-8').splitlines():
+            fields = line.split()
+            try:
+                row = [float(x) for x in fields]
+            except ValueError:
+                continue
+            if len(row) != 1 + len(edge_cases):
+                continue
+            for (tag, _, _), v in zip(edge_cases, row[1:]):
+                waves[tag].append((row[0] * 1e9, v))
+        for tag, samples in waves.items():
+            if not samples:
+                raise RuntimeError(f'no waveform samples for {tag} in {workdir / "waveform.dat"}')
+    return dc, waves
+
+
+def dc_verdict(sim, truth_table, values, voltage):
+    vdd = sim.setup['supply_v']
     expected = output_bit(truth_table, values, sim.inputs)
-    match = re.search(r'v\(y\)\s*=\s*([-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)', log, re.I)
-    if not match:
+    if voltage is None:
         return {'inputs': values, 'expected': expected, 'passed': False,
                 'error': 'could not read v(Y) from the ngspice output'}
-    voltage = float(match[1])
     return {'inputs': values, 'expected': expected, 'voltage_v': voltage,
             'passed': level(voltage, vdd, expected)}
 
 
-def transient_check(sim, truth_table, start, toggled, workdir):
+def transient_verdict(sim, truth_table, start, toggled, samples):
     """Toggle exactly one input, starting from a settled input state."""
     vdd = sim.setup['supply_v']
     ramp = sim.setup['input_ramp_full_ns']
     end = dict(start, **{toggled: 1 - start[toggled]})
     settle_from = EDGE_NS + ramp + SETTLE_NS
-    stop = settle_from + 1.0
-    sources = ''
-    for p in sim.inputs:
-        v0 = vdd if start[p] else 0
-        if p == toggled:
-            v1 = vdd if end[p] else 0
-            sources += f'V_{p} IN_{p} 0 PWL(0 {v0} {EDGE_NS}n {v0} {EDGE_NS + ramp:.6g}n {v1})\n'
-        else:
-            sources += f'V_{p} IN_{p} 0 {v0}\n'
-    deck = (sim.header() + sources + '.control\nset wr_singlescale\n'
-            f'tran 1p {stop:.6g}n\nwrdata waveform.dat v(Y)\nquit\n.endc\n.end\n')
-    sim.run(deck, workdir)
-    samples = []
-    for line in (workdir / 'waveform.dat').read_text(encoding='utf-8').splitlines():
-        fields = line.split()
-        try:
-            samples.append((float(fields[0]) * 1e9, float(fields[-1])))
-        except (ValueError, IndexError):
-            continue
-    if not samples:
-        raise RuntimeError(f'no waveform samples in {workdir / "waveform.dat"}')
 
     before = output_bit(truth_table, start, sim.inputs)
     after = output_bit(truth_table, end, sim.inputs)
@@ -229,18 +271,26 @@ def main():
         report.update(cell=sim.name, corner=args.corner, truth_table=request['truth_table'],
                       ngspice=args.ngspice, **setup, dc=[], transient=[])
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=args.jobs) as pool:
-            dc, transient = [], []
-            for bits in itertools.product((0, 1), repeat=len(inputs)):
-                values = dict(zip(inputs, bits))
-                name = ''.join(map(str, bits))
-                dc.append(pool.submit(dc_check, sim, truth_table, values, args.workdir / f'dc_{name}'))
-                for p in inputs:
-                    transient.append(pool.submit(transient_check, sim, truth_table, values, p,
-                                                 args.workdir / f'tr_{name}_{p}'))
-            # result() re-raises a simulator error from any case.
-            report['dc'] = [f.result() for f in dc]
-            report['transient'] = [f.result() for f in transient]
+        dc_cases, edge_cases = [], []
+        for bits in itertools.product((0, 1), repeat=len(inputs)):
+            values = dict(zip(inputs, bits))
+            name = ''.join(map(str, bits))
+            dc_cases.append((f'd{name}', values))
+            edge_cases += [(f't{name}_{p}', values, p) for p in inputs]
+        # --jobs decks, each one ngspice run, the cases dealt out in turn.
+        groups = max(1, min(args.jobs, len(edge_cases)))
+        with concurrent.futures.ThreadPoolExecutor(max_workers=groups) as pool:
+            futures = [pool.submit(simulate, sim, dc_cases[g::groups], edge_cases[g::groups],
+                                   args.workdir / f'group_{g}') for g in range(groups)]
+            dc_v, waves = {}, {}
+            for f in futures:                  # result() re-raises a simulator error
+                d, w = f.result()
+                dc_v.update(d)
+                waves.update(w)
+        report['simulation'] = {'ngspice_runs': groups, 'cases_per_run': 'every case its own copy of the cell'}
+        report['dc'] = [dc_verdict(sim, truth_table, values, dc_v[tag]) for tag, values in dc_cases]
+        report['transient'] = [transient_verdict(sim, truth_table, start, p, waves[tag])
+                               for tag, start, p in edge_cases]
         report['dc_passed'] = all(x['passed'] for x in report['dc'])
         report['transient_passed'] = all(x['passed'] for x in report['transient'])
         report['passed'] = report['dc_passed'] and report['transient_passed']

@@ -13,12 +13,12 @@ Netlists match uniquely.
 Subcircuit pins:
 Circuit 1: dd2_g5__maj3_1                  |Circuit 2: dd2_g5__maj3_1                  
 -------------------------------------------|-------------------------------------------
-A                                          |A                                          
-B                                          |B                                          
-VPWR                                       |VPWR                                       
 VGND                                       |VGND                                       
 VNB                                        |VNB                                        
 VPB                                        |VPB                                        
+A                                          |A                                          
+B                                          |B                                          
+VPWR                                       |VPWR                                       
 C                                          |C                                          
 Y                                          |Y                                          
 ---------------------------------------------------------------------------------------

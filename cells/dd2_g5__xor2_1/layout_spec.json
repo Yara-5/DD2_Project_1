@@ -241,6 +241,114 @@
           ]
         }
       ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N2",
+            "N1"
+          ],
+          "nodes": [
+            "VGND",
+            "n1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N3",
+            "N4",
+            "N5"
+          ],
+          "nodes": [
+            "VGND",
+            "Y_d1",
+            "Y",
+            "VGND"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P2",
+            "P1"
+          ],
+          "nodes": [
+            "n1",
+            "n1_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "nodes": [
+            "Y_u1",
+            "Y",
+            "Y_u1",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N5",
+            "N4",
+            "N3"
+          ],
+          "nodes": [
+            "VGND",
+            "Y",
+            "Y_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N1",
+            "N2"
+          ],
+          "nodes": [
+            "VGND",
+            "n1",
+            "VGND"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P5",
+            "P4",
+            "P3"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y_u1",
+            "Y",
+            "Y_u1"
+          ]
+        },
+        {
+          "devices": [
+            "P1",
+            "P2"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1_u1",
+            "n1"
+          ]
+        }
+      ]
     }
   ],
   "placement": {

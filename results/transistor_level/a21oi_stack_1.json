@@ -1,0 +1,590 @@
+{
+  "check": "transistor_level",
+  "pex": "cells/dd2_g5__a21oi_stack_1/dd2_g5__a21oi_stack_1_pex.spice",
+  "passed": true,
+  "cell": "dd2_g5__a21oi_stack_1",
+  "corner": "tt",
+  "truth_table": "0x07",
+  "ngspice": "../student/student/tools.sh ngspice",
+  "liberty": "../DD2_Project1_student_pack/DD2_Project1_student_pack/given/hd_reduced.lib",
+  "liberty_cell": "sky130_fd_sc_hd__inv_1",
+  "supply_v": 1.8,
+  "temperature_c": 25.0,
+  "slew_thresholds_pct": [
+    20.0,
+    80.0
+  ],
+  "slew_table_ns": 0.1224745,
+  "input_ramp_full_ns": 0.20412416666666666,
+  "load_table_pf": 0.009520618,
+  "dc": [
+    {
+      "inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      },
+      "expected": 1,
+      "voltage_v": 1.8,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1
+      },
+      "expected": 0,
+      "voltage_v": 9.207645e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0
+      },
+      "expected": 1,
+      "voltage_v": 1.8,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1
+      },
+      "expected": 0,
+      "voltage_v": 9.12225e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "expected": 1,
+      "voltage_v": 1.8,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1
+      },
+      "expected": 0,
+      "voltage_v": 9.084252e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0
+      },
+      "expected": 0,
+      "voltage_v": 2.307215e-08,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "expected": 0,
+      "voltage_v": 5.777815e-09,
+      "passed": true
+    }
+  ],
+  "transient": [
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "expected_before": 1,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 1.78568799,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0
+      },
+      "expected_before": 1,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 1.79999997,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.028862559,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00217248839,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      },
+      "expected_before": 1,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 1.780852,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.0129677168,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000319087921,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      },
+      "expected_before": 1,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 1.76733836,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 9.08425212e-09,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00769395091,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00777900831,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 9.40419863e-09,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 9.08425483e-09,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.0342728876,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    }
+  ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
+  "dc_passed": true,
+  "transient_passed": true
+}

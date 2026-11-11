@@ -14,13 +14,13 @@ Subcircuit pins:
 Circuit 1: dd2_g5__xor3_1                  |Circuit 2: dd2_g5__xor3_1                  
 -------------------------------------------|-------------------------------------------
 VPWR                                       |VPWR                                       
-Y                                          |Y                                          
 VNB                                        |VNB                                        
 VPB                                        |VPB                                        
+VGND                                       |VGND                                       
 A                                          |A                                          
 B                                          |B                                          
 C                                          |C                                          
-VGND                                       |VGND                                       
+Y                                          |Y                                          
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes dd2_g5__xor3_1 and dd2_g5__xor3_1 are equivalent.

@@ -44,6 +44,13 @@
       "pdk_value": 360,
       "value": 0.36
     },
+    "fet_min_width": {
+      "passed": true,
+      "line": 4771,
+      "text": "edge4way *poly allfetsstd 420 allfets 0 0 \"Transistor width < %d (diff/tap.2)\"",
+      "pdk_value": 420,
+      "value": 0.42
+    },
     "diff_space": {
       "passed": true,
       "line": 4227,
@@ -57,6 +64,13 @@
       "text": "edge4way (*ndiff)/a ~(*ndiff,*psd)/a 125 ~(*psd)/a (*psd)/a 125 \"N-Diffusion to P-tap spacing < %d across butted junction (psd.5a)\"",
       "pdk_value": 125,
       "value": 0.125
+    },
+    "licon_space": {
+      "passed": true,
+      "line": 4461,
+      "text": "spacing allpdiffcont allndiffcont 170 touching_illegal \"Diffusion contact spacing < %d (licon.2)\"",
+      "pdk_value": 170,
+      "value": 0.17
     },
     "licon_size": {
       "passed": true,

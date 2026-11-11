@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-12",
@@ -105,7 +105,7 @@
     },
     "met1_vias": 6,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 36
+    "routing_attempts_failed": 112
   },
   "verification": {
     "drc_contexts": 24,
@@ -143,39 +143,39 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.27050300000000005,
-        "rise_transition": 0.283558,
-        "cell_fall": 0.111689,
-        "fall_transition": 0.0817842
+        "cell_rise": 0.25955300000000003,
+        "rise_transition": 0.26871300000000004,
+        "cell_fall": 0.109193,
+        "fall_transition": 0.07884279999999999
       },
       {
         "pin": "A",
         "sense": "positive_unate",
-        "cell_rise": 0.275603,
-        "rise_transition": 0.244608,
-        "cell_fall": 0.215409,
-        "fall_transition": 0.0710855
+        "cell_rise": 0.276528,
+        "rise_transition": 0.24394,
+        "cell_fall": 0.216455,
+        "fall_transition": 0.0709605
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.234556,
-        "rise_transition": 0.244385,
-        "cell_fall": 0.107119,
-        "fall_transition": 0.08439640000000001
+        "cell_rise": 0.23416,
+        "rise_transition": 0.24370999999999998,
+        "cell_fall": 0.105102,
+        "fall_transition": 0.08167390000000001
       },
       {
         "pin": "B",
         "sense": "positive_unate",
-        "cell_rise": 0.298097,
-        "rise_transition": 0.283574,
-        "cell_fall": 0.194471,
-        "fall_transition": 0.0713015
+        "cell_rise": 0.287107,
+        "rise_transition": 0.268739,
+        "cell_fall": 0.195289,
+        "fall_transition": 0.0711702
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.004759652777777778,
-      "B": 0.004373113888888889
+      "A": 0.005072880555555556,
+      "B": 0.0044893416666666654
     },
     "extended_windows_ns": {
       "arc0_A": 8.0,

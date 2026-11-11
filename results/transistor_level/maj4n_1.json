@@ -59,7 +59,7 @@
         "D": 1
       },
       "expected": 0,
-      "voltage_v": 3.470008e-08,
+      "voltage_v": 3.170306e-08,
       "passed": true
     },
     {
@@ -103,7 +103,7 @@
         "D": 1
       },
       "expected": 0,
-      "voltage_v": 3.654133e-08,
+      "voltage_v": 3.338532e-08,
       "passed": true
     },
     {
@@ -147,7 +147,7 @@
         "D": 1
       },
       "expected": 0,
-      "voltage_v": 3.654137e-08,
+      "voltage_v": 3.338533e-08,
       "passed": true
     },
     {
@@ -169,7 +169,7 @@
         "D": 1
       },
       "expected": 0,
-      "voltage_v": 3.666283e-08,
+      "voltage_v": 3.57149e-08,
       "passed": true
     },
     {
@@ -180,7 +180,7 @@
         "D": 0
       },
       "expected": 0,
-      "voltage_v": 3.282424e-08,
+      "voltage_v": 3.067251e-08,
       "passed": true
     },
     {
@@ -191,7 +191,7 @@
         "D": 1
       },
       "expected": 0,
-      "voltage_v": 1.224269e-08,
+      "voltage_v": 1.110631e-08,
       "passed": true
     }
   ],
@@ -236,7 +236,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79800638,
+      "worst_glitch_v": 1.79786771,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -258,7 +258,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79959522,
+      "worst_glitch_v": 1.79955633,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -302,7 +302,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79999997,
+      "worst_glitch_v": 1.79999998,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -324,7 +324,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79925091,
+      "worst_glitch_v": 1.79925766,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -368,7 +368,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.74887883,
+      "worst_glitch_v": 1.75024875,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -390,7 +390,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79999995,
+      "worst_glitch_v": 1.79999996,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -412,7 +412,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79923976,
+      "worst_glitch_v": 1.79911128,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -434,7 +434,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.73253174,
+      "worst_glitch_v": 1.73584091,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -478,7 +478,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00277654554,
+      "worst_glitch_v": 0.00270824017,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -500,7 +500,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0242391128,
+      "worst_glitch_v": 0.0230796676,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -566,7 +566,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79297093,
+      "worst_glitch_v": 1.79221407,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -588,7 +588,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.76008377,
+      "worst_glitch_v": 1.76105856,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -610,7 +610,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79952956,
+      "worst_glitch_v": 1.7994774,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -676,7 +676,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.75017923,
+      "worst_glitch_v": 1.74986033,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -720,7 +720,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.74548917,
+      "worst_glitch_v": 1.74815012,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -764,7 +764,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.74387061,
+      "worst_glitch_v": 1.74658981,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -786,7 +786,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.72601135,
+      "worst_glitch_v": 1.72901444,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -830,7 +830,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00824123972,
+      "worst_glitch_v": 0.00797815656,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -852,7 +852,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 3.654329e-08,
+      "worst_glitch_v": 3.3385326e-08,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -918,7 +918,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.76548994,
+      "worst_glitch_v": 1.76642444,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -940,7 +940,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.71837702,
+      "worst_glitch_v": 1.72114449,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -962,7 +962,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79951538,
+      "worst_glitch_v": 1.79946498,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1006,7 +1006,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.75729691,
+      "worst_glitch_v": 1.75695525,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1072,7 +1072,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.74977691,
+      "worst_glitch_v": 1.75004308,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1094,7 +1094,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.75290669,
+      "worst_glitch_v": 1.75449653,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1138,7 +1138,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.72769757,
+      "worst_glitch_v": 1.7300353,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1182,7 +1182,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 5.28533271e-05,
+      "worst_glitch_v": 6.8055568e-05,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1204,7 +1204,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0113037441,
+      "worst_glitch_v": 0.0108490203,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1270,7 +1270,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.75780092,
+      "worst_glitch_v": 1.76031891,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1292,7 +1292,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.75322671,
+      "worst_glitch_v": 1.75438615,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1402,7 +1402,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0158918226,
+      "worst_glitch_v": 0.0158771136,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1512,7 +1512,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0124603463,
+      "worst_glitch_v": 0.0118195196,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1534,7 +1534,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0396035894,
+      "worst_glitch_v": 0.0390881999,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1556,7 +1556,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0415460503,
+      "worst_glitch_v": 0.0410698957,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1578,7 +1578,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00919002966,
+      "worst_glitch_v": 0.00909327468,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1600,11 +1600,15 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 3.28242888e-08,
+      "worst_glitch_v": 3.06725377e-08,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     }
   ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
   "dc_passed": true,
   "transient_passed": true
 }

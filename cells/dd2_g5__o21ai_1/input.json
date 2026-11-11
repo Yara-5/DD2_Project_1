@@ -166,6 +166,70 @@
           ]
         }
       ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N2",
+            "N1",
+            "N3"
+          ],
+          "nodes": [
+            "Y_d1",
+            "VGND",
+            "Y_d1",
+            "Y"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P2",
+            "P1",
+            "P3"
+          ],
+          "nodes": [
+            "Y",
+            "Y_u1",
+            "VPWR",
+            "Y"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N3",
+            "N1",
+            "N2"
+          ],
+          "nodes": [
+            "Y",
+            "Y_d1",
+            "VGND",
+            "Y_d1"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P3",
+            "P1",
+            "P2"
+          ],
+          "nodes": [
+            "Y",
+            "VPWR",
+            "Y_u1",
+            "Y"
+          ]
+        }
+      ]
     }
   ],
   "placement": {

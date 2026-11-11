@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "reason": null,
+  "request": {
+    "request_id": "OPT-AND2",
+    "name": "dd2_g5__and2_opt_1",
+    "inputs": [
+      "A",
+      "B"
+    ],
+    "output": "Y",
+    "expression": "A & B",
+    "sizing": "opt",
+    "truth_table": "0x8",
+    "truth_table_value": 8,
+    "recognized": null,
+    "supported_by_prototype": false
+  }
+}

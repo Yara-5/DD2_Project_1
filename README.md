@@ -14,7 +14,7 @@ Tutorial 4 folder with SPM), then:
 
     make setup     # links the PDK into Tutorial 3's folder for its tools.sh
     make check     # under a minute
-    make all       # about 2 hours for the 20 requests; make demo IN=... for one
+    make all       # the 20 requests, JOBS cells at a time (local.mk: JOBS, INNER_JOBS); make demo IN=... for one
     make test      # make all, then every broken case
 
 ## 3. What the tool does
@@ -41,6 +41,13 @@ input capacitance tables on the RC netlist with SA/SB on every transistor, and w
 Liberty cell; it runs on the installed reference cells (`make char_hd`), is validated against
 the shipped Liberty (`make char_validate`, handout Table 5), and then runs on the generated
 cells (`make char`).
+
+Runs are parallel: `JOBS` (default 4) cells, DRC contexts or LVS cells at once, and
+`INNER_JOBS` (default 2) ngspice runs per cell, so at most 8 ngspice runs at once: each needs
+about 0.4 GB, and 16 at once swapped out of this machine's 7.7 GB WSL memory (docs/TECHNICAL.md section 2.4 lists the
+decisions behind it). Set them in `local.mk`; `JOBS=1 INNER_JOBS=1` runs everything serially.
+A per-cell step that fails only because Windows held a file open (Errno 22 or 13) is run again,
+up to three tries; any other failure stops the target at once.
 
 ## 4. Commands
 | Command | Input | Output |
@@ -70,21 +77,82 @@ cells (`make char`).
 - `libs/` the merged Liberty library of the generated cells (`make views`); `report/` the report (not written yet)
 - `ai/` the AI use and mistakes logs; `docs/interface/` the Appendix A examples
 
+### Layout optimizations (10 November)
+1. Folded fingers of one transistor sit side by side and are joined by one poly bar in the
+   npc band; the narrower row's gates are spread out under them and run straight into the
+   bar, so each input has one gate contact (nor3_stack_1: 15 -> 10 sites, no met1).
+2. Policy `folded_finger_nets_on_met1` (rules.json, off by default because handout Tables 1
+   and 3 keep met1 for the rails in a single-stage cell): folded fingers' source/drain nets
+   on met1.
+3. A path that needs met1 climbs to it at its first landing and comes down at its last
+   (`met1_route_li1_step_cost`), and may branch from the net's met1 wire: 37-82 % less li1
+   in those nets, maj3_1 and xor3_1 4 vias fewer, maj4n_1 10 -> 7 sites.
+4. Diffusion contacts move under their vias where the diffusion and li.3 allow
+   (`stack_contacts_under_vias`), so licon and mcon stack: 37 of 46 vias now sit on a contact.
+5. As many licons in parallel per diffusion contact (signal and supply) as fit after
+   routing (`multiple_licons`; new rule `licon_space`, licon.2): in the full run,
+   diffusion licons 190 -> 348 (120 of the 190 contacts have 2 or 3), widths unchanged;
+   nand2_1 gets HD's 2 and 3 licons per node. mcon arrays (`mcon_arrays`) only along the
+   licon column a via is stacked on (11 November; the first version strung mcons along
+   met1 wires, where they carry next to no current).
+6. Pin access (`pin_access_met1`, 11 November): every input and output pin keeps a met1
+   via pad that no other net's met1 comes within met1.2 of, so a router can reach it.
+   13 of the 32 pins in the five met1 cells were blocked; now none. Cost: maj3_1 10 -> 12
+   sites, maj4n_1 7 -> 10.
+7. The router places the diffusion contacts (`negotiated_router`, 10 November). Fixed
+   landings left no horizontal li1 track in the PMOS row (0.45 um between the band-side
+   and rail-side landings; a track needs 0.51), so some nets could not route on li1 even
+   alone. In the li1-only attempts, after the fixed-landing router fails at a width, a
+   second router lands each net on its contacts wherever its wire passes (inside the
+   contact's diffusion range) and resolves overlaps by negotiated congestion (PathFinder),
+   as HD stacks Y and Y_u1 in a21oi_1's PMOS row. Landings are tall or wide (HD's o22ai_1
+   uses a wide one to fit Y's contact above the Y_d1 track). a21oi_1 5 -> 4 sites and
+   o22ai_1 7 -> 5 (HD's widths); the stack cells nand3 15 -> 10, o21ai 10 -> 8 and nor4 10
+   sites, all three without met1 now; the other cells unchanged (docs/TECHNICAL.md 9.5e).
+8. Any two adjacent gates on one input share a poly bar and one contact
+   (`poly_bars_same_gate`, as HD's maj3_1 and xor2_1), and euler.py also offers the
+   placements with the most such neighbours (xor2_1 `B A | A B n1`): xor3_1 16 -> 14 sites,
+   still with met1; docs/TECHNICAL.md 8.8.
+9. Folded stages: euler.py also offers the cover with no split leaf (each input's
+   fingers side by side) when the cheapest one splits a leaf to save a diffusion break,
+   and any placement with the same transistors goes to the planner as an alternative:
+   a22oi_stack_1 13 sites and 9 met1 vias -> 10 sites on li1 only (docs/TECHNICAL.md 8.7).
+   (a21oi_stack_1 and nand2_stack_1 lost their met1 through item 7's wide landings.)
+10. A third sizing family, `"sizing": "opt"` (10 November), beside the handout's `hd` and
+   `stack` (which keep inner stages x1): the output stage x1, every other stage sized with an
+   Elmore delay model fitted to HD's inv_1 (docs/TECHNICAL.md 7.1). `tests/requests/` holds
+   three families: hd (19 cells), stack (nor3_stack_1 and seven more) and opt (the seven
+   multi-stage functions, `<function>_opt_1`; xor3_opt_1 held out, its planning too slow).
+   The model predicted -0.3 % to -19 % worst delay; characterization does not confirm it:
+   against the hd versions, maj4 -5.3 %, a21o, mux2, xor2 within 1 %, maj3 +19.8 %, and2
+   +34.4 %, with input capacitance up to 24 % lower (docs/TECHNICAL.md 7.1). The model
+   carries no input slope between stages; hd stays the better default.
+
+The full run of 10 November (`make check`, `make test`, `make char`, `make test_views`, all
+exit 0) has all five in all 20 cells: 130 sites in all (138 before), 37 met1 vias (60),
+summed extracted R 10-47 % lower in every cell, C 3.6-17 % higher (nor3_stack_1 -44 %,
+maj4n_1 -3 %, the two narrower cells), median delay -3.9 to +0.4 %; docs/TECHNICAL.md sections
+8.7, 9.4, 9.5, 9.5a-c, 9.8 and 19 give the details.
+
 ## 6. Results
-The scripts that `make` runs write these files; they are committed as the data deliverable (handout section 8.2). The last full run (6-7
-November 2026, 20 requests in `tests/requests/`) took 1 h 58 min for `make test` and 53 min
-for `make char`; both exited 0. docs/TECHNICAL.md section 19 has the per-cell table.
-- `results/pdk_rules/report.json`: all 29 rule values match the installed sky130A.tech; the ngspice-47 stress test passes (ratio 1.035)
-- `results/switch_level/`: every synthesized network and every reordered (Euler) network passes
-- `results/drc/verification.json`: 480 abutment contexts (20 cells x 24) with 0 DRC errors; layer check passes on all generated cells and on installed inv_1 and nand2_1
-- `results/lvs/verification.json`: LVS and RC-LVS match for all 20 cells; LVS against the installed HD cell is required and matches for inv_1, nand2_1, nor2_1, nand3_1, nor3_1, a21oi_1, o21ai_1 (W and L included); reported for a21o_1 and mux2_1 (another circuit, as handout section 4 allows)
-- `results/hd_comparison/comparison.json` (Table 4): frame, pins and wiring (li1 inside, met1 only for the rails) pass for all nine cells with an HD counterpart. Widths: inv_1, nand2_1, nor2_1 3 sites, nand3_1, nor3_1 4, a21o_1 6, the same as HD; a21oi_1 and o21ai_1 5 (HD 4), mux2_1 10 (HD 9). Parasitics (R and C per port) and timing are reported for all nine; the median timing difference is within 3.4 % for the seven single-stage cells, -1.0 % for mux2_1 and +10.2 % for a21o_1
-- `results/transistor_level/`: every DC row and every single-input edge passes for all 20 cells
-- `results/model_level/`: Verilog and Liberty function match the request for all 20; broken models rejected
+The scripts that `make` runs write these files; they are committed as the data deliverable (handout section 8.2). The last full run (10-11
+November 2026, 33 requests in three families: hd 19, stack 8, opt 6): with the networks and
+layouts built beforehand, `make drc lvs compare sim model` 32.6 min, `make -o all test` (the
+broken cases) 48 s, `make char` 57.1 min, `make views` 16 s, `make roundtrip` 3.3 min and
+`make test_views` 1.7 min, all exit 0 (logs in `build/full_nov10e/`, `build/full_nov10f/`;
+`make check` was not part of this run). docs/TECHNICAL.md section 19 has the per-cell table.
+- `results/pdk_rules/report.json`: all rule values match the installed sky130A.tech; the ngspice-47 stress test passes
+- `results/switch_level/`: every synthesized network and every reordered (Euler) network passes (33/33)
+- `results/drc/verification.json`: 792 abutment contexts (33 cells x 24) with 0 DRC errors, the broken context caught; layer check passes on all 33 cells and on installed inv_1 and nand2_1, 132 derived broken copies rejected
+- `results/lvs/verification.json`: LVS and RC-LVS match for all 33 cells; LVS against the installed HD cell is required and matches for inv_1, nand2_1, nor2_1, nand3_1, nor3_1, a21oi_1, o21ai_1 (W and L included); reported for a21o_1 and mux2_1 (another circuit, as handout section 4 allows)
+- `results/hd_comparison/comparison.json` (Table 4): frame, pins and wiring (li1 inside, met1 only for the rails) pass for all nine generated cells with an HD counterpart. Widths: inv_1, nand2_1, nor2_1 3 sites, nand3_1, nor3_1, a21oi_1 4, a21o_1 6, the same as HD; o21ai_1 5 (HD 4), mux2_1 10 (HD 9). Parasitics and timing are reported for all nine; the median timing difference is within 2.9 % for the seven single-stage cells, -3.2 % for mux2_1 and +5.3 % for a21o_1
+- `results/transistor_level/`: every DC row and every single-input edge passes for all 33 cells
+- `results/model_level/`: Verilog and Liberty function match the request for all 33; broken models rejected
 - `results/characterization/validation.json` (Table 5, `make char_validate`): setup exact; median delay/transition error 3.36 % with the fixed ngspice-47 (limit 5 %), 4.83 % with the stock ngspice-42; input capacitance within 5.5 % (limit 10 %); every Liberty file loads in Yosys and OpenSTA; SPM's worst delay 0.6883 ns with the shipped library, 0.689 ns with ours (+0.10 %); the `--index-by-ramp` broken case is flagged (7.46 %)
-- `cells/<name>/characterized.json`: all 20 generated cells characterized on HD nand2_1's 7 x 7 table indices
-- `results/sizing/nor3.json`: hd sizing (nor3_1, 4 sites) against stack sizing (nor3_stack_1, 15 sites, 12 transistors): rise delay 22-55 % lower, fall delay 3-48 % higher, 3.75 times the area
-- `make views` and `make roundtrip` (7 November, on the cells characterized on 7 November): all 20 Liberty views pass `liberty_view.py` and the model-level check on the characterized Liberty, all 20 responses say "pass", and `libs/dd2_g5__tt_025C_1v80.lib` holds the 20 cells (loads in Yosys and OpenSTA). The round trip passes for all 20 cells: both of map.sh's ABC scripts map the one-cell design and ABC cec proves it equivalent to the request; our cell is required, and used, for the four functions hd_reduced.lib does not have (f14_1, f15_1, maj4_1, maj4n_1), and ABC also picks it for 9 of the 16 functions HD has. `make test_views`: the three broken cases are rejected
+- `cells/<name>/characterized.json`: all 33 generated cells characterized on HD nand2_1's 7 x 7 table indices
+- `results/sizing/nor3.json`: hd sizing (nor3_1, 4 sites) against stack sizing (nor3_stack_1, 10 sites, 12 transistors): rise delay 32-42 % lower, fall delay 14-25 % higher, input capacitance about 2.1 times, 2.5 times the area
+- `make views` and `make roundtrip`: all 33 Liberty views pass `liberty_view.py` and the model-level check on the characterized Liberty, all 33 responses written, and `libs/dd2_g5__tt_025C_1v80.lib` holds the 33 cells. The round trip passes for all 33: both of map.sh's ABC scripts map the one-cell design and ABC cec proves it equivalent to the request; our cell is required, and used, for the five functions hd_reduced.lib does not have (f14_1, f15_1, maj4_1, maj4_opt_1, maj4n_1), and ABC also picks it for 15 of the 28 others. `make test_views`: the three broken cases are rejected
+- opt against hd sizing, at the nominal point (read from `characterized.json`; docs/TECHNICAL.md 7.1): worst delay maj4 -5.3 %, a21o +0.7 %, mux2 +0.3 %, xor2 +1.0 %, maj3 +19.8 %, and2 +34.4 %
 
 ## 7. Tests
 `make test` runs the whole flow and then each broken case in `tests/broken/` against its check
@@ -94,15 +162,50 @@ for `make char`; both exited 0. docs/TECHNICAL.md section 19 has the per-cell ta
 AGENTS.md · ai/use_log.md · ai/mistakes_log.md · report/ai_report.pdf
 
 ## 9. Limitations
-- Some single-stage cells (maj4n_1, the folded nor3_stack_1) still need met1, which handout
+- One single-stage cell (maj4n_1) still needs met1, which handout
   Table 3 reserves for the rails; the plan records `met1_in_single_stage_cell`. Several
   cells are wider than HD where the output crosses the npc band through a routing channel
-  (a 0.68-0.70 um gap). One licon per diffusion contact (HD uses two or three).
+  (a 0.68-0.70 um gap). 70 of the 190 diffusion contacts keep one licon, where wires pass
+  too close for a column (HD uses two or three).
 - Multi-stage cells take met1 only after every li1-only attempt (all widths, rip-up included)
   has failed (handout Table 1); xor2_1, xor3_1, maj3_1 and maj4_1 still need it. None of them
   has an HD counterpart, so Table 4's wiring row does not apply to them.
-- Rip-up and reroute runs only when every net order fails, and takes minutes per cell
-  (nor3_stack_1 takes about 20 minutes to plan, maj3_1 about 4).
+- The transistor-level check simulates all of a cell's cases in one ngspice run per job
+  (about 30 s per cell instead of about 80 runs of 45 s), with the same cases and verdicts
+  (docs/TECHNICAL.md 12.2); `make drc lvs compare sim model` took 32.6 min on 33 cells.
+- The opt sizing family is a measured negative result: its Elmore model carries no input
+  slope between stages, and only maj4_opt_1 came out faster than its hd version (and2_opt_1
+  +34 %; docs/TECHNICAL.md 7.1). xor3_opt_1 is not in the set: it planned too slowly.
+- Planning is slow for cells that cannot route on li1, because every li1 attempt is tried
+  before met1: policies `rip_up_with_negotiated` (false) and `lone_net_check` (true) made
+  the met1 cells plan 2 to 3 times faster on 10 November (maj3_1 about 4 minutes, xor3_1
+  still well over 10).
+- The negotiated router (`negotiated_router`) routes li1 only: where the gate order makes
+  two nets cross (xor2_1: Y's link between the rows lies between A's two gates), no li1
+  router can, at any width. Its failed attempts add planning time. o21ai_1 stays one site
+  wider than HD, whose 4-site layout puts a poly contact above the npc band and jogs a gate
+  between the rows: Table 4's pin check needs input pins inside the band, and our gate
+  columns are straight. mux2_1 (10 sites, HD 9) and maj3_1 (12, HD 8, with met1) are still
+  wider than HD.
+- The 10 November router changes (items 7 and 8 above) are planned for every cell in
+  `build/`; the five cells they change (a21oi_1, o22ai_1, nand3_stack_1, o21ai_stack_1,
+  nor4_stack_1) passed DRC (120 contexts), the layer check, LVS, RC-LVS and LVS against HD
+  a21oi_1 in `build/chk2`; the full run of 10-11 November then checked them at every level.
+- Policy `folded_finger_nets_on_met1` (rules.json, off by default) routes folded fingers'
+  source/drain nets on met1, against handout Tables 1 and 3; on nor3_stack_1 it lowers the
+  signal nets' extracted R by 6.4 % and raises their C by 4.1 % (docs/TECHNICAL.md 9.5b).
+- Parallel runs are limited by memory: on this machine (7.7 GB for WSL) `make char` peaked at
+  6.9 GB with 8 ngspice runs at once; a machine with less memory sets a lower `INNER_JOBS`
+  or `JOBS` in `local.mk`. A Windows file lock (Errno 22 or 13) makes a per-cell step run
+  again; in the 10 November run it happened once (`views-nand2_1`, passed on its second try).
+- The 11 November changes (mcon arrays only on licon columns, pin access) were checked on
+  the five met1 cells in `build/pa` (DRC 120 contexts 0 errors, layer check, LVS, RC-LVS,
+  transistor level); the full run of 10-11 November then checked them at every level.
+- Pin access costs width where met1 crosses the gate band between input pins (0.48 um
+  apart; a met1 wire needs 0.42 um between two access pads): maj3_1 12 sites, maj4n_1 10.
+- Summed extracted R is a crude measure where a layout change adds a parallel path: the
+  output net's sum rises in a22oi_1 (+18 %) and o22ai_1 (+17 %) though the pin-to-drain
+  resistance does not; timing (`make char`) is the measure that counts.
 - `synthesize.py` does not share identical sub-stages; it tries algebraic factorings of
   minimum covers and simple disjoint decompositions only.
 - The characterizer gives every generated cell HD nand2_1's table indices; weak cells need a

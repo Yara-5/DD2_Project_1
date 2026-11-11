@@ -20,6 +20,7 @@ verify_drc.py judges DRC in tapped rows. Extracted netlists are copied to
 cells/<name>/ and the logs to results/lvs/<name>/. Linux only; standard library only.
 """
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import ast
 import hashlib
 import importlib.util
@@ -194,6 +195,8 @@ def main():
     ap.add_argument('--cells', type=Path, default=base.parent / 'cells')
     ap.add_argument('--outdir', type=Path, default=base.parent / 'results' / 'lvs')
     ap.add_argument('--image', default='dd2-layout-tools')
+    ap.add_argument('--jobs', type=int, default=1,
+                    help='Cells verified at once (each in its own Tutorial 3 build folder); the report is the same')
     ap.add_argument('--netgen', default=str(base / 'netgen.sh'),
                     help="Command flow.py runs for Netgen; '' for Tutorial 3's tools.sh (see netgen.sh)")
     args = ap.parse_args()
@@ -214,13 +217,15 @@ def main():
         print(f'FAIL: no cells/<name>/cell.gds under {args.cells}')
         return 1
     results = {}
-    for folder in cells:
-        r = results[folder.name] = verify_cell(folder.resolve(), root, flow, ns, hd_library, outdir)
-        print(f"{folder.name}: LVS={'match' if r.get('lvs_passed') else 'FAIL'} "
-              f"RC-LVS={'match' if r.get('rc', {}).get('collapsed_lvs_passed') else 'FAIL'} "
-              f"HD-LVS={r.get('hd_reference_lvs_passed', 'n/a')}{hd_note(r)} "
-              f"isolated DRC={r.get('isolated_drc_count')} "
-              + (f"ERROR {r['error']}" if 'error' in r else ''), flush=True)
+    with ThreadPoolExecutor(max(1, args.jobs)) as pool:
+        done = pool.map(lambda f: verify_cell(f.resolve(), root, flow, ns, hd_library, outdir), cells)
+        for folder, r in zip(cells, done):
+            results[folder.name] = r
+            print(f"{folder.name}: LVS={'match' if r.get('lvs_passed') else 'FAIL'} "
+                  f"RC-LVS={'match' if r.get('rc', {}).get('collapsed_lvs_passed') else 'FAIL'} "
+                  f"HD-LVS={r.get('hd_reference_lvs_passed', 'n/a')}{hd_note(r)} "
+                  f"isolated DRC={r.get('isolated_drc_count')} "
+                  + (f"ERROR {r['error']}" if 'error' in r else ''), flush=True)
     report = {'check': 'lvs', 'image': args.image, 'source_verify_sha256': ns['verify_sha256'],
               'instructor_checks_modified': False, 'cells': results,
               'passed': all(r['passed'] for r in results.values())}

@@ -1,0 +1,26 @@
+
+Subcircuit summary:
+Circuit 1: dd2_g5__and2_opt_1              |Circuit 2: dd2_g5__and2_opt_1              
+-------------------------------------------|-------------------------------------------
+sky130_fd_pr__nfet_01v8 (3)                |sky130_fd_pr__nfet_01v8 (3)                
+sky130_fd_pr__pfet_01v8_hvt (3)            |sky130_fd_pr__pfet_01v8_hvt (3)            
+Number of devices: 6                       |Number of devices: 6                       
+Number of nets: 9                          |Number of nets: 9                          
+---------------------------------------------------------------------------------------
+Circuits match uniquely.
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: dd2_g5__and2_opt_1              |Circuit 2: dd2_g5__and2_opt_1              
+-------------------------------------------|-------------------------------------------
+VNB                                        |VNB                                        
+VPWR                                       |VPWR                                       
+VPB                                        |VPB                                        
+A                                          |A                                          
+VGND                                       |VGND                                       
+B                                          |B                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes dd2_g5__and2_opt_1 and dd2_g5__and2_opt_1 are equivalent.
+Circuits match uniquely.

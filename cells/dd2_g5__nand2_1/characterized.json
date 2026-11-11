@@ -130,401 +130,401 @@
         {
           "slew_ns": 0.01,
           "load_pf": 0.0005,
-          "cell_rise": 0.0281272,
-          "rise_transition": 0.0228989,
-          "cell_fall": 0.021782,
-          "fall_transition": 0.0165708
+          "cell_rise": 0.0266305,
+          "rise_transition": 0.0215776,
+          "cell_fall": 0.0223509,
+          "fall_transition": 0.0171295
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.00131655,
-          "cell_rise": 0.034825,
-          "rise_transition": 0.031435199999999996,
-          "cell_fall": 0.0265356,
-          "fall_transition": 0.0223859
+          "cell_rise": 0.032379,
+          "rise_transition": 0.0289162,
+          "cell_fall": 0.026866599999999997,
+          "fall_transition": 0.0227225
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.00346659,
-          "cell_rise": 0.0514279,
-          "rise_transition": 0.05391,
-          "cell_fall": 0.0384551,
-          "fall_transition": 0.0377099
+          "cell_rise": 0.046758,
+          "rise_transition": 0.048262,
+          "cell_fall": 0.038305,
+          "fall_transition": 0.0374109
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.00912787,
-          "cell_rise": 0.0933373,
-          "rise_transition": 0.113065,
-          "cell_fall": 0.06893529999999999,
-          "fall_transition": 0.0780255
+          "cell_rise": 0.083212,
+          "rise_transition": 0.099206,
+          "cell_fall": 0.0676351,
+          "fall_transition": 0.0760208
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.0240345,
-          "cell_rise": 0.20207399999999998,
-          "rise_transition": 0.268759,
-          "cell_fall": 0.14846700000000002,
-          "fall_transition": 0.184139
+          "cell_rise": 0.177837,
+          "rise_transition": 0.23333399999999999,
+          "cell_fall": 0.144168,
+          "fall_transition": 0.177603
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.0632852,
-          "cell_rise": 0.48746300000000004,
-          "rise_transition": 0.6786760000000001,
-          "cell_fall": 0.357491,
-          "fall_transition": 0.46350800000000003
+          "cell_rise": 0.42618,
+          "rise_transition": 0.586492,
+          "cell_fall": 0.34529,
+          "fall_transition": 0.445031
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.166636,
-          "cell_rise": 1.23564,
-          "rise_transition": 1.758,
-          "cell_fall": 0.907707,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.07828,
+          "rise_transition": 1.51638,
+          "cell_fall": 0.874687,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.0005,
-          "cell_rise": 0.0329082,
-          "rise_transition": 0.0228985,
-          "cell_fall": 0.025632600000000002,
-          "fall_transition": 0.0164716
+          "cell_rise": 0.0316547,
+          "rise_transition": 0.021572,
+          "cell_fall": 0.0262672,
+          "fall_transition": 0.0170415
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.00131655,
-          "cell_rise": 0.039546599999999994,
-          "rise_transition": 0.0314327,
-          "cell_fall": 0.030458599999999995,
-          "fall_transition": 0.022288
+          "cell_rise": 0.037363900000000005,
+          "rise_transition": 0.028914699999999998,
+          "cell_fall": 0.0308436,
+          "fall_transition": 0.022640200000000003
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.00346659,
-          "cell_rise": 0.0563074,
-          "rise_transition": 0.0539098,
-          "cell_fall": 0.042578399999999995,
-          "fall_transition": 0.0376905
+          "cell_rise": 0.0518726,
+          "rise_transition": 0.048259899999999994,
+          "cell_fall": 0.042450499999999995,
+          "fall_transition": 0.0373991
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.00912787,
-          "cell_rise": 0.0986133,
-          "rise_transition": 0.113064,
-          "cell_fall": 0.0732906,
-          "fall_transition": 0.07802709999999999
+          "cell_rise": 0.0886588,
+          "rise_transition": 0.0992069,
+          "cell_fall": 0.07199860000000001,
+          "fall_transition": 0.0760198
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.0240345,
-          "cell_rise": 0.207682,
-          "rise_transition": 0.26876,
-          "cell_fall": 0.15296600000000002,
-          "fall_transition": 0.184139
+          "cell_rise": 0.18357800000000002,
+          "rise_transition": 0.23333399999999999,
+          "cell_fall": 0.14867899999999998,
+          "fall_transition": 0.177603
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.0632852,
-          "cell_rise": 0.493248,
-          "rise_transition": 0.6786760000000001,
-          "cell_fall": 0.362057,
-          "fall_transition": 0.46350800000000003
+          "cell_rise": 0.432081,
+          "rise_transition": 0.586492,
+          "cell_fall": 0.349872,
+          "fall_transition": 0.445031
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.166636,
-          "cell_rise": 1.24172,
-          "rise_transition": 1.758,
-          "cell_fall": 0.9122990000000001,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.08437,
+          "rise_transition": 1.51638,
+          "cell_fall": 0.879299,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.0005,
-          "cell_rise": 0.0457483,
-          "rise_transition": 0.026032299999999998,
-          "cell_fall": 0.0343915,
-          "fall_transition": 0.0216293
+          "cell_rise": 0.0448142,
+          "rise_transition": 0.0249209,
+          "cell_fall": 0.035283,
+          "fall_transition": 0.0221219
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.00131655,
-          "cell_rise": 0.0521208,
-          "rise_transition": 0.0330024,
-          "cell_fall": 0.0401695,
-          "fall_transition": 0.0258924
+          "cell_rise": 0.0503137,
+          "rise_transition": 0.0307832,
+          "cell_fall": 0.040697399999999995,
+          "fall_transition": 0.0262442
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.00346659,
-          "cell_rise": 0.0686268,
-          "rise_transition": 0.0539278,
-          "cell_fall": 0.0525752,
-          "fall_transition": 0.0389253
+          "cell_rise": 0.0646034,
+          "rise_transition": 0.0483606,
+          "cell_fall": 0.0525256,
+          "fall_transition": 0.0387083
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.00912787,
-          "cell_rise": 0.111095,
-          "rise_transition": 0.113064,
-          "cell_fall": 0.0834974,
-          "fall_transition": 0.078004
+          "cell_rise": 0.101507,
+          "rise_transition": 0.0992063,
+          "cell_fall": 0.0822486,
+          "fall_transition": 0.0759963
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.0240345,
-          "cell_rise": 0.220604,
-          "rise_transition": 0.26876,
-          "cell_fall": 0.16340100000000002,
-          "fall_transition": 0.184139
+          "cell_rise": 0.196801,
+          "rise_transition": 0.23333399999999999,
+          "cell_fall": 0.159149,
+          "fall_transition": 0.177603
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.0632852,
-          "cell_rise": 0.506493,
-          "rise_transition": 0.6786760000000001,
-          "cell_fall": 0.37262,
-          "fall_transition": 0.46350800000000003
+          "cell_rise": 0.44559299999999996,
+          "rise_transition": 0.586492,
+          "cell_fall": 0.360476,
+          "fall_transition": 0.445031
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.166636,
-          "cell_rise": 1.25557,
-          "rise_transition": 1.758,
-          "cell_fall": 0.922918,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.09826,
+          "rise_transition": 1.51638,
+          "cell_fall": 0.8899630000000001,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.0005,
-          "cell_rise": 0.0682532,
-          "rise_transition": 0.0410728,
-          "cell_fall": 0.0455002,
-          "fall_transition": 0.032999799999999996
+          "cell_rise": 0.067613,
+          "rise_transition": 0.040050499999999996,
+          "cell_fall": 0.047008799999999996,
+          "fall_transition": 0.0340448
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.00131655,
-          "cell_rise": 0.078312,
-          "rise_transition": 0.0480111,
-          "cell_fall": 0.054294300000000004,
-          "fall_transition": 0.039039
+          "cell_rise": 0.0765862,
+          "rise_transition": 0.04589,
+          "cell_fall": 0.055263099999999996,
+          "fall_transition": 0.039713700000000005
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.00346659,
-          "cell_rise": 0.0988165,
-          "rise_transition": 0.0632639,
-          "cell_fall": 0.0727452,
-          "fall_transition": 0.0524717
+          "cell_rise": 0.09510650000000001,
+          "rise_transition": 0.0587098,
+          "cell_fall": 0.07284779999999999,
+          "fall_transition": 0.0524184
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.00912787,
-          "cell_rise": 0.141108,
-          "rise_transition": 0.114358,
-          "cell_fall": 0.107706,
-          "fall_transition": 0.0840388
+          "cell_rise": 0.132261,
+          "rise_transition": 0.101309,
+          "cell_fall": 0.106598,
+          "fall_transition": 0.08236220000000001
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.0240345,
-          "cell_rise": 0.25075,
-          "rise_transition": 0.26876,
-          "cell_fall": 0.187675,
-          "fall_transition": 0.184119
+          "cell_rise": 0.227628,
+          "rise_transition": 0.23333500000000001,
+          "cell_fall": 0.18352700000000002,
+          "fall_transition": 0.177578
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.0632852,
-          "cell_rise": 0.5370630000000001,
-          "rise_transition": 0.6786760000000001,
-          "cell_fall": 0.397039,
-          "fall_transition": 0.46350800000000003
+          "cell_rise": 0.476782,
+          "rise_transition": 0.586492,
+          "cell_fall": 0.384994,
+          "fall_transition": 0.445031
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.166636,
-          "cell_rise": 1.28718,
-          "rise_transition": 1.758,
-          "cell_fall": 0.947421,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.1301,
+          "rise_transition": 1.51638,
+          "cell_fall": 0.914569,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.0005,
-          "cell_rise": 0.102355,
-          "rise_transition": 0.0662303,
-          "cell_fall": 0.0565273,
-          "fall_transition": 0.053987099999999996
+          "cell_rise": 0.102424,
+          "rise_transition": 0.065921,
+          "cell_fall": 0.059063700000000004,
+          "fall_transition": 0.0556277
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.00131655,
-          "cell_rise": 0.118371,
-          "rise_transition": 0.0765837,
-          "cell_fall": 0.0699991,
-          "fall_transition": 0.0627941
+          "cell_rise": 0.11689799999999999,
+          "rise_transition": 0.0749434,
+          "cell_fall": 0.07174820000000001,
+          "fall_transition": 0.0639089
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.00346659,
-          "cell_rise": 0.151147,
-          "rise_transition": 0.0979467,
-          "cell_fall": 0.0982924,
-          "fall_transition": 0.08127530000000001
+          "cell_rise": 0.146869,
+          "rise_transition": 0.0936084,
+          "cell_fall": 0.0987552,
+          "fall_transition": 0.08151549999999999
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.00912787,
-          "cell_rise": 0.210395,
-          "rise_transition": 0.140069,
-          "cell_fall": 0.15147200000000002,
-          "fall_transition": 0.11778399999999999
+          "cell_rise": 0.20144199999999998,
+          "rise_transition": 0.129448,
+          "cell_fall": 0.15015599999999998,
+          "fall_transition": 0.116469
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.0240345,
-          "cell_rise": 0.32161,
-          "rise_transition": 0.27236699999999997,
-          "cell_fall": 0.24463000000000001,
-          "fall_transition": 0.19992800000000002
+          "cell_rise": 0.299976,
+          "rise_transition": 0.23910099999999998,
+          "cell_fall": 0.240778,
+          "fall_transition": 0.194346
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.0632852,
-          "cell_rise": 0.607946,
-          "rise_transition": 0.6786760000000001,
-          "cell_fall": 0.453682,
-          "fall_transition": 0.46350600000000003
+          "cell_rise": 0.54908,
+          "rise_transition": 0.586492,
+          "cell_fall": 0.441889,
+          "fall_transition": 0.445025
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.166636,
-          "cell_rise": 1.3593,
-          "rise_transition": 1.758,
-          "cell_fall": 1.00402,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.20313,
+          "rise_transition": 1.51638,
+          "cell_fall": 0.97142,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.0005,
-          "cell_rise": 0.15572999999999998,
-          "rise_transition": 0.10692600000000001,
-          "cell_fall": 0.060773799999999996,
-          "fall_transition": 0.0903186
+          "cell_rise": 0.156703,
+          "rise_transition": 0.107749,
+          "cell_fall": 0.0649403,
+          "fall_transition": 0.09277600000000001
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.00131655,
-          "cell_rise": 0.18007499999999999,
-          "rise_transition": 0.123656,
-          "cell_fall": 0.081122,
-          "fall_transition": 0.103724
+          "cell_rise": 0.179013,
+          "rise_transition": 0.122731,
+          "cell_fall": 0.0841503,
+          "fall_transition": 0.10542
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.00346659,
-          "cell_rise": 0.231326,
-          "rise_transition": 0.157732,
-          "cell_fall": 0.12417299999999999,
-          "fall_transition": 0.13166299999999997
+          "cell_rise": 0.226419,
+          "rise_transition": 0.153408,
+          "cell_fall": 0.125338,
+          "fall_transition": 0.132126
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.00912787,
-          "cell_rise": 0.325929,
-          "rise_transition": 0.218931,
-          "cell_fall": 0.205655,
-          "fall_transition": 0.18404800000000002
+          "cell_rise": 0.31450900000000004,
+          "rise_transition": 0.208232,
+          "cell_fall": 0.204199,
+          "fall_transition": 0.1827
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.0240345,
-          "cell_rise": 0.48312999999999995,
-          "rise_transition": 0.331233,
-          "cell_fall": 0.347092,
-          "fall_transition": 0.27943599999999996
+          "cell_rise": 0.460806,
+          "rise_transition": 0.304112,
+          "cell_fall": 0.342056,
+          "fall_transition": 0.27470100000000003
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.0632852,
-          "cell_rise": 0.7729349999999999,
-          "rise_transition": 0.684561,
-          "cell_fall": 0.585942,
-          "fall_transition": 0.496597
+          "cell_rise": 0.717275,
+          "rise_transition": 0.597007,
+          "cell_fall": 0.574813,
+          "fall_transition": 0.48045499999999997
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.166636,
-          "cell_rise": 1.52449,
-          "rise_transition": 1.758,
-          "cell_fall": 1.1351499999999999,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.37117,
+          "rise_transition": 1.51638,
+          "cell_fall": 1.10314,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.0005,
-          "cell_rise": 0.24701399999999998,
-          "rise_transition": 0.17479499999999998,
-          "cell_fall": 0.040689,
-          "fall_transition": 0.155839
+          "cell_rise": 0.248486,
+          "rise_transition": 0.17711,
+          "cell_fall": 0.0476216,
+          "fall_transition": 0.159327
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.00131655,
-          "cell_rise": 0.28198,
-          "rise_transition": 0.199652,
-          "cell_fall": 0.0710214,
-          "fall_transition": 0.175902
+          "cell_rise": 0.28090699999999996,
+          "rise_transition": 0.199872,
+          "cell_fall": 0.0762649,
+          "fall_transition": 0.178261
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.00346659,
-          "cell_rise": 0.357492,
-          "rise_transition": 0.253142,
-          "cell_fall": 0.135458,
-          "fall_transition": 0.218004
+          "cell_rise": 0.351533,
+          "rise_transition": 0.249044,
+          "cell_fall": 0.137959,
+          "fall_transition": 0.218592
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.00912787,
-          "cell_rise": 0.5033160000000001,
-          "rise_transition": 0.352148,
-          "cell_fall": 0.258718,
-          "fall_transition": 0.297368
+          "cell_rise": 0.48862300000000003,
+          "rise_transition": 0.340061,
+          "cell_fall": 0.257392,
+          "fall_transition": 0.295513
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.0240345,
-          "cell_rise": 0.7538769999999999,
-          "rise_transition": 0.5143599999999999,
-          "cell_fall": 0.4751,
-          "fall_transition": 0.435579
+          "cell_rise": 0.724183,
+          "rise_transition": 0.48711,
+          "cell_fall": 0.468513,
+          "fall_transition": 0.43001399999999995
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.0632852,
-          "cell_rise": 1.15178,
-          "rise_transition": 0.809705,
-          "cell_fall": 0.834969,
-          "fall_transition": 0.678524
+          "cell_rise": 1.09591,
+          "rise_transition": 0.737381,
+          "cell_fall": 0.820631,
+          "fall_transition": 0.664926
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.166636,
-          "cell_rise": 1.9063800000000002,
-          "rise_transition": 1.76418,
-          "cell_fall": 1.44058,
-          "fall_transition": 1.26037
+          "cell_rise": 1.7601900000000001,
+          "rise_transition": 1.53091,
+          "cell_fall": 1.41009,
+          "fall_transition": 1.21568
         }
       ],
       "capacitance_pf": {
-        "rise_capacitance": 0.002271,
-        "fall_capacitance": 0.0022045055555555554,
-        "rise_until_settled": 0.002593583333333333,
-        "fall_until_settled": 0.0025932999999999998
+        "rise_capacitance": 0.0022960444444444445,
+        "fall_capacitance": 0.0022613,
+        "rise_until_settled": 0.0026170055555555555,
+        "fall_until_settled": 0.002616727777777778
       }
     },
     {
@@ -537,401 +537,401 @@
         {
           "slew_ns": 0.01,
           "load_pf": 0.0005,
-          "cell_rise": 0.0376186,
-          "rise_transition": 0.0311104,
-          "cell_fall": 0.0269471,
-          "fall_transition": 0.016653499999999998
+          "cell_rise": 0.0339359,
+          "rise_transition": 0.0280046,
+          "cell_fall": 0.0271948,
+          "fall_transition": 0.0171924
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.00131655,
-          "cell_rise": 0.044041,
-          "rise_transition": 0.0396585,
-          "cell_fall": 0.0316132,
-          "fall_transition": 0.0224299
+          "cell_rise": 0.0393605,
+          "rise_transition": 0.0351863,
+          "cell_fall": 0.0316343,
+          "fall_transition": 0.0227603
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.00346659,
-          "cell_rise": 0.0603744,
-          "rise_transition": 0.0621785,
-          "cell_fall": 0.0434186,
-          "fall_transition": 0.037719199999999994
+          "cell_rise": 0.0532157,
+          "rise_transition": 0.0541265,
+          "cell_fall": 0.0429647,
+          "fall_transition": 0.0374197
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.00912787,
-          "cell_rise": 0.10226,
-          "rise_transition": 0.12150200000000001,
-          "cell_fall": 0.073815,
-          "fall_transition": 0.0780266
+          "cell_rise": 0.0888032,
+          "rise_transition": 0.104059,
+          "cell_fall": 0.0722111,
+          "fall_transition": 0.0760196
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.0240345,
-          "cell_rise": 0.211281,
-          "rise_transition": 0.277665,
-          "cell_fall": 0.15330400000000002,
-          "fall_transition": 0.184138
+          "cell_rise": 0.181442,
+          "rise_transition": 0.23556100000000002,
+          "cell_fall": 0.148699,
+          "fall_transition": 0.177603
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.0632852,
-          "cell_rise": 0.49738799999999994,
-          "rise_transition": 0.688655,
-          "cell_fall": 0.36231199999999997,
-          "fall_transition": 0.46350800000000003
+          "cell_rise": 0.424533,
+          "rise_transition": 0.58167,
+          "cell_fall": 0.349802,
+          "fall_transition": 0.445031
         },
         {
           "slew_ns": 0.01,
           "load_pf": 0.166636,
-          "cell_rise": 1.24725,
-          "rise_transition": 1.77048,
-          "cell_fall": 0.91252,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.06268,
+          "rise_transition": 1.49272,
+          "cell_fall": 0.879192,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.0005,
-          "cell_rise": 0.0425868,
-          "rise_transition": 0.031097100000000003,
-          "cell_fall": 0.0310273,
-          "fall_transition": 0.016693799999999998
+          "cell_rise": 0.0392106,
+          "rise_transition": 0.027982,
+          "cell_fall": 0.0313176,
+          "fall_transition": 0.017242499999999997
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.00131655,
-          "cell_rise": 0.0490753,
-          "rise_transition": 0.0396545,
-          "cell_fall": 0.035808700000000006,
-          "fall_transition": 0.022449900000000002
+          "cell_rise": 0.044691299999999996,
+          "rise_transition": 0.0351793,
+          "cell_fall": 0.0358467,
+          "fall_transition": 0.022777000000000002
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.00346659,
-          "cell_rise": 0.0655619,
-          "rise_transition": 0.062180599999999996,
-          "cell_fall": 0.0478079,
-          "fall_transition": 0.037719300000000004
+          "cell_rise": 0.058662500000000006,
+          "rise_transition": 0.0541246,
+          "cell_fall": 0.0473386,
+          "fall_transition": 0.037424599999999995
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.00912787,
-          "cell_rise": 0.107657,
-          "rise_transition": 0.121501,
-          "cell_fall": 0.0783938,
-          "fall_transition": 0.0780277
+          "cell_rise": 0.0944171,
+          "rise_transition": 0.10406,
+          "cell_fall": 0.0767613,
+          "fall_transition": 0.0760212
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.0240345,
-          "cell_rise": 0.216841,
-          "rise_transition": 0.277665,
-          "cell_fall": 0.157995,
-          "fall_transition": 0.184139
+          "cell_rise": 0.187192,
+          "rise_transition": 0.23556100000000002,
+          "cell_fall": 0.153365,
+          "fall_transition": 0.177602
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.0632852,
-          "cell_rise": 0.503036,
-          "rise_transition": 0.688655,
-          "cell_fall": 0.367053,
-          "fall_transition": 0.46350800000000003
+          "cell_rise": 0.43035799999999996,
+          "rise_transition": 0.58167,
+          "cell_fall": 0.35452300000000003,
+          "fall_transition": 0.445031
         },
         {
           "slew_ns": 0.0230506,
           "load_pf": 0.166636,
-          "cell_rise": 1.25315,
-          "rise_transition": 1.77048,
-          "cell_fall": 0.9172819999999999,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.06865,
+          "rise_transition": 1.49272,
+          "cell_fall": 0.883936,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.0005,
-          "cell_rise": 0.055288,
-          "rise_transition": 0.0318317,
-          "cell_fall": 0.0394387,
-          "fall_transition": 0.019063999999999998
+          "cell_rise": 0.0523828,
+          "rise_transition": 0.029114099999999997,
+          "cell_fall": 0.0398828,
+          "fall_transition": 0.0195575
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.00131655,
-          "cell_rise": 0.0617335,
-          "rise_transition": 0.0398252,
-          "cell_fall": 0.0447556,
-          "fall_transition": 0.024114299999999998
+          "cell_rise": 0.057819199999999994,
+          "rise_transition": 0.0356734,
+          "cell_fall": 0.0448724,
+          "fall_transition": 0.02443
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.00346659,
-          "cell_rise": 0.07823379999999999,
-          "rise_transition": 0.062159500000000006,
-          "cell_fall": 0.0570644,
-          "fall_transition": 0.0383373
+          "cell_rise": 0.0717946,
+          "rise_transition": 0.0540805,
+          "cell_fall": 0.0566145,
+          "fall_transition": 0.038064
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.00912787,
-          "cell_rise": 0.120503,
-          "rise_transition": 0.121501,
-          "cell_fall": 0.0879362,
-          "fall_transition": 0.0780343
+          "cell_rise": 0.107677,
+          "rise_transition": 0.104059,
+          "cell_fall": 0.0862892,
+          "fall_transition": 0.076029
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.0240345,
-          "cell_rise": 0.229937,
-          "rise_transition": 0.277665,
-          "cell_fall": 0.167761,
-          "fall_transition": 0.184139
+          "cell_rise": 0.20065,
+          "rise_transition": 0.23556100000000002,
+          "cell_fall": 0.163111,
+          "fall_transition": 0.177603
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.0632852,
-          "cell_rise": 0.516304,
-          "rise_transition": 0.688655,
-          "cell_fall": 0.376936,
-          "fall_transition": 0.46350800000000003
+          "cell_rise": 0.443959,
+          "rise_transition": 0.58167,
+          "cell_fall": 0.36439000000000005,
+          "fall_transition": 0.445031
         },
         {
           "slew_ns": 0.0531329,
           "load_pf": 0.166636,
-          "cell_rise": 1.2669599999999999,
-          "rise_transition": 1.77048,
-          "cell_fall": 0.927213,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.08256,
+          "rise_transition": 1.49272,
+          "cell_fall": 0.8938550000000001,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.0005,
-          "cell_rise": 0.0834469,
-          "rise_transition": 0.0446287,
-          "cell_fall": 0.052214899999999995,
-          "fall_transition": 0.028213
+          "cell_rise": 0.0805143,
+          "rise_transition": 0.042309,
+          "cell_fall": 0.0530647,
+          "fall_transition": 0.0287838
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.00131655,
-          "cell_rise": 0.0914342,
-          "rise_transition": 0.050658400000000006,
-          "cell_fall": 0.05956419999999999,
-          "fall_transition": 0.0335045
+          "cell_rise": 0.08763030000000001,
+          "rise_transition": 0.0475074,
+          "cell_fall": 0.0599551,
+          "fall_transition": 0.0338386
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.00346659,
-          "cell_rise": 0.108862,
-          "rise_transition": 0.0682765,
-          "cell_fall": 0.0755961,
-          "fall_transition": 0.0466309
+          "cell_rise": 0.103255,
+          "rise_transition": 0.061603,
+          "cell_fall": 0.0752141,
+          "fall_transition": 0.0463826
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.00912787,
-          "cell_rise": 0.15093800000000002,
-          "rise_transition": 0.12207199999999999,
-          "cell_fall": 0.10937300000000001,
-          "fall_transition": 0.08152190000000001
+          "cell_rise": 0.138939,
+          "rise_transition": 0.10542,
+          "cell_fall": 0.10773200000000001,
+          "fall_transition": 0.0796772
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.0240345,
-          "cell_rise": 0.260478,
-          "rise_transition": 0.277665,
-          "cell_fall": 0.18970199999999998,
-          "fall_transition": 0.18415600000000001
+          "cell_rise": 0.231968,
+          "rise_transition": 0.23556199999999997,
+          "cell_fall": 0.185032,
+          "fall_transition": 0.177634
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.0632852,
-          "cell_rise": 0.547071,
-          "rise_transition": 0.688655,
-          "cell_fall": 0.399176,
-          "fall_transition": 0.46350800000000003
+          "cell_rise": 0.47545000000000004,
+          "rise_transition": 0.58167,
+          "cell_fall": 0.386613,
+          "fall_transition": 0.445031
         },
         {
           "slew_ns": 0.122474,
           "load_pf": 0.166636,
-          "cell_rise": 1.29865,
-          "rise_transition": 1.77048,
-          "cell_fall": 0.949592,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.11456,
+          "rise_transition": 1.49272,
+          "cell_fall": 0.916223,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.0005,
-          "cell_rise": 0.12770099999999998,
-          "rise_transition": 0.0709644,
-          "cell_fall": 0.06671919999999999,
-          "fall_transition": 0.0470981
+          "cell_rise": 0.124518,
+          "rise_transition": 0.0691213,
+          "cell_fall": 0.0684014,
+          "fall_transition": 0.047878699999999996
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.00131655,
-          "cell_rise": 0.14036200000000001,
-          "rise_transition": 0.0805565,
-          "cell_fall": 0.0782662,
-          "fall_transition": 0.0539434
+          "cell_rise": 0.135963,
+          "rise_transition": 0.07740870000000001,
+          "cell_fall": 0.0792451,
+          "fall_transition": 0.0543776
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.00346659,
-          "cell_rise": 0.168079,
-          "rise_transition": 0.10111,
-          "cell_fall": 0.102719,
-          "fall_transition": 0.06952420000000001
+          "cell_rise": 0.161154,
+          "rise_transition": 0.095127,
+          "cell_fall": 0.10252,
+          "fall_transition": 0.06925640000000001
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.00912787,
-          "cell_rise": 0.221924,
-          "rise_transition": 0.144361,
-          "cell_fall": 0.14960600000000002,
-          "fall_transition": 0.104363
+          "cell_rise": 0.210202,
+          "rise_transition": 0.130805,
+          "cell_fall": 0.147708,
+          "fall_transition": 0.102632
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.0240345,
-          "cell_rise": 0.331805,
-          "rise_transition": 0.280401,
-          "cell_fall": 0.239656,
-          "fall_transition": 0.19395500000000002
+          "cell_rise": 0.304985,
+          "rise_transition": 0.24068599999999998,
+          "cell_fall": 0.23493499999999998,
+          "fall_transition": 0.18797799999999998
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.0632852,
-          "cell_rise": 0.61834,
-          "rise_transition": 0.688655,
-          "cell_fall": 0.450094,
-          "fall_transition": 0.463517
+          "cell_rise": 0.548354,
+          "rise_transition": 0.58167,
+          "cell_fall": 0.43749200000000005,
+          "fall_transition": 0.44508400000000004
         },
         {
           "slew_ns": 0.282311,
           "load_pf": 0.166636,
-          "cell_rise": 1.37097,
-          "rise_transition": 1.77048,
-          "cell_fall": 1.00096,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.188,
+          "rise_transition": 1.49272,
+          "cell_fall": 0.967568,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.0005,
-          "cell_rise": 0.195811,
-          "rise_transition": 0.114826,
-          "cell_fall": 0.07496989999999999,
-          "fall_transition": 0.0825761
+          "cell_rise": 0.192389,
+          "rise_transition": 0.11363,
+          "cell_fall": 0.07819219999999999,
+          "fall_transition": 0.08366330000000001
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.00131655,
-          "cell_rise": 0.215473,
-          "rise_transition": 0.13024999999999998,
-          "cell_fall": 0.0935366,
-          "fall_transition": 0.0922413
+          "cell_rise": 0.210398,
+          "rise_transition": 0.127357,
+          "cell_fall": 0.09566169999999999,
+          "fall_transition": 0.0928412
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.00346659,
-          "cell_rise": 0.259198,
-          "rise_transition": 0.162429,
-          "cell_fall": 0.13255,
-          "fall_transition": 0.113818
+          "cell_rise": 0.250625,
+          "rise_transition": 0.156066,
+          "cell_fall": 0.132856,
+          "fall_transition": 0.113455
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.00912787,
-          "cell_rise": 0.34512499999999996,
-          "rise_transition": 0.222201,
-          "cell_fall": 0.205616,
-          "fall_transition": 0.157861
+          "cell_rise": 0.3299,
+          "rise_transition": 0.20891300000000002,
+          "cell_fall": 0.203349,
+          "fall_transition": 0.15579099999999999
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.0240345,
-          "cell_rise": 0.49521400000000004,
-          "rise_transition": 0.33587,
-          "cell_fall": 0.332659,
-          "fall_transition": 0.24925300000000003
+          "cell_rise": 0.46796,
+          "rise_transition": 0.30352,
+          "cell_fall": 0.326789,
+          "fall_transition": 0.24359699999999998
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.0632852,
-          "cell_rise": 0.7838010000000001,
-          "rise_transition": 0.693789,
-          "cell_fall": 0.56612,
-          "fall_transition": 0.484724
+          "cell_rise": 0.717508,
+          "rise_transition": 0.592132,
+          "cell_fall": 0.553421,
+          "fall_transition": 0.46770199999999995
         },
         {
           "slew_ns": 0.650743,
           "load_pf": 0.166636,
-          "cell_rise": 1.5365099999999998,
-          "rise_transition": 1.77048,
-          "cell_fall": 1.11884,
-          "fall_transition": 1.1990999999999998
+          "cell_rise": 1.3568900000000002,
+          "rise_transition": 1.49272,
+          "cell_fall": 1.08536,
+          "fall_transition": 1.14917
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.0005,
-          "cell_rise": 0.306706,
-          "rise_transition": 0.18369,
-          "cell_fall": 0.05922090000000001,
-          "fall_transition": 0.148958
+          "cell_rise": 0.302466,
+          "rise_transition": 0.183758,
+          "cell_fall": 0.0652829,
+          "fall_transition": 0.150169
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.00131655,
-          "cell_rise": 0.33556199999999997,
-          "rise_transition": 0.208291,
-          "cell_fall": 0.0884365,
-          "fall_transition": 0.162514
+          "cell_rise": 0.329222,
+          "rise_transition": 0.206105,
+          "cell_fall": 0.0927741,
+          "fall_transition": 0.163125
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.00346659,
-          "cell_rise": 0.401165,
-          "rise_transition": 0.26055,
-          "cell_fall": 0.149873,
-          "fall_transition": 0.193472
+          "cell_rise": 0.390272,
+          "rise_transition": 0.253787,
+          "cell_fall": 0.151383,
+          "fall_transition": 0.19282000000000002
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.00912787,
-          "cell_rise": 0.5346679999999999,
-          "rise_transition": 0.35718700000000003,
-          "cell_fall": 0.265,
-          "fall_transition": 0.256323
+          "cell_rise": 0.5147569999999999,
+          "rise_transition": 0.341804,
+          "cell_fall": 0.262571,
+          "fall_transition": 0.253452
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.0240345,
-          "cell_rise": 0.773906,
-          "rise_transition": 0.517892,
-          "cell_fall": 0.462272,
-          "fall_transition": 0.374267
+          "cell_rise": 0.737444,
+          "rise_transition": 0.48559199999999997,
+          "cell_fall": 0.454479,
+          "fall_transition": 0.367464
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.0632852,
-          "cell_rise": 1.1641299999999999,
-          "rise_transition": 0.815553,
-          "cell_fall": 0.788703,
-          "fall_transition": 0.611264
+          "cell_rise": 1.0978299999999999,
+          "rise_transition": 0.7318020000000001,
+          "cell_fall": 0.772856,
+          "fall_transition": 0.59542
         },
         {
           "slew_ns": 1.5,
           "load_pf": 0.166636,
-          "cell_rise": 1.9188200000000002,
-          "rise_transition": 1.7761200000000001,
-          "cell_fall": 1.38762,
-          "fall_transition": 1.23899
+          "cell_rise": 1.74749,
+          "rise_transition": 1.50819,
+          "cell_fall": 1.35392,
+          "fall_transition": 1.19239
         }
       ],
       "capacitance_pf": {
-        "rise_capacitance": 0.0023170166666666666,
-        "fall_capacitance": 0.0021196833333333334,
-        "rise_until_settled": 0.0024623555555555554,
-        "fall_until_settled": 0.002442377777777778
+        "rise_capacitance": 0.0023554333333333333,
+        "fall_capacitance": 0.0021917944444444443,
+        "rise_until_settled": 0.002494583333333333,
+        "fall_until_settled": 0.0024745555555555554
       }
     }
   ],
@@ -950,262 +950,262 @@
       "tables": {
         "cell_rise": [
           [
-            0.0281272,
-            0.034825,
-            0.0514279,
-            0.0933373,
-            0.20207399999999998,
-            0.48746300000000004,
-            1.23564
+            0.0266305,
+            0.032379,
+            0.046758,
+            0.083212,
+            0.177837,
+            0.42618,
+            1.07828
           ],
           [
-            0.0329082,
-            0.039546599999999994,
-            0.0563074,
-            0.0986133,
-            0.207682,
-            0.493248,
-            1.24172
+            0.0316547,
+            0.037363900000000005,
+            0.0518726,
+            0.0886588,
+            0.18357800000000002,
+            0.432081,
+            1.08437
           ],
           [
-            0.0457483,
-            0.0521208,
-            0.0686268,
-            0.111095,
-            0.220604,
-            0.506493,
-            1.25557
+            0.0448142,
+            0.0503137,
+            0.0646034,
+            0.101507,
+            0.196801,
+            0.44559299999999996,
+            1.09826
           ],
           [
-            0.0682532,
-            0.078312,
-            0.0988165,
-            0.141108,
-            0.25075,
-            0.5370630000000001,
-            1.28718
+            0.067613,
+            0.0765862,
+            0.09510650000000001,
+            0.132261,
+            0.227628,
+            0.476782,
+            1.1301
           ],
           [
-            0.102355,
-            0.118371,
-            0.151147,
-            0.210395,
-            0.32161,
-            0.607946,
-            1.3593
+            0.102424,
+            0.11689799999999999,
+            0.146869,
+            0.20144199999999998,
+            0.299976,
+            0.54908,
+            1.20313
           ],
           [
-            0.15572999999999998,
-            0.18007499999999999,
-            0.231326,
-            0.325929,
-            0.48312999999999995,
-            0.7729349999999999,
-            1.52449
+            0.156703,
+            0.179013,
+            0.226419,
+            0.31450900000000004,
+            0.460806,
+            0.717275,
+            1.37117
           ],
           [
-            0.24701399999999998,
-            0.28198,
-            0.357492,
-            0.5033160000000001,
-            0.7538769999999999,
-            1.15178,
-            1.9063800000000002
+            0.248486,
+            0.28090699999999996,
+            0.351533,
+            0.48862300000000003,
+            0.724183,
+            1.09591,
+            1.7601900000000001
           ]
         ],
         "rise_transition": [
           [
-            0.0228989,
-            0.031435199999999996,
-            0.05391,
-            0.113065,
-            0.268759,
-            0.6786760000000001,
-            1.758
+            0.0215776,
+            0.0289162,
+            0.048262,
+            0.099206,
+            0.23333399999999999,
+            0.586492,
+            1.51638
           ],
           [
-            0.0228985,
-            0.0314327,
-            0.0539098,
-            0.113064,
-            0.26876,
-            0.6786760000000001,
-            1.758
+            0.021572,
+            0.028914699999999998,
+            0.048259899999999994,
+            0.0992069,
+            0.23333399999999999,
+            0.586492,
+            1.51638
           ],
           [
-            0.026032299999999998,
-            0.0330024,
-            0.0539278,
-            0.113064,
-            0.26876,
-            0.6786760000000001,
-            1.758
+            0.0249209,
+            0.0307832,
+            0.0483606,
+            0.0992063,
+            0.23333399999999999,
+            0.586492,
+            1.51638
           ],
           [
-            0.0410728,
-            0.0480111,
-            0.0632639,
-            0.114358,
-            0.26876,
-            0.6786760000000001,
-            1.758
+            0.040050499999999996,
+            0.04589,
+            0.0587098,
+            0.101309,
+            0.23333500000000001,
+            0.586492,
+            1.51638
           ],
           [
-            0.0662303,
-            0.0765837,
-            0.0979467,
-            0.140069,
-            0.27236699999999997,
-            0.6786760000000001,
-            1.758
+            0.065921,
+            0.0749434,
+            0.0936084,
+            0.129448,
+            0.23910099999999998,
+            0.586492,
+            1.51638
           ],
           [
-            0.10692600000000001,
-            0.123656,
-            0.157732,
-            0.218931,
-            0.331233,
-            0.684561,
-            1.758
+            0.107749,
+            0.122731,
+            0.153408,
+            0.208232,
+            0.304112,
+            0.597007,
+            1.51638
           ],
           [
-            0.17479499999999998,
-            0.199652,
-            0.253142,
-            0.352148,
-            0.5143599999999999,
-            0.809705,
-            1.76418
+            0.17711,
+            0.199872,
+            0.249044,
+            0.340061,
+            0.48711,
+            0.737381,
+            1.53091
           ]
         ],
         "cell_fall": [
           [
-            0.021782,
-            0.0265356,
-            0.0384551,
-            0.06893529999999999,
-            0.14846700000000002,
-            0.357491,
-            0.907707
+            0.0223509,
+            0.026866599999999997,
+            0.038305,
+            0.0676351,
+            0.144168,
+            0.34529,
+            0.874687
           ],
           [
-            0.025632600000000002,
-            0.030458599999999995,
-            0.042578399999999995,
-            0.0732906,
-            0.15296600000000002,
-            0.362057,
-            0.9122990000000001
+            0.0262672,
+            0.0308436,
+            0.042450499999999995,
+            0.07199860000000001,
+            0.14867899999999998,
+            0.349872,
+            0.879299
           ],
           [
-            0.0343915,
-            0.0401695,
-            0.0525752,
-            0.0834974,
-            0.16340100000000002,
-            0.37262,
-            0.922918
+            0.035283,
+            0.040697399999999995,
+            0.0525256,
+            0.0822486,
+            0.159149,
+            0.360476,
+            0.8899630000000001
           ],
           [
-            0.0455002,
-            0.054294300000000004,
-            0.0727452,
-            0.107706,
-            0.187675,
-            0.397039,
-            0.947421
+            0.047008799999999996,
+            0.055263099999999996,
+            0.07284779999999999,
+            0.106598,
+            0.18352700000000002,
+            0.384994,
+            0.914569
           ],
           [
-            0.0565273,
-            0.0699991,
-            0.0982924,
-            0.15147200000000002,
-            0.24463000000000001,
-            0.453682,
-            1.00402
+            0.059063700000000004,
+            0.07174820000000001,
+            0.0987552,
+            0.15015599999999998,
+            0.240778,
+            0.441889,
+            0.97142
           ],
           [
-            0.060773799999999996,
-            0.081122,
-            0.12417299999999999,
-            0.205655,
-            0.347092,
-            0.585942,
-            1.1351499999999999
+            0.0649403,
+            0.0841503,
+            0.125338,
+            0.204199,
+            0.342056,
+            0.574813,
+            1.10314
           ],
           [
-            0.040689,
-            0.0710214,
-            0.135458,
-            0.258718,
-            0.4751,
-            0.834969,
-            1.44058
+            0.0476216,
+            0.0762649,
+            0.137959,
+            0.257392,
+            0.468513,
+            0.820631,
+            1.41009
           ]
         ],
         "fall_transition": [
           [
-            0.0165708,
-            0.0223859,
-            0.0377099,
-            0.0780255,
-            0.184139,
-            0.46350800000000003,
-            1.1990999999999998
+            0.0171295,
+            0.0227225,
+            0.0374109,
+            0.0760208,
+            0.177603,
+            0.445031,
+            1.14917
           ],
           [
-            0.0164716,
-            0.022288,
-            0.0376905,
-            0.07802709999999999,
-            0.184139,
-            0.46350800000000003,
-            1.1990999999999998
+            0.0170415,
+            0.022640200000000003,
+            0.0373991,
+            0.0760198,
+            0.177603,
+            0.445031,
+            1.14917
           ],
           [
-            0.0216293,
-            0.0258924,
-            0.0389253,
-            0.078004,
-            0.184139,
-            0.46350800000000003,
-            1.1990999999999998
+            0.0221219,
+            0.0262442,
+            0.0387083,
+            0.0759963,
+            0.177603,
+            0.445031,
+            1.14917
           ],
           [
-            0.032999799999999996,
-            0.039039,
-            0.0524717,
-            0.0840388,
-            0.184119,
-            0.46350800000000003,
-            1.1990999999999998
+            0.0340448,
+            0.039713700000000005,
+            0.0524184,
+            0.08236220000000001,
+            0.177578,
+            0.445031,
+            1.14917
           ],
           [
-            0.053987099999999996,
-            0.0627941,
-            0.08127530000000001,
-            0.11778399999999999,
-            0.19992800000000002,
-            0.46350600000000003,
-            1.1990999999999998
+            0.0556277,
+            0.0639089,
+            0.08151549999999999,
+            0.116469,
+            0.194346,
+            0.445025,
+            1.14917
           ],
           [
-            0.0903186,
-            0.103724,
-            0.13166299999999997,
-            0.18404800000000002,
-            0.27943599999999996,
-            0.496597,
-            1.1990999999999998
+            0.09277600000000001,
+            0.10542,
+            0.132126,
+            0.1827,
+            0.27470100000000003,
+            0.48045499999999997,
+            1.14917
           ],
           [
-            0.155839,
-            0.175902,
-            0.218004,
-            0.297368,
-            0.435579,
-            0.678524,
-            1.26037
+            0.159327,
+            0.178261,
+            0.218592,
+            0.295513,
+            0.43001399999999995,
+            0.664926,
+            1.21568
           ]
         ]
       }
@@ -1224,262 +1224,262 @@
       "tables": {
         "cell_rise": [
           [
-            0.0376186,
-            0.044041,
-            0.0603744,
-            0.10226,
-            0.211281,
-            0.49738799999999994,
-            1.24725
+            0.0339359,
+            0.0393605,
+            0.0532157,
+            0.0888032,
+            0.181442,
+            0.424533,
+            1.06268
           ],
           [
-            0.0425868,
-            0.0490753,
-            0.0655619,
-            0.107657,
-            0.216841,
-            0.503036,
-            1.25315
+            0.0392106,
+            0.044691299999999996,
+            0.058662500000000006,
+            0.0944171,
+            0.187192,
+            0.43035799999999996,
+            1.06865
           ],
           [
-            0.055288,
-            0.0617335,
-            0.07823379999999999,
-            0.120503,
-            0.229937,
-            0.516304,
-            1.2669599999999999
+            0.0523828,
+            0.057819199999999994,
+            0.0717946,
+            0.107677,
+            0.20065,
+            0.443959,
+            1.08256
           ],
           [
-            0.0834469,
-            0.0914342,
-            0.108862,
-            0.15093800000000002,
-            0.260478,
-            0.547071,
-            1.29865
+            0.0805143,
+            0.08763030000000001,
+            0.103255,
+            0.138939,
+            0.231968,
+            0.47545000000000004,
+            1.11456
           ],
           [
-            0.12770099999999998,
-            0.14036200000000001,
-            0.168079,
-            0.221924,
-            0.331805,
-            0.61834,
-            1.37097
+            0.124518,
+            0.135963,
+            0.161154,
+            0.210202,
+            0.304985,
+            0.548354,
+            1.188
           ],
           [
-            0.195811,
-            0.215473,
-            0.259198,
-            0.34512499999999996,
-            0.49521400000000004,
-            0.7838010000000001,
-            1.5365099999999998
+            0.192389,
+            0.210398,
+            0.250625,
+            0.3299,
+            0.46796,
+            0.717508,
+            1.3568900000000002
           ],
           [
-            0.306706,
-            0.33556199999999997,
-            0.401165,
-            0.5346679999999999,
-            0.773906,
-            1.1641299999999999,
-            1.9188200000000002
+            0.302466,
+            0.329222,
+            0.390272,
+            0.5147569999999999,
+            0.737444,
+            1.0978299999999999,
+            1.74749
           ]
         ],
         "rise_transition": [
           [
-            0.0311104,
-            0.0396585,
-            0.0621785,
-            0.12150200000000001,
-            0.277665,
-            0.688655,
-            1.77048
+            0.0280046,
+            0.0351863,
+            0.0541265,
+            0.104059,
+            0.23556100000000002,
+            0.58167,
+            1.49272
           ],
           [
-            0.031097100000000003,
-            0.0396545,
-            0.062180599999999996,
-            0.121501,
-            0.277665,
-            0.688655,
-            1.77048
+            0.027982,
+            0.0351793,
+            0.0541246,
+            0.10406,
+            0.23556100000000002,
+            0.58167,
+            1.49272
           ],
           [
-            0.0318317,
-            0.0398252,
-            0.062159500000000006,
-            0.121501,
-            0.277665,
-            0.688655,
-            1.77048
+            0.029114099999999997,
+            0.0356734,
+            0.0540805,
+            0.104059,
+            0.23556100000000002,
+            0.58167,
+            1.49272
           ],
           [
-            0.0446287,
-            0.050658400000000006,
-            0.0682765,
-            0.12207199999999999,
-            0.277665,
-            0.688655,
-            1.77048
+            0.042309,
+            0.0475074,
+            0.061603,
+            0.10542,
+            0.23556199999999997,
+            0.58167,
+            1.49272
           ],
           [
-            0.0709644,
-            0.0805565,
-            0.10111,
-            0.144361,
-            0.280401,
-            0.688655,
-            1.77048
+            0.0691213,
+            0.07740870000000001,
+            0.095127,
+            0.130805,
+            0.24068599999999998,
+            0.58167,
+            1.49272
           ],
           [
-            0.114826,
-            0.13024999999999998,
-            0.162429,
-            0.222201,
-            0.33587,
-            0.693789,
-            1.77048
+            0.11363,
+            0.127357,
+            0.156066,
+            0.20891300000000002,
+            0.30352,
+            0.592132,
+            1.49272
           ],
           [
-            0.18369,
-            0.208291,
-            0.26055,
-            0.35718700000000003,
-            0.517892,
-            0.815553,
-            1.7761200000000001
+            0.183758,
+            0.206105,
+            0.253787,
+            0.341804,
+            0.48559199999999997,
+            0.7318020000000001,
+            1.50819
           ]
         ],
         "cell_fall": [
           [
-            0.0269471,
-            0.0316132,
-            0.0434186,
-            0.073815,
-            0.15330400000000002,
-            0.36231199999999997,
-            0.91252
+            0.0271948,
+            0.0316343,
+            0.0429647,
+            0.0722111,
+            0.148699,
+            0.349802,
+            0.879192
           ],
           [
-            0.0310273,
-            0.035808700000000006,
-            0.0478079,
-            0.0783938,
-            0.157995,
-            0.367053,
-            0.9172819999999999
+            0.0313176,
+            0.0358467,
+            0.0473386,
+            0.0767613,
+            0.153365,
+            0.35452300000000003,
+            0.883936
           ],
           [
-            0.0394387,
-            0.0447556,
-            0.0570644,
-            0.0879362,
-            0.167761,
-            0.376936,
-            0.927213
+            0.0398828,
+            0.0448724,
+            0.0566145,
+            0.0862892,
+            0.163111,
+            0.36439000000000005,
+            0.8938550000000001
           ],
           [
-            0.052214899999999995,
-            0.05956419999999999,
-            0.0755961,
-            0.10937300000000001,
-            0.18970199999999998,
-            0.399176,
-            0.949592
+            0.0530647,
+            0.0599551,
+            0.0752141,
+            0.10773200000000001,
+            0.185032,
+            0.386613,
+            0.916223
           ],
           [
-            0.06671919999999999,
-            0.0782662,
-            0.102719,
-            0.14960600000000002,
-            0.239656,
-            0.450094,
-            1.00096
+            0.0684014,
+            0.0792451,
+            0.10252,
+            0.147708,
+            0.23493499999999998,
+            0.43749200000000005,
+            0.967568
           ],
           [
-            0.07496989999999999,
-            0.0935366,
-            0.13255,
-            0.205616,
-            0.332659,
-            0.56612,
-            1.11884
+            0.07819219999999999,
+            0.09566169999999999,
+            0.132856,
+            0.203349,
+            0.326789,
+            0.553421,
+            1.08536
           ],
           [
-            0.05922090000000001,
-            0.0884365,
-            0.149873,
-            0.265,
-            0.462272,
-            0.788703,
-            1.38762
+            0.0652829,
+            0.0927741,
+            0.151383,
+            0.262571,
+            0.454479,
+            0.772856,
+            1.35392
           ]
         ],
         "fall_transition": [
           [
-            0.016653499999999998,
-            0.0224299,
-            0.037719199999999994,
-            0.0780266,
-            0.184138,
-            0.46350800000000003,
-            1.1990999999999998
+            0.0171924,
+            0.0227603,
+            0.0374197,
+            0.0760196,
+            0.177603,
+            0.445031,
+            1.14917
           ],
           [
-            0.016693799999999998,
-            0.022449900000000002,
-            0.037719300000000004,
-            0.0780277,
-            0.184139,
-            0.46350800000000003,
-            1.1990999999999998
+            0.017242499999999997,
+            0.022777000000000002,
+            0.037424599999999995,
+            0.0760212,
+            0.177602,
+            0.445031,
+            1.14917
           ],
           [
-            0.019063999999999998,
-            0.024114299999999998,
-            0.0383373,
-            0.0780343,
-            0.184139,
-            0.46350800000000003,
-            1.1990999999999998
+            0.0195575,
+            0.02443,
+            0.038064,
+            0.076029,
+            0.177603,
+            0.445031,
+            1.14917
           ],
           [
-            0.028213,
-            0.0335045,
-            0.0466309,
-            0.08152190000000001,
-            0.18415600000000001,
-            0.46350800000000003,
-            1.1990999999999998
+            0.0287838,
+            0.0338386,
+            0.0463826,
+            0.0796772,
+            0.177634,
+            0.445031,
+            1.14917
           ],
           [
-            0.0470981,
-            0.0539434,
-            0.06952420000000001,
-            0.104363,
-            0.19395500000000002,
-            0.463517,
-            1.1990999999999998
+            0.047878699999999996,
+            0.0543776,
+            0.06925640000000001,
+            0.102632,
+            0.18797799999999998,
+            0.44508400000000004,
+            1.14917
           ],
           [
-            0.0825761,
-            0.0922413,
-            0.113818,
-            0.157861,
-            0.24925300000000003,
-            0.484724,
-            1.1990999999999998
+            0.08366330000000001,
+            0.0928412,
+            0.113455,
+            0.15579099999999999,
+            0.24359699999999998,
+            0.46770199999999995,
+            1.14917
           ],
           [
-            0.148958,
-            0.162514,
-            0.193472,
-            0.256323,
-            0.374267,
-            0.611264,
-            1.23899
+            0.150169,
+            0.163125,
+            0.19282000000000002,
+            0.253452,
+            0.367464,
+            0.59542,
+            1.19239
           ]
         ]
       }
@@ -1487,14 +1487,14 @@
   ],
   "capacitance_pf": {
     "A": {
-      "rise_capacitance": 0.002271,
-      "fall_capacitance": 0.0022045055555555554,
-      "capacitance": 0.002237752777777778
+      "rise_capacitance": 0.0022960444444444445,
+      "fall_capacitance": 0.0022613,
+      "capacitance": 0.002278672222222222
     },
     "B": {
-      "rise_capacitance": 0.0023170166666666666,
-      "fall_capacitance": 0.0021196833333333334,
-      "capacitance": 0.00221835
+      "rise_capacitance": 0.0023554333333333333,
+      "fall_capacitance": 0.0021917944444444443,
+      "capacitance": 0.0022736138888888886
     }
   },
   "area_um2": 3.7536,

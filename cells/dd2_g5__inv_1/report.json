@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "TEST-INV-1",
@@ -139,14 +139,14 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.13094299999999998,
-        "rise_transition": 0.106848,
-        "cell_fall": 0.08888080000000001,
-        "fall_transition": 0.0609522
+        "cell_rise": 0.120545,
+        "rise_transition": 0.0907719,
+        "cell_fall": 0.0872042,
+        "fall_transition": 0.05965449999999999
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.0022347777777777774
+      "A": 0.0022958944444444445
     },
     "extended_windows_ns": {}
   },
@@ -155,6 +155,6 @@
     "extra_sites": 0,
     "area_increase_percent": 0.0,
     "installed_width_sites": 3,
-    "median_timing_difference_percent": 3.314
+    "median_timing_difference_percent": -0.754
   }
 }

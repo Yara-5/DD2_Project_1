@@ -1,9 +1,9 @@
 Netgen 1.5.132 compiled on Fri Oct 30 18:18:26 UTC 2026
 Warning: netgen command 'global' use fully-qualified name '::netgen::global'
 Reading netlist file dd2_g5__nor3_stack_1_rc_collapsed.spice
-Call to undefined subcircuit sky130_fd_pr__pfet_01v8_hvt
-Creating placeholder cell definition.
 Call to undefined subcircuit sky130_fd_pr__nfet_01v8
+Creating placeholder cell definition.
+Call to undefined subcircuit sky130_fd_pr__pfet_01v8_hvt
 Creating placeholder cell definition.
 Reading netlist file dd2_g5__nor3_stack_1.spice
 Call to undefined subcircuit sky130_fd_pr__nfet_01v8

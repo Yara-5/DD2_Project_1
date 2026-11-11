@@ -42,6 +42,12 @@
     0.0,
     0.23
   ],
+  "gate_has_contact": [
+    true,
+    true,
+    true
+  ],
+  "poly_bar_runs": [],
   "li1_landing_um": [
     0.17,
     0.33
@@ -162,7 +168,19 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
-      "reason": "No li1 route found for Y at this width"
+      "router": "fixed",
+      "pin_access": null,
+      "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
+    },
+    {
+      "placement": 0,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": null,
+      "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
     }
   ],
   "rule_values_and_sources": {
@@ -235,6 +253,15 @@
         "kind": "drc",
         "rule": "psd.5a",
         "message": "N-Diffusion to P-tap spacing"
+      }
+    },
+    "licon_space": {
+      "value": 0.17,
+      "source": "licon.2",
+      "check": {
+        "kind": "drc",
+        "rule": "licon.2",
+        "message": "Diffusion contact spacing"
       }
     },
     "licon_size": {

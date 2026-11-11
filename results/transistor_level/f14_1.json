@@ -147,7 +147,7 @@
         "D": 1
       },
       "expected": 0,
-      "voltage_v": 3.464824e-08,
+      "voltage_v": 3.324393e-08,
       "passed": true
     },
     {
@@ -158,7 +158,7 @@
         "D": 0
       },
       "expected": 0,
-      "voltage_v": 1.332704e-08,
+      "voltage_v": 1.292013e-08,
       "passed": true
     },
     {
@@ -169,7 +169,7 @@
         "D": 1
       },
       "expected": 0,
-      "voltage_v": 1.332704e-08,
+      "voltage_v": 1.292013e-08,
       "passed": true
     },
     {
@@ -180,7 +180,7 @@
         "D": 0
       },
       "expected": 0,
-      "voltage_v": 1.332704e-08,
+      "voltage_v": 1.292013e-08,
       "passed": true
     },
     {
@@ -191,7 +191,7 @@
         "D": 1
       },
       "expected": 0,
-      "voltage_v": 1.164763e-08,
+      "voltage_v": 1.120156e-08,
       "passed": true
     }
   ],
@@ -214,7 +214,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.77374432,
+      "worst_glitch_v": 1.7740065,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -302,7 +302,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.7744218,
+      "worst_glitch_v": 1.77410618,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -368,7 +368,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.7909019,
+      "worst_glitch_v": 1.79188584,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -390,7 +390,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.71736892,
+      "worst_glitch_v": 1.71868946,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -434,7 +434,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79256774,
+      "worst_glitch_v": 1.79251682,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -522,7 +522,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.78793343,
+      "worst_glitch_v": 1.7881449,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -544,7 +544,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.78707998,
+      "worst_glitch_v": 1.78788566,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -588,7 +588,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.77712408,
+      "worst_glitch_v": 1.77875889,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -610,7 +610,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79986092,
+      "worst_glitch_v": 1.79986275,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -632,7 +632,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79984183,
+      "worst_glitch_v": 1.79984541,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -676,7 +676,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.77212207,
+      "worst_glitch_v": 1.77494604,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -698,7 +698,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79981726,
+      "worst_glitch_v": 1.79982449,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -720,7 +720,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79979633,
+      "worst_glitch_v": 1.79980521,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -764,7 +764,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.77425687,
+      "worst_glitch_v": 1.77560429,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -786,7 +786,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79982929,
+      "worst_glitch_v": 1.79983656,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -808,7 +808,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79978422,
+      "worst_glitch_v": 1.79979098,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -852,7 +852,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.75094635,
+      "worst_glitch_v": 1.75382467,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -874,7 +874,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79985115,
+      "worst_glitch_v": 1.79985665,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -896,7 +896,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79978244,
+      "worst_glitch_v": 1.79979232,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -918,7 +918,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.77137057,
+      "worst_glitch_v": 1.77319305,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -962,7 +962,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79995721,
+      "worst_glitch_v": 1.79995989,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -984,7 +984,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79999994,
+      "worst_glitch_v": 1.79999995,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1006,7 +1006,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.76700227,
+      "worst_glitch_v": 1.76990113,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1072,7 +1072,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.78162179,
+      "worst_glitch_v": 1.7827697,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1094,7 +1094,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.7689424,
+      "worst_glitch_v": 1.77051321,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1138,7 +1138,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.78493908,
+      "worst_glitch_v": 1.78400345,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1204,7 +1204,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00926749665,
+      "worst_glitch_v": 0.0091851599,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1314,7 +1314,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0116619092,
+      "worst_glitch_v": 0.0117060415,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1336,7 +1336,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0019482574,
+      "worst_glitch_v": 0.00195490119,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1402,7 +1402,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00579253624,
+      "worst_glitch_v": 0.00589110784,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1424,7 +1424,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 8.22093725e-05,
+      "worst_glitch_v": 8.95218212e-05,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1490,7 +1490,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.33270409e-08,
+      "worst_glitch_v": 1.29201288e-08,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1512,7 +1512,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00402525051,
+      "worst_glitch_v": 0.00405731426,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1556,7 +1556,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.0254130885,
+      "worst_glitch_v": 0.0265681485,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1578,7 +1578,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.33284856e-08,
+      "worst_glitch_v": 1.29214143e-08,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -1600,11 +1600,15 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.33326888e-08,
+      "worst_glitch_v": 1.29269654e-08,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     }
   ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
   "dc_passed": true,
   "transient_passed": true
 }

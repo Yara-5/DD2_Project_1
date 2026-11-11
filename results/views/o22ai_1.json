@@ -75,17 +75,17 @@
     "input_capacitance": {
       "passed": true,
       "detail": {
-        "A": "0.0021796250",
-        "B": "0.0020870750",
-        "C": "0.0021055806",
-        "D": "0.0021421778"
+        "A": "0.0022308361",
+        "B": "0.0021441500",
+        "C": "0.0021411222",
+        "D": "0.0022310944"
       }
     },
     "area_is_the_layout": {
       "passed": true,
       "detail": {
-        "liberty_um2": 8.7584,
-        "layout_um2": 8.758400000000002
+        "liberty_um2": 6.256,
+        "layout_um2": 6.256
       }
     },
     "simulator_recorded": {

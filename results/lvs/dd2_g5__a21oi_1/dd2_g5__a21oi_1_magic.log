@@ -20,7 +20,7 @@ CIF file read warning: Input off lambda grid by 1/2; grid redefined.
 DRC style is now "drc(full)"
 Loading DRC CIF style.
 DRC_COUNT 5
-DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 498 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{77 297 129 497} {159 297 225 497} {255 297 309 497} {339 297 391 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{77 47 129 177} {159 47 225 177} {255 47 309 177} {339 47 391 177}}
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 406 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{29 297 81 497} {111 297 173 497} {203 297 257 497} {287 297 339 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{29 47 81 177} {111 47 173 177} {203 47 257 177} {287 47 339 177}}
 The selected label is already a port.
 Do "port help" to get a list of options.
 The selected label is already a port.
@@ -44,8 +44,8 @@ exttospice finished.
 Extracting dd2_g5__a21oi_1 into dd2_g5__a21oi_1.ext:
 Processing dd2_g5__a21oi_1
 Processing cell dd2_g5__a21oi_1 for resistance extraction.
-Extracting a_159_297#
-Extracting a_255_47#
+Extracting a_111_297#
+Extracting a_203_47#
 Extracting VNB
 Extracting VPB
 Extracting B1

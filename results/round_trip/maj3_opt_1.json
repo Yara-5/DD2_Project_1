@@ -1,0 +1,43 @@
+{
+  "check": "round_trip",
+  "cell": "dd2_g5__maj3_opt_1",
+  "passed": true,
+  "liberty": "cells/dd2_g5__maj3_opt_1/cell.lib",
+  "verilog_model": "cells/dd2_g5__maj3_opt_1/cell.v",
+  "truth_table": "0xE8",
+  "hd_reduced_cells_with_this_function": [
+    "sky130_fd_sc_hd__maj3_1",
+    "sky130_fd_sc_hd__maj3_2"
+  ],
+  "our_cell_required": false,
+  "scripts": {
+    "A": {
+      "map_sh_script": "+strash;dch,-f;amap;topo",
+      "yosys_command": "read_verilog design.v; synth -flatten -top rt_top; dfflibmap -liberty library.lib; abc -liberty library.lib -script abc_A.script; opt_clean -purge; tee -o stat_A.txt stat -liberty library.lib; write_verilog -noattr mapped_A.v",
+      "yosys_exit": 0,
+      "cells": {
+        "sky130_fd_sc_hd__nand2_1": 2,
+        "sky130_fd_sc_hd__o21ai_1": 1
+      },
+      "area_um2": 12.512,
+      "uses_our_cell": false,
+      "cec": "equivalent",
+      "cec_output": "Networks are equivalent.  Time =     0.01 sec",
+      "passed": true
+    },
+    "B": {
+      "map_sh_script": "+strash;&get,-n;&dch,-f;&nf,-R,1000;&put",
+      "yosys_command": "read_verilog design.v; synth -flatten -top rt_top; dfflibmap -liberty library.lib; abc -liberty library.lib -script abc_B.script; opt_clean -purge; tee -o stat_B.txt stat -liberty library.lib; write_verilog -noattr mapped_B.v",
+      "yosys_exit": 0,
+      "cells": {
+        "sky130_fd_sc_hd__maj3_1": 1
+      },
+      "area_um2": 10.0096,
+      "uses_our_cell": false,
+      "cec": "equivalent",
+      "cec_output": "Networks are equivalent.  Time =     0.01 sec",
+      "passed": true
+    }
+  },
+  "our_cell_used": false
+}

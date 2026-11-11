@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-03",
@@ -95,7 +95,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 1
+    "routing_attempts_failed": 2
   },
   "verification": {
     "drc_contexts": 24,
@@ -141,32 +141,32 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.344016,
-        "rise_transition": 0.344822,
-        "cell_fall": 0.0992861,
-        "fall_transition": 0.0693731
+        "cell_rise": 0.32999799999999996,
+        "rise_transition": 0.32648,
+        "cell_fall": 0.09982400000000001,
+        "fall_transition": 0.06918099999999999
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.33105,
-        "rise_transition": 0.344823,
-        "cell_fall": 0.0934392,
-        "fall_transition": 0.06376319999999999
+        "cell_rise": 0.319305,
+        "rise_transition": 0.326481,
+        "cell_fall": 0.0938972,
+        "fall_transition": 0.06378249999999999
       },
       {
         "pin": "C",
         "sense": "negative_unate",
-        "cell_rise": 0.293511,
-        "rise_transition": 0.34473200000000004,
-        "cell_fall": 0.0895574,
-        "fall_transition": 0.0620233
+        "cell_rise": 0.284282,
+        "rise_transition": 0.326413,
+        "cell_fall": 0.09002479999999999,
+        "fall_transition": 0.062299999999999994
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.002272497222222222,
-      "B": 0.002199416666666667,
-      "C": 0.0021466999999999997
+      "A": 0.002290638888888889,
+      "B": 0.0022119,
+      "C": 0.002157833333333333
     },
     "extended_windows_ns": {
       "arc0_A": 8.0,
@@ -179,6 +179,6 @@
     "extra_sites": 0,
     "area_increase_percent": 0.0,
     "installed_width_sites": 4,
-    "median_timing_difference_percent": -2.18
+    "median_timing_difference_percent": -2.903
   }
 }

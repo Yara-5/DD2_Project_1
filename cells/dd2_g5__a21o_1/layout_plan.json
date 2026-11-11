@@ -297,6 +297,13 @@
       0.0,
       0.0
     ],
+    "gate_has_contact": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "poly_bar_runs": [],
     "li1_landing_um": [
       0.17,
       0.33
@@ -422,6 +429,33 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": null,
+        "reason": "skipped: a net cannot route even alone (No li1 route found for X at this width (negotiated))"
+      },
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": null,
+        "reason": "skipped: a net cannot route even alone (No li1 route found for X at this width (negotiated))"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -435,7 +469,24 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
         "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: X, n1 still overlap after 40 iterations)"
       },
       {
         "placement": 0,
@@ -448,7 +499,39 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: X, n1 still overlap; no progress in 15 iterations)"
       },
       {
         "placement": 1,
@@ -456,7 +539,19 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
-        "reason": "No li1 route found for X at this width"
+        "router": "fixed",
+        "pin_access": null,
+        "reason": "skipped: a net cannot route even alone (No li1 route found for X at this width (negotiated))"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": null,
+        "reason": "skipped: a net cannot route even alone (No li1 route found for X at this width (negotiated))"
       },
       {
         "placement": 1,
@@ -469,7 +564,39 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: X, n1 still overlap; no progress in 15 iterations)"
       },
       {
         "placement": 1,
@@ -482,7 +609,39 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: X, n1 still overlap after 40 iterations)"
       }
     ],
     "rule_values_and_sources": {
@@ -555,6 +714,15 @@
           "kind": "drc",
           "rule": "psd.5a",
           "message": "N-Diffusion to P-tap spacing"
+        }
+      },
+      "licon_space": {
+        "value": 0.17,
+        "source": "licon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.2",
+          "message": "Diffusion contact spacing"
         }
       },
       "licon_size": {
@@ -1112,20 +1280,6 @@
       {
         "layer": "licon",
         "box": [
-          0.365,
-          0.295,
-          0.535,
-          0.465
-        ],
-        "net": "VGND",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
           1.235,
           0.575,
           1.405,
@@ -1224,68 +1378,12 @@
       {
         "layer": "licon",
         "box": [
-          0.365,
-          2.255,
-          0.535,
-          2.425
-        ],
-        "net": "n1_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
           0.785,
           1.575,
           0.955,
           1.745
         ],
         "net": "n1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          1.235,
-          2.255,
-          1.405,
-          2.425
-        ],
-        "net": "n1_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          1.715,
-          2.255,
-          1.885,
-          2.425
-        ],
-        "net": "VPWR",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          2.165,
-          1.575,
-          2.335,
-          1.745
-        ],
-        "net": "X",
         "gds": [
           66,
           44
@@ -1600,6 +1698,160 @@
         ]
       },
       {
+        "layer": "licon",
+        "box": [
+          0.365,
+          0.295,
+          0.535,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.365,
+          0.635,
+          0.535,
+          0.805
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.365,
+          1.575,
+          0.535,
+          1.745
+        ],
+        "net": "n1_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.365,
+          1.915,
+          0.535,
+          2.085
+        ],
+        "net": "n1_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.365,
+          2.255,
+          0.535,
+          2.425
+        ],
+        "net": "n1_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.235,
+          1.915,
+          1.405,
+          2.085
+        ],
+        "net": "n1_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.235,
+          2.255,
+          1.405,
+          2.425
+        ],
+        "net": "n1_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.715,
+          1.915,
+          1.885,
+          2.085
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.715,
+          2.255,
+          1.885,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.165,
+          1.575,
+          2.335,
+          1.745
+        ],
+        "net": "X",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.165,
+          1.915,
+          2.335,
+          2.085
+        ],
+        "net": "X",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
         "layer": "li1",
         "net": "VGND",
         "box": [
@@ -1607,20 +1859,6 @@
           -0.085,
           2.76,
           0.085
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "VGND",
-        "box": [
-          0.285,
-          0.085,
-          0.615,
-          0.465
         ],
         "gds": [
           67,
@@ -1643,10 +1881,24 @@
       },
       {
         "layer": "li1",
+        "net": "VGND",
+        "box": [
+          0.285,
+          0.085,
+          0.615,
+          0.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
         "net": "VPWR",
         "box": [
           1.715,
-          2.175,
+          1.835,
           1.885,
           2.635
         ],
@@ -1830,7 +2082,35 @@
           2.165,
           1.665,
           2.335,
-          1.825
+          2.165
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1_u1",
+        "box": [
+          0.285,
+          1.575,
+          0.615,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1_u1",
+        "box": [
+          1.155,
+          1.915,
+          1.485,
+          2.255
         ],
         "gds": [
           67,
@@ -2092,7 +2372,22 @@
           0.45,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licon_y_um": [
+          0.38,
+          0.72
+        ],
+        "li1_bar_box": [
+          0.285,
+          0.295,
+          0.615,
+          0.805
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -2101,7 +2396,18 @@
           1.32,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          1.235,
+          0.495,
+          1.405,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2110,7 +2416,12 @@
           1.8,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2119,7 +2430,18 @@
           2.25,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          2.165,
+          0.495,
+          2.335,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2128,7 +2450,29 @@
           0.45,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          0.285,
+          2.255,
+          0.615,
+          2.425
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          0.285,
+          1.575,
+          0.615,
+          2.425
+        ],
+        "licons": 3
       },
       {
         "type": "diffusion",
@@ -2137,7 +2481,18 @@
           0.87,
           1.66
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          0.785,
+          1.495,
+          0.955,
+          1.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -2146,7 +2501,28 @@
           1.32,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.155,
+          2.255,
+          1.485,
+          2.425
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          1.155,
+          1.915,
+          1.485,
+          2.425
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -2155,7 +2531,22 @@
           1.8,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          1.715,
+          1.835,
+          1.885,
+          2.505
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -2164,7 +2555,28 @@
           2.25,
           1.66
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          2.165,
+          1.495,
+          2.335,
+          1.825
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0
+        ],
+        "li1_bar_box": [
+          2.165,
+          1.495,
+          2.335,
+          2.165
+        ],
+        "licons": 2
       },
       {
         "type": "poly",
@@ -2517,6 +2929,61 @@
         ]
       }
     ],
+    "pin_access_mode": "every_pin",
+    "pin_access": [
+      {
+        "net": "A1",
+        "point_um": [
+          0.6,
+          1.16
+        ],
+        "met1_box": [
+          0.455,
+          1.015,
+          0.745,
+          1.305
+        ]
+      },
+      {
+        "net": "A2",
+        "point_um": [
+          1.08,
+          1.16
+        ],
+        "met1_box": [
+          0.935,
+          1.015,
+          1.225,
+          1.305
+        ]
+      },
+      {
+        "net": "B1",
+        "point_um": [
+          1.56,
+          1.16
+        ],
+        "met1_box": [
+          1.415,
+          1.015,
+          1.705,
+          1.305
+        ]
+      },
+      {
+        "net": "X",
+        "point_um": [
+          2.25,
+          0.66
+        ],
+        "met1_box": [
+          2.105,
+          0.515,
+          2.395,
+          0.805
+        ]
+      }
+    ],
     "vias": [],
     "routing_order": [
       "A1",
@@ -2526,6 +2993,86 @@
       "n1",
       "n1_u1"
     ],
+    "router": "fixed",
+    "parallel_cuts": {
+      "licons_added": 6,
+      "contacts": [
+        {
+          "net": "VGND",
+          "point_um": [
+            0.45,
+            0.38
+          ],
+          "licons": 2
+        },
+        {
+          "net": "n1",
+          "point_um": [
+            1.32,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            1.8,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "X",
+          "point_um": [
+            2.25,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "n1_u1",
+          "point_um": [
+            0.45,
+            2.34
+          ],
+          "licons": 3
+        },
+        {
+          "net": "n1",
+          "point_um": [
+            0.87,
+            1.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "n1_u1",
+          "point_um": [
+            1.32,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            1.8,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "X",
+          "point_um": [
+            2.25,
+            1.66
+          ],
+          "licons": 2
+        }
+      ],
+      "mcons_added": 0,
+      "vias": []
+    },
     "li1_notch_fill_added_area_um2": {
       "VGND": 0.0,
       "VPWR": 0.0,

@@ -1,5 +1,10 @@
-"""Linux adapter: use Tutorial 3's exact full-DRC command prefix per case."""
+"""Linux adapter: use Tutorial 3's exact full-DRC command prefix per case.
+
+--jobs runs that many cases at once (each is its own Magic run on its own <case>.gds and
+.tcl in the build folder, logging to its own <case>.log); the results are reported in the
+manifest's order, so the report does not depend on --jobs."""
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 import argparse
 import ast
 import hashlib
@@ -12,6 +17,7 @@ import re
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     for key in ('tutorial-root','manifest','outdir'):ap.add_argument('--'+key,type=Path,required=True)
+    ap.add_argument('--jobs',type=int,default=1,help='Cases run at once')
     args=ap.parse_args();root=args.tutorial_root.resolve();out=args.outdir.resolve()
     manifest=json.loads(args.manifest.read_text());os.environ['LAYOUT_IMAGE']=manifest['image']
     spec=importlib.util.spec_from_file_location('course_flow',root/'flow.py')
@@ -23,8 +29,9 @@ def main():
            (isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='MAGIC_ERRORS' for t in n.targets))]
     ns={'TECH':flow.TECH}
     exec(compile(ast.Module(body=nodes,type_ignores=[]),str(root/'verify.py'),'exec'),ns)
-    build=args.manifest.parent;results=[]
-    for case in manifest['cases']:
+    build=args.manifest.parent
+
+    def run_case(case):
         name=case['name']
         # The original prefix includes full DRC, catchup, count and reasons.
         script=ns['magic_script'](name,[]).split('extract all',1)[0]
@@ -35,9 +42,13 @@ def main():
         clean=bool(count) and 'MAGIC_DONE' in output and not re.search(ns['MAGIC_ERRORS'],output)
         number=int(count[1]) if count else None
         passed=clean and (number>0 if case['kind']=='broken_drc' else number==0)
-        result={**case,'drc_count':number,'completed_cleanly':clean,'passed':passed}
-        results.append(result)
-        print(f'{name}: DRC={number} '+('PASS' if passed else 'FAIL'),flush=True)
+        return {**case,'drc_count':number,'completed_cleanly':clean,'passed':passed}
+
+    results=[]
+    with ThreadPoolExecutor(max(1,args.jobs)) as pool:
+        for result in pool.map(run_case,manifest['cases']):
+            results.append(result)
+            print(f"{result['name']}: DRC={result['drc_count']} "+('PASS' if result['passed'] else 'FAIL'),flush=True)
     report={**manifest,'cases':results,'instructor_checks_modified':False,
             'passed':all(c['passed'] for c in results) and all(c['passed'] for c in manifest['layers'].values())
                      and all(c['rejected'] for c in manifest['broken_layer_cases'])}

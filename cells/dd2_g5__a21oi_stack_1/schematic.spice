@@ -1,0 +1,15 @@
+* Intended schematic from supplied transistor connections.
+* SKY130 model files use um-scale W/L convention; load the course model setup.
+.subckt dd2_g5__a21oi_stack_1 A B C VGND VNB VPB VPWR Y
+XN1 Y C VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN2_f1 Y A Y_d1 VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN2_f2 Y A Y_d1 VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN3_f1 Y_d1 B VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XN3_f2 Y_d1 B VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
+XP1_f1 Y_u1 C Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP1_f2 Y_u1 C Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP2_f1 VPWR A Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP2_f2 VPWR A Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP3_f1 VPWR B Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP3_f2 VPWR B Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+.ends dd2_g5__a21oi_stack_1

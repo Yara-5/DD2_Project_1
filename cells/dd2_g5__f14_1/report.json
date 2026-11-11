@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-13",
@@ -95,7 +95,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 6
+    "routing_attempts_failed": 16
   },
   "verification": {
     "drc_contexts": 24,
@@ -105,7 +105,7 @@
     "lvs": "match",
     "rc_lvs": "match",
     "rc_elements": {
-      "resistors": 52,
+      "resistors": 53,
       "capacitors": 71,
       "collapsed_lvs_passed": true
     },
@@ -133,41 +133,41 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.145275,
-        "rise_transition": 0.11870599999999999,
-        "cell_fall": 0.14482499999999998,
-        "fall_transition": 0.125994
+        "cell_rise": 0.13591,
+        "rise_transition": 0.105248,
+        "cell_fall": 0.14452,
+        "fall_transition": 0.12518400000000002
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.272094,
-        "rise_transition": 0.277999,
-        "cell_fall": 0.114438,
-        "fall_transition": 0.0779116
+        "cell_rise": 0.273584,
+        "rise_transition": 0.26965100000000003,
+        "cell_fall": 0.115141,
+        "fall_transition": 0.0781467
       },
       {
         "pin": "C",
         "sense": "negative_unate",
-        "cell_rise": 0.29411400000000004,
-        "rise_transition": 0.278005,
-        "cell_fall": 0.153993,
-        "fall_transition": 0.126647
+        "cell_rise": 0.278476,
+        "rise_transition": 0.255206,
+        "cell_fall": 0.154672,
+        "fall_transition": 0.12577
       },
       {
         "pin": "D",
         "sense": "negative_unate",
-        "cell_rise": 0.297656,
-        "rise_transition": 0.268936,
-        "cell_fall": 0.15371,
-        "fall_transition": 0.126528
+        "cell_rise": 0.299952,
+        "rise_transition": 0.269655,
+        "cell_fall": 0.15409399999999998,
+        "fall_transition": 0.125682
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.0022051194444444445,
-      "B": 0.0021510722222222224,
-      "C": 0.002169363888888889,
-      "D": 0.0022059222222222223
+      "A": 0.0022406749999999997,
+      "B": 0.002161986111111111,
+      "C": 0.002164936111111111,
+      "D": 0.002208483333333333
     },
     "extended_windows_ns": {
       "arc5_B": 8.0,

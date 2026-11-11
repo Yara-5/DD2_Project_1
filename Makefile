@@ -49,6 +49,23 @@ PREFIX    = dd2_g5__
 DOCKERFILE := tools/Dockerfile
 DOCKER_CONTEXT := tools
 STRESS_TEST_DIR := tools/stress_test
+# Parallel runs (docs/TECHNICAL.md section 2.4): JOBS cells (or DRC contexts, LVS cells)
+# at once; INNER_JOBS ngspice runs per cell in sim and char. JOBS x INNER_JOBS ngspice
+# processes is the peak. Memory sets it, not cores: one run loads the sky130 models in
+# about 0.4 GB, and on this machine's 7.7 GB WSL 8 runs at once took 40 s while 16 swapped
+# (461 s) and were killed (exit 137) in char; the defaults keep it at 8.
+JOBS       ?= 4
+INNER_JOBS ?= 2
+# A sub-make that runs per-cell targets JOBS at a time, each cell's output in one block.
+PAR        = $(MAKE) --no-print-directory -j$(JOBS) -Otarget
+# A per-cell step is run again (up to 3 tries, 3 s apart) only when it failed on a Windows
+# file lock (Errno 22 or 13 in its output: a file under cells/ or results/ held open by
+# another program); any other failure, every check failure included, fails at once. The
+# step rewrites the same files, so a rerun is safe. Each try is logged in build/logs/.
+TRY_START  = mkdir -p build/logs; for try in 1 2 3; do (
+TRY_END    = ) > build/logs/$@.log 2>&1 && { cat build/logs/$@.log; exit 0; }; cat build/logs/$@.log; \
+	grep -q -E 'Errno (13|22)' build/logs/$@.log || exit 1; \
+	echo "$@: Windows file lock (try $$try of 3); running it again in 3 s"; sleep 3; done; exit 1
 
 LPYTHON   = $(LINUX) env LAYOUT_IMAGE=$(IMAGE) NETGEN_ENTRYPOINT=$(NETGEN_ENTRYPOINT) python3
 FRAME     = $(GIVEN)/plan_hd.json
@@ -130,58 +147,75 @@ check:            ## tool versions, PDK, and the ngspice stress test for Option 
 
 network:          ## steps 1-3: read (reference cells: HD pins, section 4.1), minimize, decompose, size; switch level
 	@mkdir -p build
-	@for c in $(NETWORK_CELLS); do \
+	@$(PAR) $(addprefix network-,$(NETWORK_CELLS))
+
+network-%:
+	@$(TRY_START) c=$*; \
 	  { $(PYTHON) src/request_reader.py tests/requests/$$c.json --out cells/$(PREFIX)$$c/request_original.json > /dev/null || \
 	    { $(PYTHON) src/write_response.py --cell-dir cells/$(PREFIX)$$c --raw-request tests/requests/$$c.json; exit 1; }; } && \
 	  $(PYTHON) src/reference_cell.py cells/$(PREFIX)$$c/request_original.json --hd-liberty $(HD_LIB_HOST) \
 	    --hd-spice $(HD_SPICE_HOST) --out cells/$(PREFIX)$$c/request.json --reference-out cells/$(PREFIX)$$c/hd_reference.json && \
 	  $(PYTHON) src/synthesize.py --request cells/$(PREFIX)$$c/request.json --frame $(FRAME) \
-	    --hd-reference cells/$(PREFIX)$$c/hd_reference.json \
+	    --hd-reference cells/$(PREFIX)$$c/hd_reference.json --hd-liberty $(HD_LIB_HOST) \
 	    --outdir cells/$(PREFIX)$$c --objective $(OBJECTIVE) > build/synthesize_$$c.log && head -1 build/synthesize_$$c.log && \
 	  $(PYTHON) src/switch_level_check.py cells/$(PREFIX)$$c/network.json --request cells/$(PREFIX)$$c/request.json \
-	    --out results/switch_level/$${c}_network.json || exit 1; done
+	    --out results/switch_level/$${c}_network.json $(TRY_END)
 
 layout: network   ## steps 4-5: Euler paths, then plan and draw; the reordered network is checked again
-	@for c in $(CELLS); do \
+	@$(PAR) $(addprefix layout-,$(CELLS))
+
+layout-%:
+	@$(TRY_START) c=$*; \
 	  $(PYTHON) src/euler.py cells/$(PREFIX)$$c/network.json --hd-spice $(HD_SPICE_HOST) --hd-liberty $(HD_LIB_HOST) && \
 	  $(PYTHON) src/switch_level_check.py cells/$(PREFIX)$$c/layout_spec.json --request cells/$(PREFIX)$$c/request.json \
 	    --out results/switch_level/$$c.json && \
 	  $(PYTHON) src/prepare_layout.py cells/$(PREFIX)$$c/layout_spec.json --request cells/$(PREFIX)$$c/request.json \
 	    --frame $(FRAME) --outdir cells && \
 	  $(PYTHON) src/generate_gds.py cells/$(PREFIX)$$c/layout_plan.json --tutorial-root $(TUT3) \
-	    --outdir cells || exit 1; done
+	    --outdir cells $(TRY_END)
 
 drc:              ## step 6: DRC in tapped rows, abutment, layer check
 	$(PYTHON) src/verify_drc.py --tutorial-root $(TUT3) --reference-gds $(HD_GDS) --frame $(FRAME) \
-	  --image $(IMAGE) --linux "$(LINUX)" $(if $(CELLS),--cells $(CELLS))
+	  --image $(IMAGE) --linux "$(LINUX)" --jobs $(JOBS) $(if $(CELLS),--cells $(CELLS))
 
 lvs:              ## step 6: LVS, RC-LVS, LVS against the installed HD cell
-	$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) --image $(IMAGE)
+	$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) --image $(IMAGE) \
+	  --jobs $(JOBS)
 
 compare:          ## section 4.1: comparison with the installed HD cells
 	$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME)
 
 sim:              ## section 4.2 level 2: transistor-level simulation of the RC netlist
-	@for c in $(CELLS); do \
+	@$(PAR) $(addprefix sim-,$(CELLS))
+
+sim-%:
+	@$(TRY_START) c=$*; \
 	  $(LPYTHON) src/transistor_level_check.py --pex cells/$(PREFIX)$$c/$(PREFIX)$${c}_pex.spice \
 	    --request cells/$(PREFIX)$$c/request.json --models $(TUT3)/pdk/libs.tech/ngspice/sky130.lib.spice \
-	    --liberty $(GIVEN)/hd_reduced.lib --ngspice "$(TUT3)/tools.sh ngspice" \
-	    --workdir $(TUT3)/build/dd2_sim_$$c --out results/transistor_level/$$c.json || exit 1; done
+	    --liberty $(GIVEN)/hd_reduced.lib --ngspice "$(TUT3)/tools.sh ngspice" --jobs $(INNER_JOBS) \
+	    --workdir $(TUT3)/build/dd2_sim_$$c --out results/transistor_level/$$c.json $(TRY_END)
 
 model:            ## section 4.2 level 3: Verilog model and Liberty function
-	@for c in $(CELLS); do \
+	@$(PAR) $(addprefix model-,$(CELLS))
+
+model-%:
+	@$(TRY_START) c=$*; \
 	  broken=""; for f in tests/broken/$${c}_*.v; do [ -f "$$f" ] && broken="$$broken --broken $$f"; done; \
 	  $(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$$c/request.json \
-	    --outdir cells/$(PREFIX)$$c --report results/model_level/$$c.json $$broken || exit 1; done
+	    --outdir cells/$(PREFIX)$$c --report results/model_level/$$c.json $$broken $(TRY_END)
 
 # $(call characterize_hd,<image>,<extra flags>,<output folder>[,<cells>]): installed cells,
-# by default the six reference cells.
+# by default the six reference cells, JOBS at a time. The configurations of one cell (fixed,
+# broken, stock) share Tutorial 3's build/dd2_char_<cell> folder, so they never run at once:
+# each call finishes before the next starts.
 define characterize_hd
-	@for c in $(if $(4),$(4),$(REFERENCE_CELLS)); do \
-	  $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(1) \
-	    --hd-cell sky130_fd_sc_hd__$$c --hd-gds $(HD_GDS_LINUX) --pdk-spice $(HD_SPICE) $(2) \
-	    --out $(3)/$$c || exit 1; done
+	@$(PAR) CH_IMAGE="$(1)" CH_FLAGS="$(2)" CH_OUT="$(3)" $(addprefix charhd-,$(if $(4),$(4),$(REFERENCE_CELLS)))
 endef
+
+charhd-%:
+	@$(TRY_START) $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(CH_IMAGE) \
+	  --hd-cell sky130_fd_sc_hd__$* --hd-gds $(HD_GDS_LINUX) --pdk-spice $(HD_SPICE) $(CH_FLAGS) \
+	  --jobs $(INNER_JOBS) --out $(CH_OUT)/$* $(TRY_END)
 
 char_hd:          ## section 5.1: characterize the six installed reference cells
 	$(call characterize_hd,$(IMAGE),,results/characterization/hd)
@@ -200,20 +234,25 @@ char_validate: char_hd   ## section 5.1, Table 5; fails while a part did not run
 
 char: char_validate   ## section 5: characterize the generated cells (only after Table 5 passes)
 	$(call characterize_hd,$(IMAGE),,results/characterization/hd_reference,$(EXTRA_REFERENCE_CELLS))
-	@for c in $(CELLS); do \
-	  $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(IMAGE) \
-	    --cell-dir cells/$(PREFIX)$$c --out cells/$(PREFIX)$$c/characterized || exit 1; done
+	@$(PAR) $(addprefix char-,$(CELLS))
 	$(PYTHON) src/compare_sizing.py --hd cells/$(PREFIX)nor3_1 --stack cells/$(PREFIX)nor3_stack_1 --out results/sizing/nor3.json
 	$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME)
 
+char-%:
+	@$(TRY_START) $(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(IMAGE) \
+	  --jobs $(INNER_JOBS) --cell-dir cells/$(PREFIX)$* --out cells/$(PREFIX)$*/characterized $(TRY_END)
+
 views:            ## step 8: final Liberty view, model level on it, response and report; libs/ (after char)
-	@for c in $(CELLS); do \
+	@$(PAR) $(addprefix views-,$(CELLS))
+	$(PYTHON) src/liberty_view.py --merge $(foreach c,$(CELLS),cells/$(PREFIX)$(c)/cell.lib) --out libs/$(PREFIX)tt_025C_1v80.lib
+
+views-%:
+	@$(TRY_START) c=$*; \
 	  broken=""; for f in tests/broken/$${c}_*.v; do [ -f "$$f" ] && broken="$$broken --broken $$f"; done; \
 	  $(PYTHON) src/liberty_view.py --cell-dir cells/$(PREFIX)$$c && \
 	  $(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$$c/request.json \
 	    --outdir cells/$(PREFIX)$$c --report results/model_level/$$c.json --liberty cells/$(PREFIX)$$c/cell.lib $$broken && \
-	  $(PYTHON) src/write_response.py --cell-dir cells/$(PREFIX)$$c || exit 1; done
-	$(PYTHON) src/liberty_view.py --merge $(foreach c,$(CELLS),cells/$(PREFIX)$(c)/cell.lib) --out libs/$(PREFIX)tt_025C_1v80.lib
+	  $(PYTHON) src/write_response.py --cell-dir cells/$(PREFIX)$$c $(TRY_END)
 
 roundtrip: views  ## section 3.3: each cell inside hd_reduced.lib, map.sh's scripts A and B, ABC cec
 	$(LINUX) python3 src/round_trip.py --cell-dir $(foreach c,$(CELLS),cells/$(PREFIX)$(c)) \
@@ -232,9 +271,9 @@ reference:        ## section 4: build and check the six reference cells alone, b
 	@rm -rf build/reference && mkdir -p build/reference && \
 	  for c in $(REFERENCE_CELLS); do cp -r cells/$(PREFIX)$$c build/reference/; done
 	$(PYTHON) src/verify_drc.py --tutorial-root $(TUT3) --reference-gds $(HD_GDS) --frame $(FRAME) \
-	  --image $(IMAGE) --linux "$(LINUX)" --generated build/reference --outdir build/reference_results/drc
+	  --image $(IMAGE) --linux "$(LINUX)" --generated build/reference --outdir build/reference_results/drc --jobs $(JOBS)
 	$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) \
-	  --image $(IMAGE) --cells build/reference --outdir build/reference_results/lvs
+	  --image $(IMAGE) --cells build/reference --outdir build/reference_results/lvs --jobs $(JOBS)
 	$(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME) --generated build/reference \
 	  --outdir build/reference_results/hd_comparison
 

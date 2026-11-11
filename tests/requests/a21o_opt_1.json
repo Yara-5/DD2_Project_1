@@ -1,0 +1,12 @@
+{
+  "request_id": "OPT-A21O",
+  "name": "dd2_g5__a21o_opt_1",
+  "inputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "output": "Y",
+  "expression": "(A & B) | C",
+  "sizing": "opt"
+}

@@ -51,7 +51,7 @@
         "B": 1
       },
       "expected": 0,
-      "voltage_v": 1.355241e-08,
+      "voltage_v": 1.244832e-08,
       "passed": true
     }
   ],
@@ -70,7 +70,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79539074,
+      "worst_glitch_v": 1.79523007,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -124,7 +124,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.78133813,
+      "worst_glitch_v": 1.78368136,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -142,7 +142,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.7753507,
+      "worst_glitch_v": 1.77857023,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -201,6 +201,10 @@
       "passed": true
     }
   ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
   "dc_passed": true,
   "transient_passed": true
 }

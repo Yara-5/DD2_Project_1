@@ -1,0 +1,12 @@
+{
+  "request_id": "OPT-MAJ3",
+  "name": "dd2_g5__maj3_opt_1",
+  "inputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "output": "Y",
+  "expression": "(A & B) | (C & (A | B))",
+  "sizing": "opt"
+}

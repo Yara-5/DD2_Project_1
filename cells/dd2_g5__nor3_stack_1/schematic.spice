@@ -4,13 +4,13 @@
 XN1 Y A VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
 XN2 Y B VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
 XN3 Y C VGND VNB sky130_fd_pr__nfet_01v8 w=0.65 l=0.15
-XP1_f1 Y_u2 A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
-XP1_f2 Y_u2 A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
-XP1_f3 Y_u2 A Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP1_f1 VPWR A Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP1_f2 VPWR A Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP1_f3 VPWR A Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
 XP2_f1 Y_u1 B Y_u2 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
 XP2_f2 Y_u1 B Y_u2 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
 XP2_f3 Y_u1 B Y_u2 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
-XP3_f1 VPWR C Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
-XP3_f2 VPWR C Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
-XP3_f3 VPWR C Y_u1 VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP3_f1 Y_u2 C Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP3_f2 Y_u2 C Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
+XP3_f3 Y_u2 C Y VPB sky130_fd_pr__pfet_01v8_hvt w=1 l=0.15
 .ends dd2_g5__nor3_stack_1

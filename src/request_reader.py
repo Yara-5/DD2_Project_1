@@ -259,8 +259,10 @@ def validate_request(request):
         raise RequestError("The output name must differ from every input name.")
 
     sizing = request["sizing"]
-    if sizing not in ("hd", "stack"):
-        raise RequestError("sizing must be either 'hd' or 'stack'.")
+    # 'hd' and 'stack' are the handout's two ways; 'opt' is the group's third family
+    # (docs/TECHNICAL.md section 7.1): x1 output stage, internal stages sized by Elmore delay.
+    if sizing not in ("hd", "stack", "opt"):
+        raise RequestError("sizing must be 'hd', 'stack' or 'opt'.")
 
     if "estimated_area_um2" in request:
         area = request["estimated_area_um2"]

@@ -1,0 +1,25 @@
+
+Magic 8.3.684 revision 684 - Compiled on Fri Oct 30 18:18:19 UTC 2026.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Switching to WIRING tool.
+Switching to NETLIST tool.
+Switching to PICK tool.
+Switching to BOX tool.
+Using technology "minimum", version 0.0
+Input style sky130(): scaleFactor=2, multiplier=2
+The following types are not handled by extraction and will be treated as non-electrical types:
+    ubm 
+Warning: Calma reading is not undoable!  I hope that's OK.
+Library written using GDS-II Release 6.0
+Library name: LIB
+Reading "cp1_abut_574".
+CIF file read warning: Input off lambda grid by 1/2; grid redefined.
+DRC style is now "drc(full)"
+Loading DRC CIF style.
+DRC_COUNT 0
+No errors found.
+DRC_WHY 
+MAGIC_DONE

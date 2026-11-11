@@ -7,8 +7,8 @@
     "cell": "dd2_g5__a21oi_1",
     "stages": 1,
     "transistors": 6,
-    "width_sites": 5,
-    "area_um2": 6.256,
+    "width_sites": 4,
+    "area_um2": 5.0048,
     "files": {
       "gds": "cells/dd2_g5__a21oi_1/cell.gds",
       "liberty": "cells/dd2_g5__a21oi_1/cell.lib",
@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-04",
@@ -72,10 +72,10 @@
     ]
   },
   "layout": {
-    "width_sites": 5,
-    "width_um": 2.3,
+    "width_sites": 4,
+    "width_um": 1.84,
     "height_um": 2.72,
-    "area_um2": 6.256,
+    "area_um2": 5.0048,
     "devices": 6,
     "euler": {
       "stage_order": [
@@ -95,7 +95,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 6
+    "routing_attempts_failed": 4
   },
   "verification": {
     "drc_contexts": 24,
@@ -105,8 +105,8 @@
     "lvs": "match",
     "rc_lvs": "match",
     "rc_elements": {
-      "resistors": 37,
-      "capacitors": 54,
+      "resistors": 34,
+      "capacitors": 52,
       "collapsed_lvs_passed": true
     },
     "hd_reference_lvs": {
@@ -141,46 +141,45 @@
       {
         "pin": "A1",
         "sense": "negative_unate",
-        "cell_rise": 0.236464,
-        "rise_transition": 0.217298,
-        "cell_fall": 0.115759,
-        "fall_transition": 0.09019909999999999
+        "cell_rise": 0.23604399999999998,
+        "rise_transition": 0.213911,
+        "cell_fall": 0.11404500000000001,
+        "fall_transition": 0.0870208
       },
       {
         "pin": "A2",
         "sense": "negative_unate",
-        "cell_rise": 0.27026100000000003,
-        "rise_transition": 0.257814,
-        "cell_fall": 0.11894699999999998,
-        "fall_transition": 0.08858859999999999
+        "cell_rise": 0.255571,
+        "rise_transition": 0.23492200000000002,
+        "cell_fall": 0.116516,
+        "fall_transition": 0.0851924
       },
       {
         "pin": "B1",
         "sense": "negative_unate",
-        "cell_rise": 0.24863100000000002,
-        "rise_transition": 0.257795,
-        "cell_fall": 0.08792080000000001,
-        "fall_transition": 0.06558810000000001
+        "cell_rise": 0.23312699999999997,
+        "rise_transition": 0.23488199999999998,
+        "cell_fall": 0.0879618,
+        "fall_transition": 0.0656048
       }
     ],
     "input_capacitance_pf": {
-      "A1": 0.0021318361111111114,
-      "A2": 0.0022125,
-      "B1": 0.0021999249999999997
+      "A1": 0.0021519666666666667,
+      "A2": 0.0022202416666666667,
+      "B1": 0.0022708
     },
     "extended_windows_ns": {
       "arc0_A1": 8.0,
       "arc1_A2": 8.0,
-      "arc2_B1": 8.0,
       "arc3_B1": 8.0,
       "arc4_B1": 8.0
     }
   },
   "liberty_view": true,
   "hd_comparison": {
-    "extra_sites": 1,
-    "area_increase_percent": 25.0,
+    "extra_sites": 0,
+    "area_increase_percent": 0.0,
     "installed_width_sites": 4,
-    "median_timing_difference_percent": 0.111
+    "median_timing_difference_percent": -1.958
   }
 }

@@ -5,8 +5,8 @@
   "cell": "dd2_g5__o22ai_1",
   "stages": 1,
   "transistors": 8,
-  "width_sites": 7,
-  "area_um2": 8.7584,
+  "width_sites": 5,
+  "area_um2": 6.256,
   "files": {
     "gds": "cells/dd2_g5__o22ai_1/cell.gds",
     "liberty": "cells/dd2_g5__o22ai_1/cell.lib",
@@ -22,5 +22,5 @@
     "layers": "pass"
   },
   "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-  "tool_version": "git:2f91bb9-dirty"
+  "tool_version": "git:dfa9771-dirty"
 }

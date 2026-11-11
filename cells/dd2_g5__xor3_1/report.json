@@ -7,8 +7,8 @@
     "cell": "dd2_g5__xor3_1",
     "stages": 4,
     "transistors": 20,
-    "width_sites": 16,
-    "area_um2": 20.0192,
+    "width_sites": 14,
+    "area_um2": 17.5168,
     "files": {
       "gds": "cells/dd2_g5__xor3_1/cell.gds",
       "liberty": "cells/dd2_g5__xor3_1/cell.lib",
@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-18",
@@ -92,10 +92,10 @@
     ]
   },
   "layout": {
-    "width_sites": 16,
-    "width_um": 7.36,
+    "width_sites": 14,
+    "width_um": 6.44,
     "height_um": 2.72,
-    "area_um2": 20.0192,
+    "area_um2": 17.5168,
     "devices": 20,
     "euler": {
       "stage_order": [
@@ -121,9 +121,9 @@
       "wiring_slots": 61,
       "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
     },
-    "met1_vias": 14,
+    "met1_vias": 13,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 66
+    "routing_attempts_failed": 508
   },
   "verification": {
     "drc_contexts": 24,
@@ -133,8 +133,8 @@
     "lvs": "match",
     "rc_lvs": "match",
     "rc_elements": {
-      "resistors": 174,
-      "capacitors": 156,
+      "resistors": 168,
+      "capacitors": 148,
       "collapsed_lvs_passed": true
     },
     "hd_reference_lvs": null
@@ -161,56 +161,56 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.410053,
-        "rise_transition": 0.255496,
-        "cell_fall": 0.27046600000000004,
-        "fall_transition": 0.07960099999999999
+        "cell_rise": 0.371106,
+        "rise_transition": 0.227323,
+        "cell_fall": 0.248951,
+        "fall_transition": 0.0965816
       },
       {
         "pin": "A",
         "sense": "positive_unate",
-        "cell_rise": 0.351463,
-        "rise_transition": 0.25546,
-        "cell_fall": 0.348055,
-        "fall_transition": 0.10578
+        "cell_rise": 0.32228999999999997,
+        "rise_transition": 0.227543,
+        "cell_fall": 0.31298499999999996,
+        "fall_transition": 0.102307
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.402175,
-        "rise_transition": 0.255699,
-        "cell_fall": 0.255312,
-        "fall_transition": 0.0987782
+        "cell_rise": 0.368863,
+        "rise_transition": 0.227679,
+        "cell_fall": 0.245327,
+        "fall_transition": 0.0965746
       },
       {
         "pin": "B",
         "sense": "positive_unate",
-        "cell_rise": 0.33346,
-        "rise_transition": 0.255312,
-        "cell_fall": 0.329885,
-        "fall_transition": 0.105768
+        "cell_rise": 0.304991,
+        "rise_transition": 0.227175,
+        "cell_fall": 0.29949600000000004,
+        "fall_transition": 0.102294
       },
       {
         "pin": "C",
         "sense": "negative_unate",
-        "cell_rise": 0.25273700000000004,
-        "rise_transition": 0.254896,
-        "cell_fall": 0.113608,
-        "fall_transition": 0.0823728
+        "cell_rise": 0.233371,
+        "rise_transition": 0.227224,
+        "cell_fall": 0.11262799999999999,
+        "fall_transition": 0.0815214
       },
       {
         "pin": "C",
         "sense": "positive_unate",
-        "cell_rise": 0.172375,
-        "rise_transition": 0.120931,
-        "cell_fall": 0.180836,
-        "fall_transition": 0.0958848
+        "cell_rise": 0.164524,
+        "rise_transition": 0.102604,
+        "cell_fall": 0.171802,
+        "fall_transition": 0.0946828
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.0052217194444444445,
-      "B": 0.004510177777777777,
-      "C": 0.004383380555555556
+      "A": 0.004621016666666667,
+      "B": 0.004632711111111111,
+      "C": 0.004572441666666666
     },
     "extended_windows_ns": {
       "arc0_A": 8.0,

@@ -1,0 +1,189 @@
+{
+  "cell": "dd2_g5__xor2_opt_1",
+  "response": {
+    "request_id": "OPT-XOR2",
+    "status": "pass",
+    "reason": null,
+    "cell": "dd2_g5__xor2_opt_1",
+    "stages": 2,
+    "transistors": 10,
+    "width_sites": 6,
+    "area_um2": 7.5072,
+    "files": {
+      "gds": "cells/dd2_g5__xor2_opt_1/cell.gds",
+      "liberty": "cells/dd2_g5__xor2_opt_1/cell.lib",
+      "verilog": "cells/dd2_g5__xor2_opt_1/cell.v",
+      "report": "cells/dd2_g5__xor2_opt_1/report.json"
+    },
+    "checks": {
+      "drc": 0,
+      "lvs": "match",
+      "rc_lvs": "match",
+      "truth_table": "pass",
+      "abutment": 0,
+      "layers": "pass"
+    },
+    "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
+    "tool_version": "git:dfa9771-dirty"
+  },
+  "request": {
+    "request_id": "OPT-XOR2",
+    "name": "dd2_g5__xor2_opt_1",
+    "inputs": [
+      "A",
+      "B"
+    ],
+    "output": "Y",
+    "expression": "A ^ B",
+    "sizing": "opt",
+    "truth_table": "0x6",
+    "truth_table_value": 6,
+    "recognized": null,
+    "supported_by_prototype": false
+  },
+  "network": {
+    "formula": "Y = (!A | !B) & (A | B)",
+    "formula_source": "POS of f (De Morgan of the SOP of !f)",
+    "objective": "transistors",
+    "sizing": "opt",
+    "cost": {
+      "inverters": 0,
+      "input_inverters": 0,
+      "output_inverter": false,
+      "stages": 2,
+      "complex_stages": 2,
+      "transistors": 10,
+      "max_series_pull_down": 2,
+      "max_series_pull_up": 2
+    },
+    "sizes_from": {
+      "source": null
+    },
+    "stages": [
+      {
+        "output": "n1",
+        "kind": "complex",
+        "function": "n1 = !(A | B)",
+        "pull_down_series": 1,
+        "pull_up_series": 2
+      },
+      {
+        "output": "Y",
+        "kind": "complex",
+        "function": "Y = !((A & B) | n1)",
+        "pull_down_series": 2,
+        "pull_up_series": 2
+      }
+    ]
+  },
+  "layout": {
+    "width_sites": 6,
+    "width_um": 2.76,
+    "height_um": 2.72,
+    "area_um2": 7.5072,
+    "devices": 10,
+    "euler": {
+      "stage_order": [
+        "n1",
+        "Y"
+      ],
+      "mirrored": [
+        "n1",
+        "Y"
+      ],
+      "dual_trails_per_stage": {
+        "n1": 1,
+        "Y": 1
+      },
+      "diffusion_segments": 1,
+      "diffusion_breaks": 0,
+      "columns": 5,
+      "repeated_nets_in_rows": 1,
+      "folded": false,
+      "wiring_slots": 23,
+      "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+    },
+    "met1_vias": 6,
+    "met1_in_single_stage_cell": false,
+    "routing_attempts_failed": 112
+  },
+  "verification": {
+    "drc_contexts": 24,
+    "drc_errors_tapped_row": 0,
+    "drc_errors_all_contexts": 0,
+    "layer_check": "pass",
+    "lvs": "match",
+    "rc_lvs": "match",
+    "rc_elements": {
+      "resistors": 62,
+      "capacitors": 68,
+      "collapsed_lvs_passed": true
+    },
+    "hd_reference_lvs": null
+  },
+  "simulation": {
+    "switch_level_network": true,
+    "switch_level_reordered": true,
+    "transistor_level": true,
+    "model_level": true,
+    "transistor_level_dc_rows": 4,
+    "transistor_level_edges": 8
+  },
+  "characterization": {
+    "simulator": {
+      "image": "dd2-project1-tools",
+      "version": "ngspice-47",
+      "sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660"
+    },
+    "nominal_point": {
+      "slew_ns": 0.122474,
+      "load_pf": 0.00912787
+    },
+    "arcs_at_nominal_point_ns": [
+      {
+        "pin": "A",
+        "sense": "negative_unate",
+        "cell_rise": 0.259531,
+        "rise_transition": 0.26905199999999996,
+        "cell_fall": 0.109195,
+        "fall_transition": 0.0788954
+      },
+      {
+        "pin": "A",
+        "sense": "positive_unate",
+        "cell_rise": 0.277562,
+        "rise_transition": 0.24425100000000002,
+        "cell_fall": 0.23890199999999998,
+        "fall_transition": 0.07495339999999999
+      },
+      {
+        "pin": "B",
+        "sense": "negative_unate",
+        "cell_rise": 0.234379,
+        "rise_transition": 0.24403400000000003,
+        "cell_fall": 0.105134,
+        "fall_transition": 0.0817113
+      },
+      {
+        "pin": "B",
+        "sense": "positive_unate",
+        "cell_rise": 0.289908,
+        "rise_transition": 0.269082,
+        "cell_fall": 0.217808,
+        "fall_transition": 0.07522820000000001
+      }
+    ],
+    "input_capacitance_pf": {
+      "A": 0.004867861111111111,
+      "B": 0.004279477777777778
+    },
+    "extended_windows_ns": {
+      "arc0_A": 8.0,
+      "arc1_A": 8.0,
+      "arc2_B": 8.0,
+      "arc3_B": 8.0
+    }
+  },
+  "liberty_view": true,
+  "hd_comparison": null
+}

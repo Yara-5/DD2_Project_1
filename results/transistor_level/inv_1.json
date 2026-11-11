@@ -31,7 +31,7 @@
         "A": 1
       },
       "expected": 0,
-      "voltage_v": 3.975129e-09,
+      "voltage_v": 3.625731e-09,
       "passed": true
     }
   ],
@@ -69,6 +69,10 @@
       "passed": true
     }
   ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
   "dc_passed": true,
   "transient_passed": true
 }

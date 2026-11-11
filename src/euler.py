@@ -35,11 +35,17 @@ minimization of CMOS cells", DAC 1991 (cited as [MH91] below):
     parallel copies of its edge. Where a leaf has more fingers in one network than in
     the other (NOR3 under 'stack': one NMOS and three PMOS fingers per input), a
     column holds a finger in one row only. Inside that row's diffusion strip the
-    column carries the node on (its poly stops at the contact pad, as in Tutorial 3's
+    column carries the node on (its poly stops at the npc band, as in Tutorial 3's
     folded NOR3, whose NMOS row is stretched under the PMOS fingers); outside it the
-    row has no diffusion. finger_cover() is the exact search for such columns: fewest
-    columns plus breaks, then the least diffusion under one-row columns, then the
-    fewest strip ends off the supplies.
+    row has no diffusion. The fingers of one leaf are wanted side by side: then
+    prepare_layout.py joins their polys with one poly bar in the npc band, and the
+    gate of the other row's (fewer) fingers runs straight into it, instead of a poly
+    contact per finger joined on li1. The narrower row's gates are thereby spread
+    out over the wider row, each under its leaf's fingers, its diffusion carried on
+    between them. finger_cover() is the exact search for such columns: fewest columns
+    plus breaks, then the fewest leaves whose fingers are not side by side, then the
+    least diffusion under one-row columns, then the fewest strip ends off the
+    supplies.
 [MH91]'s height minimization (routing rows U and L) is not used: the HD frame fixes
 the height, and prepare_layout.py routes inside it on li1.
 """
@@ -195,7 +201,7 @@ def min_dual_trail_cover(n_edges, p_edges, max_covers=64):
     return cost, [as_trails(plan) for plan in all_best(0, None, None, [max_covers])]
 
 
-def finger_cover(n_edges, p_edges, fn, fp, max_covers=16):
+def finger_cover(n_edges, p_edges, fn, fp, max_covers=16, unsplit_first=False):
     """Columns for a stage whose leaves have fn[leaf] NMOS and fp[leaf] PMOS fingers.
 
     A column places one finger of a leaf in both rows, or in one row only. A row's
@@ -203,14 +209,21 @@ def finger_cover(n_edges, p_edges, fn, fp, max_covers=16):
     ('#'). Inside an open strip a one-row column leaves the other row's node as it is
     (diffusion runs under it); before or after the strip that row has no diffusion
     there. A new segment (a diffusion break) restarts both rows. Cost: (columns +
-    breaks, one-row columns inside a strip, strip ends off the supplies).
+    breaks, columns of a leaf placed after its run of columns has ended, one-row
+    columns inside a strip, strip ends off the supplies). A run ends when another
+    leaf's column or a diffusion break follows it: its polys can then no longer be
+    joined by one poly bar. With unsplit_first, split leaves count before columns and
+    breaks: a diffusion break costs about one site, a split leaf a second gate contact
+    and a wire between its fingers (a22oi_stack_1: 13 sites and 9 met1 vias for 8
+    columns), so both covers go to the planner.
     """
+    rank = (lambda c: (c[1], c[0], c[2], c[3])) if unsplit_first else (lambda c: c)
     leaves = sorted(n_edges)
     start = tuple((fn[l], fp[l]) for l in leaves)
     CLOSED = '#'
 
     def off(node, kind):
-        return (0, 0, 0 if node in (None, CLOSED, SUPPLY[kind]) else 1)
+        return (0, 0, 0, 0 if node in (None, CLOSED, SUPPLY[kind]) else 1)
 
     def row_step(state, edge, take, kind):
         """(record, new state, extra cost) options for one row at one column."""
@@ -222,42 +235,45 @@ def finger_cover(n_edges, p_edges, fn, fp, max_covers=16):
                 return [((a, b, True), b, off(a, kind)), ((b, a, True), a, off(b, kind))]
             if state in (a, b):
                 other = b if state == a else a
-                return [((state, other, True), other, (0, 0, 0))]
+                return [((state, other, True), other, (0, 0, 0, 0))]
             return []
         if state is None or state == CLOSED:
-            return [((None, None, False), state, (0, 0, 0))]
+            return [((None, None, False), state, (0, 0, 0, 0))]
         # Open strip: carry the node on under this column, or end the strip before it.
-        return [((state, state, False), state, (0, 1, 0)), ((None, None, False), CLOSED, off(state, kind))]
+        return [((state, state, False), state, (0, 0, 1, 0)), ((None, None, False), CLOSED, off(state, kind))]
 
     def add(*costs):
         return tuple(map(sum, zip(*costs)))
 
     @lru_cache(maxsize=None)
-    def go(rem, ns, ps, used):
+    def go(rem, ns, ps, used, cur=None, done=frozenset()):
         if all(r == (0, 0) for r in rem):
             return add(off(ns, 'nmos'), off(ps, 'pmos')), ()
         best = None
         for i, leaf in enumerate(leaves):
             rn, rp = rem[i]
+            # A column of a leaf whose run of columns has already ended.
+            scattered = (0, 1, 0, 0) if leaf != cur and leaf in done else (0, 0, 0, 0)
+            ended = done | {cur} if cur is not None and leaf != cur else done
             for take_n, take_p in ((True, True), (True, False), (False, True)):
                 if (take_n and rn == 0) or (take_p and rp == 0):
                     continue
                 left = rem[:i] + ((rn - take_n, rp - take_p),) + rem[i + 1:]
                 for rec_n, nxt_n, cn in row_step(ns, n_edges[leaf], take_n, 'nmos'):
                     for rec_p, nxt_p, cp in row_step(ps, p_edges[leaf], take_p, 'pmos'):
-                        cost, plan = go(left, nxt_n, nxt_p, True)
-                        total = add(cost, (1, 0, 0), cn, cp)
+                        cost, plan = go(left, nxt_n, nxt_p, True, leaf, ended)
+                        total = add(cost, (1, 0, 0, 0), cn, cp, scattered)
                         col = (leaf, rec_n[0], rec_n[1], rec_p[0], rec_p[1], rec_n[2], rec_p[2])
                         cand = (total, ((col, False),) + plan)
-                        if best is None or cand[0] < best[0]:
+                        if best is None or rank(cand[0]) < rank(best[0]):
                             best = cand
         if used:
-            # A diffusion break: both rows start again.
-            cost, plan = go(rem, None, None, False)
-            total = add(cost, (1, 0, 0), off(ns, 'nmos'), off(ps, 'pmos'))
+            # A diffusion break: both rows start again, and the current run ends.
+            cost, plan = go(rem, None, None, False, None, done | {cur} if cur is not None else done)
+            total = add(cost, (1, 0, 0, 0), off(ns, 'nmos'), off(ps, 'pmos'))
             if plan:
                 cand = (total, ((plan[0][0], True),) + plan[1:])
-                if best is None or cand[0] < best[0]:
+                if best is None or rank(cand[0]) < rank(best[0]):
                     best = cand
         return best
 
@@ -332,20 +348,31 @@ def stage_options(stage, keep=6, fingers=None):
         for pt in p_variants:
             p_edges = edges(pt, 'VPWR', out, f'{out}_u', [0], {})
             if fingers:
-                cost, covers = finger_cover(n_edges, p_edges, {k: v[0] for k, v in fingers.items()},
-                                            {k: v[1] for k, v in fingers.items()})
+                fn, fp = {k: v[0] for k, v in fingers.items()}, {k: v[1] for k, v in fingers.items()}
+                results = [finger_cover(n_edges, p_edges, fn, fp),
+                           finger_cover(n_edges, p_edges, fn, fp, unsplit_first=True)]
             else:
-                cost, covers = min_dual_trail_cover(n_edges, p_edges)
-            for trails in covers:
-                key = tuple(tuple(t) for t in trails)
-                if key not in found:
-                    found[key] = (cost, trails, n_edges, p_edges)
-    # Fewest dual trails first ([MH91]), then the easiest to route (repeated nets in a
-    # row), then fewest ends off the supplies (abutment, scored again across stages).
+                results = [min_dual_trail_cover(n_edges, p_edges)]
+            for cost, covers in results:
+                for trails in covers:
+                    key = tuple(tuple(t) for t in trails)
+                    if key not in found:
+                        found[key] = (cost, trails, n_edges, p_edges)
+    # Fewest dual trails first ([MH91]); with fingers, then the fewest leaves whose
+    # fingers are not side by side (one poly bar per leaf); then the easiest to route
+    # (repeated nets in a row), then fewest ends off the supplies (abutment, scored
+    # again across stages).
     signals = {out}
     ranked = sorted(found.values(),
-                    key=lambda v: (v[0][0], row_repeats(cover_nodes(v[1]), signals), v[0][1], repr(v[1])))
-    return ranked[:keep]
+                    key=lambda v: (v[0][0], v[0][1] if fingers else 0, row_repeats(cover_nodes(v[1]), signals),
+                                   v[0][2] if fingers else v[0][1], repr(v[1])))
+    out = ranked[:keep]
+    if fingers:
+        # Then the best covers with the fewest split leaves, even with more breaks.
+        unsplit = sorted(found.values(),
+                         key=lambda v: (v[0][1], v[0][0], row_repeats(cover_nodes(v[1]), signals), v[0][2], repr(v[1])))
+        out += [v for v in unsplit if not any(v is w for w in out)][:2]
+    return out
 
 
 # ---------------------------------------------------------------- the cell array
@@ -435,6 +462,36 @@ def place_stages(stages, options, gate_of, cell_output, beam=400, keep=8):
             seen.add(key)
             out.append((c, seq, segs))
         if len(out) == keep:
+            break
+
+    def same_gate_neighbours(segs):
+        """Adjacent columns on one gate net, across diffusion breaks too: one poly bar
+        joins them (prepare_layout.py, policy poly_bars_same_gate), as HD joins an input's
+        neighbouring gates, which takes a wire off li1 (HD xor2_1, maj3_1)."""
+        gates = [gate_of[stage, col[0]] for seg in segs for stage, col in seg]
+        return sum(a == b for a, b in zip(gates, gates[1:]))
+
+    # Then the placements with the most such neighbours (cost breaking ties), for
+    # prepare_layout.py to try on li1 before it falls back to met1.
+    # Those with the best placement's transistor graphs (series orders) first: only they
+    # can go into the layout spec beside it (build_layout_spec).
+    extra = []
+    first = {s: o for s, o, _ in out[0][1]} if out else {}
+    for c, seq in candidates:
+        segs = assemble(seq, stages)
+        n = same_gate_neighbours(segs)
+        if n:
+            other_graphs = any(o is not first.get(s) for s, o, _ in seq)
+            extra.append((-n, other_graphs, c, seq, segs))
+    extra.sort(key=lambda e: e[:3])
+    added = 0
+    for _, _, c, seq, segs in extra:
+        key = repr([[col for _, col in seg] for seg in segs])
+        if key not in seen:
+            seen.add(key)
+            out.append((c, seq, segs))
+            added += 1
+        if added == keep:
             break
     return out
 
@@ -541,7 +598,9 @@ def build_layout_spec(network, hd=None):
     chosen = {stages[s]['output']: option for s, option, _ in seq}
 
     def same_graphs(seq_other):
-        return all(chosen[stages[s]['output']] is o for s, o, _ in seq_other)
+        """The same transistors (series orders included) as the first placement, so the
+        layout spec's devices hold for it; another cover of the same graphs qualifies."""
+        return devices_of(seq_other) == devices
 
     spec = {
         'schema': 'dd2.layout-spec.v1', 'name': network['name'], 'request_id': network['request_id'],

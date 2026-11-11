@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "TEST-NAND-1",
@@ -93,7 +93,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 1
+    "routing_attempts_failed": 2
   },
   "verification": {
     "drc_contexts": 24,
@@ -139,23 +139,23 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.141108,
-        "rise_transition": 0.114358,
-        "cell_fall": 0.107706,
-        "fall_transition": 0.0840388
+        "cell_rise": 0.132261,
+        "rise_transition": 0.101309,
+        "cell_fall": 0.106598,
+        "fall_transition": 0.08236220000000001
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.15093800000000002,
-        "rise_transition": 0.12207199999999999,
-        "cell_fall": 0.10937300000000001,
-        "fall_transition": 0.08152190000000001
+        "cell_rise": 0.138939,
+        "rise_transition": 0.10542,
+        "cell_fall": 0.10773200000000001,
+        "fall_transition": 0.0796772
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.002237752777777778,
-      "B": 0.00221835
+      "A": 0.002278672222222222,
+      "B": 0.0022736138888888886
     },
     "extended_windows_ns": {}
   },
@@ -164,6 +164,6 @@
     "extra_sites": 0,
     "area_increase_percent": 0.0,
     "installed_width_sites": 3,
-    "median_timing_difference_percent": 3.224
+    "median_timing_difference_percent": -0.404
   }
 }

@@ -636,12 +636,12 @@
           "diff": 3.3825,
           "poly": 1.6644,
           "npc": 1.0212,
-          "li1": 2.456,
+          "li1": 3.0204,
           "met1": 2.6496,
-          "licon": 0.3757,
+          "licon": 0.5491,
           "mcon": 0.3468
         },
-        "diffusion_licon_count": 9,
+        "diffusion_licon_count": 15,
         "poly_licon_count": 4,
         "npc_connected_regions": 1,
         "li1_connected_regions": 8
@@ -766,8 +766,8 @@
             "generated": {
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
-              "incident_capacitor_count": 6,
-              "incident_capacitance_ff": 0.25075000000000003
+              "incident_capacitor_count": 7,
+              "incident_capacitance_ff": 0.26164
             },
             "installed": {
               "resistor_count": 3,
@@ -781,7 +781,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.25835
+              "incident_capacitance_ff": 0.26343000000000005
             },
             "installed": {
               "resistor_count": 3,
@@ -795,7 +795,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.23417999999999997
+              "incident_capacitance_ff": 0.24008000000000004
             },
             "installed": {
               "resistor_count": 3,
@@ -806,10 +806,10 @@
           },
           "VGND": {
             "generated": {
-              "resistor_count": 12,
-              "sum_resistance_ohm": 579.3593024999999,
-              "incident_capacitor_count": 16,
-              "incident_capacitance_ff": 0.7838200000000001
+              "resistor_count": 11,
+              "sum_resistance_ohm": 453.09228249999995,
+              "incident_capacitor_count": 15,
+              "incident_capacitance_ff": 0.8175699999999999
             },
             "installed": {
               "resistor_count": 11,
@@ -822,8 +822,8 @@
             "generated": {
               "resistor_count": 4,
               "sum_resistance_ohm": 5411.01,
-              "incident_capacitor_count": 45,
-              "incident_capacitance_ff": 3.4538300000000004
+              "incident_capacitor_count": 44,
+              "incident_capacitance_ff": 3.67589
             },
             "installed": {
               "resistor_count": 4,
@@ -837,7 +837,7 @@
               "resistor_count": 4,
               "sum_resistance_ohm": 1124.613,
               "incident_capacitor_count": 11,
-              "incident_capacitance_ff": 1.06277
+              "incident_capacitance_ff": 1.07267
             },
             "installed": {
               "resistor_count": 4,
@@ -849,9 +849,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 5,
-              "sum_resistance_ohm": 699.2514404,
+              "sum_resistance_ohm": 413.01444039999996,
               "incident_capacitor_count": 11,
-              "incident_capacitance_ff": 0.82789
+              "incident_capacitance_ff": 0.8882800000000002
             },
             "installed": {
               "resistor_count": 5,
@@ -863,9 +863,9 @@
           "X": {
             "generated": {
               "resistor_count": 5,
-              "sum_resistance_ohm": 1115.515833,
-              "incident_capacitor_count": 10,
-              "incident_capacitance_ff": 0.25738000000000005
+              "sum_resistance_ohm": 609.583833,
+              "incident_capacitor_count": 11,
+              "incident_capacitance_ff": 0.30860000000000004
             },
             "installed": {
               "resistor_count": 7,
@@ -878,8 +878,8 @@
         "internal": {
           "generated": {
             "nets": 3,
-            "sum_resistance_ohm": 3226.687,
-            "incident_capacitance_ff": 0.67209
+            "sum_resistance_ohm": 2287.39,
+            "incident_capacitance_ff": 0.77046
           },
           "installed": {
             "nets": 3,
@@ -900,104 +900,104 @@
             "pin": "A1",
             "sense": "positive_unate",
             "cell_rise": {
-              "generated_ns": 0.17059,
+              "generated_ns": 0.162713,
               "installed_ns": 0.164145,
-              "difference_percent": 3.926,
-              "median_difference_percent": 1.708
+              "difference_percent": -0.873,
+              "median_difference_percent": -2.234
             },
             "rise_transition": {
-              "generated_ns": 0.114146,
+              "generated_ns": 0.103885,
               "installed_ns": 0.093985,
-              "difference_percent": 21.451,
-              "median_difference_percent": 19.558
+              "difference_percent": 10.534,
+              "median_difference_percent": 10.322
             },
             "cell_fall": {
-              "generated_ns": 0.224264,
+              "generated_ns": 0.212739,
               "installed_ns": 0.206457,
-              "difference_percent": 8.625,
-              "median_difference_percent": 9.658
+              "difference_percent": 3.043,
+              "median_difference_percent": 4.564
             },
             "fall_transition": {
-              "generated_ns": 0.067681,
+              "generated_ns": 0.065082,
               "installed_ns": 0.060063599999999995,
-              "difference_percent": 12.682,
-              "median_difference_percent": 12.728
+              "difference_percent": 8.355,
+              "median_difference_percent": 8.385
             }
           },
           {
             "pin": "A2",
             "sense": "positive_unate",
             "cell_rise": {
-              "generated_ns": 0.165456,
+              "generated_ns": 0.158191,
               "installed_ns": 0.168046,
-              "difference_percent": -1.541,
-              "median_difference_percent": -9.0
+              "difference_percent": -5.864,
+              "median_difference_percent": -12.88
             },
             "rise_transition": {
-              "generated_ns": 0.114216,
+              "generated_ns": 0.103973,
               "installed_ns": 0.0940316,
-              "difference_percent": 21.465,
-              "median_difference_percent": 18.03
+              "difference_percent": 10.573,
+              "median_difference_percent": 10.312
             },
             "cell_fall": {
-              "generated_ns": 0.192722,
+              "generated_ns": 0.191559,
               "installed_ns": 0.22826,
-              "difference_percent": -15.569,
-              "median_difference_percent": -11.809
+              "difference_percent": -16.079,
+              "median_difference_percent": -12.224
             },
             "fall_transition": {
-              "generated_ns": 0.063733,
+              "generated_ns": 0.063132,
               "installed_ns": 0.062080699999999996,
-              "difference_percent": 2.662,
-              "median_difference_percent": 3.511
+              "difference_percent": 1.694,
+              "median_difference_percent": 3.1
             }
           },
           {
             "pin": "B1",
             "sense": "positive_unate",
             "cell_rise": {
-              "generated_ns": 0.164539,
+              "generated_ns": 0.158934,
               "installed_ns": 0.136235,
-              "difference_percent": 20.776,
-              "median_difference_percent": 23.055
+              "difference_percent": 16.662,
+              "median_difference_percent": 19.022
             },
             "rise_transition": {
-              "generated_ns": 0.113837,
+              "generated_ns": 0.103779,
               "installed_ns": 0.09225080000000001,
-              "difference_percent": 23.399,
-              "median_difference_percent": 22.107
+              "difference_percent": 12.496,
+              "median_difference_percent": 12.694
             },
             "cell_fall": {
-              "generated_ns": 0.250516,
+              "generated_ns": 0.238958,
               "installed_ns": 0.20627600000000001,
-              "difference_percent": 21.447,
-              "median_difference_percent": 15.47
+              "difference_percent": 15.844,
+              "median_difference_percent": 12.103
             },
             "fall_transition": {
-              "generated_ns": 0.067927,
+              "generated_ns": 0.06521,
               "installed_ns": 0.0620957,
-              "difference_percent": 9.392,
-              "median_difference_percent": 7.227
+              "difference_percent": 5.016,
+              "median_difference_percent": 4.566
             }
           }
         ],
         "input_capacitance": {
           "A1": {
-            "generated_pf": 0.002174433333333333,
+            "generated_pf": 0.0021992055555555556,
             "installed_pf": 0.002416663888888889
           },
           "A2": {
-            "generated_pf": 0.002215372222222222,
+            "generated_pf": 0.0022244833333333333,
             "installed_pf": 0.002350697222222222
           },
           "B1": {
-            "generated_pf": 0.002241058333333334,
+            "generated_pf": 0.0022513111111111114,
             "installed_pf": 0.0023430055555555556
           }
         },
         "same_indices": false,
         "points_outside_generated_index": 84,
-        "median_difference_percent": 10.187,
+        "median_difference_percent": 5.322,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__a21o_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd_reference\\a21o_1.json"
       }
@@ -1297,25 +1297,25 @@
         "li1_connected_regions": 7
       },
       "generated": {
-        "width_um": 2.3,
+        "width_um": 1.84,
         "height_um": 2.72,
-        "width_sites": 5,
-        "area_um2": 6.256,
+        "width_sites": 4,
+        "area_um2": 5.0048,
         "gate_pitch_um": [
-          0.48,
+          0.46,
           0.42
         ],
         "diffusion_strips": [
           [
-            0.385,
+            0.145,
             0.235,
-            1.955,
+            1.695,
             0.885
           ],
           [
-            0.385,
+            0.145,
             1.485,
-            1.955,
+            1.695,
             2.485
           ]
         ],
@@ -1326,21 +1326,21 @@
             "gate": [
               "B1"
             ],
-            "x_um": 0.72,
+            "x_um": 0.48,
             "w_um": 0.65,
             "l_um": 0.15,
             "left_diffusion_distance_um": 0.26,
-            "right_diffusion_distance_um": 1.16
+            "right_diffusion_distance_um": 1.14
           },
           {
             "row": "nmos",
             "gate": [
               "A1"
             ],
-            "x_um": 1.2,
+            "x_um": 0.94,
             "w_um": 0.65,
             "l_um": 0.15,
-            "left_diffusion_distance_um": 0.74,
+            "left_diffusion_distance_um": 0.72,
             "right_diffusion_distance_um": 0.68
           },
           {
@@ -1348,10 +1348,10 @@
             "gate": [
               "A2"
             ],
-            "x_um": 1.62,
+            "x_um": 1.36,
             "w_um": 0.65,
             "l_um": 0.15,
-            "left_diffusion_distance_um": 1.16,
+            "left_diffusion_distance_um": 1.14,
             "right_diffusion_distance_um": 0.26
           },
           {
@@ -1359,21 +1359,21 @@
             "gate": [
               "B1"
             ],
-            "x_um": 0.72,
+            "x_um": 0.48,
             "w_um": 1.0,
             "l_um": 0.15,
             "left_diffusion_distance_um": 0.26,
-            "right_diffusion_distance_um": 1.16
+            "right_diffusion_distance_um": 1.14
           },
           {
             "row": "pmos",
             "gate": [
               "A1"
             ],
-            "x_um": 1.2,
+            "x_um": 0.94,
             "w_um": 1.0,
             "l_um": 0.15,
-            "left_diffusion_distance_um": 0.74,
+            "left_diffusion_distance_um": 0.72,
             "right_diffusion_distance_um": 0.68
           },
           {
@@ -1381,10 +1381,10 @@
             "gate": [
               "A2"
             ],
-            "x_um": 1.62,
+            "x_um": 1.36,
             "w_um": 1.0,
             "l_um": 0.15,
-            "left_diffusion_distance_um": 1.16,
+            "left_diffusion_distance_um": 1.14,
             "right_diffusion_distance_um": 0.26
           }
         ],
@@ -1427,9 +1427,9 @@
             ],
             "marker_boxes_um": [
               [
-                1.125,
+                0.865,
                 1.085,
-                1.275,
+                1.015,
                 1.235
               ]
             ]
@@ -1442,9 +1442,9 @@
             ],
             "marker_boxes_um": [
               [
-                1.605,
+                1.345,
                 1.085,
-                1.755,
+                1.495,
                 1.235
               ]
             ]
@@ -1457,9 +1457,9 @@
             ],
             "marker_boxes_um": [
               [
-                0.645,
+                0.175,
                 1.085,
-                0.795,
+                0.325,
                 1.235
               ]
             ]
@@ -1472,10 +1472,10 @@
             ],
             "marker_boxes_um": [
               [
-                0.885,
-                0.585,
-                1.035,
-                0.735
+                0.635,
+                0.665,
+                0.785,
+                0.815
               ]
             ]
           },
@@ -1541,19 +1541,19 @@
           }
         ],
         "layer_areas_um2": {
-          "nwell": 4.3014,
-          "nsdm": 2.7715,
-          "psdm": 3.5765,
-          "hvtp": 3.381,
-          "diff": 2.5905,
-          "poly": 1.2483,
-          "npc": 0.851,
-          "li1": 1.8625,
-          "met1": 2.208,
-          "licon": 0.289,
-          "mcon": 0.289
+          "nwell": 3.5631,
+          "nsdm": 2.2172,
+          "psdm": 2.8612,
+          "hvtp": 2.7048,
+          "diff": 2.5575,
+          "poly": 1.3044,
+          "npc": 0.6808,
+          "li1": 2.1479,
+          "met1": 1.7664,
+          "licon": 0.4335,
+          "mcon": 0.2312
         },
-        "diffusion_licon_count": 7,
+        "diffusion_licon_count": 12,
         "poly_licon_count": 3,
         "npc_connected_regions": 1,
         "li1_connected_regions": 7
@@ -1643,8 +1643,8 @@
           "pin_names_equal_installed": true
         }
       },
-      "extra_sites": 1,
-      "area_increase_percent": 25.0,
+      "extra_sites": 0,
+      "area_increase_percent": 0.0,
       "gate_order": {
         "installed": [
           [
@@ -1677,7 +1677,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.26958
+              "incident_capacitance_ff": 0.28151000000000004
             },
             "installed": {
               "resistor_count": 3,
@@ -1691,7 +1691,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.26473
+              "incident_capacitance_ff": 0.27108
             },
             "installed": {
               "resistor_count": 3,
@@ -1703,9 +1703,9 @@
           "B1": {
             "generated": {
               "resistor_count": 3,
-              "sum_resistance_ohm": 565.876,
+              "sum_resistance_ohm": 543.114,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.28997
+              "incident_capacitance_ff": 0.3524300000000001
             },
             "installed": {
               "resistor_count": 3,
@@ -1716,10 +1716,10 @@
           },
           "VGND": {
             "generated": {
-              "resistor_count": 8,
-              "sum_resistance_ohm": 605.9029765000001,
-              "incident_capacitor_count": 13,
-              "incident_capacitance_ff": 0.6987
+              "resistor_count": 5,
+              "sum_resistance_ohm": 449.673549,
+              "incident_capacitor_count": 11,
+              "incident_capacitance_ff": 0.62862
             },
             "installed": {
               "resistor_count": 3,
@@ -1731,9 +1731,9 @@
           "VNB": {
             "generated": {
               "resistor_count": 3,
-              "sum_resistance_ohm": 4214.889999999999,
-              "incident_capacitor_count": 34,
-              "incident_capacitance_ff": 2.7904
+              "sum_resistance_ohm": 3474.4349999999995,
+              "incident_capacitor_count": 32,
+              "incident_capacitance_ff": 2.7246999999999995
             },
             "installed": {
               "resistor_count": 3,
@@ -1745,9 +1745,9 @@
           "VPB": {
             "generated": {
               "resistor_count": 3,
-              "sum_resistance_ohm": 876.0149999999999,
+              "sum_resistance_ohm": 722.119,
               "incident_capacitor_count": 10,
-              "incident_capacitance_ff": 0.9344600000000002
+              "incident_capacitance_ff": 0.7725700000000001
             },
             "installed": {
               "resistor_count": 3,
@@ -1759,9 +1759,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 5,
-              "sum_resistance_ohm": 687.3124240000001,
+              "sum_resistance_ohm": 681.2574480000001,
               "incident_capacitor_count": 11,
-              "incident_capacitance_ff": 0.7329500000000001
+              "incident_capacitance_ff": 0.6439700000000002
             },
             "installed": {
               "resistor_count": 3,
@@ -1773,9 +1773,9 @@
           "Y": {
             "generated": {
               "resistor_count": 5,
-              "sum_resistance_ohm": 1177.9595,
+              "sum_resistance_ohm": 643.3388699999999,
               "incident_capacitor_count": 12,
-              "incident_capacitance_ff": 0.41606
+              "incident_capacitance_ff": 0.45080000000000003
             },
             "installed": {
               "resistor_count": 6,
@@ -1788,8 +1788,8 @@
         "internal": {
           "generated": {
             "nets": 2,
-            "sum_resistance_ohm": 1596.618,
-            "incident_capacitance_ff": 0.25573
+            "sum_resistance_ohm": 709.288,
+            "incident_capacitance_ff": 0.33756
           },
           "installed": {
             "nets": 2,
@@ -1810,104 +1810,104 @@
             "pin": "A1",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.193268,
+              "generated_ns": 0.193168,
               "installed_ns": 0.195118,
-              "difference_percent": -0.948,
-              "median_difference_percent": -1.394
+              "difference_percent": -1.0,
+              "median_difference_percent": -1.39
             },
             "rise_transition": {
-              "generated_ns": 0.158878,
+              "generated_ns": 0.156565,
               "installed_ns": 0.158842,
-              "difference_percent": 0.022,
-              "median_difference_percent": -0.087
+              "difference_percent": -1.434,
+              "median_difference_percent": -1.533
             },
             "cell_fall": {
-              "generated_ns": 0.098798,
+              "generated_ns": 0.097589,
               "installed_ns": 0.10080900000000001,
-              "difference_percent": -1.995,
-              "median_difference_percent": -2.408
+              "difference_percent": -3.195,
+              "median_difference_percent": -3.489
             },
             "fall_transition": {
-              "generated_ns": 0.072793,
+              "generated_ns": 0.070315,
               "installed_ns": 0.072077,
-              "difference_percent": 0.993,
-              "median_difference_percent": 0.163
+              "difference_percent": -2.444,
+              "median_difference_percent": -3.223
             }
           },
           {
             "pin": "A2",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.222955,
+              "generated_ns": 0.212047,
               "installed_ns": 0.213496,
-              "difference_percent": 4.431,
-              "median_difference_percent": 4.329
+              "difference_percent": -0.679,
+              "median_difference_percent": -1.051
             },
             "rise_transition": {
-              "generated_ns": 0.192974,
+              "generated_ns": 0.175984,
               "installed_ns": 0.177934,
-              "difference_percent": 8.453,
-              "median_difference_percent": 8.127
+              "difference_percent": -1.096,
+              "median_difference_percent": -1.13
             },
             "cell_fall": {
-              "generated_ns": 0.101891,
+              "generated_ns": 0.100038,
               "installed_ns": 0.103127,
-              "difference_percent": -1.199,
-              "median_difference_percent": -1.549
+              "difference_percent": -2.995,
+              "median_difference_percent": -3.181
             },
             "fall_transition": {
-              "generated_ns": 0.069753,
+              "generated_ns": 0.067048,
               "installed_ns": 0.0692697,
-              "difference_percent": 0.697,
-              "median_difference_percent": 0.27
+              "difference_percent": -3.208,
+              "median_difference_percent": -3.223
             }
           },
           {
             "pin": "B1",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.201101,
+              "generated_ns": 0.189364,
               "installed_ns": 0.191327,
-              "difference_percent": 5.108,
-              "median_difference_percent": 4.905
+              "difference_percent": -1.026,
+              "median_difference_percent": -1.45
             },
             "rise_transition": {
-              "generated_ns": 0.192509,
+              "generated_ns": 0.175609,
               "installed_ns": 0.17763099999999998,
-              "difference_percent": 8.376,
-              "median_difference_percent": 8.165
+              "difference_percent": -1.138,
+              "median_difference_percent": -1.138
             },
             "cell_fall": {
-              "generated_ns": 0.073264,
+              "generated_ns": 0.073304,
               "installed_ns": 0.07547699999999999,
-              "difference_percent": -2.932,
-              "median_difference_percent": -2.932
+              "difference_percent": -2.878,
+              "median_difference_percent": -2.784
             },
             "fall_transition": {
-              "generated_ns": 0.05607,
+              "generated_ns": 0.056147,
               "installed_ns": 0.0569565,
-              "difference_percent": -1.557,
-              "median_difference_percent": -1.516
+              "difference_percent": -1.421,
+              "median_difference_percent": -1.417
             }
           }
         ],
         "input_capacitance": {
           "A1": {
-            "generated_pf": 0.0021318361111111114,
+            "generated_pf": 0.0021519666666666667,
             "installed_pf": 0.002334633333333333
           },
           "A2": {
-            "generated_pf": 0.0022125,
+            "generated_pf": 0.0022202416666666667,
             "installed_pf": 0.002298763888888889
           },
           "B1": {
-            "generated_pf": 0.0021999249999999997,
+            "generated_pf": 0.0022708,
             "installed_pf": 0.0024168416666666666
           }
         },
         "same_indices": false,
         "points_outside_generated_index": 0,
-        "median_difference_percent": 0.111,
+        "median_difference_percent": -1.958,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__a21oi_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd\\a21oi_1.json"
       }
@@ -2259,12 +2259,12 @@
           "diff": 1.1055,
           "poly": 0.4161,
           "npc": 0.5106,
-          "li1": 0.9992,
+          "li1": 1.4503,
           "met1": 1.3248,
-          "licon": 0.1445,
+          "licon": 0.289,
           "mcon": 0.1734
         },
-        "diffusion_licon_count": 4,
+        "diffusion_licon_count": 9,
         "poly_licon_count": 1,
         "npc_connected_regions": 1,
         "li1_connected_regions": 4
@@ -2372,7 +2372,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 6,
-              "incident_capacitance_ff": 0.27219000000000004
+              "incident_capacitance_ff": 0.29489000000000004
             },
             "installed": {
               "resistor_count": 3,
@@ -2384,9 +2384,9 @@
           "VGND": {
             "generated": {
               "resistor_count": 3,
-              "sum_resistance_ohm": 298.36611,
+              "sum_resistance_ohm": 165.30911000000003,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.41698
+              "incident_capacitance_ff": 0.45954000000000006
             },
             "installed": {
               "resistor_count": 1,
@@ -2400,7 +2400,7 @@
               "resistor_count": 1,
               "sum_resistance_ohm": 1600.0,
               "incident_capacitor_count": 15,
-              "incident_capacitance_ff": 1.5130099999999997
+              "incident_capacitance_ff": 1.69912
             },
             "installed": {
               "resistor_count": 1,
@@ -2414,7 +2414,7 @@
               "resistor_count": 1,
               "sum_resistance_ohm": 348.154,
               "incident_capacitor_count": 6,
-              "incident_capacitance_ff": 0.60087
+              "incident_capacitance_ff": 0.6117700000000001
             },
             "installed": {
               "resistor_count": 1,
@@ -2426,9 +2426,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 3,
-              "sum_resistance_ohm": 899.2141,
+              "sum_resistance_ohm": 280.4951,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.46749999999999997
+              "incident_capacitance_ff": 0.5930000000000001
             },
             "installed": {
               "resistor_count": 1,
@@ -2440,9 +2440,9 @@
           "Y": {
             "generated": {
               "resistor_count": 5,
-              "sum_resistance_ohm": 1115.515833,
+              "sum_resistance_ohm": 525.422833,
               "incident_capacitor_count": 9,
-              "incident_capacitance_ff": 0.28907000000000005
+              "incident_capacitance_ff": 0.43298000000000003
             },
             "installed": {
               "resistor_count": 4,
@@ -2477,40 +2477,40 @@
             "pin": "A",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.133625,
+              "generated_ns": 0.122792,
               "installed_ns": 0.123046,
-              "difference_percent": 8.598,
-              "median_difference_percent": 7.028
+              "difference_percent": -0.207,
+              "median_difference_percent": -0.683
             },
             "rise_transition": {
-              "generated_ns": 0.110663,
+              "generated_ns": 0.093857,
               "installed_ns": 0.0935739,
-              "difference_percent": 18.262,
-              "median_difference_percent": 13.031
+              "difference_percent": 0.303,
+              "median_difference_percent": -0.512
             },
             "cell_fall": {
-              "generated_ns": 0.090311,
+              "generated_ns": 0.088574,
               "installed_ns": 0.0892332,
-              "difference_percent": 1.208,
-              "median_difference_percent": 0.669
+              "difference_percent": -0.739,
+              "median_difference_percent": -1.09
             },
             "fall_transition": {
-              "generated_ns": 0.06254,
+              "generated_ns": 0.061143,
               "installed_ns": 0.061111099999999995,
-              "difference_percent": 2.338,
-              "median_difference_percent": 0.811
+              "difference_percent": 0.051,
+              "median_difference_percent": -0.721
             }
           }
         ],
         "input_capacitance": {
           "A": {
-            "generated_pf": 0.0022347777777777774,
+            "generated_pf": 0.0022958944444444445,
             "installed_pf": 0.0023669999999999997
           }
         },
         "same_indices": false,
         "points_outside_generated_index": 28,
-        "median_difference_percent": 3.314,
+        "median_difference_percent": -0.754,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__inv_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd\\inv_1.json"
       }
@@ -3195,12 +3195,12 @@
           "diff": 6.369,
           "poly": 2.556,
           "npc": 1.702,
-          "li1": 4.3757,
+          "li1": 5.5431,
           "met1": 4.416,
-          "licon": 0.578,
+          "licon": 0.9248,
           "mcon": 0.578
         },
-        "diffusion_licon_count": 14,
+        "diffusion_licon_count": 26,
         "poly_licon_count": 6,
         "npc_connected_regions": 1,
         "li1_connected_regions": 9
@@ -3334,13 +3334,13 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.23975
+              "incident_capacitance_ff": 0.24721
             },
             "installed": {
               "resistor_count": 3,
               "sum_resistance_ohm": 773.736,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.6672399999999999
+              "incident_capacitance_ff": 0.66724
             }
           },
           "A1": {
@@ -3348,7 +3348,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 5,
-              "incident_capacitance_ff": 0.23349000000000003
+              "incident_capacitance_ff": 0.24639
             },
             "installed": {
               "resistor_count": 3,
@@ -3362,7 +3362,7 @@
               "resistor_count": 7,
               "sum_resistance_ohm": 1263.1395,
               "incident_capacitor_count": 9,
-              "incident_capacitance_ff": 0.6386000000000002
+              "incident_capacitance_ff": 0.65099
             },
             "installed": {
               "resistor_count": 6,
@@ -3374,9 +3374,9 @@
           "VGND": {
             "generated": {
               "resistor_count": 28,
-              "sum_resistance_ohm": 1377.490918500001,
+              "sum_resistance_ohm": 1111.3809185000011,
               "incident_capacitor_count": 27,
-              "incident_capacitance_ff": 1.2524400000000004
+              "incident_capacitance_ff": 1.3274299999999997
             },
             "installed": {
               "resistor_count": 25,
@@ -3390,7 +3390,7 @@
               "resistor_count": 6,
               "sum_resistance_ohm": 11049.84,
               "incident_capacitor_count": 70,
-              "incident_capacitance_ff": 5.504090000000001
+              "incident_capacitance_ff": 5.966759999999998
             },
             "installed": {
               "resistor_count": 6,
@@ -3404,7 +3404,7 @@
               "resistor_count": 6,
               "sum_resistance_ohm": 2296.575,
               "incident_capacitor_count": 13,
-              "incident_capacitance_ff": 1.6904299999999999
+              "incident_capacitance_ff": 1.6947299999999996
             },
             "installed": {
               "resistor_count": 6,
@@ -3416,9 +3416,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 11,
-              "sum_resistance_ohm": 1657.2354894999999,
+              "sum_resistance_ohm": 752.2784895000002,
               "incident_capacitor_count": 15,
-              "incident_capacitance_ff": 1.3227900000000001
+              "incident_capacitance_ff": 1.4485400000000002
             },
             "installed": {
               "resistor_count": 7,
@@ -3432,7 +3432,7 @@
               "resistor_count": 6,
               "sum_resistance_ohm": 1036.5531999999998,
               "incident_capacitor_count": 12,
-              "incident_capacitance_ff": 0.44966
+              "incident_capacitance_ff": 0.4588800000000001
             },
             "installed": {
               "resistor_count": 10,
@@ -3445,8 +3445,8 @@
         "internal": {
           "generated": {
             "nets": 5,
-            "sum_resistance_ohm": 5289.349,
-            "incident_capacitance_ff": 1.04077
+            "sum_resistance_ohm": 3138.012,
+            "incident_capacitance_ff": 1.28261
           },
           "installed": {
             "nets": 6,
@@ -3467,132 +3467,132 @@
             "pin": "A0",
             "sense": "positive_unate",
             "cell_rise": {
-              "generated_ns": 0.284109,
+              "generated_ns": 0.275675,
               "installed_ns": 0.19194999999999998,
-              "difference_percent": 48.012,
-              "median_difference_percent": 32.683
+              "difference_percent": 43.618,
+              "median_difference_percent": 28.986
             },
             "rise_transition": {
-              "generated_ns": 0.25147,
+              "generated_ns": 0.242654,
               "installed_ns": 0.10567299999999999,
-              "difference_percent": 137.97,
-              "median_difference_percent": 130.905
+              "difference_percent": 129.627,
+              "median_difference_percent": 122.573
             },
             "cell_fall": {
-              "generated_ns": 0.201986,
+              "generated_ns": 0.200494,
               "installed_ns": 0.343067,
-              "difference_percent": -41.123,
-              "median_difference_percent": -37.828
+              "difference_percent": -41.558,
+              "median_difference_percent": -37.83
             },
             "fall_transition": {
-              "generated_ns": 0.071838,
+              "generated_ns": 0.070932,
               "installed_ns": 0.0851984,
-              "difference_percent": -15.682,
-              "median_difference_percent": -12.921
+              "difference_percent": -16.745,
+              "median_difference_percent": -13.946
             }
           },
           {
             "pin": "A1",
             "sense": "positive_unate",
             "cell_rise": {
-              "generated_ns": 0.28553,
+              "generated_ns": 0.263402,
               "installed_ns": 0.190959,
-              "difference_percent": 49.524,
-              "median_difference_percent": 33.743
+              "difference_percent": 37.936,
+              "median_difference_percent": 23.925
             },
             "rise_transition": {
-              "generated_ns": 0.290336,
+              "generated_ns": 0.262318,
               "installed_ns": 0.10435799999999999,
-              "difference_percent": 178.211,
-              "median_difference_percent": 164.905
+              "difference_percent": 151.364,
+              "median_difference_percent": 139.364
             },
             "cell_fall": {
-              "generated_ns": 0.164487,
+              "generated_ns": 0.15828,
               "installed_ns": 0.345107,
-              "difference_percent": -52.337,
-              "median_difference_percent": -54.688
+              "difference_percent": -54.136,
+              "median_difference_percent": -56.201
             },
             "fall_transition": {
-              "generated_ns": 0.079862,
+              "generated_ns": 0.079517,
               "installed_ns": 0.0855114,
-              "difference_percent": -6.606,
-              "median_difference_percent": -20.754
+              "difference_percent": -7.01,
+              "median_difference_percent": -21.552
             }
           },
           {
             "pin": "S",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.240645,
+              "generated_ns": 0.23429,
               "installed_ns": 0.265098,
-              "difference_percent": -9.224,
-              "median_difference_percent": -8.657
+              "difference_percent": -11.622,
+              "median_difference_percent": -11.273
             },
             "rise_transition": {
-              "generated_ns": 0.251377,
+              "generated_ns": 0.242553,
               "installed_ns": 0.104148,
-              "difference_percent": 141.365,
-              "median_difference_percent": 141.009
+              "difference_percent": 132.893,
+              "median_difference_percent": 132.506
             },
             "cell_fall": {
-              "generated_ns": 0.106911,
+              "generated_ns": 0.10684,
               "installed_ns": 0.369041,
-              "difference_percent": -71.03,
-              "median_difference_percent": -74.753
+              "difference_percent": -71.049,
+              "median_difference_percent": -74.726
             },
             "fall_transition": {
-              "generated_ns": 0.084627,
+              "generated_ns": 0.084733,
               "installed_ns": 0.0854985,
-              "difference_percent": -1.019,
-              "median_difference_percent": 36.967
+              "difference_percent": -0.895,
+              "median_difference_percent": 37.112
             }
           },
           {
             "pin": "S",
             "sense": "positive_unate",
             "cell_rise": {
-              "generated_ns": 0.309647,
+              "generated_ns": 0.289409,
               "installed_ns": 0.19196400000000002,
-              "difference_percent": 61.304,
-              "median_difference_percent": 46.532
+              "difference_percent": 50.762,
+              "median_difference_percent": 38.241
             },
             "rise_transition": {
-              "generated_ns": 0.290307,
+              "generated_ns": 0.262281,
               "installed_ns": 0.104417,
-              "difference_percent": 178.026,
-              "median_difference_percent": 161.562
+              "difference_percent": 151.186,
+              "median_difference_percent": 136.372
             },
             "cell_fall": {
-              "generated_ns": 0.223096,
+              "generated_ns": 0.220374,
               "installed_ns": 0.35884099999999997,
-              "difference_percent": -37.829,
-              "median_difference_percent": -32.17
+              "difference_percent": -38.587,
+              "median_difference_percent": -32.76
             },
             "fall_transition": {
-              "generated_ns": 0.073401,
+              "generated_ns": 0.072295,
               "installed_ns": 0.08521619999999999,
-              "difference_percent": -13.865,
-              "median_difference_percent": -9.682
+              "difference_percent": -15.163,
+              "median_difference_percent": -10.948
             }
           }
         ],
         "input_capacitance": {
           "A0": {
-            "generated_pf": 0.0022177222222222225,
+            "generated_pf": 0.0022272083333333336,
             "installed_pf": 0.001625475
           },
           "A1": {
-            "generated_pf": 0.002352766666666667,
+            "generated_pf": 0.0023946111111111112,
             "installed_pf": 0.0017119388888888888
           },
           "S": {
-            "generated_pf": 0.004346102777777777,
+            "generated_pf": 0.004368869444444444,
             "installed_pf": 0.0034352805555555553
           }
         },
         "same_indices": false,
         "points_outside_generated_index": 112,
-        "median_difference_percent": -1.023,
+        "median_difference_percent": -3.164,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__mux2_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd_reference\\mux2_1.json"
       }
@@ -4037,12 +4037,12 @@
           "diff": 1.7985,
           "poly": 0.8883,
           "npc": 0.5106,
-          "li1": 1.1871,
+          "li1": 1.7882,
           "met1": 1.3248,
-          "licon": 0.2023,
+          "licon": 0.4046,
           "mcon": 0.1734
         },
-        "diffusion_licon_count": 5,
+        "diffusion_licon_count": 12,
         "poly_licon_count": 2,
         "npc_connected_regions": 1,
         "li1_connected_regions": 5
@@ -4158,7 +4158,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 543.114,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.34615999999999997
+              "incident_capacitance_ff": 0.36008
             },
             "installed": {
               "resistor_count": 3,
@@ -4172,7 +4172,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.27676
+              "incident_capacitance_ff": 0.30027
             },
             "installed": {
               "resistor_count": 3,
@@ -4184,9 +4184,9 @@
           "VGND": {
             "generated": {
               "resistor_count": 3,
-              "sum_resistance_ohm": 303.867501,
+              "sum_resistance_ohm": 170.813501,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.44883
+              "incident_capacitance_ff": 0.5015799999999999
             },
             "installed": {
               "resistor_count": 1,
@@ -4200,7 +4200,7 @@
               "resistor_count": 2,
               "sum_resistance_ohm": 2164.4049999999997,
               "incident_capacitor_count": 25,
-              "incident_capacitance_ff": 1.88514
+              "incident_capacitance_ff": 2.15484
             },
             "installed": {
               "resistor_count": 2,
@@ -4214,7 +4214,7 @@
               "resistor_count": 2,
               "sum_resistance_ohm": 449.845,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.6183099999999999
+              "incident_capacitance_ff": 0.6200100000000002
             },
             "installed": {
               "resistor_count": 2,
@@ -4226,9 +4226,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 9,
-              "sum_resistance_ohm": 1818.2938984999998,
+              "sum_resistance_ohm": 670.9498984999999,
               "incident_capacitor_count": 12,
-              "incident_capacitance_ff": 0.5441499999999999
+              "incident_capacitance_ff": 0.73503
             },
             "installed": {
               "resistor_count": 3,
@@ -4240,9 +4240,9 @@
           "Y": {
             "generated": {
               "resistor_count": 5,
-              "sum_resistance_ohm": 927.6765,
+              "sum_resistance_ohm": 457.22784,
               "incident_capacitor_count": 11,
-              "incident_capacitance_ff": 0.42271000000000003
+              "incident_capacitance_ff": 0.63438
             },
             "installed": {
               "resistor_count": 7,
@@ -4256,7 +4256,7 @@
           "generated": {
             "nets": 1,
             "sum_resistance_ohm": 49.847,
-            "incident_capacitance_ff": 0.04566
+            "incident_capacitance_ff": 0.05207
           },
           "installed": {
             "nets": 1,
@@ -4277,72 +4277,72 @@
             "pin": "A",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.141108,
+              "generated_ns": 0.132261,
               "installed_ns": 0.131243,
-              "difference_percent": 7.517,
-              "median_difference_percent": 7.462
+              "difference_percent": 0.776,
+              "median_difference_percent": 0.716
             },
             "rise_transition": {
-              "generated_ns": 0.114358,
+              "generated_ns": 0.101309,
               "installed_ns": 0.099877,
-              "difference_percent": 14.499,
-              "median_difference_percent": 12.044
+              "difference_percent": 1.434,
+              "median_difference_percent": 0.914
             },
             "cell_fall": {
-              "generated_ns": 0.107706,
+              "generated_ns": 0.106598,
               "installed_ns": 0.107201,
-              "difference_percent": 0.471,
-              "median_difference_percent": 0.471
+              "difference_percent": -0.562,
+              "median_difference_percent": -0.725
             },
             "fall_transition": {
-              "generated_ns": 0.084039,
+              "generated_ns": 0.082362,
               "installed_ns": 0.08312109999999999,
-              "difference_percent": 1.104,
-              "median_difference_percent": 1.052
+              "difference_percent": -0.913,
+              "median_difference_percent": -0.904
             }
           },
           {
             "pin": "B",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.150938,
+              "generated_ns": 0.138939,
               "installed_ns": 0.139274,
-              "difference_percent": 8.375,
-              "median_difference_percent": 8.802
+              "difference_percent": -0.241,
+              "median_difference_percent": -0.279
             },
             "rise_transition": {
-              "generated_ns": 0.122072,
+              "generated_ns": 0.10542,
               "installed_ns": 0.105827,
-              "difference_percent": 15.351,
-              "median_difference_percent": 13.259
+              "difference_percent": -0.385,
+              "median_difference_percent": -0.385
             },
             "cell_fall": {
-              "generated_ns": 0.109373,
+              "generated_ns": 0.107732,
               "installed_ns": 0.10834400000000001,
-              "difference_percent": 0.95,
-              "median_difference_percent": 0.95
+              "difference_percent": -0.565,
+              "median_difference_percent": -0.711
             },
             "fall_transition": {
-              "generated_ns": 0.081522,
+              "generated_ns": 0.079677,
               "installed_ns": 0.08049529999999999,
-              "difference_percent": 1.275,
-              "median_difference_percent": 1.275
+              "difference_percent": -1.016,
+              "median_difference_percent": -0.702
             }
           }
         ],
         "input_capacitance": {
           "A": {
-            "generated_pf": 0.002237752777777778,
+            "generated_pf": 0.002278672222222222,
             "installed_pf": 0.0022975416666666665
           },
           "B": {
-            "generated_pf": 0.00221835,
+            "generated_pf": 0.0022736138888888886,
             "installed_pf": 0.002369886111111111
           }
         },
         "same_indices": true,
         "points_outside_generated_index": 0,
-        "median_difference_percent": 3.224,
+        "median_difference_percent": -0.404,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__nand2_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd\\nand2_1.json"
       }
@@ -4833,12 +4833,12 @@
           "diff": 2.5575,
           "poly": 1.3044,
           "npc": 0.6808,
-          "li1": 1.6588,
+          "li1": 2.31,
           "met1": 1.7664,
-          "licon": 0.2601,
+          "licon": 0.4624,
           "mcon": 0.2312
         },
-        "diffusion_licon_count": 6,
+        "diffusion_licon_count": 13,
         "poly_licon_count": 3,
         "npc_connected_regions": 1,
         "li1_connected_regions": 6
@@ -4962,7 +4962,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.29602000000000006
+              "incident_capacitance_ff": 0.30786
             },
             "installed": {
               "resistor_count": 3,
@@ -4976,13 +4976,13 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.31282
+              "incident_capacitance_ff": 0.32487
             },
             "installed": {
               "resistor_count": 3,
               "sum_resistance_ohm": 565.517,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.41522
+              "incident_capacitance_ff": 0.41522000000000003
             }
           },
           "C": {
@@ -4990,7 +4990,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 543.114,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.3347
+              "incident_capacitance_ff": 0.34640000000000004
             },
             "installed": {
               "resistor_count": 3,
@@ -5004,13 +5004,13 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 304.34375900000003,
               "incident_capacitor_count": 9,
-              "incident_capacitance_ff": 0.5665
+              "incident_capacitance_ff": 0.57933
             },
             "installed": {
               "resistor_count": 1,
               "sum_resistance_ohm": 282.123,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.6833200000000001
+              "incident_capacitance_ff": 0.68332
             }
           },
           "VNB": {
@@ -5018,7 +5018,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 3474.4349999999995,
               "incident_capacitor_count": 34,
-              "incident_capacitance_ff": 2.5795799999999995
+              "incident_capacitance_ff": 2.86197
             },
             "installed": {
               "resistor_count": 3,
@@ -5032,7 +5032,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 722.119,
               "incident_capacitor_count": 10,
-              "incident_capacitance_ff": 0.7904800000000001
+              "incident_capacitance_ff": 0.7856299999999999
             },
             "installed": {
               "resistor_count": 3,
@@ -5044,9 +5044,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 10,
-              "sum_resistance_ohm": 1604.2272134999998,
+              "sum_resistance_ohm": 789.3702135000001,
               "incident_capacitor_count": 15,
-              "incident_capacitance_ff": 0.72451
+              "incident_capacitance_ff": 0.91266
             },
             "installed": {
               "resistor_count": 5,
@@ -5057,10 +5057,10 @@
           },
           "Y": {
             "generated": {
-              "resistor_count": 8,
-              "sum_resistance_ohm": 1896.18853,
+              "resistor_count": 7,
+              "sum_resistance_ohm": 805.9814499999999,
               "incident_capacitor_count": 14,
-              "incident_capacitance_ff": 0.6938500000000001
+              "incident_capacitance_ff": 0.9843600000000001
             },
             "installed": {
               "resistor_count": 6,
@@ -5074,7 +5074,7 @@
           "generated": {
             "nets": 2,
             "sum_resistance_ohm": 107.078,
-            "incident_capacitance_ff": 0.10658
+            "incident_capacitance_ff": 0.11292
           },
           "installed": {
             "nets": 2,
@@ -5095,104 +5095,104 @@
             "pin": "A",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.142023,
+              "generated_ns": 0.137421,
               "installed_ns": 0.139217,
-              "difference_percent": 2.015,
-              "median_difference_percent": 0.759
+              "difference_percent": -1.29,
+              "median_difference_percent": -1.446
             },
             "rise_transition": {
-              "generated_ns": 0.116275,
+              "generated_ns": 0.107473,
               "installed_ns": 0.109143,
-              "difference_percent": 6.535,
-              "median_difference_percent": 4.7
+              "difference_percent": -1.53,
+              "median_difference_percent": -1.53
             },
             "cell_fall": {
-              "generated_ns": 0.126185,
+              "generated_ns": 0.128249,
               "installed_ns": 0.12994,
-              "difference_percent": -2.889,
-              "median_difference_percent": -3.525
+              "difference_percent": -1.301,
+              "median_difference_percent": -1.668
             },
             "fall_transition": {
-              "generated_ns": 0.111086,
+              "generated_ns": 0.113142,
               "installed_ns": 0.114971,
-              "difference_percent": -3.38,
-              "median_difference_percent": -3.38
+              "difference_percent": -1.591,
+              "median_difference_percent": -1.591
             }
           },
           {
             "pin": "B",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.158819,
+              "generated_ns": 0.153769,
               "installed_ns": 0.155892,
-              "difference_percent": 1.878,
-              "median_difference_percent": 0.958
+              "difference_percent": -1.362,
+              "median_difference_percent": -1.362
             },
             "rise_transition": {
-              "generated_ns": 0.128395,
+              "generated_ns": 0.120559,
               "installed_ns": 0.12269500000000001,
-              "difference_percent": 4.646,
-              "median_difference_percent": 3.767
+              "difference_percent": -1.741,
+              "median_difference_percent": -1.67
             },
             "cell_fall": {
-              "generated_ns": 0.132147,
+              "generated_ns": 0.134232,
               "installed_ns": 0.13654100000000002,
-              "difference_percent": -3.218,
-              "median_difference_percent": -3.77
+              "difference_percent": -1.691,
+              "median_difference_percent": -1.929
             },
             "fall_transition": {
-              "generated_ns": 0.110472,
+              "generated_ns": 0.112614,
               "installed_ns": 0.114659,
-              "difference_percent": -3.652,
-              "median_difference_percent": -3.262
+              "difference_percent": -1.784,
+              "median_difference_percent": -1.535
             }
           },
           {
             "pin": "C",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.165226,
+              "generated_ns": 0.153992,
               "installed_ns": 0.15312900000000002,
-              "difference_percent": 7.9,
-              "median_difference_percent": 8.036
+              "difference_percent": 0.564,
+              "median_difference_percent": 0.069
             },
             "rise_transition": {
-              "generated_ns": 0.13592,
+              "generated_ns": 0.120391,
               "installed_ns": 0.11917599999999999,
-              "difference_percent": 14.05,
-              "median_difference_percent": 10.645
+              "difference_percent": 1.02,
+              "median_difference_percent": 0.84
             },
             "cell_fall": {
-              "generated_ns": 0.134501,
+              "generated_ns": 0.13644,
               "installed_ns": 0.137887,
-              "difference_percent": -2.456,
-              "median_difference_percent": -2.848
+              "difference_percent": -1.049,
+              "median_difference_percent": -1.252
             },
             "fall_transition": {
-              "generated_ns": 0.109673,
+              "generated_ns": 0.111875,
               "installed_ns": 0.114067,
-              "difference_percent": -3.852,
-              "median_difference_percent": -3.291
+              "difference_percent": -1.922,
+              "median_difference_percent": -1.587
             }
           }
         ],
         "input_capacitance": {
           "A": {
-            "generated_pf": 0.002150225,
+            "generated_pf": 0.002172763888888889,
             "installed_pf": 0.002252469444444445
           },
           "B": {
-            "generated_pf": 0.002212713888888889,
+            "generated_pf": 0.002235575,
             "installed_pf": 0.002335211111111111
           },
           "C": {
-            "generated_pf": 0.0022714083333333335,
+            "generated_pf": 0.002302475,
             "installed_pf": 0.002373138888888889
           }
         },
         "same_indices": false,
         "points_outside_generated_index": 0,
-        "median_difference_percent": -0.594,
+        "median_difference_percent": -1.187,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__nand3_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd\\nand3_1.json"
       }
@@ -5607,12 +5607,12 @@
           "diff": 1.7985,
           "poly": 0.8883,
           "npc": 0.5106,
-          "li1": 1.2385,
+          "li1": 1.6318,
           "met1": 1.3248,
-          "licon": 0.2023,
+          "licon": 0.3179,
           "mcon": 0.1734
         },
-        "diffusion_licon_count": 5,
+        "diffusion_licon_count": 9,
         "poly_licon_count": 2,
         "npc_connected_regions": 1,
         "li1_connected_regions": 5
@@ -5728,7 +5728,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 543.114,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.33635000000000004
+              "incident_capacitance_ff": 0.34693
             },
             "installed": {
               "resistor_count": 3,
@@ -5742,7 +5742,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.29166000000000003
+              "incident_capacitance_ff": 0.30638000000000004
             },
             "installed": {
               "resistor_count": 3,
@@ -5754,9 +5754,9 @@
           "VGND": {
             "generated": {
               "resistor_count": 5,
-              "sum_resistance_ohm": 582.03619,
+              "sum_resistance_ohm": 448.98118999999997,
               "incident_capacitor_count": 10,
-              "incident_capacitance_ff": 0.4870900000000001
+              "incident_capacitance_ff": 0.5325900000000001
             },
             "installed": {
               "resistor_count": 3,
@@ -5770,7 +5770,7 @@
               "resistor_count": 2,
               "sum_resistance_ohm": 2164.4049999999997,
               "incident_capacitor_count": 24,
-              "incident_capacitance_ff": 1.8956500000000003
+              "incident_capacitance_ff": 2.0485100000000003
             },
             "installed": {
               "resistor_count": 2,
@@ -5784,7 +5784,7 @@
               "resistor_count": 2,
               "sum_resistance_ohm": 449.845,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.6137000000000001
+              "incident_capacitance_ff": 0.6202400000000001
             },
             "installed": {
               "resistor_count": 2,
@@ -5796,9 +5796,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 4,
-              "sum_resistance_ohm": 892.9195800000001,
+              "sum_resistance_ohm": 364.2955799999999,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.49259000000000003
+              "incident_capacitance_ff": 0.55371
             },
             "installed": {
               "resistor_count": 1,
@@ -5810,9 +5810,9 @@
           "Y": {
             "generated": {
               "resistor_count": 7,
-              "sum_resistance_ohm": 1173.4081640000002,
+              "sum_resistance_ohm": 559.4761639999999,
               "incident_capacitor_count": 12,
-              "incident_capacitance_ff": 0.42115
+              "incident_capacitance_ff": 0.5352
             },
             "installed": {
               "resistor_count": 7,
@@ -5826,7 +5826,7 @@
           "generated": {
             "nets": 1,
             "sum_resistance_ohm": 53.191,
-            "incident_capacitance_ff": 0.06533
+            "incident_capacitance_ff": 0.07496
           },
           "installed": {
             "nets": 1,
@@ -5847,72 +5847,72 @@
             "pin": "A",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.18578,
+              "generated_ns": 0.176667,
               "installed_ns": 0.17442100000000002,
-              "difference_percent": 6.512,
-              "median_difference_percent": 6.512
+              "difference_percent": 1.288,
+              "median_difference_percent": 1.016
             },
             "rise_transition": {
-              "generated_ns": 0.161871,
+              "generated_ns": 0.14946,
               "installed_ns": 0.147191,
-              "difference_percent": 9.973,
-              "median_difference_percent": 8.941
+              "difference_percent": 1.541,
+              "median_difference_percent": 1.152
             },
             "cell_fall": {
-              "generated_ns": 0.082874,
+              "generated_ns": 0.083446,
               "installed_ns": 0.0828271,
-              "difference_percent": 0.057,
-              "median_difference_percent": -0.221
+              "difference_percent": 0.748,
+              "median_difference_percent": 1.153
             },
             "fall_transition": {
-              "generated_ns": 0.0551,
+              "generated_ns": 0.055142,
               "installed_ns": 0.0540635,
-              "difference_percent": 1.916,
-              "median_difference_percent": 3.333
+              "difference_percent": 1.994,
+              "median_difference_percent": 2.866
             }
           },
           {
             "pin": "B",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.169463,
+              "generated_ns": 0.162716,
               "installed_ns": 0.162071,
-              "difference_percent": 4.561,
-              "median_difference_percent": 3.098
+              "difference_percent": 0.398,
+              "median_difference_percent": -0.488
             },
             "rise_transition": {
-              "generated_ns": 0.162282,
+              "generated_ns": 0.150035,
               "installed_ns": 0.147066,
-              "difference_percent": 10.346,
-              "median_difference_percent": 8.425
+              "difference_percent": 2.019,
+              "median_difference_percent": 1.133
             },
             "cell_fall": {
-              "generated_ns": 0.075665,
+              "generated_ns": 0.07428,
               "installed_ns": 0.0762736,
-              "difference_percent": -0.798,
-              "median_difference_percent": -0.987
+              "difference_percent": -2.614,
+              "median_difference_percent": -2.58
             },
             "fall_transition": {
-              "generated_ns": 0.051955,
+              "generated_ns": 0.050881,
               "installed_ns": 0.051837299999999996,
-              "difference_percent": 0.226,
-              "median_difference_percent": 0.226
+              "difference_percent": -1.845,
+              "median_difference_percent": -1.55
             }
           }
         ],
         "input_capacitance": {
           "A": {
-            "generated_pf": 0.0022806805555555558,
+            "generated_pf": 0.0023047666666666665,
             "installed_pf": 0.002407188888888889
           },
           "B": {
-            "generated_pf": 0.0021761694444444443,
+            "generated_pf": 0.002208161111111111,
             "installed_pf": 0.0023410111111111112
           }
         },
         "same_indices": false,
         "points_outside_generated_index": 0,
-        "median_difference_percent": 3.193,
+        "median_difference_percent": 0.193,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__nor2_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd\\nor2_1.json"
       }
@@ -6403,12 +6403,12 @@
           "diff": 2.5575,
           "poly": 1.3044,
           "npc": 0.6808,
-          "li1": 1.721,
+          "li1": 2.0021,
           "met1": 1.7664,
-          "licon": 0.2601,
+          "licon": 0.3468,
           "mcon": 0.2312
         },
-        "diffusion_licon_count": 6,
+        "diffusion_licon_count": 9,
         "poly_licon_count": 3,
         "npc_connected_regions": 1,
         "li1_connected_regions": 6
@@ -6532,7 +6532,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 543.114,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.33410000000000006
+              "incident_capacitance_ff": 0.3417800000000001
             },
             "installed": {
               "resistor_count": 3,
@@ -6546,7 +6546,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.3105200000000001
+              "incident_capacitance_ff": 0.31711000000000006
             },
             "installed": {
               "resistor_count": 3,
@@ -6560,7 +6560,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.29394000000000003
+              "incident_capacitance_ff": 0.30168
             },
             "installed": {
               "resistor_count": 3,
@@ -6574,7 +6574,7 @@
               "resistor_count": 7,
               "sum_resistance_ohm": 547.8779829999999,
               "incident_capacitor_count": 13,
-              "incident_capacitance_ff": 0.6609200000000001
+              "incident_capacitance_ff": 0.6601000000000002
             },
             "installed": {
               "resistor_count": 5,
@@ -6588,7 +6588,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 3474.4349999999995,
               "incident_capacitor_count": 33,
-              "incident_capacitance_ff": 2.587620000000001
+              "incident_capacitance_ff": 2.7177599999999997
             },
             "installed": {
               "resistor_count": 3,
@@ -6602,7 +6602,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 722.119,
               "incident_capacitor_count": 10,
-              "incident_capacitance_ff": 0.78469
+              "incident_capacitance_ff": 0.7927700000000001
             },
             "installed": {
               "resistor_count": 3,
@@ -6614,9 +6614,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 4,
-              "sum_resistance_ohm": 892.9172299999999,
+              "sum_resistance_ohm": 364.29323,
               "incident_capacitor_count": 9,
-              "incident_capacitance_ff": 0.6108
+              "incident_capacitance_ff": 0.67224
             },
             "installed": {
               "resistor_count": 1,
@@ -6628,9 +6628,9 @@
           "Y": {
             "generated": {
               "resistor_count": 9,
-              "sum_resistance_ohm": 1493.354771,
+              "sum_resistance_ohm": 883.248771,
               "incident_capacitor_count": 15,
-              "incident_capacitance_ff": 0.67554
+              "incident_capacitance_ff": 0.7758300000000001
             },
             "installed": {
               "resistor_count": 7,
@@ -6644,7 +6644,7 @@
           "generated": {
             "nets": 2,
             "sum_resistance_ohm": 114.261,
-            "incident_capacitance_ff": 0.14669
+            "incident_capacitance_ff": 0.16225
           },
           "installed": {
             "nets": 2,
@@ -6665,104 +6665,104 @@
             "pin": "A",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.385104,
+              "generated_ns": 0.368984,
               "installed_ns": 0.373421,
-              "difference_percent": 3.129,
-              "median_difference_percent": 1.649
+              "difference_percent": -1.188,
+              "median_difference_percent": -1.956
             },
             "rise_transition": {
-              "generated_ns": 0.400164,
+              "generated_ns": 0.378589,
               "installed_ns": 0.384849,
-              "difference_percent": 3.98,
-              "median_difference_percent": 1.948
+              "difference_percent": -1.627,
+              "median_difference_percent": -3.167
             },
             "cell_fall": {
-              "generated_ns": 0.106076,
+              "generated_ns": 0.1066,
               "installed_ns": 0.108668,
-              "difference_percent": -2.385,
-              "median_difference_percent": -4.611
+              "difference_percent": -1.903,
+              "median_difference_percent": -3.554
             },
             "fall_transition": {
-              "generated_ns": 0.077191,
+              "generated_ns": 0.077035,
               "installed_ns": 0.07849600000000001,
-              "difference_percent": -1.663,
-              "median_difference_percent": -2.269
+              "difference_percent": -1.861,
+              "median_difference_percent": -2.637
             }
           },
           {
             "pin": "B",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.372142,
+              "generated_ns": 0.358297,
               "installed_ns": 0.364176,
-              "difference_percent": 2.187,
-              "median_difference_percent": 0.313
+              "difference_percent": -1.614,
+              "median_difference_percent": -2.533
             },
             "rise_transition": {
-              "generated_ns": 0.400165,
+              "generated_ns": 0.37859,
               "installed_ns": 0.384849,
-              "difference_percent": 3.98,
-              "median_difference_percent": 1.947
+              "difference_percent": -1.626,
+              "median_difference_percent": -3.014
             },
             "cell_fall": {
-              "generated_ns": 0.099833,
+              "generated_ns": 0.100282,
               "installed_ns": 0.10271,
-              "difference_percent": -2.801,
-              "median_difference_percent": -5.221
+              "difference_percent": -2.364,
+              "median_difference_percent": -4.223
             },
             "fall_transition": {
-              "generated_ns": 0.070971,
+              "generated_ns": 0.071018,
               "installed_ns": 0.07218690000000001,
-              "difference_percent": -1.685,
-              "median_difference_percent": -2.701
+              "difference_percent": -1.619,
+              "median_difference_percent": -2.757
             }
           },
           {
             "pin": "C",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.334663,
+              "generated_ns": 0.323331,
               "installed_ns": 0.329199,
-              "difference_percent": 1.66,
-              "median_difference_percent": -0.764
+              "difference_percent": -1.783,
+              "median_difference_percent": -2.995
             },
             "rise_transition": {
-              "generated_ns": 0.400086,
+              "generated_ns": 0.378531,
               "installed_ns": 0.384835,
-              "difference_percent": 3.963,
-              "median_difference_percent": 1.368
+              "difference_percent": -1.638,
+              "median_difference_percent": -3.219
             },
             "cell_fall": {
-              "generated_ns": 0.096174,
+              "generated_ns": 0.096638,
               "installed_ns": 0.09896630000000001,
-              "difference_percent": -2.821,
-              "median_difference_percent": -5.153
+              "difference_percent": -2.353,
+              "median_difference_percent": -4.351
             },
             "fall_transition": {
-              "generated_ns": 0.069401,
+              "generated_ns": 0.069692,
               "installed_ns": 0.0707202,
-              "difference_percent": -1.865,
-              "median_difference_percent": -3.654
+              "difference_percent": -1.454,
+              "median_difference_percent": -2.787
             }
           }
         ],
         "input_capacitance": {
           "A": {
-            "generated_pf": 0.002272497222222222,
+            "generated_pf": 0.002290638888888889,
             "installed_pf": 0.0024604444444444444
           },
           "B": {
-            "generated_pf": 0.002199416666666667,
+            "generated_pf": 0.0022119,
             "installed_pf": 0.0023869388888888886
           },
           "C": {
-            "generated_pf": 0.0021466999999999997,
+            "generated_pf": 0.002157833333333333,
             "installed_pf": 0.0022367694444444444
           }
         },
         "same_indices": false,
         "points_outside_generated_index": 0,
-        "median_difference_percent": -2.18,
+        "median_difference_percent": -2.903,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__nor3_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd_reference\\nor3_1.json"
       }
@@ -7313,12 +7313,12 @@
           "diff": 2.4435,
           "poly": 1.2483,
           "npc": 0.851,
-          "li1": 1.856,
+          "li1": 2.1858,
           "met1": 2.208,
-          "licon": 0.289,
+          "licon": 0.4335,
           "mcon": 0.289
         },
-        "diffusion_licon_count": 7,
+        "diffusion_licon_count": 12,
         "poly_licon_count": 3,
         "npc_connected_regions": 1,
         "li1_connected_regions": 7
@@ -7442,7 +7442,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.26357
+              "incident_capacitance_ff": 0.27589
             },
             "installed": {
               "resistor_count": 3,
@@ -7456,7 +7456,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 565.876,
               "incident_capacitor_count": 8,
-              "incident_capacitance_ff": 0.26994
+              "incident_capacitance_ff": 0.27813
             },
             "installed": {
               "resistor_count": 5,
@@ -7470,7 +7470,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 614.076,
               "incident_capacitor_count": 7,
-              "incident_capacitance_ff": 0.3597700000000001
+              "incident_capacitance_ff": 0.37321000000000004
             },
             "installed": {
               "resistor_count": 3,
@@ -7484,7 +7484,7 @@
               "resistor_count": 5,
               "sum_resistance_ohm": 268.96688,
               "incident_capacitor_count": 11,
-              "incident_capacitance_ff": 0.6521
+              "incident_capacitance_ff": 0.6682800000000001
             },
             "installed": {
               "resistor_count": 3,
@@ -7498,7 +7498,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 4072.5,
               "incident_capacitor_count": 35,
-              "incident_capacitance_ff": 2.92177
+              "incident_capacitance_ff": 3.114090000000002
             },
             "installed": {
               "resistor_count": 3,
@@ -7512,7 +7512,7 @@
               "resistor_count": 3,
               "sum_resistance_ohm": 846.4189999999999,
               "incident_capacitor_count": 10,
-              "incident_capacitance_ff": 1.0305300000000002
+              "incident_capacitance_ff": 1.0480800000000001
             },
             "installed": {
               "resistor_count": 3,
@@ -7524,9 +7524,9 @@
           "VPWR": {
             "generated": {
               "resistor_count": 8,
-              "sum_resistance_ohm": 1709.5805535000002,
+              "sum_resistance_ohm": 687.2915535000001,
               "incident_capacitor_count": 13,
-              "incident_capacitance_ff": 0.78997
+              "incident_capacitance_ff": 0.94465
             },
             "installed": {
               "resistor_count": 3,
@@ -7537,10 +7537,10 @@
           },
           "Y": {
             "generated": {
-              "resistor_count": 7,
-              "sum_resistance_ohm": 1012.301833,
+              "resistor_count": 8,
+              "sum_resistance_ohm": 1044.35807,
               "incident_capacitor_count": 13,
-              "incident_capacitance_ff": 0.4751699999999999
+              "incident_capacitance_ff": 0.5909500000000001
             },
             "installed": {
               "resistor_count": 9,
@@ -7554,7 +7554,7 @@
           "generated": {
             "nets": 2,
             "sum_resistance_ohm": 574.545,
-            "incident_capacitance_ff": 0.25956
+            "incident_capacitance_ff": 0.27368
           },
           "installed": {
             "nets": 2,
@@ -7575,120 +7575,133 @@
             "pin": "A1",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.220952,
+              "generated_ns": 0.20818,
               "installed_ns": 0.207356,
-              "difference_percent": 6.557,
-              "median_difference_percent": 6.764
+              "difference_percent": 0.398,
+              "median_difference_percent": 0.363
             },
             "rise_transition": {
-              "generated_ns": 0.189312,
+              "generated_ns": 0.174816,
               "installed_ns": 0.174557,
-              "difference_percent": 8.453,
-              "median_difference_percent": 7.968
+              "difference_percent": 0.149,
+              "median_difference_percent": 0.135
             },
             "cell_fall": {
-              "generated_ns": 0.107178,
+              "generated_ns": 0.107732,
               "installed_ns": 0.108782,
-              "difference_percent": -1.475,
-              "median_difference_percent": -1.807
+              "difference_percent": -0.965,
+              "median_difference_percent": -0.946
             },
             "fall_transition": {
-              "generated_ns": 0.073962,
+              "generated_ns": 0.074228,
               "installed_ns": 0.0750497,
-              "difference_percent": -1.449,
-              "median_difference_percent": -1.588
+              "difference_percent": -1.095,
+              "median_difference_percent": -1.399
             }
           },
           {
             "pin": "A2",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.205778,
+              "generated_ns": 0.195928,
               "installed_ns": 0.197112,
-              "difference_percent": 4.397,
-              "median_difference_percent": 3.66
+              "difference_percent": -0.601,
+              "median_difference_percent": -0.604
             },
             "rise_transition": {
-              "generated_ns": 0.189048,
+              "generated_ns": 0.174668,
               "installed_ns": 0.174533,
-              "difference_percent": 8.317,
-              "median_difference_percent": 7.926
+              "difference_percent": 0.077,
+              "median_difference_percent": 0.077
             },
             "cell_fall": {
-              "generated_ns": 0.093178,
+              "generated_ns": 0.093758,
               "installed_ns": 0.09550539999999999,
-              "difference_percent": -2.437,
-              "median_difference_percent": -2.933
+              "difference_percent": -1.83,
+              "median_difference_percent": -1.869
             },
             "fall_transition": {
-              "generated_ns": 0.061617,
+              "generated_ns": 0.062029,
               "installed_ns": 0.06231199999999999,
-              "difference_percent": -1.115,
-              "median_difference_percent": -1.703
+              "difference_percent": -0.454,
+              "median_difference_percent": -1.21
             }
           },
           {
             "pin": "B1",
             "sense": "negative_unate",
             "cell_rise": {
-              "generated_ns": 0.14333,
+              "generated_ns": 0.138342,
               "installed_ns": 0.138439,
-              "difference_percent": 3.533,
-              "median_difference_percent": 3.49
+              "difference_percent": -0.07,
+              "median_difference_percent": -0.429
             },
             "rise_transition": {
-              "generated_ns": 0.135005,
+              "generated_ns": 0.126166,
               "installed_ns": 0.124469,
-              "difference_percent": 8.465,
-              "median_difference_percent": 6.691
+              "difference_percent": 1.363,
+              "median_difference_percent": 0.268
             },
             "cell_fall": {
-              "generated_ns": 0.10388,
+              "generated_ns": 0.104592,
               "installed_ns": 0.105999,
-              "difference_percent": -1.999,
-              "median_difference_percent": -2.736
+              "difference_percent": -1.328,
+              "median_difference_percent": -1.329
             },
             "fall_transition": {
-              "generated_ns": 0.077231,
+              "generated_ns": 0.077418,
               "installed_ns": 0.0779092,
-              "difference_percent": -0.871,
-              "median_difference_percent": -1.845
+              "difference_percent": -0.631,
+              "median_difference_percent": -1.587
             }
           }
         ],
         "input_capacitance": {
           "A1": {
-            "generated_pf": 0.0022093250000000003,
+            "generated_pf": 0.0022360333333333333,
             "installed_pf": 0.0023008777777777777
           },
           "A2": {
-            "generated_pf": 0.002132125,
+            "generated_pf": 0.002147686111111111,
             "installed_pf": 0.0024267694444444444
           },
           "B1": {
-            "generated_pf": 0.001960233333333333,
+            "generated_pf": 0.0019837805555555556,
             "installed_pf": 0.002105075
           }
         },
         "same_indices": false,
         "points_outside_generated_index": 0,
-        "median_difference_percent": -0.009,
+        "median_difference_percent": -0.781,
         "generated_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\cells\\dd2_g5__o21ai_1\\characterized.json",
         "installed_report": "C:\\Users\\youss\\Downloads\\DD2_Project_1\\results\\characterization\\hd\\o21ai_1.json"
       }
     }
   },
   "skipped_no_hd_reference": [
+    "dd2_g5__a21o_opt_1",
+    "dd2_g5__a21oi_stack_1",
     "dd2_g5__a22oi_1",
+    "dd2_g5__a22oi_stack_1",
     "dd2_g5__and2_1",
+    "dd2_g5__and2_opt_1",
     "dd2_g5__f14_1",
     "dd2_g5__f15_1",
     "dd2_g5__maj3_1",
+    "dd2_g5__maj3_opt_1",
     "dd2_g5__maj4_1",
+    "dd2_g5__maj4_opt_1",
     "dd2_g5__maj4n_1",
+    "dd2_g5__mux2_opt_1",
+    "dd2_g5__nand2_stack_1",
+    "dd2_g5__nand3_stack_1",
+    "dd2_g5__nor2_stack_1",
     "dd2_g5__nor3_stack_1",
+    "dd2_g5__nor4_stack_1",
+    "dd2_g5__o21ai_stack_1",
     "dd2_g5__o22ai_1",
     "dd2_g5__xor2_1",
+    "dd2_g5__xor2_opt_1",
     "dd2_g5__xor3_1"
   ],
   "timing_measured": [

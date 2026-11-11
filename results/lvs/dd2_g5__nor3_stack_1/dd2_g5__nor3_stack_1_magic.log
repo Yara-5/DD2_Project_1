@@ -20,9 +20,9 @@ CIF file read warning: Input off lambda grid by 1/2; grid redefined.
 DRC style is now "drc(full)"
 Loading DRC CIF style.
 DRC_COUNT 5
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 958 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{57 297 109 497} {139 297 193 497} {223 297 277 497} {307 297 361 497} {391 297 445 497} {475 297 529 497} {559 297 613 497} {643 297 697 497} {727 297 781 497} {811 297 863 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{225 47 277 177} {307 47 361 177} {391 47 613 177} {643 47 695 177}}
 The selected label is already a port.
 Do "port help" to get a list of options.
-DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 1418 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{71 297 123 497} {153 297 263 497} {293 297 399 497} {429 297 539 497} {569 297 675 497} {705 297 815 497} {845 297 951 497} {981 297 1091 497} {1121 297 1227 497} {1257 297 1309 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{71 47 123 177} {153 47 263 177} {293 47 399 177} {429 47 481 177}}
 The selected label is already a port.
 Do "port help" to get a list of options.
 The selected label is already a port.
@@ -44,15 +44,15 @@ exttospice finished.
 Extracting dd2_g5__nor3_stack_1 into dd2_g5__nor3_stack_1.ext:
 Processing dd2_g5__nor3_stack_1
 Processing cell dd2_g5__nor3_stack_1 for resistance extraction.
-Extracting a_153_297#
-Extracting a_293_297#
+Extracting a_139_297#
+Extracting a_391_297#
 Extracting VNB
 Extracting VPB
 Extracting A
 Extracting B
 Extracting C
-Extracting Y
 Extracting VPWR
+Extracting Y
 Extracting VGND
 Total Nets: 10
 Nets extracted: 10 (1.000000)

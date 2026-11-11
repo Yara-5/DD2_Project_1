@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "reason": null,
+  "request": {
+    "request_id": "STACK-A22OI",
+    "name": "dd2_g5__a22oi_stack_1",
+    "inputs": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "output": "Y",
+    "expression": "!((A & B) | (C & D))",
+    "sizing": "stack",
+    "truth_table": "0x0777",
+    "truth_table_value": 1911,
+    "recognized": null,
+    "supported_by_prototype": false
+  }
+}

@@ -30,14 +30,14 @@
       "yosys_command": "read_verilog design.v; synth -flatten -top rt_top; dfflibmap -liberty library.lib; abc -liberty library.lib -script abc_B.script; opt_clean -purge; tee -o stat_B.txt stat -liberty library.lib; write_verilog -noattr mapped_B.v",
       "yosys_exit": 0,
       "cells": {
-        "sky130_fd_sc_hd__xnor2_1": 2
+        "dd2_g5__xor3_1": 1
       },
       "area_um2": 17.5168,
-      "uses_our_cell": false,
+      "uses_our_cell": true,
       "cec": "equivalent",
       "cec_output": "Networks are equivalent.  Time =     0.01 sec",
       "passed": true
     }
   },
-  "our_cell_used": false
+  "our_cell_used": true
 }

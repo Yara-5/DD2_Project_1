@@ -202,7 +202,7 @@
   "dimensions": {
     "gate_length_um": 0.15,
     "gate_pitches_um": [
-      0.48,
+      0.46,
       0.42
     ],
     "gate_gaps": [
@@ -211,12 +211,13 @@
           0,
           1
         ],
-        "pitch_um": 0.48,
-        "binding": "poly_pad_spacing",
+        "pitch_um": 0.46,
+        "binding": "li1_track_through_band",
         "lower_bounds_um": {
           "diffusion_contact_between_gates": 0.42,
-          "poly_pad_spacing": 0.48,
-          "gate_li1_spacing": 0.34
+          "poly_pad_spacing": 0.42,
+          "gate_li1_spacing": 0.11,
+          "li1_track_through_band": 0.46
         }
       },
       {
@@ -238,10 +239,16 @@
       "diffusion_contact_between_gates": 0.42000000000000004
     },
     "gate_contact_offset_um": [
-      0.0,
+      -0.23,
       0.0,
       0.06
     ],
+    "gate_has_contact": [
+      true,
+      true,
+      true
+    ],
+    "poly_bar_runs": [],
     "li1_landing_um": [
       0.17,
       0.33
@@ -269,9 +276,8 @@
     },
     "left_edge_lower_bounds_um": {
       "diffusion_margin": 0.47,
-      "poly_pad_to_edge": 0.24,
-      "gate_li1_to_edge": 0.17,
-      "li1_track_through_band": 0.52
+      "poly_pad_to_edge": 0.47,
+      "gate_li1_to_edge": 0.4
     },
     "right_edge_lower_bounds_um": {
       "diffusion_margin": 0.47,
@@ -282,68 +288,68 @@
     "channels": [
       [
         0,
-        0
+        1
       ]
     ],
     "crossing_gaps": [
-      0
+      1
     ],
     "diffusion_segments": 1,
     "active_x_um": [
       [
-        0.385,
-        1.955
+        0.145,
+        1.695
       ]
     ],
-    "centering_shift_um": 0.2,
+    "centering_shift_um": 0.01,
     "gate_x_um": [
-      0.72,
-      1.2,
-      1.62
+      0.48,
+      0.94,
+      1.36
     ],
     "diffusion_node_x_um": [
       [
-        0.51,
-        0.96,
-        1.41,
-        1.83
+        0.27,
+        0.71,
+        1.15,
+        1.57
       ]
     ],
     "row_active_x_um": {
       "nmos": [
         [
-          0.385,
-          1.955
+          0.145,
+          1.695
         ]
       ],
       "pmos": [
         [
-          0.385,
-          1.955
+          0.145,
+          1.695
         ]
       ]
     },
     "row_node_x_um": {
       "nmos": [
         [
-          0.51,
-          0.96,
-          1.41,
-          1.83
+          0.27,
+          0.71,
+          1.15,
+          1.57
         ]
       ],
       "pmos": [
         [
-          0.51,
-          0.96,
-          1.41,
-          1.83
+          0.27,
+          0.71,
+          1.15,
+          1.57
         ]
       ]
     },
-    "raw_width_um": 1.89,
-    "minimum_width_sites": 5,
-    "width_sites": 5,
+    "raw_width_um": 1.82,
+    "minimum_width_sites": 4,
+    "width_sites": 4,
     "formulas": {
       "pitch": "per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, gate li1 spacing li.3, li1 track at a channel), 2 routing steps)",
       "gate_contact_offset": "chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe",
@@ -354,7 +360,7 @@
       "side_margin": "max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half",
       "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
     },
-    "cell_width_um": 2.3,
+    "cell_width_um": 1.84,
     "cell_height_um": 2.72,
     "routing_retries": [
       {
@@ -363,57 +369,22 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
-        "reason": "No li1 route found for Y at this width"
+        "router": "fixed",
+        "pin_access": null,
+        "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
       },
       {
         "placement": 0,
-        "channels": [
-          [
-            0,
-            1
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for Y at this width"
-      },
-      {
-        "placement": 0,
-        "channels": [
-          [
-            0,
-            2
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for Y at this width"
-      },
-      {
-        "placement": 1,
         "channels": [],
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
-        "reason": "No li1 route found for Y at this width"
+        "router": "negotiated",
+        "pin_access": null,
+        "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
       },
       {
-        "placement": 1,
-        "channels": [
-          [
-            0,
-            2
-          ]
-        ],
-        "met1": false,
-        "extra_sites": 0,
-        "rip_up": false,
-        "reason": "No li1 route found for Y at this width"
-      },
-      {
-        "placement": 1,
+        "placement": 0,
         "channels": [
           [
             0,
@@ -423,6 +394,23 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
         "reason": "No li1 route found for Y at this width"
       }
     ],
@@ -496,6 +484,15 @@
           "kind": "drc",
           "rule": "psd.5a",
           "message": "N-Diffusion to P-tap spacing"
+        }
+      },
+      "licon_space": {
+        "value": 0.17,
+        "source": "licon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.2",
+          "message": "Diffusion contact spacing"
         }
       },
       "licon_size": {
@@ -696,8 +693,8 @@
     "frame_sha256": "d22bd12109df202fa34c590c2402030e2b38952a6962b806499f2ed3aa2a11df"
   },
   "geometry": {
-    "width_um": 2.3,
-    "width_sites": 5,
+    "width_um": 1.84,
+    "width_sites": 4,
     "height_um": 2.72,
     "shapes": [
       {
@@ -705,7 +702,7 @@
         "box": [
           0.0,
           0.0,
-          2.3,
+          1.84,
           2.72
         ],
         "net": null,
@@ -719,7 +716,7 @@
         "box": [
           0.0,
           0.0,
-          2.3,
+          1.84,
           2.72
         ],
         "net": null,
@@ -733,7 +730,7 @@
         "box": [
           -0.19,
           1.305,
-          2.49,
+          2.03,
           2.91
         ],
         "net": null,
@@ -747,7 +744,7 @@
         "box": [
           0.0,
           -0.19,
-          2.3,
+          1.84,
           1.015
         ],
         "net": null,
@@ -761,7 +758,7 @@
         "box": [
           0.0,
           1.355,
-          2.3,
+          1.84,
           2.91
         ],
         "net": null,
@@ -775,7 +772,7 @@
         "box": [
           0.0,
           1.25,
-          2.3,
+          1.84,
           2.72
         ],
         "net": null,
@@ -789,7 +786,7 @@
         "box": [
           0.0,
           0.975,
-          2.3,
+          1.84,
           1.345
         ],
         "net": null,
@@ -803,7 +800,7 @@
         "box": [
           0.0,
           -0.24,
-          2.3,
+          1.84,
           0.24
         ],
         "net": "VGND",
@@ -869,25 +866,11 @@
         ]
       },
       {
-        "layer": "mcon",
-        "box": [
-          1.985,
-          -0.085,
-          2.155,
-          0.085
-        ],
-        "net": "VGND",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
         "layer": "met1",
         "box": [
           0.0,
           2.48,
-          2.3,
+          1.84,
           2.96
         ],
         "net": "VPWR",
@@ -953,25 +936,11 @@
         ]
       },
       {
-        "layer": "mcon",
-        "box": [
-          1.985,
-          2.635,
-          2.155,
-          2.805
-        ],
-        "net": "VPWR",
-        "gds": [
-          67,
-          44
-        ]
-      },
-      {
         "layer": "diff",
         "box": [
-          0.385,
+          0.145,
           0.235,
-          1.2,
+          0.94,
           0.885
         ],
         "net": null,
@@ -983,9 +952,9 @@
       {
         "layer": "diff",
         "box": [
-          0.72,
+          0.48,
           0.235,
-          1.62,
+          1.36,
           0.885
         ],
         "net": null,
@@ -997,9 +966,9 @@
       {
         "layer": "diff",
         "box": [
-          1.2,
+          0.94,
           0.235,
-          1.955,
+          1.695,
           0.885
         ],
         "net": null,
@@ -1011,37 +980,9 @@
       {
         "layer": "licon",
         "box": [
-          0.425,
+          0.185,
           0.295,
-          0.595,
-          0.465
-        ],
-        "net": "VGND",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          0.875,
-          0.575,
-          1.045,
-          0.745
-        ],
-        "net": "Y",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          1.745,
-          0.295,
-          1.915,
+          0.355,
           0.465
         ],
         "net": "VGND",
@@ -1053,9 +994,9 @@
       {
         "layer": "diff",
         "box": [
-          0.385,
+          0.145,
           1.485,
-          1.2,
+          0.94,
           2.485
         ],
         "net": null,
@@ -1067,9 +1008,9 @@
       {
         "layer": "diff",
         "box": [
-          0.72,
+          0.48,
           1.485,
-          1.62,
+          1.36,
           2.485
         ],
         "net": null,
@@ -1081,9 +1022,9 @@
       {
         "layer": "diff",
         "box": [
-          1.2,
+          0.94,
           1.485,
-          1.955,
+          1.695,
           2.485
         ],
         "net": null,
@@ -1095,37 +1036,9 @@
       {
         "layer": "licon",
         "box": [
-          0.425,
-          1.575,
-          0.595,
-          1.745
-        ],
-        "net": "Y",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          0.875,
-          1.575,
-          1.045,
-          1.745
-        ],
-        "net": "Y_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          1.325,
+          1.065,
           2.255,
-          1.495,
+          1.235,
           2.425
         ],
         "net": "VPWR",
@@ -1135,25 +1048,11 @@
         ]
       },
       {
-        "layer": "licon",
-        "box": [
-          1.745,
-          1.575,
-          1.915,
-          1.745
-        ],
-        "net": "Y_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
         "layer": "poly",
         "box": [
-          0.645,
+          0.405,
           0.105,
-          0.795,
+          0.555,
           2.615
         ],
         "net": "B1",
@@ -1165,9 +1064,9 @@
       {
         "layer": "poly",
         "box": [
-          0.585,
+          0.115,
           0.995,
-          0.855,
+          0.555,
           1.325
         ],
         "net": "B1",
@@ -1179,51 +1078,51 @@
       {
         "layer": "licon",
         "box": [
-          0.635,
+          0.165,
           1.075,
+          0.335,
+          1.245
+        ],
+        "net": "B1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.175,
+          1.085,
+          0.325,
+          1.235
+        ],
+        "net": "B1",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.865,
+          0.105,
+          1.015,
+          2.615
+        ],
+        "net": "A1",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
           0.805,
-          1.245
-        ],
-        "net": "B1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          0.645,
-          1.085,
-          0.795,
-          1.235
-        ],
-        "net": "B1",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          1.125,
-          0.105,
-          1.275,
-          2.615
-        ],
-        "net": "A1",
-        "gds": [
-          66,
-          20
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          1.065,
           0.995,
-          1.335,
+          1.075,
           1.325
         ],
         "net": "A1",
@@ -1235,37 +1134,37 @@
       {
         "layer": "licon",
         "box": [
-          1.115,
+          0.855,
           1.075,
+          1.025,
+          1.245
+        ],
+        "net": "A1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.865,
+          1.085,
+          1.015,
+          1.235
+        ],
+        "net": "A1",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
           1.285,
-          1.245
-        ],
-        "net": "A1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          1.125,
-          1.085,
-          1.275,
-          1.235
-        ],
-        "net": "A1",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "poly",
-        "box": [
-          1.545,
           0.105,
-          1.695,
+          1.435,
           2.615
         ],
         "net": "A2",
@@ -1277,9 +1176,9 @@
       {
         "layer": "poly",
         "box": [
-          1.545,
+          1.285,
           0.995,
-          1.815,
+          1.555,
           1.325
         ],
         "net": "A2",
@@ -1291,9 +1190,9 @@
       {
         "layer": "licon",
         "box": [
-          1.595,
+          1.335,
           1.075,
-          1.765,
+          1.505,
           1.245
         ],
         "net": "A2",
@@ -1305,26 +1204,12 @@
       {
         "layer": "li1_pin",
         "box": [
-          1.605,
+          1.345,
           1.085,
-          1.755,
+          1.495,
           1.235
         ],
         "net": "A2",
-        "gds": [
-          67,
-          16
-        ]
-      },
-      {
-        "layer": "li1_pin",
-        "box": [
-          0.885,
-          0.585,
-          1.035,
-          0.735
-        ],
-        "net": "Y",
         "gds": [
           67,
           16
@@ -1415,12 +1300,166 @@
         ]
       },
       {
+        "layer": "licon",
+        "net": "Y",
+        "box": [
+          0.625,
+          0.655,
+          0.795,
+          0.825
+        ],
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "net": "Y",
+        "box": [
+          0.635,
+          0.665,
+          0.785,
+          0.815
+        ],
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.485,
+          0.295,
+          1.655,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.485,
+          0.635,
+          1.655,
+          0.805
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.185,
+          1.575,
+          0.355,
+          1.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.185,
+          1.915,
+          0.355,
+          2.085
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.625,
+          1.895,
+          0.795,
+          2.065
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.625,
+          2.235,
+          0.795,
+          2.405
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.485,
+          1.545,
+          1.655,
+          1.715
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.485,
+          1.885,
+          1.655,
+          2.055
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.485,
+          2.225,
+          1.655,
+          2.395
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
         "layer": "li1",
         "net": "VGND",
         "box": [
           0.0,
           -0.085,
-          2.3,
+          1.84,
           0.085
         ],
         "gds": [
@@ -1432,9 +1471,9 @@
         "layer": "li1",
         "net": "VGND",
         "box": [
-          0.345,
+          0.105,
           0.085,
-          0.675,
+          0.435,
           0.465
         ],
         "gds": [
@@ -1446,10 +1485,10 @@
         "layer": "li1",
         "net": "VGND",
         "box": [
-          1.665,
+          1.405,
           0.085,
-          1.995,
-          0.465
+          1.735,
+          0.805
         ],
         "gds": [
           67,
@@ -1460,9 +1499,9 @@
         "layer": "li1",
         "net": "VPWR",
         "box": [
-          1.325,
+          1.065,
           2.175,
-          1.495,
+          1.235,
           2.635
         ],
         "gds": [
@@ -1476,204 +1515,8 @@
         "box": [
           0.0,
           2.635,
-          2.3,
+          1.84,
           2.805
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.875,
-          0.495,
-          1.045,
-          0.575
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.845,
-          0.575,
-          1.045,
-          0.635
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.425,
-          0.635,
-          1.045,
-          0.655
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.295,
-          0.655,
-          1.045,
-          0.805
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.295,
-          0.805,
-          0.595,
-          0.825
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.875,
-          0.805,
-          1.045,
-          0.825
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.295,
-          0.825,
-          0.465,
-          1.495
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.295,
-          1.495,
-          0.595,
-          1.665
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y",
-        "box": [
-          0.425,
-          1.665,
-          0.595,
-          1.825
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          0.875,
-          1.495,
-          1.045,
-          1.575
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          1.745,
-          1.495,
-          1.915,
-          1.575
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          0.875,
-          1.575,
-          1.915,
-          1.745
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          0.875,
-          1.745,
-          1.045,
-          1.825
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "Y_u1",
-        "box": [
-          1.745,
-          1.745,
-          1.915,
-          1.825
         ],
         "gds": [
           67,
@@ -1684,9 +1527,9 @@
         "layer": "li1",
         "net": "B1",
         "box": [
-          0.635,
+          0.165,
           0.995,
-          0.805,
+          0.335,
           1.325
         ],
         "gds": [
@@ -1698,9 +1541,9 @@
         "layer": "li1",
         "net": "A1",
         "box": [
-          1.115,
+          0.855,
           0.995,
-          1.285,
+          1.025,
           1.325
         ],
         "gds": [
@@ -1712,10 +1555,192 @@
         "layer": "li1",
         "net": "A2",
         "box": [
-          1.595,
+          1.335,
           0.995,
-          1.765,
+          1.505,
           1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.505,
+          0.655,
+          0.875,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.505,
+          0.825,
+          0.675,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.185,
+          1.495,
+          0.675,
+          1.555
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.105,
+          1.555,
+          0.675,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.105,
+          1.665,
+          0.455,
+          1.675
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.105,
+          1.675,
+          0.435,
+          1.725
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          0.185,
+          1.725,
+          0.355,
+          2.165
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.405,
+          1.545,
+          1.735,
+          1.835
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          0.725,
+          1.835,
+          1.735,
+          1.895
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          0.545,
+          1.895,
+          1.735,
+          2.005
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          0.545,
+          2.005,
+          0.895,
+          2.065
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.405,
+          2.005,
+          1.735,
+          2.395
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          0.545,
+          2.065,
+          0.875,
+          2.405
         ],
         "gds": [
           67,
@@ -1726,68 +1751,68 @@
     "terminals": {
       "VGND": [
         [
-          0.51,
+          0.27,
           0.0
         ],
         [
-          1.83,
+          1.57,
           0.0
         ],
         [
-          0.51,
+          0.27,
           0.0
         ],
         [
-          1.83,
+          1.57,
           0.0
-        ]
-      ],
-      "Y": [
-        [
-          0.96,
-          0.66
-        ],
-        [
-          0.51,
-          1.66
-        ]
-      ],
-      "Y_u1": [
-        [
-          0.96,
-          1.66
-        ],
-        [
-          1.83,
-          1.66
         ]
       ],
       "VPWR": [
         [
-          1.41,
+          1.15,
           2.7199999999999998
         ],
         [
-          1.41,
+          1.15,
           2.7199999999999998
         ]
       ],
       "B1": [
         [
-          0.72,
+          0.25,
           1.16
         ]
       ],
       "A1": [
         [
-          1.2,
+          0.94,
           1.16
         ]
       ],
       "A2": [
         [
-          1.68,
+          1.42,
           1.16
+        ]
+      ],
+      "Y": [
+        [
+          0.71,
+          0.74
+        ],
+        [
+          0.27,
+          1.64
+        ]
+      ],
+      "Y_u1": [
+        [
+          0.71,
+          1.98
+        ],
+        [
+          1.57,
+          1.92
         ]
       ]
     },
@@ -1830,15 +1855,6 @@
       },
       {
         "type": "mcon",
-        "net": "VGND",
-        "point_um": [
-          2.0700000000000003,
-          0.0
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
-        "type": "mcon",
         "net": "VPWR",
         "point_um": [
           0.23,
@@ -1874,103 +1890,202 @@
         "source": "instructor frame: one rail contact per site"
       },
       {
-        "type": "mcon",
-        "net": "VPWR",
-        "point_um": [
-          2.0700000000000003,
-          2.7199999999999998
-        ],
-        "source": "instructor frame: one rail contact per site"
-      },
-      {
         "type": "diffusion",
         "net": "VGND",
         "point_um": [
-          0.51,
+          0.27,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
         "net": "Y",
         "point_um": [
-          0.96,
-          0.66
+          0.71,
+          0.74
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "x_um": 0.71,
+        "movable": true,
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          0.545,
+          0.655,
+          0.875,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
         "net": "VGND",
         "point_um": [
-          1.83,
+          1.57,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licon_y_um": [
+          0.38,
+          0.72
+        ],
+        "li1_bar_box": [
+          1.405,
+          0.295,
+          1.735,
+          0.805
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
         "net": "Y",
         "point_um": [
-          0.51,
-          1.66
+          0.27,
+          1.64
         ],
-        "row": "pmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "Y_u1",
-        "point_um": [
-          0.96,
-          1.66
-        ],
-        "row": "pmos"
-      },
-      {
-        "type": "diffusion",
-        "net": "VPWR",
-        "point_um": [
-          1.41,
+        "row": "pmos",
+        "x_um": 0.27,
+        "movable": true,
+        "y_range_um": [
+          1.63,
           2.34
         ],
-        "row": "pmos"
+        "landing_box": [
+          0.105,
+          1.555,
+          0.435,
+          1.725
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0
+        ],
+        "li1_bar_box": [
+          0.185,
+          1.495,
+          0.355,
+          2.165
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
         "net": "Y_u1",
         "point_um": [
-          1.83,
-          1.66
+          0.71,
+          1.98
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "x_um": 0.71,
+        "movable": true,
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          0.545,
+          1.895,
+          0.875,
+          2.065
+        ],
+        "licon_y_um": [
+          1.98,
+          2.32
+        ],
+        "li1_bar_box": [
+          0.545,
+          1.895,
+          0.875,
+          2.405
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "VPWR",
+        "point_um": [
+          1.15,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u1",
+        "point_um": [
+          1.57,
+          1.92
+        ],
+        "row": "pmos",
+        "x_um": 1.57,
+        "movable": true,
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.485,
+          1.755,
+          1.655,
+          2.085
+        ],
+        "licon_y_um": [
+          1.63,
+          1.97,
+          2.31
+        ],
+        "li1_bar_box": [
+          1.405,
+          1.545,
+          1.735,
+          2.395
+        ],
+        "licons": 3
       },
       {
         "type": "poly",
         "net": "B1",
         "point_um": [
-          0.72,
+          0.25,
           1.16
         ],
-        "gate_x_um": 0.72
+        "gate_x_um": 0.48
       },
       {
         "type": "poly",
         "net": "A1",
         "point_um": [
-          1.2,
+          0.94,
           1.16
         ],
-        "gate_x_um": 1.2
+        "gate_x_um": 0.94
       },
       {
         "type": "poly",
         "net": "A2",
         "point_um": [
-          1.68,
+          1.42,
           1.16
         ],
-        "gate_x_um": 1.62
+        "gate_x_um": 1.36
       }
     ],
     "devices": [
@@ -1988,7 +2103,7 @@
         "leaf": 0,
         "stack_depth": 1,
         "fingers": 1,
-        "gate_x_um": 0.72,
+        "gate_x_um": 0.48,
         "diffusion_y_um": [
           0.235,
           0.885
@@ -1998,7 +2113,7 @@
         "right_net": "Y",
         "diffusion_edge_distances_um": {
           "left": 0.26,
-          "right": 1.16
+          "right": 1.14
         }
       },
       {
@@ -2015,7 +2130,7 @@
         "leaf": 1,
         "stack_depth": 2,
         "fingers": 1,
-        "gate_x_um": 1.2,
+        "gate_x_um": 0.94,
         "diffusion_y_um": [
           0.235,
           0.885
@@ -2024,7 +2139,7 @@
         "left_net": "Y",
         "right_net": "Y_d1",
         "diffusion_edge_distances_um": {
-          "left": 0.74,
+          "left": 0.72,
           "right": 0.68
         }
       },
@@ -2042,7 +2157,7 @@
         "leaf": 2,
         "stack_depth": 2,
         "fingers": 1,
-        "gate_x_um": 1.62,
+        "gate_x_um": 1.36,
         "diffusion_y_um": [
           0.235,
           0.885
@@ -2051,7 +2166,7 @@
         "left_net": "Y_d1",
         "right_net": "VGND",
         "diffusion_edge_distances_um": {
-          "left": 1.16,
+          "left": 1.14,
           "right": 0.26
         }
       },
@@ -2069,7 +2184,7 @@
         "leaf": 0,
         "stack_depth": 2,
         "fingers": 1,
-        "gate_x_um": 0.72,
+        "gate_x_um": 0.48,
         "diffusion_y_um": [
           1.485,
           2.485
@@ -2079,7 +2194,7 @@
         "right_net": "Y_u1",
         "diffusion_edge_distances_um": {
           "left": 0.26,
-          "right": 1.16
+          "right": 1.14
         }
       },
       {
@@ -2096,7 +2211,7 @@
         "leaf": 1,
         "stack_depth": 2,
         "fingers": 1,
-        "gate_x_um": 1.2,
+        "gate_x_um": 0.94,
         "diffusion_y_um": [
           1.485,
           2.485
@@ -2105,7 +2220,7 @@
         "left_net": "Y_u1",
         "right_net": "VPWR",
         "diffusion_edge_distances_um": {
-          "left": 0.74,
+          "left": 0.72,
           "right": 0.68
         }
       },
@@ -2123,7 +2238,7 @@
         "leaf": 2,
         "stack_depth": 2,
         "fingers": 1,
-        "gate_x_um": 1.62,
+        "gate_x_um": 1.36,
         "diffusion_y_um": [
           1.485,
           2.485
@@ -2132,14 +2247,14 @@
         "left_net": "VPWR",
         "right_net": "Y_u1",
         "diffusion_edge_distances_um": {
-          "left": 1.16,
+          "left": 1.14,
           "right": 0.26
         }
       }
     ],
     "output_pin_um": [
-      0.96,
-      0.66
+      0.71,
+      0.74
     ],
     "gate_contact_y_um": 1.16,
     "supply_pin_x_um": 0.23,
@@ -2149,40 +2264,36 @@
         "layer": "li1",
         "points_um": [
           [
-            0.96,
-            0.66
-          ],
-          [
-            0.93,
-            0.66
-          ],
-          [
-            0.93,
-            0.72
-          ],
-          [
-            0.51,
-            0.72
-          ],
-          [
-            0.51,
+            0.71,
             0.74
           ],
           [
-            0.38,
+            0.59,
             0.74
           ],
           [
-            0.38,
+            0.59,
             1.58
           ],
           [
-            0.51,
+            0.37,
             1.58
           ],
           [
-            0.51,
-            1.66
+            0.37,
+            1.59
+          ],
+          [
+            0.28,
+            1.59
+          ],
+          [
+            0.28,
+            1.64
+          ],
+          [
+            0.27,
+            1.64
           ]
         ]
       },
@@ -2191,32 +2302,255 @@
         "layer": "li1",
         "points_um": [
           [
-            0.96,
-            1.66
+            0.71,
+            1.98
           ],
           [
-            1.83,
-            1.66
+            0.81,
+            1.98
+          ],
+          [
+            0.81,
+            1.92
+          ],
+          [
+            1.57,
+            1.92
           ]
         ]
       }
     ],
+    "pin_access_mode": "every_pin",
+    "pin_access": [
+      {
+        "net": "B1",
+        "point_um": [
+          0.25,
+          1.16
+        ],
+        "met1_box": [
+          0.105,
+          1.015,
+          0.395,
+          1.305
+        ]
+      },
+      {
+        "net": "A1",
+        "point_um": [
+          0.94,
+          1.16
+        ],
+        "met1_box": [
+          0.795,
+          1.015,
+          1.085,
+          1.305
+        ]
+      },
+      {
+        "net": "A2",
+        "point_um": [
+          1.42,
+          1.16
+        ],
+        "met1_box": [
+          1.275,
+          1.015,
+          1.565,
+          1.305
+        ]
+      },
+      {
+        "net": "Y",
+        "point_um": [
+          0.71,
+          0.74
+        ],
+        "met1_box": [
+          0.565,
+          0.595,
+          0.855,
+          0.885
+        ]
+      }
+    ],
+    "negotiation_trace": [
+      {
+        "present": 0.0,
+        "overlap_points": 81,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 0.5,
+        "overlap_points": 44,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 0.75,
+        "overlap_points": 47,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 1.125,
+        "overlap_points": 62,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 1.688,
+        "overlap_points": 89,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 2.531,
+        "overlap_points": 83,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 3.797,
+        "overlap_points": 85,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 5.695,
+        "overlap_points": 83,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 8.543,
+        "overlap_points": 91,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 12.814,
+        "overlap_points": 83,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 19.222,
+        "overlap_points": 94,
+        "nets": [
+          "Y",
+          "Y_u1"
+        ]
+      },
+      {
+        "present": 28.833,
+        "overlap_points": 0,
+        "nets": []
+      }
+    ],
     "vias": [],
+    "router": "negotiated",
     "routing_order": [
+      "Y",
+      "Y_u1",
       "A1",
       "A2",
-      "B1",
-      "Y",
-      "Y_u1"
+      "B1"
     ],
+    "negotiation_iterations": 12,
+    "parallel_cuts": {
+      "licons_added": 5,
+      "contacts": [
+        {
+          "net": "VGND",
+          "point_um": [
+            0.27,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            0.71,
+            0.74
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            1.57,
+            0.38
+          ],
+          "licons": 2
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            0.27,
+            1.64
+          ],
+          "licons": 2
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            0.71,
+            1.98
+          ],
+          "licons": 2
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            1.15,
+            2.34
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            1.57,
+            1.92
+          ],
+          "licons": 3
+        }
+      ],
+      "mcons_added": 0,
+      "vias": []
+    },
     "li1_notch_fill_added_area_um2": {
       "VGND": 0.0,
       "VPWR": 0.0,
-      "Y": 0.0,
-      "Y_u1": 0.0,
       "B1": 0.0,
       "A1": 0.0,
-      "A2": 0.0
+      "A2": 0.0,
+      "Y": 0.0,
+      "Y_u1": 0.0
     },
     "met1_notch_fill_added_area_um2": {},
     "met1_in_single_stage_cell": false
@@ -2269,7 +2603,7 @@
     {
       "text": "A1",
       "position_um": [
-        1.2,
+        0.94,
         1.16
       ],
       "gds": [
@@ -2280,7 +2614,7 @@
     {
       "text": "A2",
       "position_um": [
-        1.68,
+        1.42,
         1.16
       ],
       "gds": [
@@ -2291,7 +2625,7 @@
     {
       "text": "B1",
       "position_um": [
-        0.72,
+        0.25,
         1.16
       ],
       "gds": [
@@ -2302,8 +2636,8 @@
     {
       "text": "Y",
       "position_um": [
-        0.96,
-        0.66
+        0.71,
+        0.74
       ],
       "gds": [
         67,

@@ -1,0 +1,11 @@
+{
+  "request_id": "STACK-NOR2",
+  "name": "dd2_g5__nor2_stack_1",
+  "inputs": [
+    "A",
+    "B"
+  ],
+  "output": "Y",
+  "expression": "!(A | B)",
+  "sizing": "stack"
+}

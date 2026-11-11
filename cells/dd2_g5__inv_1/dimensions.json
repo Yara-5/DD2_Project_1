@@ -9,6 +9,10 @@
   "gate_contact_offset_um": [
     0.0
   ],
+  "gate_has_contact": [
+    true
+  ],
+  "poly_bar_runs": [],
   "li1_landing_um": [
     0.17,
     0.33
@@ -178,6 +182,15 @@
         "kind": "drc",
         "rule": "psd.5a",
         "message": "N-Diffusion to P-tap spacing"
+      }
+    },
+    "licon_space": {
+      "value": 0.17,
+      "source": "licon.2",
+      "check": {
+        "kind": "drc",
+        "rule": "licon.2",
+        "message": "Diffusion contact spacing"
       }
     },
     "licon_size": {

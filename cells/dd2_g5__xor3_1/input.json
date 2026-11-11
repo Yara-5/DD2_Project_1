@@ -316,6 +316,17 @@
     "nmos": [
       {
         "devices": [
+          "N2",
+          "N1"
+        ],
+        "nodes": [
+          "x1_n1",
+          "x1_n1_d1",
+          "VGND"
+        ]
+      },
+      {
+        "devices": [
           "N3",
           "N4",
           "N5"
@@ -329,17 +340,13 @@
       },
       {
         "devices": [
-          "N2",
-          "N1",
-          "N6",
-          "N7"
+          "N7",
+          "N6"
         ],
         "nodes": [
-          "x1_n1",
-          "x1_n1_d1",
-          "VGND",
+          "n1",
           "n1_d1",
-          "n1"
+          "VGND"
         ]
       },
       {
@@ -359,6 +366,17 @@
     "pmos": [
       {
         "devices": [
+          "P2",
+          "P1"
+        ],
+        "nodes": [
+          "VPWR",
+          "x1_n1",
+          "VPWR"
+        ]
+      },
+      {
+        "devices": [
           "P3",
           "P4",
           "P5"
@@ -372,14 +390,10 @@
       },
       {
         "devices": [
-          "P2",
-          "P1",
-          "P6",
-          "P7"
+          "P7",
+          "P6"
         ],
         "nodes": [
-          "VPWR",
-          "x1_n1",
           "VPWR",
           "n1",
           "VPWR"
@@ -488,6 +502,822 @@
           ]
         }
       ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N2",
+            "N1"
+          ],
+          "nodes": [
+            "x1_n1",
+            "x1_n1_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N3",
+            "N4",
+            "N5"
+          ],
+          "nodes": [
+            "x1_d1",
+            "VGND",
+            "x1_d1",
+            "x1"
+          ]
+        },
+        {
+          "devices": [
+            "N7",
+            "N6"
+          ],
+          "nodes": [
+            "n1",
+            "n1_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N8",
+            "N9",
+            "N10"
+          ],
+          "nodes": [
+            "Y_d1",
+            "VGND",
+            "Y_d1",
+            "Y"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P2",
+            "P1"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_u1",
+            "x1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P7",
+            "P6"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P8",
+            "P9",
+            "P10"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y_u1",
+            "Y",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N10",
+            "N9",
+            "N8"
+          ],
+          "nodes": [
+            "Y",
+            "Y_d1",
+            "VGND",
+            "Y_d1"
+          ]
+        },
+        {
+          "devices": [
+            "N6",
+            "N7"
+          ],
+          "nodes": [
+            "VGND",
+            "n1_d1",
+            "n1"
+          ]
+        },
+        {
+          "devices": [
+            "N5",
+            "N4",
+            "N3"
+          ],
+          "nodes": [
+            "x1",
+            "x1_d1",
+            "VGND",
+            "x1_d1"
+          ]
+        },
+        {
+          "devices": [
+            "N1",
+            "N2"
+          ],
+          "nodes": [
+            "VGND",
+            "x1_n1_d1",
+            "x1_n1"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P10",
+            "P9",
+            "P8"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y",
+            "Y_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P6",
+            "P7"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P5",
+            "P4",
+            "P3"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1",
+            "x1_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P1",
+            "P2"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_n1",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N2",
+            "N1"
+          ],
+          "nodes": [
+            "x1_n1",
+            "x1_n1_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N3",
+            "N4",
+            "N5"
+          ],
+          "nodes": [
+            "x1_d1",
+            "VGND",
+            "x1_d1",
+            "x1"
+          ]
+        },
+        {
+          "devices": [
+            "N10",
+            "N9",
+            "N8"
+          ],
+          "nodes": [
+            "Y",
+            "Y_d1",
+            "VGND",
+            "Y_d1"
+          ]
+        },
+        {
+          "devices": [
+            "N6",
+            "N7"
+          ],
+          "nodes": [
+            "VGND",
+            "n1_d1",
+            "n1"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P2",
+            "P1"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_u1",
+            "x1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P10",
+            "P9",
+            "P8"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y",
+            "Y_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P6",
+            "P7"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N7",
+            "N6"
+          ],
+          "nodes": [
+            "n1",
+            "n1_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N8",
+            "N9",
+            "N10"
+          ],
+          "nodes": [
+            "Y_d1",
+            "VGND",
+            "Y_d1",
+            "Y"
+          ]
+        },
+        {
+          "devices": [
+            "N5",
+            "N4",
+            "N3"
+          ],
+          "nodes": [
+            "x1",
+            "x1_d1",
+            "VGND",
+            "x1_d1"
+          ]
+        },
+        {
+          "devices": [
+            "N1",
+            "N2"
+          ],
+          "nodes": [
+            "VGND",
+            "x1_n1_d1",
+            "x1_n1"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P7",
+            "P6"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P8",
+            "P9",
+            "P10"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y_u1",
+            "Y",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P5",
+            "P4",
+            "P3"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1",
+            "x1_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P1",
+            "P2"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_n1",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N5",
+            "N4",
+            "N3"
+          ],
+          "nodes": [
+            "x1",
+            "x1_d1",
+            "VGND",
+            "x1_d1"
+          ]
+        },
+        {
+          "devices": [
+            "N1",
+            "N2"
+          ],
+          "nodes": [
+            "VGND",
+            "x1_n1_d1",
+            "x1_n1"
+          ]
+        },
+        {
+          "devices": [
+            "N7",
+            "N6"
+          ],
+          "nodes": [
+            "n1",
+            "n1_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N8",
+            "N9",
+            "N10"
+          ],
+          "nodes": [
+            "Y_d1",
+            "VGND",
+            "Y_d1",
+            "Y"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P5",
+            "P4",
+            "P3"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1",
+            "x1_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P1",
+            "P2"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P7",
+            "P6"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P8",
+            "P9",
+            "P10"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y_u1",
+            "Y",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N10",
+            "N9",
+            "N8"
+          ],
+          "nodes": [
+            "Y",
+            "Y_d1",
+            "VGND",
+            "Y_d1"
+          ]
+        },
+        {
+          "devices": [
+            "N6",
+            "N7"
+          ],
+          "nodes": [
+            "VGND",
+            "n1_d1",
+            "n1"
+          ]
+        },
+        {
+          "devices": [
+            "N2",
+            "N1"
+          ],
+          "nodes": [
+            "x1_n1",
+            "x1_n1_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N3",
+            "N4",
+            "N5"
+          ],
+          "nodes": [
+            "x1_d1",
+            "VGND",
+            "x1_d1",
+            "x1"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P10",
+            "P9",
+            "P8"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y",
+            "Y_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P6",
+            "P7"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P2",
+            "P1"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_u1",
+            "x1",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N5",
+            "N4",
+            "N3"
+          ],
+          "nodes": [
+            "x1",
+            "x1_d1",
+            "VGND",
+            "x1_d1"
+          ]
+        },
+        {
+          "devices": [
+            "N1",
+            "N2"
+          ],
+          "nodes": [
+            "VGND",
+            "x1_n1_d1",
+            "x1_n1"
+          ]
+        },
+        {
+          "devices": [
+            "N10",
+            "N9",
+            "N8"
+          ],
+          "nodes": [
+            "Y",
+            "Y_d1",
+            "VGND",
+            "Y_d1"
+          ]
+        },
+        {
+          "devices": [
+            "N6",
+            "N7"
+          ],
+          "nodes": [
+            "VGND",
+            "n1_d1",
+            "n1"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P5",
+            "P4",
+            "P3"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1",
+            "x1_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P1",
+            "P2"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P10",
+            "P9",
+            "P8"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y",
+            "Y_u1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P6",
+            "P7"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1",
+            "VPWR"
+          ]
+        }
+      ]
+    },
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N7",
+            "N6"
+          ],
+          "nodes": [
+            "n1",
+            "n1_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N8",
+            "N9",
+            "N10"
+          ],
+          "nodes": [
+            "Y_d1",
+            "VGND",
+            "Y_d1",
+            "Y"
+          ]
+        },
+        {
+          "devices": [
+            "N2",
+            "N1"
+          ],
+          "nodes": [
+            "x1_n1",
+            "x1_n1_d1",
+            "VGND"
+          ]
+        },
+        {
+          "devices": [
+            "N3",
+            "N4",
+            "N5"
+          ],
+          "nodes": [
+            "x1_d1",
+            "VGND",
+            "x1_d1",
+            "x1"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P7",
+            "P6"
+          ],
+          "nodes": [
+            "VPWR",
+            "n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P8",
+            "P9",
+            "P10"
+          ],
+          "nodes": [
+            "VPWR",
+            "Y_u1",
+            "Y",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P2",
+            "P1"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_n1",
+            "VPWR"
+          ]
+        },
+        {
+          "devices": [
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "nodes": [
+            "VPWR",
+            "x1_u1",
+            "x1",
+            "VPWR"
+          ]
+        }
+      ]
     }
   ],
   "placement": {
@@ -514,5 +1344,5 @@
     "wiring_slots": 61,
     "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
   },
-  "placement_used": 0
+  "placement_used": 2
 }

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>From a Boolean function to an HD cell: the flow</title>
+<style>
+@page { size: A4; margin: 13mm 13mm 12mm 13mm; }
+* { box-sizing: border-box; }
+body { font-family: "Segoe UI", Calibri, Arial, sans-serif; font-size: 8.9pt; line-height: 1.38; color: #1d2329; margin: 0; }
+h1 { font-size: 16pt; margin: 0 0 1mm; color: #0f3d3a; letter-spacing: .2px; }
+.lede { font-size: 9.4pt; color: #3c4a52; margin: 0 0 3mm; }
+.cols { column-count: 2; column-gap: 7mm; }
+h2 { font-size: 10.2pt; color: #0f3d3a; margin: 3.2mm 0 1mm; break-after: avoid; border-bottom: 1px solid #c9dcda; padding-bottom: .6mm; }
+h2 .n { color: #c46a00; margin-right: 1.5mm; }
+p { margin: 0 0 1.6mm; text-align: justify; hyphens: auto; }
+ul { margin: 0 0 1.6mm; padding-left: 4mm; }
+li { margin: 0 0 .7mm; }
+code, .m { font-family: Consolas, "Cascadia Mono", monospace; font-size: 8.2pt; color: #0b4a46; }
+b { color: #0f2f2c; }
+.box { border: 1px solid #c9dcda; background: #f3f8f7; padding: 1.6mm 2.2mm; margin: 1mm 0 2mm; break-inside: avoid; }
+.eq { font-family: Cambria, "Times New Roman", serif; font-size: 9.6pt; text-align: center; margin: 1mm 0 1.4mm; }
+table { border-collapse: collapse; width: 100%; font-size: 8.2pt; margin: 1mm 0 2mm; break-inside: avoid; }
+th, td { border-bottom: 1px solid #dbe6e5; padding: .7mm 1.2mm; text-align: left; vertical-align: top; }
+th { color: #0f3d3a; font-weight: 600; background: #eef5f4; }
+svg text { font-family: "Segoe UI", Arial, sans-serif; }
+.foot { font-size: 7.6pt; color: #66747c; margin-top: 2mm; border-top: 1px solid #dbe6e5; padding-top: 1mm; }
+</style>
+</head>
+<body>
+<h1>From a Boolean function to a sky130 HD cell: the flow</h1>
+<p class="lede">DD2 Project 1, Option 1, group 5. One request (an expression or a truth table, up to four inputs) becomes a
+2.72&nbsp;um, whole-site cell in the instructor's HD frame, with its schematic, extracted netlists, Liberty and Verilog views,
+and a JSON response. Each step is a script in <code>src/</code> run by <code>make</code>; every check writes a JSON report whose
+<code>passed</code> field is the verdict and exits non-zero when it fails or cannot run.</p>
+
+<svg viewBox="0 0 1000 118" width="100%" style="margin:0 0 2mm" role="img" aria-label="Flow diagram">
+  <defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5a8f8a"/></marker></defs>
+  <g font-size="12">
+    <g fill="#e7f2f1" stroke="#5a8f8a">
+      <rect x="2" y="6" width="112" height="44" rx="4"/><rect x="128" y="6" width="112" height="44" rx="4"/><rect x="254" y="6" width="112" height="44" rx="4"/>
+      <rect x="380" y="6" width="112" height="44" rx="4"/><rect x="506" y="6" width="112" height="44" rx="4"/><rect x="632" y="6" width="112" height="44" rx="4"/>
+      <rect x="758" y="6" width="112" height="44" rx="4"/><rect x="884" y="6" width="112" height="44" rx="4"/>
+    </g>
+    <g fill="#fdf0e0" stroke="#c46a00">
+      <rect x="128" y="70" width="176" height="44" rx="4"/><rect x="318" y="70" width="176" height="44" rx="4"/><rect x="508" y="70" width="176" height="44" rx="4"/><rect x="698" y="70" width="176" height="44" rx="4"/>
+    </g>
+    <g fill="#0f3d3a" text-anchor="middle" font-weight="600">
+      <text x="58" y="24">1 Read</text><text x="184" y="24">2 Minimize</text><text x="310" y="24">3 Stages</text><text x="436" y="24">4 Size</text>
+      <text x="562" y="24">5 Order</text><text x="688" y="24">6 Plan, route</text><text x="814" y="24">7 Draw</text><text x="940" y="24">8 Checks</text>
+    </g>
+    <g fill="#4b5b62" text-anchor="middle" font-size="10.5">
+      <text x="58" y="41">truth table</text><text x="184" y="41">Quine-McCluskey</text><text x="310" y="41">factor, cut, DP</text><text x="436" y="41">hd, stack, opt</text>
+      <text x="562" y="41">Euler dual trails</text><text x="688" y="41">DP pitch, A*, PathFinder</text><text x="814" y="41">GDSfactory</text><text x="940" y="41">DRC, LVS, sim</text>
+    </g>
+    <g fill="#7a3f00" text-anchor="middle" font-weight="600">
+      <text x="216" y="88">9 Characterize</text><text x="406" y="88">10 Views, response</text><text x="596" y="88">11 Round trip</text><text x="786" y="88">Broken cases</text>
+    </g>
+    <g fill="#6b5640" text-anchor="middle" font-size="10.5">
+      <text x="216" y="105">ngspice, 7 x 7 tables</text><text x="406" y="105">Liberty, Verilog, JSON</text><text x="596" y="105">Yosys, ABC cec</text><text x="786" y="105">each must be rejected</text>
+    </g>
+    <g stroke="#5a8f8a" stroke-width="1.5" marker-end="url(#a)">
+      <line x1="114" y1="28" x2="126" y2="28"/><line x1="240" y1="28" x2="252" y2="28"/><line x1="366" y1="28" x2="378" y2="28"/><line x1="492" y1="28" x2="504" y2="28"/>
+      <line x1="618" y1="28" x2="630" y2="28"/><line x1="744" y1="28" x2="756" y2="28"/><line x1="870" y1="28" x2="882" y2="28"/>
+      <line x1="304" y1="92" x2="316" y2="92"/><line x1="494" y1="92" x2="506" y2="92"/><line x1="684" y1="92" x2="696" y2="92"/>
+      <path d="M940,50 L940,60 L216,60 L216,68" fill="none"/>
+    </g>
+  </g>
+</svg>
+
+<div class="cols">
+
+<h2><span class="n">1</span>Reading the request</h2>
+<p><code>request_reader.py</code> validates the request (Appendix A format: inputs, output, expression and/or truth table,
+sizing) and parses the expression by recursive descent over <code>!</code>, <code>&amp;</code>, <code>^</code>,
+<code>|</code> and parentheses, then evaluates it on all 2<sup>n</sup> rows. <b>Input 0 is the least significant bit of the
+row index</b>; when both an expression and a table are given they must agree. Every later check compares against this
+normalized table, never against a cell name. For the six reference cells of section 4.1, <code>reference_cell.py</code> takes
+HD's pin names and transistor sizes from the installed SPICE netlist.</p>
+
+<h2><span class="n">2</span>Two-level minimization</h2>
+<p><b>Quine-McCluskey</b> (<code>qm.py</code>): minterms are grouped by their number of ones; implicants that differ in one
+bit merge into a cube with a don't-care, repeated until nothing merges; the unmerged cubes are the <b>prime
+implicants</b>. Essential primes (the only cover of some minterm) are taken first; <b>Petrick's method</b> expands the
+product of sums over the remaining minterms into all <b>minimum covers</b> (fewest terms, then literals). It is run on
+both f and !f: a cover of f maps to one CMOS structure, a cover of !f to its dual.</p>
+
+<h2><span class="n">3</span>Stages</h2>
+<p><code>synthesize.py</code> turns each minimum cover into formula trees by algebraic factoring (common literals pulled out).
+A static CMOS stage computes the complement of its pull-down network: an AND in the pull-down is a series stack, an OR a
+parallel one, and the pull-up is the exact dual, leaf for leaf. A <b>dynamic program</b> over each tree chooses, per
+subtree, its polarity and whether to cut it into a stage of its own, either built as its dual ("flip") or followed by an
+inverter, so that no stack exceeds <b>three transistors in series</b>; complemented inputs cost one shared input inverter.
+The objective is fewest transistors, then fewest inverters, then fewest stages (handout step 2). For functions algebraic
+factoring cannot reach, a <b>simple disjoint decomposition</b> (Ashenhurst: a bound set whose decomposition chart has
+two distinct columns) gives f&nbsp;=&nbsp;F(h(bound inputs), others); XOR3 becomes (A&nbsp;^&nbsp;B)&nbsp;^&nbsp;C.
+The network is checked at switch level (every row: the output conducts only to the correct rail).</p>
+
+<h2><span class="n">4</span>Sizing: three families</h2>
+<table>
+<tr><th>family</th><th>output stage</th><th>internal stages</th></tr>
+<tr><td><b>hd</b></td><td>every NMOS 0.65&nbsp;um, PMOS 1.0&nbsp;um (HD x1)</td><td>same</td></tr>
+<tr><td><b>stack</b></td><td>x1 times series depth, folded into fingers that fit the row</td><td>x1</td></tr>
+<tr><td><b>opt</b></td><td>x1 (the drive of a _1 cell)</td><td>sized for the fastest worst path</td></tr>
+</table>
+<p><b>opt</b> uses an Elmore RC model fitted to HD's <code>inv_1</code> Liberty: gate capacitance per um from its pin
+capacitance, pull-down and pull-up resistance per um from the slope of <code>cell_fall</code>/<code>cell_rise</code> against
+load, self capacitance from the zero-load intercept. A stage's delay is its worst series resistance times the
+capacitance on its output:</p>
+<div class="eq">d = (n R<sub>unit</sub> / W) &middot; (C<sub>gate</sub>&Sigma;W<sub>driven</sub> + C<sub>self</sub>&Sigma;W<sub>drains</sub> + C<sub>L</sub>)</div>
+<p>The worst path from an inv_1-driven input to the nominal load, over every pin and edge, is minimized by coordinate
+descent over each internal stage's (W<sub>n</sub>, W<sub>p</sub>), from 0.42&nbsp;um (the standard-FET width of diff/tap.2)
+to the row height. Wider internal stages switch faster but load the driver more; the optimum lies between.</p>
+
+<h2><span class="n">5</span>Transistor ordering (Euler paths)</h2>
+<p><code>euler.py</code> follows <b>Maziasz and Hayes</b>: each network is a graph (nodes = diffusion nets, edges =
+transistors); a <b>dual trail</b> is a sequence of edges that is a trail in both the pull-down and pull-up graphs with the
+same gate order, so each column is one shared poly gate and neighbours share diffusion. Series stacks may be reordered;
+an exact memoized search finds the <b>minimum dual-trail covers</b> (each extra trail is a diffusion break), ranked by
+breaks, then repeated nets in a row, then wiring. Folded transistors (stack sizing) use a separate search that keeps a
+leaf's fingers side by side so <b>one poly bar</b> joins them. Stages are ordered and mirrored (permutations, or a beam
+search) to abut on shared nets; several placements are kept for the planner.</p>
+
+<h2><span class="n">6</span>Layout planning and routing</h2>
+<p><code>prepare_layout.py</code> decides every coordinate and writes <code>layout_plan.json</code>; drawing never decides
+geometry. Frame numbers (2.72&nbsp;um height, 0.46&nbsp;um site, rails, wells, implants, npc band, L) come only from the
+instructor's <code>plan_hd.json</code>; design-rule values only from <code>rules.json</code>, each proven against the
+installed <code>sky130A.tech</code> by <code>make check</code>.</p>
+<ul>
+<li><b>Gate pitches</b>: a dynamic program over the gates, left to right, chooses each poly contact's offset and the
+smallest distance to the previous gate under poly.2, licon.11, pad spacing, li.3 between gate landings and, at a routing
+channel, one free li1 track. Adjacent gates on one input share a poly bar and one contact.</li>
+<li><b>Fixed-landing router</b>: Manhattan A* on a 0.01&nbsp;um grid; other nets' shapes are rasterized, inflated by spacing
+plus half a wire. li1 first; an mcon via to met1 only where li1 cannot route, and only in a multi-stage cell (handout
+Tables 1 and 3). Up to 12 net orders are tried.</li>
+<li><b>Negotiated router</b> (<b>PathFinder</b>): diffusion contacts are not fixed in advance; each may land anywhere along
+its column with a tall or wide landing. All nets are routed again and again at a cost per grid step of
+(1&nbsp;+&nbsp;history)&middot;(1&nbsp;+&nbsp;present&nbsp;&middot;&nbsp;overlap), present rising each iteration and
+history where nets collided, until no two nets overlap. A quick pass first routes every net alone and skips hopeless
+attempts.</li>
+<li><b>Search order</b>: every placement, channel set and width, narrowest first, li1 before met1.</li>
+<li><b>After routing</b>: contacts slide under their vias, each contact gets as many licons in parallel as fit, mcons
+stack over licon columns, same-net notches are filled, and KLayout re-checks spacing and width; every pin keeps a met1
+access pad.</li>
+</ul>
+
+<h2><span class="n">7</span>Drawing</h2>
+<p><code>generate_gds.py</code> draws the plan with GDSfactory, reusing Tutorial 3's <code>rect</code> unchanged, writes the
+GDS, a preview and the cell's input record. No coordinate is computed here.</p>
+
+<h2><span class="n">8</span>Checks</h2>
+<table>
+<tr><th>check</th><th>how</th></tr>
+<tr><td>DRC</td><td>Magic full DRC (Tutorial 3's script) on the cell in 24 tapped-row contexts beside tap, inv_1 and fill_1
+(side by side, mirrored, flipped onto a shared rail); a deliberately broken control must fail</td></tr>
+<tr><td>Layer check</td><td>nsdm/psdm enclose the diffusion, hvtp covers PMOS, npc encloses every poly contact; copies with a layer
+removed must be rejected</td></tr>
+<tr><td>LVS, RC-LVS</td><td>Magic extraction, Netgen against <code>schematic.spice</code>; again with resistance extracted and
+collapsed; reference cells also against the installed HD circuit</td></tr>
+<tr><td>Switch level</td><td>conduction paths per row, on the network and on the Euler-reordered network</td></tr>
+<tr><td>Transistor level</td><td>ngspice (BSIM4 stress fix) on the RC netlist: DC on every row, a transient for every
+single-input edge (settle, no half-supply glitch), all copies in one deck</td></tr>
+<tr><td>Model level</td><td>Verilog and Liberty function against the truth table (Icarus Verilog)</td></tr>
+</table>
+
+<h2><span class="n">9</span>Characterization</h2>
+<p><code>characterize.py</code> simulates the RC netlist (with SA/SB stress parameters on every transistor) over HD's
+7&nbsp;x&nbsp;7 slew and load indices. For every input pin, each setting of the other inputs in which that pin controls
+the output is simulated (rising and falling edges), and per arc the slowest setting is kept, as HD's TT library does:
+delay from 50&nbsp;% to 50&nbsp;%, transition from 20&nbsp;% to 80&nbsp;%; input capacitance is the charge the source delivers
+during its ramp, divided by the supply.
+Before any generated cell, the characterizer must reproduce the shipped Liberty of the installed reference cells within
+5&nbsp;% (Table 5).</p>
+
+<h2><span class="n">10</span>Views, response, round trip</h2>
+<p><code>liberty_view.py</code> writes and checks the cell's Liberty (function, pins, tables, area);
+<code>write_response.py</code> the JSON response and report; all cells are merged into one library.
+<code>round_trip.py</code> places each cell inside <code>hd_reduced.lib</code>, maps a one-cell design with the given
+Yosys/ABC scripts and proves it equivalent to the request with ABC <code>cec</code>.</p>
+
+<h2><span class="n">11</span>How pass and fail are decided</h2>
+<p><code>make check</code>, <code>reference</code>, <code>all</code>, <code>test</code>, <code>char</code>, <code>views</code>,
+<code>roundtrip</code> and <code>test_views</code> run the steps in order. A check that cannot run fails. Every check has a
+broken case in <code>tests/broken/</code> that it must reject, and <code>make test</code> runs them all. Results under
+<code>cells/</code> and <code>results/</code> are written only by these scripts.</p>
+
+</div>
+<p class="foot">Details, numbers and the history of each decision: docs/TECHNICAL.md. Cellforge (gui/server.py) walks
+through these steps for one function in the browser.</p>
+</body>
+</html>

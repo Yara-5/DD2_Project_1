@@ -25,7 +25,7 @@
         "B1": 0
       },
       "expected": 0,
-      "voltage_v": 3.859893e-09,
+      "voltage_v": 3.859885e-09,
       "passed": true
     },
     {
@@ -45,7 +45,7 @@
         "B1": 0
       },
       "expected": 0,
-      "voltage_v": 3.859904e-09,
+      "voltage_v": 3.859889e-09,
       "passed": true
     },
     {
@@ -65,7 +65,7 @@
         "B1": 0
       },
       "expected": 0,
-      "voltage_v": 3.859902e-09,
+      "voltage_v": 3.859891e-09,
       "passed": true
     },
     {
@@ -116,7 +116,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000815824224,
+      "worst_glitch_v": 0.000785238516,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -136,7 +136,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00093812049,
+      "worst_glitch_v": 0.000926649743,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -176,7 +176,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79984474,
+      "worst_glitch_v": 1.79984285,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -196,7 +196,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79922341,
+      "worst_glitch_v": 1.79921146,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -256,7 +256,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000845922063,
+      "worst_glitch_v": 0.000842566321,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -296,7 +296,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79969709,
+      "worst_glitch_v": 1.799708,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -316,7 +316,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79917627,
+      "worst_glitch_v": 1.79918528,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -356,7 +356,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000707580695,
+      "worst_glitch_v": 0.000698451293,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -416,7 +416,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79984051,
+      "worst_glitch_v": 1.79984134,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -436,7 +436,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79948907,
+      "worst_glitch_v": 1.79948414,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -536,7 +536,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79970847,
+      "worst_glitch_v": 1.79972613,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -556,7 +556,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79944555,
+      "worst_glitch_v": 1.79945493,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -576,11 +576,15 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79233016,
+      "worst_glitch_v": 1.79560925,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     }
   ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
   "dc_passed": true,
   "transient_passed": true
 }

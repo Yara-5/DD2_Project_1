@@ -1,7 +1,7 @@
 {
   "gate_length_um": 0.15,
   "gate_pitches_um": [
-    0.48,
+    0.46,
     0.42
   ],
   "gate_gaps": [
@@ -10,12 +10,13 @@
         0,
         1
       ],
-      "pitch_um": 0.48,
-      "binding": "poly_pad_spacing",
+      "pitch_um": 0.46,
+      "binding": "li1_track_through_band",
       "lower_bounds_um": {
         "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.48,
-        "gate_li1_spacing": 0.34
+        "poly_pad_spacing": 0.42,
+        "gate_li1_spacing": 0.11,
+        "li1_track_through_band": 0.46
       }
     },
     {
@@ -37,10 +38,16 @@
     "diffusion_contact_between_gates": 0.42000000000000004
   },
   "gate_contact_offset_um": [
-    0.0,
+    -0.23,
     0.0,
     0.06
   ],
+  "gate_has_contact": [
+    true,
+    true,
+    true
+  ],
+  "poly_bar_runs": [],
   "li1_landing_um": [
     0.17,
     0.33
@@ -68,9 +75,8 @@
   },
   "left_edge_lower_bounds_um": {
     "diffusion_margin": 0.47,
-    "poly_pad_to_edge": 0.24,
-    "gate_li1_to_edge": 0.17,
-    "li1_track_through_band": 0.52
+    "poly_pad_to_edge": 0.47,
+    "gate_li1_to_edge": 0.4
   },
   "right_edge_lower_bounds_um": {
     "diffusion_margin": 0.47,
@@ -81,68 +87,68 @@
   "channels": [
     [
       0,
-      0
+      1
     ]
   ],
   "crossing_gaps": [
-    0
+    1
   ],
   "diffusion_segments": 1,
   "active_x_um": [
     [
-      0.385,
-      1.955
+      0.145,
+      1.695
     ]
   ],
-  "centering_shift_um": 0.2,
+  "centering_shift_um": 0.01,
   "gate_x_um": [
-    0.72,
-    1.2,
-    1.62
+    0.48,
+    0.94,
+    1.36
   ],
   "diffusion_node_x_um": [
     [
-      0.51,
-      0.96,
-      1.41,
-      1.83
+      0.27,
+      0.71,
+      1.15,
+      1.57
     ]
   ],
   "row_active_x_um": {
     "nmos": [
       [
-        0.385,
-        1.955
+        0.145,
+        1.695
       ]
     ],
     "pmos": [
       [
-        0.385,
-        1.955
+        0.145,
+        1.695
       ]
     ]
   },
   "row_node_x_um": {
     "nmos": [
       [
-        0.51,
-        0.96,
-        1.41,
-        1.83
+        0.27,
+        0.71,
+        1.15,
+        1.57
       ]
     ],
     "pmos": [
       [
-        0.51,
-        0.96,
-        1.41,
-        1.83
+        0.27,
+        0.71,
+        1.15,
+        1.57
       ]
     ]
   },
-  "raw_width_um": 1.89,
-  "minimum_width_sites": 5,
-  "width_sites": 5,
+  "raw_width_um": 1.82,
+  "minimum_width_sites": 4,
+  "width_sites": 4,
   "formulas": {
     "pitch": "per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, gate li1 spacing li.3, li1 track at a channel), 2 routing steps)",
     "gate_contact_offset": "chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe",
@@ -153,7 +159,7 @@
     "side_margin": "max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half",
     "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
   },
-  "cell_width_um": 2.3,
+  "cell_width_um": 1.84,
   "cell_height_um": 2.72,
   "routing_retries": [
     {
@@ -162,57 +168,22 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
-      "reason": "No li1 route found for Y at this width"
+      "router": "fixed",
+      "pin_access": null,
+      "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
     },
     {
       "placement": 0,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for Y at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for Y at this width"
-    },
-    {
-      "placement": 1,
       "channels": [],
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
-      "reason": "No li1 route found for Y at this width"
+      "router": "negotiated",
+      "pin_access": null,
+      "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
     },
     {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for Y at this width"
-    },
-    {
-      "placement": 1,
+      "placement": 0,
       "channels": [
         [
           0,
@@ -222,6 +193,23 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found for Y at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
       "reason": "No li1 route found for Y at this width"
     }
   ],
@@ -295,6 +283,15 @@
         "kind": "drc",
         "rule": "psd.5a",
         "message": "N-Diffusion to P-tap spacing"
+      }
+    },
+    "licon_space": {
+      "value": 0.17,
+      "source": "licon.2",
+      "check": {
+        "kind": "drc",
+        "rule": "licon.2",
+        "message": "Diffusion contact spacing"
       }
     },
     "licon_size": {

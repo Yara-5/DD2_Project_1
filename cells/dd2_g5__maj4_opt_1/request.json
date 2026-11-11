@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "reason": null,
+  "request": {
+    "request_id": "OPT-MAJ4",
+    "name": "dd2_g5__maj4_opt_1",
+    "inputs": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "output": "Y",
+    "expression": "(C & D) | (A & B & (C | D))",
+    "sizing": "opt",
+    "truth_table": "0xF880",
+    "truth_table_value": 63616,
+    "recognized": null,
+    "supported_by_prototype": false
+  }
+}

@@ -1,0 +1,336 @@
+{
+  "schema": "dd2.layout-spec.v1",
+  "name": "dd2_g5__nand3_stack_1",
+  "request_id": "STACK-NAND3",
+  "inputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "output": "Y",
+  "truth_table": "0x7F",
+  "sizing": "stack",
+  "devices": [
+    {
+      "id": "N1_f1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "Y_d1",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N1"
+    },
+    {
+      "id": "N1_f2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "Y_d1",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N1"
+    },
+    {
+      "id": "N1_f3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "A",
+      "source": "Y_d1",
+      "drain": "Y",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N1"
+    },
+    {
+      "id": "N2_f1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "Y_d2",
+      "drain": "Y_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N2"
+    },
+    {
+      "id": "N2_f2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "Y_d2",
+      "drain": "Y_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N2"
+    },
+    {
+      "id": "N2_f3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "B",
+      "source": "Y_d2",
+      "drain": "Y_d1",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N2"
+    },
+    {
+      "id": "N3_f1",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "C",
+      "source": "VGND",
+      "drain": "Y_d2",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N3"
+    },
+    {
+      "id": "N3_f2",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "C",
+      "source": "VGND",
+      "drain": "Y_d2",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N3"
+    },
+    {
+      "id": "N3_f3",
+      "type": "nmos",
+      "model": "sky130_fd_pr__nfet_01v8",
+      "gate": "C",
+      "source": "VGND",
+      "drain": "Y_d2",
+      "bulk": "VNB",
+      "w_um": 0.65,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 3,
+      "fingers": 1,
+      "finger_of": "N3"
+    },
+    {
+      "id": "P1",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "A",
+      "source": "Y",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 0,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P2",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "B",
+      "source": "Y",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 1,
+      "stack_depth": 1,
+      "fingers": 1
+    },
+    {
+      "id": "P3",
+      "type": "pmos",
+      "model": "sky130_fd_pr__pfet_01v8_hvt",
+      "gate": "C",
+      "source": "Y",
+      "drain": "VPWR",
+      "bulk": "VPB",
+      "w_um": 1.0,
+      "l_um": 0.15,
+      "stage": "Y",
+      "leaf": 2,
+      "stack_depth": 1,
+      "fingers": 1
+    }
+  ],
+  "euler_paths": {
+    "nmos": [
+      {
+        "devices": [
+          "N3_f1",
+          "N3_f2",
+          "N3_f3",
+          "N2_f1",
+          "N2_f2",
+          "N2_f3",
+          "N1_f1",
+          "N1_f2",
+          "N1_f3"
+        ],
+        "nodes": [
+          "VGND",
+          "Y_d2",
+          "VGND",
+          "Y_d2",
+          "Y_d1",
+          "Y_d2",
+          "Y_d1",
+          "Y",
+          "Y_d1",
+          "Y"
+        ]
+      }
+    ],
+    "pmos": [
+      {
+        "devices": [
+          null,
+          null,
+          "P3",
+          null,
+          null,
+          "P2",
+          "P1",
+          null,
+          null
+        ],
+        "nodes": [
+          null,
+          null,
+          "Y",
+          "VPWR",
+          "VPWR",
+          "VPWR",
+          "Y",
+          "VPWR",
+          null,
+          null
+        ]
+      }
+    ]
+  },
+  "alternative_euler_paths": [
+    {
+      "nmos": [
+        {
+          "devices": [
+            "N1_f1",
+            "N1_f2",
+            "N1_f3",
+            "N2_f1",
+            "N2_f2",
+            "N2_f3",
+            "N3_f1",
+            "N3_f2",
+            "N3_f3"
+          ],
+          "nodes": [
+            "Y",
+            "Y_d1",
+            "Y",
+            "Y_d1",
+            "Y_d2",
+            "Y_d1",
+            "Y_d2",
+            "VGND",
+            "Y_d2",
+            "VGND"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            null,
+            null,
+            "P1",
+            "P2",
+            null,
+            null,
+            "P3",
+            null,
+            null
+          ],
+          "nodes": [
+            null,
+            null,
+            "VPWR",
+            "Y",
+            "VPWR",
+            "VPWR",
+            "VPWR",
+            "Y",
+            null,
+            null
+          ]
+        }
+      ]
+    }
+  ],
+  "placement": {
+    "stage_order": [
+      "Y"
+    ],
+    "mirrored": [
+      "Y"
+    ],
+    "dual_trails_per_stage": {
+      "Y": 1
+    },
+    "diffusion_segments": 1,
+    "diffusion_breaks": 0,
+    "columns": 9,
+    "repeated_nets_in_rows": 17,
+    "folded": true,
+    "wiring_slots": 34,
+    "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+  }
+}

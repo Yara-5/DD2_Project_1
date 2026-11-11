@@ -20,6 +20,7 @@ CIF file read warning: Input off lambda grid by 1/2; grid redefined.
 DRC style is now "drc(full)"
 Loading DRC CIF style.
 DRC_COUNT 9
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 1142 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{141 297 193 497} {223 297 329 497} {359 297 469 497} {499 297 605 497} {635 297 693 497} {723 297 775 497} {829 297 881 497} {911 297 963 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{141 47 193 177} {223 47 329 177} {359 47 469 177} {499 47 605 177} {635 47 693 177} {723 47 775 177} {829 47 881 177} {911 47 963 177}}
 The selected label is already a port.
 Do "port help" to get a list of options.
 The selected label is already a port.
@@ -36,7 +37,6 @@ The selected label is already a port.
 Do "port help" to get a list of options.
 The selected label is already a port.
 Do "port help" to get a list of options.
-DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 958 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{49 297 101 497} {131 297 237 497} {267 297 377 497} {407 297 513 497} {543 297 601 497} {631 297 683 497} {737 297 789 497} {819 297 871 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{49 47 101 177} {131 47 237 177} {267 47 377 177} {407 47 513 177} {543 47 601 177} {631 47 683 177} {737 47 789 177} {819 47 871 177}}
 Extracting dd2_g5__maj3_1 into dd2_g5__maj3_1.ext:
 Processing dd2_g5__maj3_1
 exttospice finished.
@@ -44,11 +44,11 @@ exttospice finished.
 Extracting dd2_g5__maj3_1 into dd2_g5__maj3_1.ext:
 Processing dd2_g5__maj3_1
 Processing cell dd2_g5__maj3_1 for resistance extraction.
-Extracting a_267_47#
-Extracting a_49_297#
-Extracting a_543_297#
-Extracting a_49_47#
-Extracting a_131_47#
+Extracting a_359_47#
+Extracting a_141_297#
+Extracting a_635_297#
+Extracting a_141_47#
+Extracting a_223_47#
 Extracting VNB
 Extracting VPB
 Extracting A

@@ -1,0 +1,57 @@
+* NGSPICE file created from dd2_g5__a21oi_stack_1.ext - technology: sky130A
+
+.subckt dd2_g5__a21oi_stack_1 A B C VGND VNB VPB VPWR Y
+X0 VPWR B a_45_297# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.26 ps=2.52 w=1 l=0.15
+X1 a_127_47# A Y VNB sky130_fd_pr__nfet_01v8 ad=0.08775 pd=0.92 as=0.08775 ps=0.92 w=0.65 l=0.15
+X2 a_45_297# A VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.26 pd=2.52 as=0.135 ps=1.27 w=1 l=0.15
+X3 VPWR A a_45_297# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.135 ps=1.27 w=1 l=0.15
+X4 a_127_47# B VGND VNB sky130_fd_pr__nfet_01v8 ad=0.08775 pd=0.92 as=0.169 ps=1.82 w=0.65 l=0.15
+X5 Y C VGND VNB sky130_fd_pr__nfet_01v8 ad=0.08775 pd=0.92 as=0.22425 ps=1.34 w=0.65 l=0.15
+X6 Y A a_127_47# VNB sky130_fd_pr__nfet_01v8 ad=0.169 pd=1.82 as=0.08775 ps=0.92 w=0.65 l=0.15
+X7 a_45_297# C Y VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.135 ps=1.27 w=1 l=0.15
+X8 Y C a_45_297# VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.135 ps=1.27 w=1 l=0.15
+X9 a_45_297# B VPWR VPB sky130_fd_pr__pfet_01v8_hvt ad=0.135 pd=1.27 as=0.135 ps=1.27 w=1 l=0.15
+X10 VGND B a_127_47# VNB sky130_fd_pr__nfet_01v8 ad=0.22425 pd=1.34 as=0.08775 ps=0.92 w=0.65 l=0.15
+C0 VPWR C 0.02514f
+C1 A a_127_47# 0.01983f
+C2 VGND VPB 0.01086f
+C3 B VPB 0.05848f
+C4 a_45_297# Y 0.08432f
+C5 VGND C 0.017f
+C6 A VPB 0.05821f
+C7 B C 0.02932f
+C8 VPB a_127_47# 0.00344f
+C9 A C 0.03922f
+C10 VPWR Y 0.01945f
+C11 C a_127_47# 0.02395f
+C12 VPWR a_45_297# 0.18912f
+C13 VGND Y 0.08639f
+C14 Y B 0
+C15 C VPB 0.05081f
+C16 A Y 0.07538f
+C17 VGND a_45_297# 0.01403f
+C18 Y a_127_47# 0.06469f
+C19 a_45_297# B 0.04929f
+C20 A a_45_297# 0.02699f
+C21 VPWR VGND 0.03621f
+C22 a_45_297# a_127_47# 0.01208f
+C23 VPWR B 0.03341f
+C24 Y VPB 0.01095f
+C25 VPWR A 0.02907f
+C26 Y C 0.02572f
+C27 VPWR a_127_47# 0.0036f
+C28 a_45_297# VPB 0.02659f
+C29 VGND B 0.0388f
+C30 a_45_297# C 0.03062f
+C31 VGND A 0.01762f
+C32 VGND a_127_47# 0.07252f
+C33 VPWR VPB 0.09056f
+C34 B a_127_47# 0.02005f
+C35 VGND VNB 0.44855f
+C36 Y VNB 0.18198f
+C37 VPWR VNB 0.40177f
+C38 VPB VNB 0.69336f
+C39 a_127_47# VNB 0.08009f
+C40 a_45_297# VNB 0.1307f
+.ends
+

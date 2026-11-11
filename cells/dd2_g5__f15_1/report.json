@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-14",
@@ -95,7 +95,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 1
+    "routing_attempts_failed": 2
   },
   "verification": {
     "drc_contexts": 24,
@@ -133,41 +133,41 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.430382,
-        "rise_transition": 0.41586300000000004,
-        "cell_fall": 0.103814,
-        "fall_transition": 0.0697498
+        "cell_rise": 0.392446,
+        "rise_transition": 0.37165,
+        "cell_fall": 0.103846,
+        "fall_transition": 0.0699197
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.22735,
-        "rise_transition": 0.26124699999999995,
-        "cell_fall": 0.120329,
-        "fall_transition": 0.09424260000000001
+        "cell_rise": 0.216931,
+        "rise_transition": 0.24393299999999998,
+        "cell_fall": 0.12027899999999998,
+        "fall_transition": 0.0943309
       },
       {
         "pin": "C",
         "sense": "negative_unate",
-        "cell_rise": 0.366943,
-        "rise_transition": 0.41582600000000003,
-        "cell_fall": 0.109166,
-        "fall_transition": 0.0777264
+        "cell_rise": 0.336532,
+        "rise_transition": 0.37161099999999997,
+        "cell_fall": 0.109077,
+        "fall_transition": 0.0777842
       },
       {
         "pin": "D",
         "sense": "negative_unate",
-        "cell_rise": 0.405187,
-        "rise_transition": 0.41586399999999996,
-        "cell_fall": 0.124775,
-        "fall_transition": 0.09279180000000001
+        "cell_rise": 0.36831800000000003,
+        "rise_transition": 0.37165200000000004,
+        "cell_fall": 0.12454200000000001,
+        "fall_transition": 0.092892
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.0022773194444444442,
-      "B": 0.002134888888888889,
-      "C": 0.002088616666666667,
-      "D": 0.0021291333333333332
+      "A": 0.002291813888888889,
+      "B": 0.0021415805555555553,
+      "C": 0.0020967499999999997,
+      "D": 0.0021446277777777776
     },
     "extended_windows_ns": {
       "arc0_A": 8.0,
@@ -178,8 +178,8 @@
       "arc5_B": 8.0,
       "arc6_B": 8.0,
       "arc7_B": 8.0,
-      "arc8_C": 16.0,
-      "arc9_D": 16.0
+      "arc8_C": 8.0,
+      "arc9_D": 8.0
     }
   },
   "liberty_view": true,

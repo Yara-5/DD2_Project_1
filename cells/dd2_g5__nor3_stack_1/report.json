@@ -7,8 +7,8 @@
     "cell": "dd2_g5__nor3_stack_1",
     "stages": 1,
     "transistors": 12,
-    "width_sites": 15,
-    "area_um2": 18.768,
+    "width_sites": 10,
+    "area_um2": 12.512,
     "files": {
       "gds": "cells/dd2_g5__nor3_stack_1/cell.gds",
       "liberty": "cells/dd2_g5__nor3_stack_1/cell.lib",
@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "S82-NOR3-STACK",
@@ -71,10 +71,10 @@
     ]
   },
   "layout": {
-    "width_sites": 15,
-    "width_um": 6.9,
+    "width_sites": 10,
+    "width_um": 4.6,
     "height_um": 2.72,
-    "area_um2": 18.768,
+    "area_um2": 12.512,
     "devices": 12,
     "euler": {
       "stage_order": [
@@ -87,14 +87,14 @@
       "diffusion_segments": 1,
       "diffusion_breaks": 0,
       "columns": 9,
-      "repeated_nets_in_rows": 12,
+      "repeated_nets_in_rows": 7,
       "folded": true,
-      "wiring_slots": 72,
+      "wiring_slots": 38,
       "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
     },
-    "met1_vias": 16,
-    "met1_in_single_stage_cell": true,
-    "routing_attempts_failed": 60
+    "met1_vias": 0,
+    "met1_in_single_stage_cell": false,
+    "routing_attempts_failed": 0
   },
   "verification": {
     "drc_contexts": 24,
@@ -104,8 +104,8 @@
     "lvs": "match",
     "rc_lvs": "match",
     "rc_elements": {
-      "resistors": 98,
-      "capacitors": 103,
+      "resistors": 87,
+      "capacitors": 94,
       "collapsed_lvs_passed": true
     },
     "hd_reference_lvs": null
@@ -132,32 +132,32 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.155797,
-        "rise_transition": 0.16446,
-        "cell_fall": 0.102472,
-        "fall_transition": 0.0673643
+        "cell_rise": 0.22347,
+        "rise_transition": 0.18163400000000002,
+        "cell_fall": 0.124411,
+        "fall_transition": 0.0883603
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.207786,
-        "rise_transition": 0.174235,
-        "cell_fall": 0.119067,
-        "fall_transition": 0.0779395
+        "cell_rise": 0.208228,
+        "rise_transition": 0.181586,
+        "cell_fall": 0.113966,
+        "fall_transition": 0.074119
       },
       {
         "pin": "C",
         "sense": "negative_unate",
-        "cell_rise": 0.229345,
-        "rise_transition": 0.17504,
-        "cell_fall": 0.13267500000000002,
-        "fall_transition": 0.0948644
+        "cell_rise": 0.165107,
+        "rise_transition": 0.175416,
+        "cell_fall": 0.10249,
+        "fall_transition": 0.0674847
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.0052615249999999995,
-      "B": 0.0055623638888888886,
-      "C": 0.00553081111111111
+      "A": 0.004649702777777778,
+      "B": 0.0044831666666666665,
+      "C": 0.004451588888888889
     },
     "extended_windows_ns": {}
   },

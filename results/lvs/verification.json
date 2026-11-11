@@ -16,7 +16,7 @@
         "VPWR",
         "X"
       ],
-      "gds_sha256": "ae941e5ba5c78c71f778222873e1c28189f72f0ade9a67f0723dca59d7bddbb0",
+      "gds_sha256": "3027684c0840ccf574d725d3dba6e7c8272b8f1bd532afdad6a2f54dfb5a1457",
       "isolated_drc_count": 6,
       "isolated_drc_why": [
         "nwell.4",
@@ -25,7 +25,7 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 52,
+        "resistors": 51,
         "capacitors": 64,
         "collapsed_lvs_passed": true
       },
@@ -45,6 +45,33 @@
       },
       "passed": true
     },
+    "dd2_g5__a21o_opt_1": {
+      "cell": "dd2_g5__a21o_opt_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "edc7ee708fa0629cf0ed107c8bb0c33024a61dddab272991417db86cd64863ee",
+      "isolated_drc_count": 6,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 51,
+        "capacitors": 64,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
     "dd2_g5__a21oi_1": {
       "cell": "dd2_g5__a21oi_1",
       "ports": [
@@ -57,7 +84,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "eec2025e5a34151642fe606f7282e9ce4e795e54729578c5e9bd089d16961f46",
+      "gds_sha256": "3de16841249ef363e27ccfeca5aadc4ff37e0a4ecdda8008db51f3ceae4ef24e",
       "isolated_drc_count": 5,
       "isolated_drc_why": [
         "nwell.4",
@@ -66,8 +93,8 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 37,
-        "capacitors": 54,
+        "resistors": 34,
+        "capacitors": 52,
         "collapsed_lvs_passed": true
       },
       "hd_reference": "sky130_fd_sc_hd__a21oi_1",
@@ -86,6 +113,33 @@
       },
       "passed": true
     },
+    "dd2_g5__a21oi_stack_1": {
+      "cell": "dd2_g5__a21oi_stack_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "cf74b71c3bc072e26fb9de659483def31f70aced6f5507af4be16e013dc43406",
+      "isolated_drc_count": 7,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 76,
+        "capacitors": 83,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
     "dd2_g5__a22oi_1": {
       "cell": "dd2_g5__a22oi_1",
       "ports": [
@@ -99,7 +153,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "5d84b63077e4a7c8e444aaff8225072ade19546d19382cff47e3d99d45ac31f9",
+      "gds_sha256": "347d27ebacbd592da40e4c08940ac303f09b4a7e635a7e7bc0f1ce0717cfd508",
       "isolated_drc_count": 6,
       "isolated_drc_why": [
         "nwell.4",
@@ -108,8 +162,36 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 44,
+        "resistors": 45,
         "capacitors": 66,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__a22oi_stack_1": {
+      "cell": "dd2_g5__a22oi_stack_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "1d20481d6a64b63d1da3f7c28bdd502e8b276174a3a2e6bc4fcced467cf00d24",
+      "isolated_drc_count": 11,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 109,
+        "capacitors": 114,
         "collapsed_lvs_passed": true
       },
       "passed": true
@@ -125,7 +207,33 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "2479ec53ade562fc319ac07f0ce9a38c5a108dff8e5f0d7479a67f8a03975649",
+      "gds_sha256": "914656d0c3369819b97ec69954a5b3583ac6f2ed2fdf1a48b1ebb5389645e4a5",
+      "isolated_drc_count": 5,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 40,
+        "capacitors": 50,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__and2_opt_1": {
+      "cell": "dd2_g5__and2_opt_1",
+      "ports": [
+        "A",
+        "B",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "21c8ac9cdd15d15fc978ecc796cc08e1a9161c78f8a69634b7861833443f1464",
       "isolated_drc_count": 5,
       "isolated_drc_why": [
         "nwell.4",
@@ -153,7 +261,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "8332f0d3226a04ab6a864011dc4708de54cbcc0770f6f420a8a4fdf9090e6dc9",
+      "gds_sha256": "c4e9474664b5052e3bdfc643b55ed4166a2b881c4202ea7d30c32795ea0c9026",
       "isolated_drc_count": 6,
       "isolated_drc_why": [
         "nwell.4",
@@ -162,7 +270,7 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 52,
+        "resistors": 53,
         "capacitors": 71,
         "collapsed_lvs_passed": true
       },
@@ -181,7 +289,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "69895417a3fb8fd8c5956c6be586690216d10d41781ebe1f316e688ef60ff8e8",
+      "gds_sha256": "05757d1a88a3f7e05da47039a0da6bd51c7249bc953b538508bd9aa6a3aedee0",
       "isolated_drc_count": 6,
       "isolated_drc_why": [
         "nwell.4",
@@ -206,7 +314,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "834ddb2441bdafca79bb5c0b948c8e4cd3b3ff557537c80d1d89487883b8f6ad",
+      "gds_sha256": "ab0e3c20fb13f92b70647ae0653236b345a146003910a5997028343da2b9fbb6",
       "isolated_drc_count": 3,
       "isolated_drc_why": [
         "nwell.4",
@@ -245,7 +353,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "f8389d2bbd3a9078740b88cc8471d71b8f017adc8a840cb56337eabf650d90dc",
+      "gds_sha256": "863b2de8d09573238c0cb0006b9e218bb547b9ad4eb076e73089538baf4b6979",
       "isolated_drc_count": 9,
       "isolated_drc_why": [
         "nwell.4",
@@ -254,8 +362,35 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 107,
-        "capacitors": 106,
+        "resistors": 114,
+        "capacitors": 111,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__maj3_opt_1": {
+      "cell": "dd2_g5__maj3_opt_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "63f25df2f5ce8bc3428196f45004feb5d7b0f21744411ddba3d00626b2693556",
+      "isolated_drc_count": 9,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 114,
+        "capacitors": 111,
         "collapsed_lvs_passed": true
       },
       "passed": true
@@ -273,7 +408,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "d4b56f7b1b00c31ff2b05e8c70f4433a1249c4bde1c45043877e3b806df7619a",
+      "gds_sha256": "5fc957294d77e62db403f56a330bce538f567196d8bb9aa7e383c0a13ab543f3",
       "isolated_drc_count": 10,
       "isolated_drc_why": [
         "nwell.4",
@@ -283,7 +418,35 @@
       "lvs_passed": true,
       "rc": {
         "resistors": 103,
-        "capacitors": 111,
+        "capacitors": 113,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__maj4_opt_1": {
+      "cell": "dd2_g5__maj4_opt_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "17537c11ca982ea6bc23361ca5427291d225f1a5e4e31c70d797ad9c7dd05c5c",
+      "isolated_drc_count": 10,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 103,
+        "capacitors": 113,
         "collapsed_lvs_passed": true
       },
       "passed": true
@@ -301,7 +464,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "34084e691defac0d5385612e17e34ab05db3b55239247817c2ed901c292cfb6f",
+      "gds_sha256": "9d0978e8aed8040e968de9c84ea958c1e8a2b018647f8ea08d43250b8f7f2b40",
       "isolated_drc_count": 8,
       "isolated_drc_why": [
         "nwell.4",
@@ -310,8 +473,8 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 71,
-        "capacitors": 90,
+        "resistors": 73,
+        "capacitors": 91,
         "collapsed_lvs_passed": true
       },
       "passed": true
@@ -328,7 +491,7 @@
         "VPWR",
         "X"
       ],
-      "gds_sha256": "195feac8c6ca80ba631ea7fe29527ec879b2e15d88c21fa5d5443b773d0b342c",
+      "gds_sha256": "e9c395ca49b2a58cb250a5177ac1c83c6c914443d281af816fa364e9c1e83d5a",
       "isolated_drc_count": 9,
       "isolated_drc_why": [
         "nwell.4",
@@ -357,6 +520,33 @@
       },
       "passed": true
     },
+    "dd2_g5__mux2_opt_1": {
+      "cell": "dd2_g5__mux2_opt_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "dc6796cdb566f95a55bb3b9a1f450f643be195a5ccb0255f55fcb4d12c2bbfed",
+      "isolated_drc_count": 10,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 87,
+        "capacitors": 90,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
     "dd2_g5__nand2_1": {
       "cell": "dd2_g5__nand2_1",
       "ports": [
@@ -368,7 +558,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "10264846723ccd623b6956fbd590299826e28b550c6f1f00d51011b52bfe8cfa",
+      "gds_sha256": "b5d0a71ec03d2180fee5da3174fe9f7c5ed98fb4b863d407de27639b05f67a46",
       "isolated_drc_count": 4,
       "isolated_drc_why": [
         "nwell.4",
@@ -396,6 +586,32 @@
       },
       "passed": true
     },
+    "dd2_g5__nand2_stack_1": {
+      "cell": "dd2_g5__nand2_stack_1",
+      "ports": [
+        "A",
+        "B",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "2e51e13ac078a2fc1ddac3ed9f55dfd81f6441687bc021d937a415c1fe9eeab1",
+      "isolated_drc_count": 6,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 42,
+        "capacitors": 50,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
     "dd2_g5__nand3_1": {
       "cell": "dd2_g5__nand3_1",
       "ports": [
@@ -408,7 +624,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "45d33a9c71ac1323ee7d9d77631cd705be747a85efe0b66c5c143973141723e2",
+      "gds_sha256": "71cdf411b0ba6c8549aca6cb4d963896e1126baa58c9e5f7b734d88792bd18ee",
       "isolated_drc_count": 5,
       "isolated_drc_why": [
         "nwell.4",
@@ -417,7 +633,7 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 38,
+        "resistors": 37,
         "capacitors": 54,
         "collapsed_lvs_passed": true
       },
@@ -437,6 +653,33 @@
       },
       "passed": true
     },
+    "dd2_g5__nand3_stack_1": {
+      "cell": "dd2_g5__nand3_stack_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "677450cfff8533e170c061e80bf7f8ef504a1e7f14fa03634d8b6627e135c467",
+      "isolated_drc_count": 11,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 90,
+        "capacitors": 90,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
     "dd2_g5__nor2_1": {
       "cell": "dd2_g5__nor2_1",
       "ports": [
@@ -448,7 +691,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "078e64708d780e22ab1c120249ede72aedd511cfa6691919ec6200b664672325",
+      "gds_sha256": "24be5129ed23dfba40ca925d4b68d39159a0cd4b13c411f527bf933660945785",
       "isolated_drc_count": 4,
       "isolated_drc_why": [
         "nwell.4",
@@ -476,6 +719,32 @@
       },
       "passed": true
     },
+    "dd2_g5__nor2_stack_1": {
+      "cell": "dd2_g5__nor2_stack_1",
+      "ports": [
+        "A",
+        "B",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "95cbcd2a37966e5c836951adda93220a2aa174621fab848c6070137cd283bcb7",
+      "isolated_drc_count": 4,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 41,
+        "capacitors": 51,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
     "dd2_g5__nor3_1": {
       "cell": "dd2_g5__nor3_1",
       "ports": [
@@ -488,7 +757,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "c512a8ea81ccc7cfd8e832c0d7b927bdbb9428421f1b890bd332de1ce5b0a012",
+      "gds_sha256": "7bdfda08527c1bfc0a58385ae902fd0f54b1e31b6e62c2f02b27cf15b1f233fa",
       "isolated_drc_count": 5,
       "isolated_drc_why": [
         "nwell.4",
@@ -529,7 +798,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "04a7e64f797c77e191c9ca3e23510bb302efb14d8feb2a89d2ca1b221faf6a5e",
+      "gds_sha256": "87afa0db55e7582640e7c5ddf0dfa0e6cae40a97243899cfe6f40076f8f1d143",
       "isolated_drc_count": 5,
       "isolated_drc_why": [
         "nwell.4",
@@ -538,8 +807,36 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 98,
-        "capacitors": 103,
+        "resistors": 87,
+        "capacitors": 94,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__nor4_stack_1": {
+      "cell": "dd2_g5__nor4_stack_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "4ea8ebed8767d12c35fddfcb2440a807a2169b34c53c7beb8a096b1e8ab90026",
+      "isolated_drc_count": 9,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 107,
+        "capacitors": 109,
         "collapsed_lvs_passed": true
       },
       "passed": true
@@ -556,7 +853,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "cf052b31d1553374e068f569f13b4d02414b46e53e8e5f0ddbd1e8aa7ace83bb",
+      "gds_sha256": "ed3c552bd3238ae6019833a293e797de75a3073ff9b9d6d5207eb07fbaf044ac",
       "isolated_drc_count": 5,
       "isolated_drc_why": [
         "nwell.4",
@@ -565,7 +862,7 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 39,
+        "resistors": 40,
         "capacitors": 55,
         "collapsed_lvs_passed": true
       },
@@ -585,6 +882,33 @@
       },
       "passed": true
     },
+    "dd2_g5__o21ai_stack_1": {
+      "cell": "dd2_g5__o21ai_stack_1",
+      "ports": [
+        "A",
+        "B",
+        "C",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "71586a874f7883c9684679db5ead23af95b1f2762932ac3d38525039a815a75b",
+      "isolated_drc_count": 8,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 78,
+        "capacitors": 84,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
     "dd2_g5__o22ai_1": {
       "cell": "dd2_g5__o22ai_1",
       "ports": [
@@ -598,7 +922,7 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "1b79e21b6801349b1e0ff9ea97fce03506cc1efe6dfd963587026291ef84b957",
+      "gds_sha256": "79be8c5bcd9bcf732447eb57d5bdbedb923f9cdec95ccf2f3f246e356d41fc62",
       "isolated_drc_count": 6,
       "isolated_drc_why": [
         "nwell.4",
@@ -607,8 +931,8 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 48,
-        "capacitors": 67,
+        "resistors": 50,
+        "capacitors": 69,
         "collapsed_lvs_passed": true
       },
       "passed": true
@@ -624,8 +948,34 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "c73e0a6cf8c037a2a8d35dc5cb6a24e879d1ebd1e05afd9ffca2736b7fb1716e",
+      "gds_sha256": "fcd19a810c73280d1488322793e19e9d83909504408456fafdb8dfd5ea5b2d21",
       "isolated_drc_count": 7,
+      "isolated_drc_why": [
+        "nwell.4",
+        "LU.3",
+        "LU.2"
+      ],
+      "lvs_passed": true,
+      "rc": {
+        "resistors": 62,
+        "capacitors": 68,
+        "collapsed_lvs_passed": true
+      },
+      "passed": true
+    },
+    "dd2_g5__xor2_opt_1": {
+      "cell": "dd2_g5__xor2_opt_1",
+      "ports": [
+        "A",
+        "B",
+        "VGND",
+        "VNB",
+        "VPB",
+        "VPWR",
+        "Y"
+      ],
+      "gds_sha256": "063af4626330662a5869ef8a8558b51f05847a02d647a109f78692dd70bbc386",
+      "isolated_drc_count": 8,
       "isolated_drc_why": [
         "nwell.4",
         "LU.3",
@@ -651,8 +1001,8 @@
         "VPWR",
         "Y"
       ],
-      "gds_sha256": "5c8c3703dcc69d554ed1933a52d13bc488baeb0c8105fff658f2ba91b5e6e33d",
-      "isolated_drc_count": 14,
+      "gds_sha256": "614558eab12cf5a569d8e5e50fd95dcbf72cdefea70f27195554a44b8248964e",
+      "isolated_drc_count": 15,
       "isolated_drc_why": [
         "nwell.4",
         "LU.3",
@@ -660,8 +1010,8 @@
       ],
       "lvs_passed": true,
       "rc": {
-        "resistors": 174,
-        "capacitors": 156,
+        "resistors": 168,
+        "capacitors": 148,
         "collapsed_lvs_passed": true
       },
       "passed": true

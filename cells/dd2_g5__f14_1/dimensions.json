@@ -56,6 +56,13 @@
     0.0,
     0.0
   ],
+  "gate_has_contact": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "poly_bar_runs": [],
   "li1_landing_um": [
     0.17,
     0.33
@@ -181,6 +188,33 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": null,
+      "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
+    },
+    {
+      "placement": 0,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": null,
+      "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for Y at this width"
     },
     {
@@ -194,6 +228,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for Y at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: Y, Y_d1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for Y at this width"
     },
     {
@@ -207,7 +273,24 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
       "reason": "No li1 route found for Y at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: Y, Y_d1, Y_u1 still overlap; no progress in 15 iterations)"
     },
     {
       "placement": 1,
@@ -215,6 +298,33 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": null,
+      "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
+    },
+    {
+      "placement": 1,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": null,
+      "reason": "skipped: a net cannot route even alone (No li1 route found for Y at this width (negotiated))"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for Y at this width"
     },
     {
@@ -228,6 +338,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for Y at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: Y, Y_d1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for Y at this width"
     },
     {
@@ -241,7 +383,24 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
       "reason": "No li1 route found for Y at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: Y, Y_d1, Y_u1 still overlap; no progress in 15 iterations)"
     }
   ],
   "rule_values_and_sources": {
@@ -314,6 +473,15 @@
         "kind": "drc",
         "rule": "psd.5a",
         "message": "N-Diffusion to P-tap spacing"
+      }
+    },
+    "licon_space": {
+      "value": 0.17,
+      "source": "licon.2",
+      "check": {
+        "kind": "drc",
+        "rule": "licon.2",
+        "message": "Diffusion contact spacing"
       }
     },
     "licon_size": {

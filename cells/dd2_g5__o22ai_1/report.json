@@ -7,8 +7,8 @@
     "cell": "dd2_g5__o22ai_1",
     "stages": 1,
     "transistors": 8,
-    "width_sites": 7,
-    "area_um2": 8.7584,
+    "width_sites": 5,
+    "area_um2": 6.256,
     "files": {
       "gds": "cells/dd2_g5__o22ai_1/cell.gds",
       "liberty": "cells/dd2_g5__o22ai_1/cell.lib",
@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-07",
@@ -72,10 +72,10 @@
     ]
   },
   "layout": {
-    "width_sites": 7,
-    "width_um": 3.22,
+    "width_sites": 5,
+    "width_um": 2.3,
     "height_um": 2.72,
-    "area_um2": 8.7584,
+    "area_um2": 6.256,
     "devices": 8,
     "euler": {
       "stage_order": [
@@ -95,7 +95,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 12
+    "routing_attempts_failed": 4
   },
   "verification": {
     "drc_contexts": 24,
@@ -105,8 +105,8 @@
     "lvs": "match",
     "rc_lvs": "match",
     "rc_elements": {
-      "resistors": 48,
-      "capacitors": 67,
+      "resistors": 50,
+      "capacitors": 69,
       "collapsed_lvs_passed": true
     },
     "hd_reference_lvs": null
@@ -133,41 +133,41 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.311195,
-        "rise_transition": 0.290752,
-        "cell_fall": 0.14783,
-        "fall_transition": 0.11228099999999999
+        "cell_rise": 0.272306,
+        "rise_transition": 0.248714,
+        "cell_fall": 0.141535,
+        "fall_transition": 0.10626000000000001
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.29411,
-        "rise_transition": 0.29075,
-        "cell_fall": 0.134628,
-        "fall_transition": 0.102409
+        "cell_rise": 0.260359,
+        "rise_transition": 0.248713,
+        "cell_fall": 0.12815500000000002,
+        "fall_transition": 0.0951876
       },
       {
         "pin": "C",
         "sense": "negative_unate",
-        "cell_rise": 0.238856,
-        "rise_transition": 0.27651000000000003,
-        "cell_fall": 0.12162099999999999,
-        "fall_transition": 0.0976637
+        "cell_rise": 0.219153,
+        "rise_transition": 0.24264200000000002,
+        "cell_fall": 0.121401,
+        "fall_transition": 0.09574959999999999
       },
       {
         "pin": "D",
         "sense": "negative_unate",
-        "cell_rise": 0.25641200000000003,
-        "rise_transition": 0.276543,
-        "cell_fall": 0.139078,
-        "fall_transition": 0.11215599999999999
+        "cell_rise": 0.232112,
+        "rise_transition": 0.242658,
+        "cell_fall": 0.135694,
+        "fall_transition": 0.10667499999999999
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.002179625,
-      "B": 0.002087075,
-      "C": 0.0021055805555555557,
-      "D": 0.002142177777777778
+      "A": 0.002230836111111111,
+      "B": 0.00214415,
+      "C": 0.002141122222222222,
+      "D": 0.0022310944444444442
     },
     "extended_windows_ns": {
       "arc0_A": 8.0,

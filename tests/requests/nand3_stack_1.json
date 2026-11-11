@@ -1,0 +1,12 @@
+{
+  "request_id": "STACK-NAND3",
+  "name": "dd2_g5__nand3_stack_1",
+  "inputs": [
+    "A",
+    "B",
+    "C"
+  ],
+  "output": "Y",
+  "expression": "!(A & B & C)",
+  "sizing": "stack"
+}

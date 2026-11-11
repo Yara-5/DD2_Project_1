@@ -558,6 +558,15 @@
       -0.01,
       0.0
     ],
+    "gate_has_contact": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "poly_bar_runs": [],
     "li1_landing_um": [
       0.17,
       0.33
@@ -747,7 +756,29 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
       },
       {
         "placement": 0,
@@ -760,12 +791,44 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for n1 at this width"
       },
       {
         "placement": 0,
         "channels": [
           [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: S, X, n1 still overlap after 40 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
             0,
             0
           ]
@@ -773,6 +836,53 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -786,6 +896,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -799,6 +941,33 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -807,7 +976,19 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
         "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
       },
       {
         "placement": 1,
@@ -820,7 +1001,39 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: S, n1 still overlap; no progress in 15 iterations)"
       },
       {
         "placement": 1,
@@ -833,6 +1046,53 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -846,6 +1106,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -859,6 +1151,33 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -867,7 +1186,19 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
         "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
       },
       {
         "placement": 2,
@@ -880,12 +1211,44 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for n1 at this width"
       },
       {
         "placement": 2,
         "channels": [
           [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: S, X, n1 still overlap after 40 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
             0,
             0
           ]
@@ -893,6 +1256,53 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -906,6 +1316,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -919,6 +1361,33 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -927,7 +1396,19 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
         "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
       },
       {
         "placement": 3,
@@ -940,6 +1421,8 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for n1 at this width"
       },
       {
@@ -947,12 +1430,89 @@
         "channels": [
           [
             0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: S, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
             5
           ]
         ],
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -966,6 +1526,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -979,6 +1571,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap after 40 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -992,6 +1616,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1005,6 +1661,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, X_u1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1018,6 +1706,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1031,6 +1751,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1044,6 +1796,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1057,6 +1841,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1070,6 +1886,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1083,6 +1931,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1096,6 +1976,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1109,6 +2021,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, S, X still overlap after 40 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1122,6 +2066,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap after 40 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1135,6 +2111,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap after 40 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1148,6 +2156,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1161,6 +2201,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1174,6 +2246,38 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
         "reason": "No li1 route found for X at this width"
       },
       {
@@ -1187,7 +2291,24 @@
         "met1": false,
         "extra_sites": 0,
         "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
         "reason": "No li1 route found for X at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: A1_N, X still overlap after 40 iterations)"
       }
     ],
     "rule_values_and_sources": {
@@ -1260,6 +2381,15 @@
           "kind": "drc",
           "rule": "psd.5a",
           "message": "N-Diffusion to P-tap spacing"
+        }
+      },
+      "licon_space": {
+        "value": 0.17,
+        "source": "licon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.2",
+          "message": "Diffusion contact spacing"
         }
       },
       "licon_size": {
@@ -1887,20 +3017,6 @@
       {
         "layer": "licon",
         "box": [
-          0.265,
-          0.295,
-          0.435,
-          0.465
-        ],
-        "net": "VGND",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
           0.685,
           0.575,
           0.855,
@@ -2016,34 +3132,6 @@
           2.905,
           0.295,
           3.075,
-          0.465
-        ],
-        "net": "VGND",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          3.595,
-          0.575,
-          3.765,
-          0.745
-        ],
-        "net": "n1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          4.145,
-          0.295,
-          4.315,
           0.465
         ],
         "net": "VGND",
@@ -2067,34 +3155,6 @@
         ]
       },
       {
-        "layer": "licon",
-        "box": [
-          0.265,
-          2.255,
-          0.435,
-          2.425
-        ],
-        "net": "VPWR",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          0.685,
-          1.575,
-          0.855,
-          1.745
-        ],
-        "net": "A1_N",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
         "layer": "diff",
         "box": [
           1.165,
@@ -2167,68 +3227,12 @@
       {
         "layer": "licon",
         "box": [
-          1.205,
-          2.255,
-          1.375,
-          2.425
-        ],
-        "net": "X_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
           1.645,
           1.575,
           1.815,
           1.745
         ],
         "net": "X",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          2.215,
-          2.255,
-          2.385,
-          2.425
-        ],
-        "net": "X_u1",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          2.905,
-          2.255,
-          3.075,
-          2.425
-        ],
-        "net": "VPWR",
-        "gds": [
-          66,
-          44
-        ]
-      },
-      {
-        "layer": "licon",
-        "box": [
-          4.145,
-          1.575,
-          4.315,
-          1.745
-        ],
-        "net": "n1",
         "gds": [
           66,
           44
@@ -2641,6 +3645,300 @@
         ]
       },
       {
+        "layer": "licon",
+        "box": [
+          0.265,
+          0.295,
+          0.435,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.265,
+          0.635,
+          0.435,
+          0.805
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.595,
+          0.315,
+          3.765,
+          0.485
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.595,
+          0.655,
+          3.765,
+          0.825
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          0.295,
+          4.315,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          0.635,
+          4.315,
+          0.805
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.265,
+          1.575,
+          0.435,
+          1.745
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.265,
+          1.915,
+          0.435,
+          2.085
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.265,
+          2.255,
+          0.435,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.685,
+          1.545,
+          0.855,
+          1.715
+        ],
+        "net": "A1_N",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.685,
+          1.885,
+          0.855,
+          2.055
+        ],
+        "net": "A1_N",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.685,
+          2.225,
+          0.855,
+          2.395
+        ],
+        "net": "A1_N",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.205,
+          1.915,
+          1.375,
+          2.085
+        ],
+        "net": "X_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.205,
+          2.255,
+          1.375,
+          2.425
+        ],
+        "net": "X_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.215,
+          1.915,
+          2.385,
+          2.085
+        ],
+        "net": "X_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.215,
+          2.255,
+          2.385,
+          2.425
+        ],
+        "net": "X_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.905,
+          1.915,
+          3.075,
+          2.085
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.905,
+          2.255,
+          3.075,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          1.545,
+          4.315,
+          1.715
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          1.885,
+          4.315,
+          2.055
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          2.225,
+          4.315,
+          2.395
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
         "layer": "li1",
         "net": "VGND",
         "box": [
@@ -2648,20 +3946,6 @@
           -0.085,
           4.6,
           0.085
-        ],
-        "gds": [
-          67,
-          20
-        ]
-      },
-      {
-        "layer": "li1",
-        "net": "VGND",
-        "box": [
-          0.185,
-          0.085,
-          0.515,
-          0.465
         ],
         "gds": [
           67,
@@ -2700,10 +3984,24 @@
         "layer": "li1",
         "net": "VGND",
         "box": [
+          0.185,
+          0.085,
+          0.515,
+          0.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
           4.065,
           0.085,
           4.395,
-          0.465
+          0.805
         ],
         "gds": [
           67,
@@ -2715,7 +4013,7 @@
         "net": "VPWR",
         "box": [
           0.265,
-          2.175,
+          1.495,
           0.435,
           2.635
         ],
@@ -2729,7 +4027,7 @@
         "net": "VPWR",
         "box": [
           2.905,
-          2.175,
+          1.835,
           3.075,
           2.635
         ],
@@ -2829,6 +4127,20 @@
           0.685,
           1.495,
           0.995,
+          1.545
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "A1_N",
+        "box": [
+          0.605,
+          1.545,
+          0.995,
           1.665
         ],
         "gds": [
@@ -2840,10 +4152,10 @@
         "layer": "li1",
         "net": "A1_N",
         "box": [
-          0.685,
+          0.605,
           1.665,
-          0.855,
-          1.825
+          0.935,
+          2.395
         ],
         "gds": [
           67,
@@ -2966,9 +4278,9 @@
         "layer": "li1",
         "net": "n1",
         "box": [
-          3.595,
-          0.495,
-          3.765,
+          3.515,
+          0.315,
+          3.845,
           0.655
         ],
         "gds": [
@@ -2982,7 +4294,7 @@
         "box": [
           2.555,
           0.655,
-          3.765,
+          3.845,
           0.825
         ],
         "gds": [
@@ -3039,6 +4351,20 @@
           3.595,
           1.495,
           4.315,
+          1.545
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          3.595,
+          1.545,
+          4.395,
           1.665
         ],
         "gds": [
@@ -3050,10 +4376,38 @@
         "layer": "li1",
         "net": "n1",
         "box": [
-          4.145,
+          4.065,
           1.665,
-          4.315,
-          1.825
+          4.395,
+          2.395
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "X_u1",
+        "box": [
+          1.125,
+          1.915,
+          1.455,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "X_u1",
+        "box": [
+          2.135,
+          1.915,
+          2.465,
+          2.255
         ],
         "gds": [
           67,
@@ -3485,7 +4839,22 @@
           0.35,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licon_y_um": [
+          0.38,
+          0.72
+        ],
+        "li1_bar_box": [
+          0.185,
+          0.295,
+          0.515,
+          0.805
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -3494,7 +4863,18 @@
           0.77,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          0.685,
+          0.495,
+          0.855,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -3503,7 +4883,12 @@
           1.29,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -3512,7 +4897,18 @@
           2.3,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          2.215,
+          0.495,
+          2.385,
+          0.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -3521,7 +4917,12 @@
           2.99,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -3530,7 +4931,28 @@
           3.68,
           0.66
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          3.595,
+          0.495,
+          3.765,
+          0.825
+        ],
+        "licon_y_um": [
+          0.4,
+          0.74
+        ],
+        "li1_bar_box": [
+          3.515,
+          0.315,
+          3.845,
+          0.825
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -3539,7 +4961,22 @@
           4.23,
           0.38
         ],
-        "row": "nmos"
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licon_y_um": [
+          0.38,
+          0.72
+        ],
+        "li1_bar_box": [
+          4.065,
+          0.295,
+          4.395,
+          0.805
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -3548,7 +4985,23 @@
           0.35,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "licon_y_um": [
+          1.66,
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          0.265,
+          1.495,
+          0.435,
+          2.505
+        ],
+        "licons": 3
       },
       {
         "type": "diffusion",
@@ -3557,7 +5010,29 @@
           0.77,
           1.66
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          0.685,
+          1.495,
+          0.855,
+          1.825
+        ],
+        "licon_y_um": [
+          1.63,
+          1.97,
+          2.31
+        ],
+        "li1_bar_box": [
+          0.605,
+          1.545,
+          0.935,
+          2.395
+        ],
+        "licons": 3
       },
       {
         "type": "diffusion",
@@ -3566,7 +5041,28 @@
           1.29,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.125,
+          2.255,
+          1.455,
+          2.425
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          1.125,
+          1.915,
+          1.455,
+          2.425
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -3575,7 +5071,18 @@
           1.73,
           1.66
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.645,
+          1.495,
+          1.815,
+          1.825
+        ],
+        "licons": 1
       },
       {
         "type": "diffusion",
@@ -3584,7 +5091,28 @@
           2.3,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          2.135,
+          2.255,
+          2.465,
+          2.425
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          2.135,
+          1.915,
+          2.465,
+          2.425
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -3593,7 +5121,22 @@
           2.99,
           2.34
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          2.905,
+          1.835,
+          3.075,
+          2.505
+        ],
+        "licons": 2
       },
       {
         "type": "diffusion",
@@ -3602,7 +5145,29 @@
           4.23,
           1.66
         ],
-        "row": "pmos"
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          4.145,
+          1.495,
+          4.315,
+          1.825
+        ],
+        "licon_y_um": [
+          1.63,
+          1.97,
+          2.31
+        ],
+        "li1_bar_box": [
+          4.065,
+          1.545,
+          4.395,
+          2.395
+        ],
+        "licons": 3
       },
       {
         "type": "poly",
@@ -4159,6 +5724,74 @@
         ]
       }
     ],
+    "pin_access_mode": "every_pin",
+    "pin_access": [
+      {
+        "net": "A1",
+        "point_um": [
+          0.57,
+          1.16
+        ],
+        "met1_box": [
+          0.425,
+          1.015,
+          0.715,
+          1.305
+        ]
+      },
+      {
+        "net": "S",
+        "point_um": [
+          1.95,
+          1.16
+        ],
+        "met1_box": [
+          1.805,
+          1.015,
+          2.095,
+          1.305
+        ]
+      },
+      {
+        "net": "S",
+        "point_um": [
+          3.33,
+          1.16
+        ],
+        "met1_box": [
+          3.185,
+          1.015,
+          3.475,
+          1.305
+        ]
+      },
+      {
+        "net": "A0",
+        "point_um": [
+          4.02,
+          1.16
+        ],
+        "met1_box": [
+          3.875,
+          1.015,
+          4.165,
+          1.305
+        ]
+      },
+      {
+        "net": "X",
+        "point_um": [
+          2.3,
+          0.66
+        ],
+        "met1_box": [
+          2.155,
+          0.515,
+          2.445,
+          0.805
+        ]
+      }
+    ],
     "vias": [],
     "routing_order": [
       "A0",
@@ -4169,6 +5802,126 @@
       "X_u1",
       "n1"
     ],
+    "router": "fixed",
+    "parallel_cuts": {
+      "licons_added": 12,
+      "contacts": [
+        {
+          "net": "VGND",
+          "point_um": [
+            0.35,
+            0.38
+          ],
+          "licons": 2
+        },
+        {
+          "net": "A1_N",
+          "point_um": [
+            0.77,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            1.29,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "X",
+          "point_um": [
+            2.3,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            2.99,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "n1",
+          "point_um": [
+            3.68,
+            0.66
+          ],
+          "licons": 2
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            4.23,
+            0.38
+          ],
+          "licons": 2
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            0.35,
+            2.34
+          ],
+          "licons": 3
+        },
+        {
+          "net": "A1_N",
+          "point_um": [
+            0.77,
+            1.66
+          ],
+          "licons": 3
+        },
+        {
+          "net": "X_u1",
+          "point_um": [
+            1.29,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "X",
+          "point_um": [
+            1.73,
+            1.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "X_u1",
+          "point_um": [
+            2.3,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            2.99,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "n1",
+          "point_um": [
+            4.23,
+            1.66
+          ],
+          "licons": 3
+        }
+      ],
+      "mcons_added": 0,
+      "vias": []
+    },
     "li1_notch_fill_added_area_um2": {
       "VGND": 0.0,
       "VPWR": 0.0,

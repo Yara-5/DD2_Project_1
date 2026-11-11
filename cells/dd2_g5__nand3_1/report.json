@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-02",
@@ -95,7 +95,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 1
+    "routing_attempts_failed": 2
   },
   "verification": {
     "drc_contexts": 24,
@@ -105,7 +105,7 @@
     "lvs": "match",
     "rc_lvs": "match",
     "rc_elements": {
-      "resistors": 38,
+      "resistors": 37,
       "capacitors": 54,
       "collapsed_lvs_passed": true
     },
@@ -141,32 +141,32 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.146182,
-        "rise_transition": 0.12153599999999999,
-        "cell_fall": 0.13035200000000002,
-        "fall_transition": 0.11581999999999999
+        "cell_rise": 0.14122700000000002,
+        "rise_transition": 0.112121,
+        "cell_fall": 0.132388,
+        "fall_transition": 0.117888
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.16322799999999998,
-        "rise_transition": 0.134207,
-        "cell_fall": 0.136375,
-        "fall_transition": 0.115482
+        "cell_rise": 0.157842,
+        "rise_transition": 0.125825,
+        "cell_fall": 0.138432,
+        "fall_transition": 0.117624
       },
       {
         "pin": "C",
         "sense": "negative_unate",
-        "cell_rise": 0.16964400000000002,
-        "rise_transition": 0.141801,
-        "cell_fall": 0.138685,
-        "fall_transition": 0.114842
+        "cell_rise": 0.157845,
+        "rise_transition": 0.125374,
+        "cell_fall": 0.140601,
+        "fall_transition": 0.11703399999999999
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.002150225,
-      "B": 0.002212713888888889,
-      "C": 0.0022714083333333335
+      "A": 0.002172763888888889,
+      "B": 0.002235575,
+      "C": 0.002302475
     },
     "extended_windows_ns": {}
   },
@@ -175,6 +175,6 @@
     "extra_sites": 0,
     "area_increase_percent": 0.0,
     "installed_width_sites": 4,
-    "median_timing_difference_percent": -0.594
+    "median_timing_difference_percent": -1.187
   }
 }

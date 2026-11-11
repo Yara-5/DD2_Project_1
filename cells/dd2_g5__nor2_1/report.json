@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-01",
@@ -94,7 +94,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 1
+    "routing_attempts_failed": 2
   },
   "verification": {
     "drc_contexts": 24,
@@ -140,23 +140,23 @@
       {
         "pin": "A",
         "sense": "negative_unate",
-        "cell_rise": 0.22090600000000002,
-        "rise_transition": 0.209482,
-        "cell_fall": 0.0942493,
-        "fall_transition": 0.0637053
+        "cell_rise": 0.209102,
+        "rise_transition": 0.192729,
+        "cell_fall": 0.0947204,
+        "fall_transition": 0.0638256
       },
       {
         "pin": "B",
         "sense": "negative_unate",
-        "cell_rise": 0.204611,
-        "rise_transition": 0.209431,
-        "cell_fall": 0.088188,
-        "fall_transition": 0.060585299999999995
+        "cell_rise": 0.195127,
+        "rise_transition": 0.19267800000000002,
+        "cell_fall": 0.08640750000000001,
+        "fall_transition": 0.059067800000000004
       }
     ],
     "input_capacitance_pf": {
-      "A": 0.0022806805555555558,
-      "B": 0.0021761694444444443
+      "A": 0.0023047666666666665,
+      "B": 0.002208161111111111
     },
     "extended_windows_ns": {
       "arc0_A": 8.0,
@@ -168,6 +168,6 @@
     "extra_sites": 0,
     "area_increase_percent": 0.0,
     "installed_width_sites": 3,
-    "median_timing_difference_percent": 3.193
+    "median_timing_difference_percent": 0.193
   }
 }

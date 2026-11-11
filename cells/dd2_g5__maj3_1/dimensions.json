@@ -91,6 +91,15 @@
     0.25,
     0.0
   ],
+  "gate_has_contact": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "poly_bar_runs": [],
   "li1_landing_um": [
     0.17,
     0.33
@@ -175,92 +184,92 @@
   "diffusion_segments": 2,
   "active_x_um": [
     [
-      0.245,
-      3.415
+      0.705,
+      3.875
     ],
     [
-      3.685,
-      4.355
+      4.145,
+      4.815
     ]
   ],
-  "centering_shift_um": 0.05,
+  "centering_shift_um": 0.51,
   "gate_x_um": [
-    0.58,
-    1.26,
-    1.96,
-    2.64,
-    3.08,
-    4.02
+    1.04,
+    1.72,
+    2.42,
+    3.1,
+    3.54,
+    4.48
   ],
   "diffusion_node_x_um": [
     [
-      0.37,
-      0.92,
-      1.61,
-      2.3,
-      2.86,
-      3.29
+      0.83,
+      1.38,
+      2.07,
+      2.76,
+      3.32,
+      3.75
     ],
     [
-      3.81,
-      4.23
+      4.27,
+      4.69
     ]
   ],
   "row_active_x_um": {
     "nmos": [
       [
-        0.245,
-        3.415
+        0.705,
+        3.875
       ],
       [
-        3.685,
-        4.355
+        4.145,
+        4.815
       ]
     ],
     "pmos": [
       [
-        0.245,
-        3.415
+        0.705,
+        3.875
       ],
       [
-        3.685,
-        4.355
+        4.145,
+        4.815
       ]
     ]
   },
   "row_node_x_um": {
     "nmos": [
       [
-        0.37,
-        0.92,
-        1.61,
-        2.3,
-        2.86,
-        3.29
+        0.83,
+        1.38,
+        2.07,
+        2.76,
+        3.32,
+        3.75
       ],
       [
-        3.81,
-        4.23
+        4.27,
+        4.69
       ]
     ],
     "pmos": [
       [
-        0.37,
-        0.92,
-        1.61,
-        2.3,
-        2.86,
-        3.29
+        0.83,
+        1.38,
+        2.07,
+        2.76,
+        3.32,
+        3.75
       ],
       [
-        3.81,
-        4.23
+        4.27,
+        4.69
       ]
     ]
   },
   "raw_width_um": 4.49,
   "minimum_width_sites": 10,
-  "width_sites": 10,
+  "width_sites": 12,
   "formulas": {
     "pitch": "per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, gate li1 spacing li.3, li1 track at a channel), 2 routing steps)",
     "gate_contact_offset": "chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe",
@@ -271,7 +280,7 @@
     "side_margin": "max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half",
     "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
   },
-  "cell_width_um": 4.6,
+  "cell_width_um": 5.52,
   "cell_height_um": 2.72,
   "routing_retries": [
     {
@@ -280,6 +289,43 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -293,6 +339,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          4
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -306,6 +384,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          4
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          5
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -319,6 +429,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          5
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -332,6 +474,33 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -340,6 +509,33 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -353,6 +549,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          4
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -366,6 +594,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          4
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          5
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -379,6 +639,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          5
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -392,6 +684,33 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -400,6 +719,33 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -413,6 +759,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          4
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -426,6 +804,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          4
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          5
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -439,6 +849,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          5
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -452,6 +894,33 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -460,6 +929,33 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -473,6 +969,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          4
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -486,6 +1014,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          4
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          5
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -499,6 +1059,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          5
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -512,6 +1104,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -525,6 +1149,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -538,6 +1194,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          2
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -551,6 +1239,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          2
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -564,6 +1284,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -577,6 +1329,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -590,6 +1374,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          2
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -603,6 +1419,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          2
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -616,6 +1464,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -629,6 +1509,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -642,6 +1554,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          2
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -655,6 +1599,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          2
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -668,6 +1644,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -681,6 +1689,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -694,6 +1734,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          2
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -707,6 +1779,38 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          2
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -720,7 +1824,24 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
       "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          0,
+          3
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
     },
     {
       "placement": 0,
@@ -761,6 +1882,137 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found for B at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for B at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for B at this width"
     },
     {
@@ -802,129 +2054,8 @@
       "met1": false,
       "extra_sites": 0,
       "rip_up": false,
-      "reason": "No li1 route found for B at this width"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          1,
-          1
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          1,
-          0
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          1,
-          1
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 2,
-      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
       "reason": "No li1 route found for B at this width"
     },
     {
@@ -964,11 +2095,529 @@
         ]
       ],
       "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
       "extra_sites": 2,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for B at this width"
     },
     {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 2,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for B at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 2,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 2,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found for B at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 2,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for B at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 2,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
       "placement": 2,
       "channels": [
         [
@@ -1007,6 +2656,137 @@
       "met1": false,
       "extra_sites": 2,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 2,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1 route found for A at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 2,
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": false,
+      "extra_sites": 2,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
       "reason": "No li1 route found for A at this width"
     },
     {
@@ -1048,744 +2828,11 @@
       "met1": false,
       "extra_sites": 2,
       "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
       "reason": "No li1 route found for A at this width"
     },
     {
-      "placement": 0,
-      "channels": [],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          1,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          4
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          5
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          4
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          5
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          1,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          1,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          0,
-          4
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          0,
-          5
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          0,
-          4
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          0,
-          5
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          1,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          3
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          0,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          0,
-          3
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          0,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          0,
-          3
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          1,
-          1
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "rip-up and reroute gave up after 81 rip-ups (first failure: No li1 route found for B at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          1,
-          0
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for n1 at this width (rip-up and reroute; first failure: No li1 route found for B at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          1,
-          1
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 3,
-      "channels": [
-        [
-          1,
-          0
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          1,
-          1
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 2,
-      "rip_up": true,
-      "reason": "rip-up and reroute gave up after 81 rip-ups (first failure: No li1 route found for B at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          1,
-          0
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 2,
-      "rip_up": true,
-      "reason": "No li1 route found for n1 at this width (rip-up and reroute; first failure: No li1 route found for B at this width)"
-    },
-    {
-      "placement": 2,
-      "channels": [
-        [
-          1,
-          1
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          1,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 2,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
       "placement": 3,
       "channels": [
         [
@@ -1823,8 +2870,10 @@
       ],
       "met1": false,
       "extra_sites": 2,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
+      "rip_up": false,
+      "router": "negotiated",
+      "pin_access": "every_pin",
+      "reason": "No li1 route found at this width (negotiated: A, B, Y, n1, n1_d1, n1_u1 still overlap; no progress in 15 iterations)"
     },
     {
       "placement": 0,
@@ -1832,7 +2881,19 @@
       "met1": true,
       "extra_sites": 0,
       "rip_up": false,
-      "reason": "No li1/met1 route found for B at this width"
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1/met1 route found for n1_d1 at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1/met1 route found for n1_d1 at this width"
     },
     {
       "placement": 1,
@@ -1840,7 +2901,19 @@
       "met1": true,
       "extra_sites": 0,
       "rip_up": false,
-      "reason": "No li1/met1 route found for B at this width"
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1/met1 route found for n1 at this width"
     },
     {
       "placement": 2,
@@ -1848,7 +2921,19 @@
       "met1": true,
       "extra_sites": 0,
       "rip_up": false,
-      "reason": "No li1/met1 route found for B at this width"
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1/met1 route found for n1 at this width"
     },
     {
       "placement": 3,
@@ -1856,7 +2941,363 @@
       "met1": true,
       "extra_sites": 0,
       "rip_up": false,
-      "reason": "No li1/met1 route found for B at this width"
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 0,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 1,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 2,
+      "channels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "every_pin",
+      "reason": "No li1/met1 route found for n1 at this width"
+    },
+    {
+      "placement": 3,
+      "channels": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "met1": true,
+      "extra_sites": 0,
+      "rip_up": false,
+      "router": "fixed",
+      "pin_access": "one_pin_per_port",
+      "reason": "No li1/met1 route found for n1 at this width"
     }
   ],
   "rule_values_and_sources": {
@@ -1929,6 +3370,15 @@
         "kind": "drc",
         "rule": "psd.5a",
         "message": "N-Diffusion to P-tap spacing"
+      }
+    },
+    "licon_space": {
+      "value": 0.17,
+      "source": "licon.2",
+      "check": {
+        "kind": "drc",
+        "rule": "licon.2",
+        "message": "Diffusion contact spacing"
       }
     },
     "licon_size": {

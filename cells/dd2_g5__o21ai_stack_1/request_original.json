@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "reason": null,
+  "request": {
+    "request_id": "STACK-O21AI",
+    "name": "dd2_g5__o21ai_stack_1",
+    "inputs": [
+      "A",
+      "B",
+      "C"
+    ],
+    "output": "Y",
+    "expression": "!((A | B) & C)",
+    "sizing": "stack",
+    "truth_table": "0x1F",
+    "truth_table_value": 31,
+    "recognized": null,
+    "supported_by_prototype": false
+  }
+}

@@ -143,6 +143,7 @@ def main():
     ap.add_argument('--image',default='dd2-layout-tools')
     ap.add_argument('--linux',default='',help='Command prefix that runs a command on Linux; empty on Linux')
     ap.add_argument('--cells', nargs='*', help='Specific cell folder names to verify (default: all)')
+    ap.add_argument('--jobs',type=int,default=1,help='Magic DRC cases run at once (magic_drc_runner.py)')
     args=ap.parse_args()
     rules={k:v['value'] for k,v in json.loads(args.rules.read_text())['rules'].items()}
     height=json.loads(args.frame.read_text())['frame']['site']['height']
@@ -188,7 +189,7 @@ def main():
     runner=base/'magic_drc_runner.py'
     prefix=shlex.split(args.linux)
     command=prefix+['python3' if prefix else sys.executable,relative(runner),'--tutorial-root',relative(root),
-                    '--manifest',relative(manifest_path),'--outdir',relative(out)]
+                    '--manifest',relative(manifest_path),'--outdir',relative(out),'--jobs',str(args.jobs)]
     result=subprocess.run(command,check=False)
     return result.returncode
 

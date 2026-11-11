@@ -1,14 +1,14 @@
 {
   "gate_length_um": 0.15,
   "gate_pitches_um": [
-    0.7,
-    0.68,
-    0.7,
-    0.68,
-    0.7,
-    0.68,
-    0.7,
-    0.68
+    0.42,
+    0.42,
+    0.42,
+    0.42,
+    0.42,
+    0.42,
+    0.42,
+    0.42
   ],
   "gate_gaps": [
     {
@@ -16,13 +16,10 @@
         0,
         1
       ],
-      "pitch_um": 0.7,
-      "binding": "li1_track_through_band",
+      "pitch_um": 0.42,
+      "binding": "diffusion_contact_between_gates",
       "lower_bounds_um": {
-        "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.49,
-        "gate_li1_spacing": 0.35,
-        "li1_track_through_band": 0.7
+        "diffusion_contact_between_gates": 0.42
       }
     },
     {
@@ -30,13 +27,10 @@
         1,
         2
       ],
-      "pitch_um": 0.68,
-      "binding": "li1_track_through_band",
+      "pitch_um": 0.42,
+      "binding": "diffusion_contact_between_gates",
       "lower_bounds_um": {
-        "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.47,
-        "gate_li1_spacing": 0.33,
-        "li1_track_through_band": 0.68
+        "diffusion_contact_between_gates": 0.42
       }
     },
     {
@@ -44,13 +38,12 @@
         2,
         3
       ],
-      "pitch_um": 0.7,
-      "binding": "li1_track_through_band",
+      "pitch_um": 0.42,
+      "binding": "diffusion_contact_between_gates",
       "lower_bounds_um": {
         "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.49,
-        "gate_li1_spacing": 0.35,
-        "li1_track_through_band": 0.7
+        "poly_pad_spacing": 0.42,
+        "gate_li1_spacing": 0.28
       }
     },
     {
@@ -58,13 +51,10 @@
         3,
         4
       ],
-      "pitch_um": 0.68,
-      "binding": "li1_track_through_band",
+      "pitch_um": 0.42,
+      "binding": "diffusion_contact_between_gates",
       "lower_bounds_um": {
-        "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.47,
-        "gate_li1_spacing": 0.33,
-        "li1_track_through_band": 0.68
+        "diffusion_contact_between_gates": 0.42
       }
     },
     {
@@ -72,13 +62,10 @@
         4,
         5
       ],
-      "pitch_um": 0.7,
-      "binding": "li1_track_through_band",
+      "pitch_um": 0.42,
+      "binding": "diffusion_contact_between_gates",
       "lower_bounds_um": {
-        "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.49,
-        "gate_li1_spacing": 0.35,
-        "li1_track_through_band": 0.7
+        "diffusion_contact_between_gates": 0.42
       }
     },
     {
@@ -86,13 +73,11 @@
         5,
         6
       ],
-      "pitch_um": 0.68,
-      "binding": "li1_track_through_band",
+      "pitch_um": 0.42,
+      "binding": "diffusion_contact_between_gates",
       "lower_bounds_um": {
         "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.47,
-        "gate_li1_spacing": 0.33,
-        "li1_track_through_band": 0.68
+        "poly_pad_spacing": 0.42
       }
     },
     {
@@ -100,13 +85,10 @@
         6,
         7
       ],
-      "pitch_um": 0.7,
-      "binding": "li1_track_through_band",
+      "pitch_um": 0.42,
+      "binding": "diffusion_contact_between_gates",
       "lower_bounds_um": {
-        "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.49,
-        "gate_li1_spacing": 0.35,
-        "li1_track_through_band": 0.7
+        "diffusion_contact_between_gates": 0.42
       }
     },
     {
@@ -114,13 +96,10 @@
         7,
         8
       ],
-      "pitch_um": 0.68,
-      "binding": "li1_track_through_band",
+      "pitch_um": 0.42,
+      "binding": "diffusion_contact_between_gates",
       "lower_bounds_um": {
-        "diffusion_contact_between_gates": 0.42,
-        "poly_pad_spacing": 0.47,
-        "gate_li1_spacing": 0.33,
-        "li1_track_through_band": 0.68
+        "diffusion_contact_between_gates": 0.42
       }
     }
   ],
@@ -130,14 +109,39 @@
   },
   "gate_contact_offset_um": [
     0.0,
-    -0.01,
     0.0,
-    -0.01,
+    -0.06,
     0.0,
-    -0.01,
     0.0,
-    -0.01,
+    0.0,
+    0.0,
+    0.0,
     0.0
+  ],
+  "gate_has_contact": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false,
+    true,
+    false,
+    false
+  ],
+  "poly_bar_runs": [
+    [
+      0,
+      2
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      6,
+      8
+    ]
   ],
   "li1_landing_um": [
     0.17,
@@ -166,151 +170,95 @@
   },
   "left_edge_lower_bounds_um": {
     "diffusion_margin": 0.47,
-    "poly_pad_to_edge": 0.24,
-    "gate_li1_to_edge": 0.17,
-    "li1_track_through_band": 0.52
+    "poly_pad_to_edge": 0.18
   },
   "right_edge_lower_bounds_um": {
     "diffusion_margin": 0.47,
-    "poly_pad_to_edge": 0.24,
-    "gate_li1_to_edge": 0.17,
-    "li1_track_through_band": 0.52
+    "poly_pad_to_edge": 0.18
   },
   "li1_track_um": 0.52,
-  "channels": [
-    [
-      0,
-      0
-    ],
-    [
-      0,
-      1
-    ],
-    [
-      0,
-      2
-    ],
-    [
-      0,
-      3
-    ],
-    [
-      0,
-      4
-    ],
-    [
-      0,
-      5
-    ],
-    [
-      0,
-      6
-    ],
-    [
-      0,
-      7
-    ],
-    [
-      0,
-      8
-    ],
-    [
-      0,
-      9
-    ]
-  ],
-  "crossing_gaps": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9
-  ],
+  "channels": [],
+  "crossing_gaps": [],
   "diffusion_segments": 1,
   "active_x_um": [
     [
-      0.355,
-      6.545
+      0.285,
+      4.315
     ]
   ],
-  "centering_shift_um": 0.17,
+  "centering_shift_um": 0.15,
   "gate_x_um": [
-    0.69,
-    1.39,
-    2.07,
-    2.77,
-    3.45,
-    4.15,
-    4.83,
-    5.53,
-    6.21
+    0.62,
+    1.04,
+    1.46,
+    1.88,
+    2.3,
+    2.72,
+    3.14,
+    3.56,
+    3.98
   ],
   "diffusion_node_x_um": [
     [
-      0.48,
-      1.04,
-      1.73,
-      2.42,
-      3.11,
-      3.8,
-      4.49,
-      5.18,
-      5.87,
-      6.42
+      0.41,
+      0.83,
+      1.25,
+      1.67,
+      2.09,
+      2.51,
+      2.93,
+      3.35,
+      3.77,
+      4.19
     ]
   ],
   "row_active_x_um": {
     "nmos": [
       [
-        0.355,
-        2.405
+        1.125,
+        3.475
       ]
     ],
     "pmos": [
       [
-        0.355,
-        6.545
+        0.285,
+        4.315
       ]
     ]
   },
   "row_node_x_um": {
     "nmos": [
       [
-        0.48,
-        1.04,
-        1.73,
-        2.28,
         null,
         null,
-        null,
-        null,
+        1.25,
+        1.67,
+        2.09,
+        2.51,
+        2.93,
+        3.35,
         null,
         null
       ]
     ],
     "pmos": [
       [
-        0.48,
-        1.04,
-        1.73,
-        2.42,
-        3.11,
-        3.8,
-        4.49,
-        5.18,
-        5.87,
-        6.42
+        0.41,
+        0.83,
+        1.25,
+        1.67,
+        2.09,
+        2.51,
+        2.93,
+        3.35,
+        3.77,
+        4.19
       ]
     ]
   },
-  "raw_width_um": 6.56,
-  "minimum_width_sites": 15,
-  "width_sites": 15,
+  "raw_width_um": 4.3,
+  "minimum_width_sites": 10,
+  "width_sites": 10,
   "formulas": {
     "pitch": "per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, gate li1 spacing li.3, li1 track at a channel), 2 routing steps)",
     "gate_contact_offset": "chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe",
@@ -321,1182 +269,9 @@
     "side_margin": "max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half",
     "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
   },
-  "cell_width_um": 6.9,
+  "cell_width_um": 4.6,
   "cell_height_um": 2.72,
-  "routing_retries": [
-    {
-      "placement": 0,
-      "channels": [],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          6
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          3
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          4
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          5
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          7
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          7
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          4
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          5
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          6
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          8
-        ],
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          9
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1 route found for A at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          8
-        ],
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 2,
-      "rip_up": false,
-      "reason": "No li1 route found for B at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          9
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 2,
-      "rip_up": false,
-      "reason": "No li1 route found for B at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          6
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          3
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          4
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          5
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          7
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          7
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          0
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          1
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          2
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          4
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          5
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          6
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          8
-        ],
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          9
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "No li1 route found for A at this width (rip-up and reroute; first failure: No li1 route found for A at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          8
-        ],
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 2,
-      "rip_up": true,
-      "reason": "rip-up and reroute gave up after 81 rip-ups (first failure: No li1 route found for B at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          9
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": false,
-      "extra_sites": 2,
-      "rip_up": true,
-      "reason": "rip-up and reroute gave up after 81 rip-ups (first failure: No li1 route found for B at this width)"
-    },
-    {
-      "placement": 0,
-      "channels": [],
-      "met1": true,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1/met1 route found for B at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [],
-      "met1": true,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1/met1 route found for C at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          8
-        ],
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": true,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1/met1 route found for Y at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          9
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": true,
-      "extra_sites": 0,
-      "rip_up": false,
-      "reason": "No li1/met1 route found for Y at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          8
-        ],
-        [
-          0,
-          9
-        ]
-      ],
-      "met1": true,
-      "extra_sites": 2,
-      "rip_up": false,
-      "reason": "No li1/met1 route found for Y_u1 at this width"
-    },
-    {
-      "placement": 1,
-      "channels": [
-        [
-          0,
-          3
-        ],
-        [
-          0,
-          7
-        ],
-        [
-          0,
-          9
-        ],
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          0,
-          4
-        ],
-        [
-          0,
-          5
-        ],
-        [
-          0,
-          6
-        ],
-        [
-          0,
-          8
-        ]
-      ],
-      "met1": true,
-      "extra_sites": 2,
-      "rip_up": false,
-      "reason": "No li1/met1 route found for C at this width"
-    },
-    {
-      "placement": 0,
-      "channels": [],
-      "met1": true,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "no route for B with its vias spaced (rip-up and reroute; first failure: No li1/met1 route found for B at this width)"
-    },
-    {
-      "placement": 1,
-      "channels": [],
-      "met1": true,
-      "extra_sites": 0,
-      "rip_up": true,
-      "reason": "rip-up and reroute gave up after 82 rip-ups (first failure: No li1/met1 route found for C at this width)"
-    }
-  ],
+  "routing_retries": [],
   "rule_values_and_sources": {
     "grid": {
       "value": 0.005,
@@ -1567,6 +342,15 @@
         "kind": "drc",
         "rule": "psd.5a",
         "message": "N-Diffusion to P-tap spacing"
+      }
+    },
+    "licon_space": {
+      "value": 0.17,
+      "source": "licon.2",
+      "check": {
+        "kind": "drc",
+        "rule": "licon.2",
+        "message": "Diffusion contact spacing"
       }
     },
     "licon_size": {

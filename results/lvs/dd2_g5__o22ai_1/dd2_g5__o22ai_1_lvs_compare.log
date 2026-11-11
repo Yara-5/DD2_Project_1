@@ -13,15 +13,15 @@ Netlists match uniquely.
 Subcircuit pins:
 Circuit 1: dd2_g5__o22ai_1                 |Circuit 2: dd2_g5__o22ai_1                 
 -------------------------------------------|-------------------------------------------
-VNB                                        |VNB                                        
-Y                                          |Y                                          
-VPB                                        |VPB                                        
 A                                          |A                                          
 VGND                                       |VGND                                       
 B                                          |B                                          
 C                                          |C                                          
 D                                          |D                                          
 VPWR                                       |VPWR                                       
+VNB                                        |VNB                                        
+Y                                          |Y                                          
+VPB                                        |VPB                                        
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes dd2_g5__o22ai_1 and dd2_g5__o22ai_1 are equivalent.

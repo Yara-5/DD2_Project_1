@@ -24,7 +24,6 @@ The selected label is already a port.
 Do "port help" to get a list of options.
 The selected label is already a port.
 Do "port help" to get a list of options.
-DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 682 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{49 297 101 497} {131 297 237 497} {267 297 377 497} {407 297 513 497} {543 297 595 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{49 47 101 177} {131 47 237 177} {267 47 377 177} {407 47 513 177} {543 47 595 177}}
 The selected label is already a port.
 Do "port help" to get a list of options.
 The selected label is already a port.
@@ -37,6 +36,7 @@ The selected label is already a port.
 Do "port help" to get a list of options.
 The selected label is already a port.
 Do "port help" to get a list of options.
+DRC_WHY {All nwells must contain metal-connected N+ taps (nwell.4)} {{-38 261 498 582}} {P-diff distance to N-tap must be < 15.0um (LU.3)} {{27 297 79 497} {109 297 163 497} {193 297 259 497} {289 297 351 497} {381 297 433 497}} {N-diff distance to P-tap must be < 15.0um (LU.2)} {{27 47 79 177} {109 47 163 177} {193 47 259 177} {289 47 351 177} {381 47 433 177}}
 The selected label is already a port.
 Do "port help" to get a list of options.
 Extracting dd2_g5__o22ai_1 into dd2_g5__o22ai_1.ext:
@@ -46,9 +46,9 @@ exttospice finished.
 Extracting dd2_g5__o22ai_1 into dd2_g5__o22ai_1.ext:
 Processing dd2_g5__o22ai_1
 Processing cell dd2_g5__o22ai_1 for resistance extraction.
-Extracting a_131_297#
-Extracting a_407_297#
-Extracting a_49_47#
+Extracting a_109_297#
+Extracting a_289_297#
+Extracting a_27_47#
 Extracting VNB
 Extracting VPB
 Extracting A

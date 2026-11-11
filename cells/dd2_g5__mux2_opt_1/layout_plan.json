@@ -1,0 +1,5923 @@
+{
+  "schema": "dd2.cp1.layout-plan.v1",
+  "units": "um",
+  "name": "dd2_g5__mux2_opt_1",
+  "grid_um": 0.005,
+  "input": {
+    "schema": "dd2.layout-spec.v1",
+    "name": "dd2_g5__mux2_opt_1",
+    "request_id": "OPT-MUX2",
+    "inputs": [
+      "A",
+      "B",
+      "C"
+    ],
+    "output": "Y",
+    "truth_table": "0xCA",
+    "sizing": "opt",
+    "devices": [
+      {
+        "id": "N1",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "B",
+        "source": "VGND",
+        "drain": "B_N",
+        "bulk": "VNB",
+        "w_um": 0.42,
+        "l_um": 0.15,
+        "stage": "B_N",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1
+      },
+      {
+        "id": "P1",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "B",
+        "source": "B_N",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 0.42,
+        "l_um": 0.15,
+        "stage": "B_N",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1
+      },
+      {
+        "id": "N2",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "A",
+        "source": "VGND",
+        "drain": "n1",
+        "bulk": "VNB",
+        "w_um": 0.63,
+        "l_um": 0.15,
+        "stage": "n1",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1
+      },
+      {
+        "id": "N3",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "C",
+        "source": "VGND",
+        "drain": "n1",
+        "bulk": "VNB",
+        "w_um": 0.63,
+        "l_um": 0.15,
+        "stage": "n1",
+        "leaf": 1,
+        "stack_depth": 1,
+        "fingers": 1
+      },
+      {
+        "id": "P2",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "n1",
+        "drain": "n1_u1",
+        "bulk": "VPB",
+        "w_um": 0.68,
+        "l_um": 0.15,
+        "stage": "n1",
+        "leaf": 0,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "P3",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "n1_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 0.68,
+        "l_um": 0.15,
+        "stage": "n1",
+        "leaf": 1,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "N4",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "n1",
+        "source": "VGND",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1
+      },
+      {
+        "id": "N5",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "B_N",
+        "source": "VGND",
+        "drain": "Y_d1",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 1,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "N6",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "C",
+        "source": "Y_d1",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "P4",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "n1",
+        "source": "Y_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "P5",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "B_N",
+        "source": "Y",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 1,
+        "stack_depth": 2,
+        "fingers": 1
+      },
+      {
+        "id": "P6",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "Y",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 2,
+        "fingers": 1
+      }
+    ],
+    "euler_paths": {
+      "nmos": [
+        {
+          "devices": [
+            "N1"
+          ],
+          "nodes": [
+            "VGND",
+            "B_N"
+          ]
+        },
+        {
+          "devices": [
+            "N5",
+            "N6",
+            "N4",
+            "N3",
+            "N2"
+          ],
+          "nodes": [
+            "VGND",
+            "Y_d1",
+            "Y",
+            "VGND",
+            "n1",
+            "VGND"
+          ]
+        }
+      ],
+      "pmos": [
+        {
+          "devices": [
+            "P1"
+          ],
+          "nodes": [
+            "VPWR",
+            "B_N"
+          ]
+        },
+        {
+          "devices": [
+            "P5",
+            "P6",
+            "P4",
+            "P3",
+            "P2"
+          ],
+          "nodes": [
+            "Y_u1",
+            "Y",
+            "Y_u1",
+            "VPWR",
+            "n1_u1",
+            "n1"
+          ]
+        }
+      ]
+    },
+    "alternative_euler_paths": [
+      {
+        "nmos": [
+          {
+            "devices": [
+              "N2",
+              "N3",
+              "N4",
+              "N6",
+              "N5"
+            ],
+            "nodes": [
+              "VGND",
+              "n1",
+              "VGND",
+              "Y",
+              "Y_d1",
+              "VGND"
+            ]
+          },
+          {
+            "devices": [
+              "N1"
+            ],
+            "nodes": [
+              "B_N",
+              "VGND"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "devices": [
+              "P2",
+              "P3",
+              "P4",
+              "P6",
+              "P5"
+            ],
+            "nodes": [
+              "n1",
+              "n1_u1",
+              "VPWR",
+              "Y_u1",
+              "Y",
+              "Y_u1"
+            ]
+          },
+          {
+            "devices": [
+              "P1"
+            ],
+            "nodes": [
+              "B_N",
+              "VPWR"
+            ]
+          }
+        ]
+      },
+      {
+        "nmos": [
+          {
+            "devices": [
+              "N1"
+            ],
+            "nodes": [
+              "B_N",
+              "VGND"
+            ]
+          },
+          {
+            "devices": [
+              "N5",
+              "N6",
+              "N4",
+              "N3",
+              "N2"
+            ],
+            "nodes": [
+              "VGND",
+              "Y_d1",
+              "Y",
+              "VGND",
+              "n1",
+              "VGND"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "devices": [
+              "P1"
+            ],
+            "nodes": [
+              "B_N",
+              "VPWR"
+            ]
+          },
+          {
+            "devices": [
+              "P5",
+              "P6",
+              "P4",
+              "P3",
+              "P2"
+            ],
+            "nodes": [
+              "Y_u1",
+              "Y",
+              "Y_u1",
+              "VPWR",
+              "n1_u1",
+              "n1"
+            ]
+          }
+        ]
+      },
+      {
+        "nmos": [
+          {
+            "devices": [
+              "N2",
+              "N3",
+              "N4",
+              "N6",
+              "N5"
+            ],
+            "nodes": [
+              "VGND",
+              "n1",
+              "VGND",
+              "Y",
+              "Y_d1",
+              "VGND"
+            ]
+          },
+          {
+            "devices": [
+              "N1"
+            ],
+            "nodes": [
+              "VGND",
+              "B_N"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "devices": [
+              "P2",
+              "P3",
+              "P4",
+              "P6",
+              "P5"
+            ],
+            "nodes": [
+              "n1",
+              "n1_u1",
+              "VPWR",
+              "Y_u1",
+              "Y",
+              "Y_u1"
+            ]
+          },
+          {
+            "devices": [
+              "P1"
+            ],
+            "nodes": [
+              "VPWR",
+              "B_N"
+            ]
+          }
+        ]
+      }
+    ],
+    "placement": {
+      "stage_order": [
+        "B_N",
+        "Y",
+        "n1"
+      ],
+      "mirrored": [
+        "B_N",
+        "Y",
+        "n1"
+      ],
+      "dual_trails_per_stage": {
+        "B_N": 1,
+        "n1": 1,
+        "Y": 1
+      },
+      "diffusion_segments": 2,
+      "diffusion_breaks": 1,
+      "columns": 6,
+      "repeated_nets_in_rows": 1,
+      "folded": false,
+      "wiring_slots": 18,
+      "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
+    },
+    "placement_used": 0
+  },
+  "dimensions": {
+    "gate_length_um": 0.15,
+    "gate_pitches_um": [
+      0.94,
+      0.46,
+      0.68,
+      0.7,
+      0.68
+    ],
+    "gate_gaps": [
+      {
+        "between_columns": [
+          0,
+          1
+        ],
+        "pitch_um": 0.94,
+        "binding": "diffusion_break",
+        "lower_bounds_um": {
+          "diffusion_break": 0.94,
+          "poly_pad_spacing": 0.73,
+          "gate_li1_spacing": 0.59,
+          "li1_track_through_band": 0.94
+        }
+      },
+      {
+        "between_columns": [
+          1,
+          2
+        ],
+        "pitch_um": 0.46,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "poly_pad_spacing": 0.43,
+          "gate_li1_spacing": 0.11,
+          "li1_track_through_band": 0.46
+        }
+      },
+      {
+        "between_columns": [
+          2,
+          3
+        ],
+        "pitch_um": 0.68,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "poly_pad_spacing": 0.47,
+          "gate_li1_spacing": 0.33,
+          "li1_track_through_band": 0.68
+        }
+      },
+      {
+        "between_columns": [
+          3,
+          4
+        ],
+        "pitch_um": 0.7,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "diffusion_step": 0.475,
+          "poly_pad_spacing": 0.49,
+          "gate_li1_spacing": 0.35,
+          "li1_track_through_band": 0.7
+        }
+      },
+      {
+        "between_columns": [
+          4,
+          5
+        ],
+        "pitch_um": 0.68,
+        "binding": "li1_track_through_band",
+        "lower_bounds_um": {
+          "diffusion_contact_between_gates": 0.42,
+          "poly_pad_spacing": 0.47,
+          "gate_li1_spacing": 0.33,
+          "li1_track_through_band": 0.68
+        }
+      }
+    ],
+    "pitch_lower_bounds_um": {
+      "poly_stripe_spacing": 0.36,
+      "diffusion_contact_between_gates": 0.42000000000000004
+    },
+    "gate_contact_offset_um": [
+      0.01,
+      -0.24,
+      -0.01,
+      0.0,
+      -0.01,
+      0.0
+    ],
+    "gate_has_contact": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "poly_bar_runs": [],
+    "li1_landing_um": [
+      0.17,
+      0.33
+    ],
+    "li1_pin_um": 0.15,
+    "poly_landing_um": [
+      0.27,
+      0.33
+    ],
+    "met1_landing_um": 0.29,
+    "diffusion_end_extension_um": 0.26,
+    "end_extension_lower_bounds_um": {
+      "diffusion_extension": 0.25,
+      "contact_fit": 0.26
+    },
+    "diffusion_break_um": 0.27,
+    "diffusion_break_lower_bounds_um": {
+      "diffusion_spacing": 0.27,
+      "end_landing_li1_spacing": 0.09000000000000002
+    },
+    "side_margin_um": 0.135,
+    "side_margin_lower_bounds_um": {
+      "half_diffusion_spacing": 0.135,
+      "implant_enclosure": 0.125
+    },
+    "left_edge_lower_bounds_um": {
+      "diffusion_margin": 0.47,
+      "poly_pad_to_edge": 0.23,
+      "gate_li1_to_edge": 0.16,
+      "li1_track_through_band": 0.51
+    },
+    "right_edge_lower_bounds_um": {
+      "diffusion_margin": 0.47,
+      "poly_pad_to_edge": 0.24,
+      "gate_li1_to_edge": 0.17,
+      "li1_track_through_band": 0.52
+    },
+    "li1_track_um": 0.52,
+    "channels": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ]
+    ],
+    "crossing_gaps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "diffusion_segments": 2,
+    "active_x_um": [
+      [
+        0.225,
+        0.895
+      ],
+      [
+        1.165,
+        4.355
+      ]
+    ],
+    "centering_shift_um": 0.05,
+    "gate_x_um": [
+      0.56,
+      1.5,
+      1.96,
+      2.64,
+      3.34,
+      4.02
+    ],
+    "diffusion_node_x_um": [
+      [
+        0.35,
+        0.77
+      ],
+      [
+        1.29,
+        1.73,
+        2.3,
+        2.99,
+        3.68,
+        4.23
+      ]
+    ],
+    "row_active_x_um": {
+      "nmos": [
+        [
+          0.225,
+          0.895
+        ],
+        [
+          1.165,
+          4.355
+        ]
+      ],
+      "pmos": [
+        [
+          0.225,
+          0.895
+        ],
+        [
+          1.165,
+          4.355
+        ]
+      ]
+    },
+    "row_node_x_um": {
+      "nmos": [
+        [
+          0.35,
+          0.77
+        ],
+        [
+          1.29,
+          1.73,
+          2.3,
+          2.99,
+          3.68,
+          4.23
+        ]
+      ],
+      "pmos": [
+        [
+          0.35,
+          0.77
+        ],
+        [
+          1.29,
+          1.73,
+          2.3,
+          2.99,
+          3.68,
+          4.23
+        ]
+      ]
+    },
+    "raw_width_um": 4.49,
+    "minimum_width_sites": 10,
+    "width_sites": 10,
+    "formulas": {
+      "pitch": "per gap: snap_up(max(L + poly.2 or L + licon + 2 licon.11, pad hull spacing poly.2, gate li1 spacing li.3, li1 track at a channel), 2 routing steps)",
+      "gate_contact_offset": "chosen per gate by the dynamic program: narrowest cell, then contacts nearest their stripe",
+      "li1_landing": "licon wide (li1 covers it), licon + 2 li.5 tall, at least li.6 in area",
+      "poly_landing": "licon + 2 licon.8 wide, licon + 2 licon.8a tall, joined to the stripe",
+      "end_extension": "max(poly.7, licon.11 + licon + licon.5a)",
+      "diffusion_break": "snap_up(max(diff/tap.3, end-landing li1 spacing))",
+      "side_margin": "max(diff/tap.3 / 2, implant enclosure): the neighbour keeps the other half",
+      "width_sites": "ceil(raw_width / site_width), plus explicit routing retries if required"
+    },
+    "cell_width_um": 4.6,
+    "cell_height_um": 2.72,
+    "routing_retries": [
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: C, Y, n1 still overlap after 40 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap after 40 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: C, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, Y_u1, n1 still overlap after 40 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: C, Y, n1 still overlap after 40 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for n1 at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: C, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            1,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y, n1 still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap after 40 iterations)"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 0,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap after 40 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap after 40 iterations)"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 1,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y, Y_u1 still overlap after 40 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            4
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap after 40 iterations)"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 2,
+        "channels": [
+          [
+            1,
+            5
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap after 40 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            3
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            0
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, Y still overlap; no progress in 15 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            1
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: B_N, C, Y still overlap after 40 iterations)"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "fixed",
+        "pin_access": "one_pin_per_port",
+        "reason": "No li1 route found for Y at this width"
+      },
+      {
+        "placement": 3,
+        "channels": [
+          [
+            0,
+            2
+          ]
+        ],
+        "met1": false,
+        "extra_sites": 0,
+        "rip_up": false,
+        "router": "negotiated",
+        "pin_access": "every_pin",
+        "reason": "No li1 route found at this width (negotiated: C, Y, Y_u1, n1 still overlap after 40 iterations)"
+      }
+    ],
+    "rule_values_and_sources": {
+      "grid": {
+        "value": 0.005,
+        "source": "manufacturing grid, given/plan_hd.json 'grid'",
+        "check": {
+          "kind": "frame",
+          "key": "grid"
+        }
+      },
+      "poly_min_width": {
+        "value": 0.15,
+        "source": "poly.1a",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.1a",
+          "message": "poly width"
+        }
+      },
+      "poly_space": {
+        "value": 0.21,
+        "source": "poly.2",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.2",
+          "message": "poly spacing"
+        }
+      },
+      "diff_end_extension": {
+        "value": 0.25,
+        "source": "poly.7, diffusion extension past the gate",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.7",
+          "message": "N-Diffusion overhang of nFET"
+        }
+      },
+      "poly_endcap": {
+        "value": 0.13,
+        "source": "poly.8, poly extension past the diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.8",
+          "message": "poly overhang of transistor"
+        }
+      },
+      "channel_min_width": {
+        "value": 0.36,
+        "source": "diff/tap.2, transistor width inside a standard cell",
+        "check": {
+          "kind": "drc",
+          "rule": "diff/tap.2",
+          "message": "Transistor in standard cell width"
+        }
+      },
+      "fet_min_width": {
+        "value": 0.42,
+        "source": "diff/tap.2, width of a standard FET (sky130_fd_pr__nfet_01v8, pfet_01v8_hvt); Magic extracts a narrower one as sky130_fd_pr__special_*, which the schematic does not use",
+        "check": {
+          "kind": "drc",
+          "rule": "diff/tap.2",
+          "message": "Transistor width"
+        }
+      },
+      "diff_space": {
+        "value": 0.27,
+        "source": "diff/tap.3, spacing between diffusion strips (a diffusion break)",
+        "check": {
+          "kind": "drc",
+          "rule": "diff/tap.3",
+          "message": "Diffusion spacing"
+        }
+      },
+      "implant_enclosure": {
+        "value": 0.125,
+        "source": "nsd.5a / psd.5a, implant enclosure of diffusion (Magic does not check drawn implants; src/verify_drc.py layer check does)",
+        "check": {
+          "kind": "drc",
+          "rule": "psd.5a",
+          "message": "N-Diffusion to P-tap spacing"
+        }
+      },
+      "licon_space": {
+        "value": 0.17,
+        "source": "licon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.2",
+          "message": "Diffusion contact spacing"
+        }
+      },
+      "licon_size": {
+        "value": 0.17,
+        "source": "licon.1",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.1",
+          "message": "N-diffusion contact width"
+        }
+      },
+      "licon_diff_enclosure": {
+        "value": 0.06,
+        "source": "licon.5c, diffusion overlap of a diffusion contact in one direction (applied above and below it)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.5c",
+          "message": "N-diffusion overlap of N-diffusion contact"
+        }
+      },
+      "licon_diff_enclosure_min": {
+        "value": 0.04,
+        "source": "licon.5a, diffusion overlap of a diffusion contact on every side (licon.5c's 0.06 then holds in the other direction)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.5a",
+          "message": "N-diffusion overlap of N-diffusion contact"
+        }
+      },
+      "licon_poly_enclosure": {
+        "value": 0.08,
+        "source": "licon.8a, poly overlap of a poly contact in one direction (applied above and below it)",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.8a",
+          "message": "poly overlap of poly contact"
+        }
+      },
+      "licon_poly_enclosure_min": {
+        "value": 0.05,
+        "source": "licon.8, poly overlap of a poly contact on every side",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.8",
+          "message": "poly overlap of poly contact"
+        }
+      },
+      "poly_diff_space": {
+        "value": 0.075,
+        "source": "poly.4, poly (the gate contact pad) to diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "poly.4",
+          "message": "poly spacing to Diffusion"
+        }
+      },
+      "poly_contact_diff_space": {
+        "value": 0.19,
+        "source": "licon.14, poly contact to diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.14",
+          "message": "poly contact spacing to diffusion"
+        }
+      },
+      "poly_contact_pdiff_space": {
+        "value": 0.235,
+        "source": "licon.9 + psdm.5a, poly contact to P-diffusion",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.9 + psdm.5a",
+          "message": "poly contact spacing to P-diffusion"
+        }
+      },
+      "licon_gate_space": {
+        "value": 0.05,
+        "source": "licon.11, diffusion contact to standard-cell gate",
+        "check": {
+          "kind": "drc",
+          "rule": "licon.11",
+          "message": "Diffusion contact to standard cell gate"
+        }
+      },
+      "licon_npc_enclosure": {
+        "value": 0.1,
+        "source": "NPC grown 0.1 um around every poly contact (npc.1/npc.5 as Magic generates it; drawn NPC is checked by src/verify_drc.py)",
+        "check": {
+          "kind": "cif",
+          "layer": "NPC pc",
+          "operation": "grow",
+          "occurrence": 1
+        }
+      },
+      "npc_space": {
+        "value": 0.27,
+        "source": "npc.2, NPC openings closer than 0.27 um are bridged by Magic's NPC generation",
+        "check": {
+          "kind": "cif",
+          "layer": "NPC pc",
+          "operation": "bridge",
+          "occurrence": 1
+        }
+      },
+      "li_width": {
+        "value": 0.17,
+        "source": "li.1",
+        "check": {
+          "kind": "drc",
+          "rule": "li.1",
+          "message": "Local interconnect width"
+        }
+      },
+      "li_space": {
+        "value": 0.17,
+        "source": "li.3",
+        "check": {
+          "kind": "drc",
+          "rule": "li.3",
+          "message": "Local interconnect spacing"
+        }
+      },
+      "li_contact_enclosure": {
+        "value": 0.08,
+        "source": "li.5, li1 overlap of a contact in one direction (landings extend 0.08 um above and below; li1 covers the contact on the other two sides)",
+        "check": {
+          "kind": "drc",
+          "rule": "li.5",
+          "message": "Local interconnect overlap of poly contact"
+        }
+      },
+      "li_min_area": {
+        "value": 0.0561,
+        "source": "li.6 (um^2)",
+        "check": {
+          "kind": "drc",
+          "rule": "li.6",
+          "message": "Local interconnect minimum area",
+          "area": true
+        }
+      },
+      "mcon_size": {
+        "value": 0.17,
+        "source": "mcon.1 (ct.1)",
+        "check": {
+          "kind": "drc",
+          "rule": "mcon.1",
+          "message": "mcon.width"
+        }
+      },
+      "mcon_space": {
+        "value": 0.19,
+        "source": "mcon.2",
+        "check": {
+          "kind": "drc",
+          "rule": "mcon.2",
+          "message": "mcon.spacing"
+        }
+      },
+      "met1_width": {
+        "value": 0.14,
+        "source": "met1.1",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.1",
+          "message": "Metal1 width"
+        }
+      },
+      "met1_space": {
+        "value": 0.14,
+        "source": "met1.2",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.2",
+          "message": "Metal1 spacing"
+        }
+      },
+      "met1_contact_enclosure": {
+        "value": 0.06,
+        "source": "met1.5, applied on all four sides (conservative)",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.5",
+          "message": "Metal1 overlap of local interconnect contact"
+        }
+      },
+      "met1_min_area": {
+        "value": 0.083,
+        "source": "met1.6 (um^2)",
+        "check": {
+          "kind": "drc",
+          "rule": "met1.6",
+          "message": "Metal1 minimum area",
+          "area": true
+        }
+      }
+    },
+    "frame_source": "plan_hd.json",
+    "frame_sha256": "d22bd12109df202fa34c590c2402030e2b38952a6962b806499f2ed3aa2a11df"
+  },
+  "geometry": {
+    "width_um": 4.6,
+    "width_sites": 10,
+    "height_um": 2.72,
+    "shapes": [
+      {
+        "layer": "boundary",
+        "box": [
+          0.0,
+          0.0,
+          4.6,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          236,
+          0
+        ]
+      },
+      {
+        "layer": "areaid_sc",
+        "box": [
+          0.0,
+          0.0,
+          4.6,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          81,
+          4
+        ]
+      },
+      {
+        "layer": "nwell",
+        "box": [
+          -0.19,
+          1.305,
+          4.79,
+          2.91
+        ],
+        "net": null,
+        "gds": [
+          64,
+          20
+        ]
+      },
+      {
+        "layer": "nsdm",
+        "box": [
+          0.0,
+          -0.19,
+          4.6,
+          1.015
+        ],
+        "net": null,
+        "gds": [
+          93,
+          44
+        ]
+      },
+      {
+        "layer": "psdm",
+        "box": [
+          0.0,
+          1.355,
+          4.6,
+          2.91
+        ],
+        "net": null,
+        "gds": [
+          94,
+          20
+        ]
+      },
+      {
+        "layer": "hvtp",
+        "box": [
+          0.0,
+          1.25,
+          4.6,
+          2.72
+        ],
+        "net": null,
+        "gds": [
+          78,
+          44
+        ]
+      },
+      {
+        "layer": "npc",
+        "box": [
+          0.0,
+          0.975,
+          4.6,
+          1.345
+        ],
+        "net": null,
+        "gds": [
+          95,
+          20
+        ]
+      },
+      {
+        "layer": "met1",
+        "box": [
+          0.0,
+          -0.24,
+          4.6,
+          0.24
+        ],
+        "net": "VGND",
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.605,
+          -0.085,
+          0.775,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.065,
+          -0.085,
+          1.235,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.525,
+          -0.085,
+          1.695,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.985,
+          -0.085,
+          2.155,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.445,
+          -0.085,
+          2.615,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.905,
+          -0.085,
+          3.075,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.365,
+          -0.085,
+          3.535,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.825,
+          -0.085,
+          3.995,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          4.285,
+          -0.085,
+          4.455,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "met1",
+        "box": [
+          0.0,
+          2.48,
+          4.6,
+          2.96
+        ],
+        "net": "VPWR",
+        "gds": [
+          68,
+          20
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          0.605,
+          2.635,
+          0.775,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.065,
+          2.635,
+          1.235,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.525,
+          2.635,
+          1.695,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          1.985,
+          2.635,
+          2.155,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.445,
+          2.635,
+          2.615,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          2.905,
+          2.635,
+          3.075,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.365,
+          2.635,
+          3.535,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          3.825,
+          2.635,
+          3.995,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "mcon",
+        "box": [
+          4.285,
+          2.635,
+          4.455,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.225,
+          0.235,
+          0.895,
+          0.655
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.265,
+          0.295,
+          0.435,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.685,
+          0.425,
+          0.855,
+          0.595
+        ],
+        "net": "B_N",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.165,
+          0.235,
+          1.96,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.5,
+          0.235,
+          2.64,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.96,
+          0.235,
+          2.965,
+          0.885
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          2.64,
+          0.235,
+          4.02,
+          0.865
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          3.34,
+          0.235,
+          4.355,
+          0.865
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.205,
+          0.295,
+          1.375,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.215,
+          0.575,
+          2.385,
+          0.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.905,
+          0.295,
+          3.075,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          0.225,
+          2.065,
+          0.895,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.265,
+          2.255,
+          0.435,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.685,
+          2.125,
+          0.855,
+          2.295
+        ],
+        "net": "B_N",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.165,
+          1.485,
+          1.96,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.5,
+          1.485,
+          2.64,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          1.96,
+          1.485,
+          2.965,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          2.64,
+          1.805,
+          4.02,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "diff",
+        "box": [
+          3.34,
+          1.805,
+          4.355,
+          2.485
+        ],
+        "net": null,
+        "gds": [
+          65,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.645,
+          1.575,
+          1.815,
+          1.745
+        ],
+        "net": "Y",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.485,
+          0.105,
+          0.635,
+          2.615
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          0.435,
+          0.995,
+          0.705,
+          1.325
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          0.485,
+          1.075,
+          0.655,
+          1.245
+        ],
+        "net": "B",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.495,
+          1.085,
+          0.645,
+          1.235
+        ],
+        "net": "B",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.425,
+          0.105,
+          1.575,
+          2.615
+        ],
+        "net": "B_N",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.125,
+          0.995,
+          1.575,
+          1.325
+        ],
+        "net": "B_N",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.175,
+          1.075,
+          1.345,
+          1.245
+        ],
+        "net": "B_N",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.885,
+          0.105,
+          2.035,
+          2.615
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          1.815,
+          0.995,
+          2.085,
+          1.325
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.865,
+          1.075,
+          2.035,
+          1.245
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          1.875,
+          1.085,
+          2.025,
+          1.235
+        ],
+        "net": "C",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          2.565,
+          0.105,
+          2.715,
+          2.615
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          2.505,
+          0.995,
+          2.775,
+          1.325
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.555,
+          1.075,
+          2.725,
+          1.245
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.265,
+          0.105,
+          3.415,
+          2.615
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.195,
+          0.995,
+          3.465,
+          1.325
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.245,
+          1.075,
+          3.415,
+          1.245
+        ],
+        "net": "C",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          3.255,
+          1.085,
+          3.405,
+          1.235
+        ],
+        "net": "C",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.945,
+          0.105,
+          4.095,
+          2.615
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "poly",
+        "box": [
+          3.885,
+          0.995,
+          4.155,
+          1.325
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          20
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.935,
+          1.075,
+          4.105,
+          1.245
+        ],
+        "net": "A",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          3.945,
+          1.085,
+          4.095,
+          1.235
+        ],
+        "net": "A",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          2.225,
+          0.585,
+          2.375,
+          0.735
+        ],
+        "net": "Y",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "met1_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPWR",
+        "gds": [
+          68,
+          16
+        ]
+      },
+      {
+        "layer": "li1_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          67,
+          16
+        ]
+      },
+      {
+        "layer": "met1_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VGND",
+        "gds": [
+          68,
+          16
+        ]
+      },
+      {
+        "layer": "vpb_pin",
+        "box": [
+          0.145,
+          2.635,
+          0.315,
+          2.805
+        ],
+        "net": "VPB",
+        "gds": [
+          64,
+          16
+        ]
+      },
+      {
+        "layer": "vnb_pin",
+        "box": [
+          0.145,
+          -0.085,
+          0.315,
+          0.085
+        ],
+        "net": "VNB",
+        "gds": [
+          122,
+          16
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.595,
+          0.295,
+          3.765,
+          0.465
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          3.595,
+          0.635,
+          3.765,
+          0.805
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          0.295,
+          4.315,
+          0.465
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          0.635,
+          4.315,
+          0.805
+        ],
+        "net": "VGND",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.205,
+          1.915,
+          1.375,
+          2.085
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          1.205,
+          2.255,
+          1.375,
+          2.425
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.215,
+          1.915,
+          2.385,
+          2.085
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.215,
+          2.255,
+          2.385,
+          2.425
+        ],
+        "net": "Y_u1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.905,
+          1.915,
+          3.075,
+          2.085
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          2.905,
+          2.255,
+          3.075,
+          2.425
+        ],
+        "net": "VPWR",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          1.865,
+          4.315,
+          2.035
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "licon",
+        "box": [
+          4.145,
+          2.205,
+          4.315,
+          2.375
+        ],
+        "net": "n1",
+        "gds": [
+          66,
+          44
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          0.0,
+          -0.085,
+          4.6,
+          0.085
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          0.185,
+          0.085,
+          0.515,
+          0.465
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          1.125,
+          0.085,
+          1.455,
+          0.465
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          2.825,
+          0.085,
+          3.155,
+          0.465
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VGND",
+        "box": [
+          4.065,
+          0.085,
+          4.395,
+          0.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          0.265,
+          2.175,
+          0.435,
+          2.635
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          2.905,
+          1.835,
+          3.075,
+          2.635
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "VPWR",
+        "box": [
+          0.0,
+          2.635,
+          4.6,
+          2.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B_N",
+        "box": [
+          0.685,
+          0.345,
+          0.855,
+          0.655
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B_N",
+        "box": [
+          0.685,
+          0.655,
+          0.995,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B_N",
+        "box": [
+          0.825,
+          0.825,
+          0.995,
+          0.995
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B_N",
+        "box": [
+          0.825,
+          0.995,
+          1.345,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B_N",
+        "box": [
+          0.825,
+          1.325,
+          0.995,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B_N",
+        "box": [
+          0.685,
+          1.495,
+          0.995,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B_N",
+        "box": [
+          0.685,
+          1.665,
+          0.855,
+          2.375
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.215,
+          0.495,
+          2.385,
+          0.575
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.645,
+          0.575,
+          2.385,
+          0.655
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.525,
+          0.655,
+          2.385,
+          0.745
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.525,
+          0.745,
+          1.815,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          2.215,
+          0.745,
+          2.385,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.525,
+          0.825,
+          1.695,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.525,
+          1.495,
+          1.815,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y",
+        "box": [
+          1.645,
+          1.665,
+          1.815,
+          1.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          3.515,
+          0.295,
+          3.845,
+          0.655
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          2.555,
+          0.655,
+          3.845,
+          0.805
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          2.555,
+          0.805,
+          3.765,
+          0.825
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          3.585,
+          0.825,
+          3.765,
+          1.245
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          2.555,
+          0.825,
+          2.725,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          3.595,
+          1.245,
+          3.765,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          3.595,
+          1.495,
+          4.315,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "n1",
+        "box": [
+          4.145,
+          1.665,
+          4.315,
+          2.455
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.125,
+          1.915,
+          1.455,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          2.135,
+          1.915,
+          2.465,
+          2.255
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "Y_u1",
+        "box": [
+          1.125,
+          2.255,
+          2.465,
+          2.425
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "B",
+        "box": [
+          0.485,
+          0.995,
+          0.655,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          1.865,
+          0.995,
+          2.035,
+          1.075
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          1.865,
+          1.075,
+          2.385,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          2.215,
+          1.325,
+          2.385,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          3.245,
+          0.995,
+          3.415,
+          1.495
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "C",
+        "box": [
+          2.215,
+          1.495,
+          3.415,
+          1.665
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      },
+      {
+        "layer": "li1",
+        "net": "A",
+        "box": [
+          3.935,
+          0.995,
+          4.105,
+          1.325
+        ],
+        "gds": [
+          67,
+          20
+        ]
+      }
+    ],
+    "terminals": {
+      "VGND": [
+        [
+          0.35,
+          0.0
+        ],
+        [
+          1.29,
+          0.0
+        ],
+        [
+          2.99,
+          0.0
+        ],
+        [
+          4.23,
+          0.0
+        ],
+        [
+          0.35,
+          0.0
+        ],
+        [
+          1.29,
+          0.0
+        ],
+        [
+          2.99,
+          0.0
+        ],
+        [
+          4.23,
+          0.0
+        ]
+      ],
+      "B_N": [
+        [
+          0.77,
+          0.51
+        ],
+        [
+          0.77,
+          2.21
+        ],
+        [
+          1.26,
+          1.16
+        ]
+      ],
+      "Y": [
+        [
+          2.3,
+          0.66
+        ],
+        [
+          1.73,
+          1.66
+        ]
+      ],
+      "n1": [
+        [
+          3.68,
+          0.66
+        ],
+        [
+          4.23,
+          1.95
+        ],
+        [
+          2.64,
+          1.16
+        ]
+      ],
+      "VPWR": [
+        [
+          0.35,
+          2.7199999999999998
+        ],
+        [
+          2.99,
+          2.7199999999999998
+        ],
+        [
+          0.35,
+          2.7199999999999998
+        ],
+        [
+          2.99,
+          2.7199999999999998
+        ]
+      ],
+      "Y_u1": [
+        [
+          1.29,
+          2.34
+        ],
+        [
+          2.3,
+          2.34
+        ]
+      ],
+      "B": [
+        [
+          0.57,
+          1.16
+        ]
+      ],
+      "C": [
+        [
+          1.95,
+          1.16
+        ],
+        [
+          3.33,
+          1.16
+        ]
+      ],
+      "A": [
+        [
+          4.02,
+          1.16
+        ]
+      ]
+    },
+    "contacts": [
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          0.23,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          0.6900000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          1.1500000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          1.61,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          2.0700000000000003,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          2.5300000000000002,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          2.99,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          3.45,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          3.91,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VGND",
+        "point_um": [
+          4.370000000000001,
+          0.0
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          0.23,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          0.6900000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          1.1500000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          1.61,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          2.0700000000000003,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          2.5300000000000002,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          2.99,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          3.45,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          3.91,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "mcon",
+        "net": "VPWR",
+        "point_um": [
+          4.370000000000001,
+          2.7199999999999998
+        ],
+        "source": "instructor frame: one rail contact per site"
+      },
+      {
+        "type": "diffusion",
+        "net": "VGND",
+        "point_um": [
+          0.35,
+          0.38
+        ],
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.51
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "B_N",
+        "point_um": [
+          0.77,
+          0.51
+        ],
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.51
+        ],
+        "landing_box": [
+          0.685,
+          0.345,
+          0.855,
+          0.675
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "VGND",
+        "point_um": [
+          1.29,
+          0.38
+        ],
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          2.3,
+          0.66
+        ],
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.74
+        ],
+        "landing_box": [
+          2.215,
+          0.495,
+          2.385,
+          0.825
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "VGND",
+        "point_um": [
+          2.99,
+          0.38
+        ],
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.72
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "n1",
+        "point_um": [
+          3.68,
+          0.66
+        ],
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.72
+        ],
+        "landing_box": [
+          3.595,
+          0.495,
+          3.765,
+          0.825
+        ],
+        "licon_y_um": [
+          0.38,
+          0.72
+        ],
+        "li1_bar_box": [
+          3.515,
+          0.295,
+          3.845,
+          0.805
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "VGND",
+        "point_um": [
+          4.23,
+          0.38
+        ],
+        "row": "nmos",
+        "y_range_um": [
+          0.38,
+          0.72
+        ],
+        "licon_y_um": [
+          0.38,
+          0.72
+        ],
+        "li1_bar_box": [
+          4.065,
+          0.295,
+          4.395,
+          0.805
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "VPWR",
+        "point_um": [
+          0.35,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          2.21,
+          2.34
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "B_N",
+        "point_um": [
+          0.77,
+          2.21
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          2.21,
+          2.34
+        ],
+        "landing_box": [
+          0.685,
+          2.045,
+          0.855,
+          2.375
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u1",
+        "point_um": [
+          1.29,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.125,
+          2.255,
+          1.455,
+          2.425
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          1.125,
+          1.915,
+          1.455,
+          2.425
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "Y",
+        "point_um": [
+          1.73,
+          1.66
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          1.645,
+          1.495,
+          1.815,
+          1.825
+        ],
+        "licons": 1
+      },
+      {
+        "type": "diffusion",
+        "net": "Y_u1",
+        "point_um": [
+          2.3,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.63,
+          2.34
+        ],
+        "landing_box": [
+          2.135,
+          2.255,
+          2.465,
+          2.425
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          2.135,
+          1.915,
+          2.465,
+          2.425
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "VPWR",
+        "point_um": [
+          2.99,
+          2.34
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.95,
+          2.34
+        ],
+        "licon_y_um": [
+          2.0,
+          2.34
+        ],
+        "li1_bar_box": [
+          2.905,
+          1.835,
+          3.075,
+          2.505
+        ],
+        "licons": 2
+      },
+      {
+        "type": "diffusion",
+        "net": "n1",
+        "point_um": [
+          4.23,
+          1.95
+        ],
+        "row": "pmos",
+        "y_range_um": [
+          1.95,
+          2.34
+        ],
+        "landing_box": [
+          4.145,
+          1.785,
+          4.315,
+          2.115
+        ],
+        "licon_y_um": [
+          1.95,
+          2.29
+        ],
+        "li1_bar_box": [
+          4.145,
+          1.785,
+          4.315,
+          2.455
+        ],
+        "licons": 2
+      },
+      {
+        "type": "poly",
+        "net": "B",
+        "point_um": [
+          0.57,
+          1.16
+        ],
+        "gate_x_um": 0.56
+      },
+      {
+        "type": "poly",
+        "net": "B_N",
+        "point_um": [
+          1.26,
+          1.16
+        ],
+        "gate_x_um": 1.5
+      },
+      {
+        "type": "poly",
+        "net": "C",
+        "point_um": [
+          1.95,
+          1.16
+        ],
+        "gate_x_um": 1.96
+      },
+      {
+        "type": "poly",
+        "net": "n1",
+        "point_um": [
+          2.64,
+          1.16
+        ],
+        "gate_x_um": 2.64
+      },
+      {
+        "type": "poly",
+        "net": "C",
+        "point_um": [
+          3.33,
+          1.16
+        ],
+        "gate_x_um": 3.34
+      },
+      {
+        "type": "poly",
+        "net": "A",
+        "point_um": [
+          4.02,
+          1.16
+        ],
+        "gate_x_um": 4.02
+      }
+    ],
+    "devices": [
+      {
+        "id": "N1",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "B",
+        "source": "VGND",
+        "drain": "B_N",
+        "bulk": "VNB",
+        "w_um": 0.42,
+        "l_um": 0.15,
+        "stage": "B_N",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1,
+        "gate_x_um": 0.56,
+        "diffusion_y_um": [
+          0.235,
+          0.655
+        ],
+        "segment": 0,
+        "left_net": "VGND",
+        "right_net": "B_N",
+        "diffusion_edge_distances_um": {
+          "left": 0.26,
+          "right": 0.26
+        }
+      },
+      {
+        "id": "N5",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "B_N",
+        "source": "VGND",
+        "drain": "Y_d1",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 1,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 1.5,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 1,
+        "left_net": "VGND",
+        "right_net": "Y_d1",
+        "diffusion_edge_distances_um": {
+          "left": 0.26,
+          "right": 2.78
+        }
+      },
+      {
+        "id": "N6",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "C",
+        "source": "Y_d1",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 1.96,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 1,
+        "left_net": "Y_d1",
+        "right_net": "Y",
+        "diffusion_edge_distances_um": {
+          "left": 0.72,
+          "right": 2.32
+        }
+      },
+      {
+        "id": "N4",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "n1",
+        "source": "VGND",
+        "drain": "Y",
+        "bulk": "VNB",
+        "w_um": 0.65,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1,
+        "gate_x_um": 2.64,
+        "diffusion_y_um": [
+          0.235,
+          0.885
+        ],
+        "segment": 1,
+        "left_net": "Y",
+        "right_net": "VGND",
+        "diffusion_edge_distances_um": {
+          "left": 1.4,
+          "right": 1.64
+        }
+      },
+      {
+        "id": "N3",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "C",
+        "source": "VGND",
+        "drain": "n1",
+        "bulk": "VNB",
+        "w_um": 0.63,
+        "l_um": 0.15,
+        "stage": "n1",
+        "leaf": 1,
+        "stack_depth": 1,
+        "fingers": 1,
+        "gate_x_um": 3.34,
+        "diffusion_y_um": [
+          0.235,
+          0.865
+        ],
+        "segment": 1,
+        "left_net": "VGND",
+        "right_net": "n1",
+        "diffusion_edge_distances_um": {
+          "left": 2.1,
+          "right": 0.94
+        }
+      },
+      {
+        "id": "N2",
+        "type": "nmos",
+        "model": "sky130_fd_pr__nfet_01v8",
+        "gate": "A",
+        "source": "VGND",
+        "drain": "n1",
+        "bulk": "VNB",
+        "w_um": 0.63,
+        "l_um": 0.15,
+        "stage": "n1",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1,
+        "gate_x_um": 4.02,
+        "diffusion_y_um": [
+          0.235,
+          0.865
+        ],
+        "segment": 1,
+        "left_net": "n1",
+        "right_net": "VGND",
+        "diffusion_edge_distances_um": {
+          "left": 2.78,
+          "right": 0.26
+        }
+      },
+      {
+        "id": "P1",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "B",
+        "source": "B_N",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 0.42,
+        "l_um": 0.15,
+        "stage": "B_N",
+        "leaf": 0,
+        "stack_depth": 1,
+        "fingers": 1,
+        "gate_x_um": 0.56,
+        "diffusion_y_um": [
+          2.065,
+          2.485
+        ],
+        "segment": 0,
+        "left_net": "VPWR",
+        "right_net": "B_N",
+        "diffusion_edge_distances_um": {
+          "left": 0.26,
+          "right": 0.26
+        }
+      },
+      {
+        "id": "P5",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "B_N",
+        "source": "Y",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 1,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 1.5,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 1,
+        "left_net": "Y_u1",
+        "right_net": "Y",
+        "diffusion_edge_distances_um": {
+          "left": 0.26,
+          "right": 2.78
+        }
+      },
+      {
+        "id": "P6",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "Y",
+        "drain": "Y_u1",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 2,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 1.96,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 1,
+        "left_net": "Y",
+        "right_net": "Y_u1",
+        "diffusion_edge_distances_um": {
+          "left": 0.72,
+          "right": 2.32
+        }
+      },
+      {
+        "id": "P4",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "n1",
+        "source": "Y_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 1.0,
+        "l_um": 0.15,
+        "stage": "Y",
+        "leaf": 0,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 2.64,
+        "diffusion_y_um": [
+          1.485,
+          2.485
+        ],
+        "segment": 1,
+        "left_net": "Y_u1",
+        "right_net": "VPWR",
+        "diffusion_edge_distances_um": {
+          "left": 1.4,
+          "right": 1.64
+        }
+      },
+      {
+        "id": "P3",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "C",
+        "source": "n1_u1",
+        "drain": "VPWR",
+        "bulk": "VPB",
+        "w_um": 0.68,
+        "l_um": 0.15,
+        "stage": "n1",
+        "leaf": 1,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 3.34,
+        "diffusion_y_um": [
+          1.805,
+          2.485
+        ],
+        "segment": 1,
+        "left_net": "VPWR",
+        "right_net": "n1_u1",
+        "diffusion_edge_distances_um": {
+          "left": 2.1,
+          "right": 0.94
+        }
+      },
+      {
+        "id": "P2",
+        "type": "pmos",
+        "model": "sky130_fd_pr__pfet_01v8_hvt",
+        "gate": "A",
+        "source": "n1",
+        "drain": "n1_u1",
+        "bulk": "VPB",
+        "w_um": 0.68,
+        "l_um": 0.15,
+        "stage": "n1",
+        "leaf": 0,
+        "stack_depth": 2,
+        "fingers": 1,
+        "gate_x_um": 4.02,
+        "diffusion_y_um": [
+          1.805,
+          2.485
+        ],
+        "segment": 1,
+        "left_net": "n1_u1",
+        "right_net": "n1",
+        "diffusion_edge_distances_um": {
+          "left": 2.78,
+          "right": 0.26
+        }
+      }
+    ],
+    "output_pin_um": [
+      2.3,
+      0.66
+    ],
+    "gate_contact_y_um": 1.16,
+    "supply_pin_x_um": 0.23,
+    "routes": [
+      {
+        "net": "B_N",
+        "layer": "li1",
+        "points_um": [
+          [
+            0.77,
+            0.51
+          ],
+          [
+            0.77,
+            0.74
+          ],
+          [
+            0.91,
+            0.74
+          ],
+          [
+            0.91,
+            1.58
+          ],
+          [
+            0.77,
+            1.58
+          ],
+          [
+            0.77,
+            2.21
+          ]
+        ]
+      },
+      {
+        "net": "B_N",
+        "layer": "li1",
+        "points_um": [
+          [
+            0.91,
+            1.16
+          ],
+          [
+            1.26,
+            1.16
+          ]
+        ]
+      },
+      {
+        "net": "C",
+        "layer": "li1",
+        "points_um": [
+          [
+            1.95,
+            1.16
+          ],
+          [
+            2.3,
+            1.16
+          ],
+          [
+            2.3,
+            1.58
+          ],
+          [
+            3.33,
+            1.58
+          ],
+          [
+            3.33,
+            1.16
+          ]
+        ]
+      },
+      {
+        "net": "Y",
+        "layer": "li1",
+        "points_um": [
+          [
+            2.3,
+            0.66
+          ],
+          [
+            1.73,
+            0.66
+          ],
+          [
+            1.73,
+            0.74
+          ],
+          [
+            1.61,
+            0.74
+          ],
+          [
+            1.61,
+            1.58
+          ],
+          [
+            1.73,
+            1.58
+          ],
+          [
+            1.73,
+            1.66
+          ]
+        ]
+      },
+      {
+        "net": "Y_u1",
+        "layer": "li1",
+        "points_um": [
+          [
+            1.29,
+            2.34
+          ],
+          [
+            2.3,
+            2.34
+          ]
+        ]
+      },
+      {
+        "net": "n1",
+        "layer": "li1",
+        "points_um": [
+          [
+            3.68,
+            0.66
+          ],
+          [
+            3.68,
+            1.58
+          ],
+          [
+            4.23,
+            1.58
+          ],
+          [
+            4.23,
+            1.95
+          ]
+        ]
+      },
+      {
+        "net": "n1",
+        "layer": "li1",
+        "points_um": [
+          [
+            3.68,
+            1.16
+          ],
+          [
+            3.67,
+            1.16
+          ],
+          [
+            3.67,
+            0.74
+          ],
+          [
+            2.64,
+            0.74
+          ],
+          [
+            2.64,
+            1.16
+          ]
+        ]
+      }
+    ],
+    "pin_access_mode": "every_pin",
+    "pin_access": [
+      {
+        "net": "B",
+        "point_um": [
+          0.57,
+          1.16
+        ],
+        "met1_box": [
+          0.425,
+          1.015,
+          0.715,
+          1.305
+        ]
+      },
+      {
+        "net": "C",
+        "point_um": [
+          1.95,
+          1.16
+        ],
+        "met1_box": [
+          1.805,
+          1.015,
+          2.095,
+          1.305
+        ]
+      },
+      {
+        "net": "C",
+        "point_um": [
+          3.33,
+          1.16
+        ],
+        "met1_box": [
+          3.185,
+          1.015,
+          3.475,
+          1.305
+        ]
+      },
+      {
+        "net": "A",
+        "point_um": [
+          4.02,
+          1.16
+        ],
+        "met1_box": [
+          3.875,
+          1.015,
+          4.165,
+          1.305
+        ]
+      },
+      {
+        "net": "Y",
+        "point_um": [
+          2.3,
+          0.66
+        ],
+        "met1_box": [
+          2.155,
+          0.515,
+          2.445,
+          0.805
+        ]
+      }
+    ],
+    "vias": [],
+    "routing_order": [
+      "A",
+      "B",
+      "B_N",
+      "C",
+      "Y",
+      "Y_u1",
+      "n1"
+    ],
+    "router": "fixed",
+    "parallel_cuts": {
+      "licons_added": 6,
+      "contacts": [
+        {
+          "net": "VGND",
+          "point_um": [
+            0.35,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "B_N",
+          "point_um": [
+            0.77,
+            0.51
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            1.29,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            2.3,
+            0.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            2.99,
+            0.38
+          ],
+          "licons": 1
+        },
+        {
+          "net": "n1",
+          "point_um": [
+            3.68,
+            0.66
+          ],
+          "licons": 2
+        },
+        {
+          "net": "VGND",
+          "point_um": [
+            4.23,
+            0.38
+          ],
+          "licons": 2
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            0.35,
+            2.34
+          ],
+          "licons": 1
+        },
+        {
+          "net": "B_N",
+          "point_um": [
+            0.77,
+            2.21
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            1.29,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "Y",
+          "point_um": [
+            1.73,
+            1.66
+          ],
+          "licons": 1
+        },
+        {
+          "net": "Y_u1",
+          "point_um": [
+            2.3,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "VPWR",
+          "point_um": [
+            2.99,
+            2.34
+          ],
+          "licons": 2
+        },
+        {
+          "net": "n1",
+          "point_um": [
+            4.23,
+            1.95
+          ],
+          "licons": 2
+        }
+      ],
+      "mcons_added": 0,
+      "vias": []
+    },
+    "li1_notch_fill_added_area_um2": {
+      "VGND": 0.0,
+      "VPWR": 0.0,
+      "B_N": 0.0288,
+      "Y": 0.0,
+      "n1": 0.0,
+      "Y_u1": 0.0,
+      "B": 0.0,
+      "C": 0.0144,
+      "A": 0.0
+    },
+    "met1_notch_fill_added_area_um2": {},
+    "met1_in_single_stage_cell": false
+  },
+  "labels": [
+    {
+      "text": "VPWR",
+      "position_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "gds": [
+        68,
+        5
+      ]
+    },
+    {
+      "text": "VPWR",
+      "position_um": [
+        0.23,
+        2.7199999999999998
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "VGND",
+      "position_um": [
+        0.23,
+        0.0
+      ],
+      "gds": [
+        68,
+        5
+      ]
+    },
+    {
+      "text": "VGND",
+      "position_um": [
+        0.23,
+        0.0
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "A",
+      "position_um": [
+        4.02,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "B",
+      "position_um": [
+        0.57,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "C",
+      "position_um": [
+        1.95,
+        1.16
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "Y",
+      "position_um": [
+        2.3,
+        0.66
+      ],
+      "gds": [
+        67,
+        5
+      ]
+    },
+    {
+      "text": "VPB",
+      "position_um": [
+        0.23,
+        2.72
+      ],
+      "gds": [
+        64,
+        5
+      ]
+    },
+    {
+      "text": "VNB",
+      "position_um": [
+        0.23,
+        0
+      ],
+      "gds": [
+        64,
+        59
+      ]
+    }
+  ],
+  "status": "prepared_unverified"
+}

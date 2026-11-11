@@ -1,0 +1,71 @@
+{
+  "check": "model_level",
+  "cell": "dd2_g5__nand2_stack_1",
+  "truth_table": "0x7",
+  "generated": [
+    "cell.v",
+    "functional.lib"
+  ],
+  "verilog": {
+    "passed": true,
+    "rows": [
+      {
+        "inputs": {
+          "A": 0,
+          "B": 0
+        },
+        "expected": 1,
+        "actual": "1",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A": 0,
+          "B": 1
+        },
+        "expected": 1,
+        "actual": "1",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A": 1,
+          "B": 0
+        },
+        "expected": 1,
+        "actual": "1",
+        "passed": true
+      },
+      {
+        "inputs": {
+          "A": 1,
+          "B": 1
+        },
+        "expected": 0,
+        "actual": "0",
+        "passed": true
+      }
+    ]
+  },
+  "liberty": {
+    "passed": true,
+    "function": "!(A & B)",
+    "function_truth_table": "0x7",
+    "expected_truth_table": "0x7",
+    "file": "cell.lib"
+  },
+  "broken_cases": [
+    {
+      "case": "generated: row 0 flipped",
+      "rejected": true,
+      "failing_rows": [
+        {
+          "A": 0,
+          "B": 0
+        }
+      ]
+    }
+  ],
+  "liberty_status": "characterized",
+  "passed": true
+}

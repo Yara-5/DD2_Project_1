@@ -1,0 +1,1614 @@
+{
+  "check": "transistor_level",
+  "pex": "cells/dd2_g5__nor4_stack_1/dd2_g5__nor4_stack_1_pex.spice",
+  "passed": true,
+  "cell": "dd2_g5__nor4_stack_1",
+  "corner": "tt",
+  "truth_table": "0x0001",
+  "ngspice": "../student/student/tools.sh ngspice",
+  "liberty": "../DD2_Project1_student_pack/DD2_Project1_student_pack/given/hd_reduced.lib",
+  "liberty_cell": "sky130_fd_sc_hd__inv_1",
+  "supply_v": 1.8,
+  "temperature_c": 25.0,
+  "slew_thresholds_pct": [
+    20.0,
+    80.0
+  ],
+  "slew_table_ns": 0.1224745,
+  "input_ramp_full_ns": 0.20412416666666666,
+  "load_table_pf": 0.009520618,
+  "dc": [
+    {
+      "inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected": 1,
+      "voltage_v": 1.8,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected": 0,
+      "voltage_v": 7.954057e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected": 0,
+      "voltage_v": 7.954364e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected": 0,
+      "voltage_v": 7.954055e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected": 0,
+      "voltage_v": 7.956879e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected": 0,
+      "voltage_v": 7.954438e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected": 0,
+      "voltage_v": 7.955032e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected": 0,
+      "voltage_v": 7.954321e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected": 0,
+      "voltage_v": 1.376769e-08,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected": 0,
+      "voltage_v": 4.440858e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected": 0,
+      "voltage_v": 4.441162e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected": 0,
+      "voltage_v": 4.440856e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected": 0,
+      "voltage_v": 4.443485e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected": 0,
+      "voltage_v": 4.441208e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected": 0,
+      "voltage_v": 4.441773e-09,
+      "passed": true
+    },
+    {
+      "inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected": 0,
+      "voltage_v": 4.441101e-09,
+      "passed": true
+    }
+  ],
+  "transient": [
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 1,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00515247448,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000226082941,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000169016537,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00515243399,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00022546597,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 8.2634334e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00515198148,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000220689886,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000133911579,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 5.95916353e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00515270004,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000141489677,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 8.22409735e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00515181049,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000172527005,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000176766945,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.66877216e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00515205591,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000174255703,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000130512794,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 7.23308023e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.00515181218,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000172286673,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000131654609,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 5.64244384e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 1,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": null,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.018485826,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.0190097594,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.0191457662,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.71230918e-06,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000173425155,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000136205542,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.028197767,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.73899457e-06,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000171756128,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.0281988642,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 6.80448347e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.73486254e-06,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000166363107,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000123556324,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 6.08794973e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.71626906e-06,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.0281977064,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000115392413,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 6.80707889e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.66692888e-06,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000141096666,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000146105275,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.8610667e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.67785231e-06,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000144901549,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000115052035,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 6.01964816e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "A",
+      "end_inputs": {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 4.66905211e-06,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "B",
+      "end_inputs": {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000140142513,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "C",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 0.000116136412,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    },
+    {
+      "start_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1
+      },
+      "toggled_input": "D",
+      "end_inputs": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0
+      },
+      "expected_before": 0,
+      "expected_after": 0,
+      "pre_edge_valid": true,
+      "settled": true,
+      "worst_glitch_v": 5.77969986e-05,
+      "no_half_supply_crossing_when_output_unchanged": true,
+      "passed": true
+    }
+  ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
+  "dc_passed": true,
+  "transient_passed": true
+}

@@ -25,7 +25,7 @@
         "C": 0
       },
       "expected": 0,
-      "voltage_v": 3.978141e-09,
+      "voltage_v": 3.978365e-09,
       "passed": true
     },
     {
@@ -35,7 +35,7 @@
         "C": 1
       },
       "expected": 0,
-      "voltage_v": 3.978271e-09,
+      "voltage_v": 3.978514e-09,
       "passed": true
     },
     {
@@ -45,7 +45,7 @@
         "C": 0
       },
       "expected": 0,
-      "voltage_v": 3.978306e-09,
+      "voltage_v": 3.978553e-09,
       "passed": true
     },
     {
@@ -65,7 +65,7 @@
         "C": 0
       },
       "expected": 0,
-      "voltage_v": 3.978338e-09,
+      "voltage_v": 3.978589e-09,
       "passed": true
     },
     {
@@ -116,7 +116,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00109155813,
+      "worst_glitch_v": 0.00114314065,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -136,7 +136,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000939791341,
+      "worst_glitch_v": 0.000928823454,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -156,7 +156,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000843220931,
+      "worst_glitch_v": 0.000840064015,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -216,7 +216,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000829317829,
+      "worst_glitch_v": 0.000838629926,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -256,7 +256,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.000946771337,
+      "worst_glitch_v": 0.00091118937,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -296,7 +296,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79869052,
+      "worst_glitch_v": 1.7986515,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -356,7 +356,7 @@
       "expected_after": 0,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 0.00108122755,
+      "worst_glitch_v": 0.00112328616,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -436,7 +436,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79867815,
+      "worst_glitch_v": 1.79858876,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -516,7 +516,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79909572,
+      "worst_glitch_v": 1.79908727,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -536,7 +536,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79872482,
+      "worst_glitch_v": 1.79870382,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -556,7 +556,7 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79849739,
+      "worst_glitch_v": 1.7984821,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     },
@@ -576,11 +576,15 @@
       "expected_after": 1,
       "pre_edge_valid": true,
       "settled": true,
-      "worst_glitch_v": 1.79909514,
+      "worst_glitch_v": 1.79909975,
       "no_half_supply_crossing_when_output_unchanged": true,
       "passed": true
     }
   ],
+  "simulation": {
+    "ngspice_runs": 2,
+    "cases_per_run": "every case its own copy of the cell"
+  },
   "dc_passed": true,
   "transient_passed": true
 }

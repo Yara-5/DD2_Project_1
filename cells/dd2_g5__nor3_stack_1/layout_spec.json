@@ -61,8 +61,8 @@
       "type": "pmos",
       "model": "sky130_fd_pr__pfet_01v8_hvt",
       "gate": "A",
-      "source": "Y",
-      "drain": "Y_u2",
+      "source": "Y_u1",
+      "drain": "VPWR",
       "bulk": "VPB",
       "w_um": 1.0,
       "l_um": 0.15,
@@ -77,8 +77,8 @@
       "type": "pmos",
       "model": "sky130_fd_pr__pfet_01v8_hvt",
       "gate": "A",
-      "source": "Y",
-      "drain": "Y_u2",
+      "source": "Y_u1",
+      "drain": "VPWR",
       "bulk": "VPB",
       "w_um": 1.0,
       "l_um": 0.15,
@@ -93,8 +93,8 @@
       "type": "pmos",
       "model": "sky130_fd_pr__pfet_01v8_hvt",
       "gate": "A",
-      "source": "Y",
-      "drain": "Y_u2",
+      "source": "Y_u1",
+      "drain": "VPWR",
       "bulk": "VPB",
       "w_um": 1.0,
       "l_um": 0.15,
@@ -157,8 +157,8 @@
       "type": "pmos",
       "model": "sky130_fd_pr__pfet_01v8_hvt",
       "gate": "C",
-      "source": "Y_u1",
-      "drain": "VPWR",
+      "source": "Y",
+      "drain": "Y_u2",
       "bulk": "VPB",
       "w_um": 1.0,
       "l_um": 0.15,
@@ -173,8 +173,8 @@
       "type": "pmos",
       "model": "sky130_fd_pr__pfet_01v8_hvt",
       "gate": "C",
-      "source": "Y_u1",
-      "drain": "VPWR",
+      "source": "Y",
+      "drain": "Y_u2",
       "bulk": "VPB",
       "w_um": 1.0,
       "l_um": 0.15,
@@ -189,8 +189,8 @@
       "type": "pmos",
       "model": "sky130_fd_pr__pfet_01v8_hvt",
       "gate": "C",
-      "source": "Y_u1",
-      "drain": "VPWR",
+      "source": "Y",
+      "drain": "Y_u2",
       "bulk": "VPB",
       "w_um": 1.0,
       "l_um": 0.15,
@@ -205,25 +205,25 @@
     "nmos": [
       {
         "devices": [
+          null,
+          null,
           "N1",
           "N2",
+          null,
+          null,
           "N3",
-          null,
-          null,
-          null,
-          null,
           null,
           null
         ],
         "nodes": [
+          null,
+          null,
           "Y",
           "VGND",
           "Y",
+          "Y",
+          "Y",
           "VGND",
-          null,
-          null,
-          null,
-          null,
           null,
           null
         ]
@@ -233,26 +233,26 @@
       {
         "devices": [
           "P1_f1",
-          "P2_f1",
-          "P3_f1",
-          "P3_f2",
-          "P2_f2",
           "P1_f2",
           "P1_f3",
+          "P2_f1",
+          "P2_f2",
           "P2_f3",
+          "P3_f1",
+          "P3_f2",
           "P3_f3"
         ],
         "nodes": [
-          "Y",
-          "Y_u2",
+          "VPWR",
           "Y_u1",
           "VPWR",
           "Y_u1",
           "Y_u2",
+          "Y_u1",
+          "Y_u2",
           "Y",
           "Y_u2",
-          "Y_u1",
-          "VPWR"
+          "Y"
         ]
       }
     ]
@@ -264,25 +264,25 @@
           "devices": [
             null,
             null,
-            null,
-            null,
-            null,
-            null,
             "N3",
+            null,
+            null,
             "N2",
-            "N1"
+            "N1",
+            null,
+            null
           ],
           "nodes": [
             null,
             null,
-            null,
-            null,
-            null,
-            null,
             "VGND",
             "Y",
+            "Y",
+            "Y",
             "VGND",
-            "Y"
+            "Y",
+            null,
+            null
           ]
         }
       ],
@@ -290,26 +290,26 @@
         {
           "devices": [
             "P3_f1",
-            "P2_f1",
-            "P1_f1",
-            "P1_f2",
-            "P2_f2",
             "P3_f2",
             "P3_f3",
+            "P2_f1",
+            "P2_f2",
             "P2_f3",
+            "P1_f1",
+            "P1_f2",
             "P1_f3"
           ],
           "nodes": [
-            "VPWR",
-            "Y_u1",
+            "Y",
             "Y_u2",
             "Y",
             "Y_u2",
             "Y_u1",
+            "Y_u2",
+            "Y_u1",
             "VPWR",
             "Y_u1",
-            "Y_u2",
-            "Y"
+            "VPWR"
           ]
         }
       ]
@@ -326,9 +326,9 @@
     "diffusion_segments": 1,
     "diffusion_breaks": 0,
     "columns": 9,
-    "repeated_nets_in_rows": 12,
+    "repeated_nets_in_rows": 7,
     "folded": true,
-    "wiring_slots": 72,
+    "wiring_slots": 38,
     "method": "dual-trail cover with series reordering, after Maziasz and Hayes, DAC 1991"
   }
 }

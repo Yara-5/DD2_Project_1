@@ -33,6 +33,11 @@
       "source": "diff/tap.2, transistor width inside a standard cell",
       "check": {"kind": "drc", "rule": "diff/tap.2", "message": "Transistor in standard cell width"}
     },
+    "fet_min_width": {
+      "value": 0.42,
+      "source": "diff/tap.2, width of a standard FET (sky130_fd_pr__nfet_01v8, pfet_01v8_hvt); Magic extracts a narrower one as sky130_fd_pr__special_*, which the schematic does not use",
+      "check": {"kind": "drc", "rule": "diff/tap.2", "message": "Transistor width"}
+    },
     "diff_space": {
       "value": 0.27,
       "source": "diff/tap.3, spacing between diffusion strips (a diffusion break)",
@@ -42,6 +47,11 @@
       "value": 0.125,
       "source": "nsd.5a / psd.5a, implant enclosure of diffusion (Magic does not check drawn implants; src/verify_drc.py layer check does)",
       "check": {"kind": "drc", "rule": "psd.5a", "message": "N-Diffusion to P-tap spacing"}
+    },
+    "licon_space": {
+      "value": 0.17,
+      "source": "licon.2",
+      "check": {"kind": "drc", "rule": "licon.2", "message": "Diffusion contact spacing"}
     },
     "licon_size": {
       "value": 0.17,
@@ -158,6 +168,21 @@
     "li1_pin_inset": 0.01,
     "rip_up_limit": 80,
     "rip_up_penalty": 50,
-    "description": "li1_pin_inset: signal pin shapes are this much smaller than their contact on each side; Magic's resistance extraction starts a pin's net just outside the lower-left corner of its pin shape and fails ('Couldn't find wire') when the pin is flush with its li1 landing. Routing grid, retry budget, net orders tried, and the router's relative costs of a met1 step and of an mcon via (li1 step = 1) are implementation choices, not PDK rules. rip_up_limit, rip_up_penalty: when every net order fails, the router retries with rip-up and reroute; a path may cross another signal net's wire at rip_up_penalty x (1 + rip-ups so far) per grid step, and it gives up after rip_up_limit rip-ups."
+    "folded_finger_nets_on_met1": false,
+    "met1_route_li1_step_cost": 100,
+    "stack_contacts_under_vias": true,
+    "multiple_licons": true,
+    "mcon_arrays": true,
+    "pin_access_met1": true,
+    "negotiated_router": true,
+    "negotiation_iterations": 40,
+    "negotiation_patience": 15,
+    "negotiation_present_cost": 0.5,
+    "negotiation_present_growth": 1.5,
+    "negotiation_history_cost": 1.0,
+    "rip_up_with_negotiated": false,
+    "lone_net_check": true,
+    "poly_bars_same_gate": true,
+    "description": "li1_pin_inset: signal pin shapes are this much smaller than their contact on each side; Magic's resistance extraction starts a pin's net just outside the lower-left corner of its pin shape and fails ('Couldn't find wire') when the pin is flush with its li1 landing. Routing grid, retry budget, net orders tried, and the router's relative costs of a met1 step and of an mcon via (li1 step = 1) are implementation choices, not PDK rules. rip_up_limit, rip_up_penalty: when every net order fails, the router retries with rip-up and reroute; a path may cross another signal net's wire at rip_up_penalty x (1 + rip-ups so far) per grid step, and it gives up after rip_up_limit rip-ups. met1_route_li1_step_cost: an li1 step in a connection that uses met1 anyway (li1 alone could not make it, or the folded-finger policy below), so the path climbs to met1 at its first landing and comes down at its last. folded_finger_nets_on_met1: when true, the source/drain nets of folded fingers (supplies excepted) are routed on met1 from their first landing, for lower resistance; off by default, because handout Tables 1 and 3 keep met1 for the rails in a single-stage cell, and folded fingers only occur in single-stage 'stack' cells. prepare_layout.py --policy folded_finger_nets_on_met1=true builds that variant. stack_contacts_under_vias: after routing, a diffusion contact joined to a via of its net only by a straight vertical li1 stub moves under the via when its diffusion range and li.3 allow, so licon and mcon stack with no li1 in the current path. multiple_licons, mcon_arrays: after routing, every diffusion contact gets as many licons as fit along its transistor width (licon.2 pitch, inside the node's diffusion, li1 extended with li.3 kept to other nets), and every via that sits on a contact's licon column as many mcons as fit along that column (mcon.2 pitch, inside the column's li1, met1 bar kept met1.2 from other nets, rails, frame mcons and pin access pads included): more cuts in parallel, lower contact resistance; widths and routes do not change. A via on a wire or on a single-licon landing keeps one mcon. pin_access_met1: every signal pin shape (inputs and output) keeps a met1 access pad (an mcon at its centre with the cell's via pad) that no other net's met1 comes within met1.2 of, so a router placing the cell can reach every pin on met1; the output pin goes on the first output landing whose pad clears the rails. negotiated_router: in the li1-only attempts, after the fixed-landing router fails at a width, a second router (route_negotiated) leaves every signal diffusion contact unplaced (its x and its licon.5c range fixed) and lands each net on it where its wire passes, with negotiated congestion (PathFinder): nets are routed again and again at a cost per grid step of (1 + history) x (1 + present x nets already there), present starting at negotiation_present_cost after a first free iteration and growing by negotiation_present_growth per iteration, history growing by negotiation_history_cost where nets overlapped; it gives up after negotiation_iterations, or after negotiation_patience iterations without fewer overlapping points. rip_up_with_negotiated: false skips rip-up and reroute in the li1-only attempts when the negotiated router runs there (it does what rip-up does and moves the contacts too); the met1 attempts keep it. lone_net_check: before an li1-only attempt, every net is routed once with movable contacts and no other signal net present; if one cannot connect, the attempt is skipped for both routers. poly_bars_same_gate: any two adjacent columns on one gate net are joined by a poly bar in the npc band and share one poly contact (as HD joins an input's neighbouring gates), not only the folded fingers of one transistor."
   }
 }

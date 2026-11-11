@@ -35,6 +35,26 @@
      SPICE netlist"): each transistor gets the size of the installed transistor of
      the same type on the same gate pin; if one is missing or ambiguous, the x1
      sizes stay and network.json says why.
+  5b. 'opt' (the third family, beside the handout's 'hd' and 'stack'; needs
+     --hd-liberty): the output stage gets the x1 widths, as under 'hd' (the cell's drive),
+     and every other stage is sized for the fastest worst path. The model is RC (Elmore) per
+     um of width, fitted to the installed sky130_fd_sc_hd__inv_1's Liberty: gate
+     capacitance per um (its pin capacitance over its x1 widths), pull-down and pull-up
+     resistance per um (the slope of cell_fall / cell_rise against load at the smallest
+     input slew, times the x1 width), self capacitance per um (the zero-load intercept
+     over the slope). A path runs from an input pin, driven by an inv_1, through the
+     stages to the output loaded with the middle of inv_1's load index; each stage costs
+     its worst series resistance times the capacitance on its output (the next gates,
+     its own drains, the load). The worst delay over every pin and edge is minimized by
+     coordinate descent over each internal stage's NMOS and PMOS width, from
+     fet_min_width (rules.json, diff/tap.2: 0.42 um; Magic extracts a narrower FET as a
+     sky130_fd_pr__special_* device) to the row height, on the 2-grid; widths whose worst
+     delays agree to 0.1 ps go to the smaller area. A wider internal stage switches its
+     load faster but loads its own driver more: the optimum lies between HD's two
+     choices (0.42 um everywhere in and2_1, mux2_1, maj3_1; x1 in a21o_1, xor2_1).
+     network.json records the model, the widths and the worst delay before and after.
+     'hd' and 'stack' keep the handout's definitions (every finger x1; inner stages x1);
+     docs/TECHNICAL.md section 7.1 explains the Elmore model.
 Writes network.json (devices in the stage-spec format switch_level_check.py
 reads), network.spice and network_schematic.png into --outdir.
 """
@@ -42,8 +62,9 @@ import argparse
 import itertools
 import json
 import math
+import re
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from qm import minimize
@@ -698,6 +719,115 @@ def synthesize_best(request, frame, objective='transistors', depth=0, counter=No
     return best
 
 
+# ---------------------------------------------------------------- sizing the internal stages
+
+def liberty_cell(text, cell):
+    """The text of one cell's group in a Liberty file (brace matched)."""
+    start = text.index(f'cell ("{cell}")')
+    depth, i = 0, text.index('{', start)
+    for j in range(i, len(text)):
+        depth += {'{': 1, '}': -1}.get(text[j], 0)
+        if depth == 0:
+            return text[start:j + 1]
+    raise ValueError(f'unterminated cell {cell}')
+
+
+def inverter_model(liberty_text, x1):
+    """RC model of one um of transistor width, fitted to the installed inv_1 (x1 widths
+    from plan_hd.json). Units: kOhm (= ns/pF), pF, ns."""
+    block = liberty_cell(liberty_text, 'sky130_fd_sc_hd__inv_1')
+    pin = re.search(r'pin \("A"\)\s*\{(.*?)\n\s{8}\}', block, re.S)
+    cap = float(re.search(r'\bcapacitance\s*:\s*([0-9.eE+-]+)', pin.group(1) if pin else block).group(1))
+    fits = {}
+    for table in ('cell_fall', 'cell_rise'):
+        m = re.search(table + r'\s*\("[^"]*"\)\s*\{\s*index_1\("([^"]*)"\);\s*index_2\("([^"]*)"\);\s*values\("([^"]*)"',
+                      block, re.S)
+        loads = [float(v) for v in m.group(2).split(',')]
+        delays = [float(v) for v in m.group(3).split(',')]      # the smallest input slew
+        n = len(loads)
+        mx, my = sum(loads) / n, sum(delays) / n
+        slope = sum((x - mx) * (y - my) for x, y in zip(loads, delays)) / sum((x - mx) ** 2 for x in loads)
+        fits[table] = (slope, my - slope * mx, loads)
+    (r_fall, d_fall, loads), (r_rise, d_rise, _) = fits['cell_fall'], fits['cell_rise']
+    wn, wp = x1['nmos'], x1['pmos']
+    return {'source': 'sky130_fd_sc_hd__inv_1, pin A capacitance and cell_fall/cell_rise at the smallest input slew',
+            'r_nmos_kohm_um': round(r_fall * wn, 6), 'r_pmos_kohm_um': round(r_rise * wp, 6),
+            'c_gate_pf_per_um': round(cap / (wn + wp), 9),
+            'c_self_pf_per_um': round((d_fall / r_fall + d_rise / r_rise) / 2 / (wn + wp), 9),
+            'driver_kohm': {'rise': round(r_rise, 6), 'fall': round(r_fall, 6)},
+            'load_pf': loads[len(loads) // 2]}
+
+
+def worst_delay(network, model, w):
+    """Worst Elmore delay (ns) from any input pin, rising or falling, to the output."""
+    devices, out = network['devices'], network['output']
+    stages = {d['stage'] for d in devices}
+    gated, gate_w, self_w = defaultdict(set), defaultdict(float), defaultdict(float)
+    for d in devices:
+        gated[d['gate']].add(d['stage'])
+        gate_w[d['gate']] += w[d['id']]
+        for node in {d['source'], d['drain']} & stages:
+            self_w[node] += w[d['id']]
+    cap = {s: model['c_gate_pf_per_um'] * gate_w[s] + model['c_self_pf_per_um'] * self_w[s]
+           + (model['load_pf'] if s == out else 0) for s in stages}
+    unit = {'nmos': model['r_nmos_kohm_um'], 'pmos': model['r_pmos_kohm_um']}
+    res = defaultdict(float)
+    for d in devices:
+        key = (d['stage'], 'fall' if d['type'] == 'nmos' else 'rise')
+        res[key] = max(res[key], d['stack_depth'] * unit[d['type']] / w[d['id']])
+    memo = {}
+
+    def rest(net, edge):
+        if net == out:
+            return 0.0
+        if (net, edge) not in memo:
+            flip = 'fall' if edge == 'rise' else 'rise'
+            memo[net, edge] = max((res[s, flip] * cap[s] + rest(s, flip) for s in gated[net]), default=0.0)
+        return memo[net, edge]
+
+    return max(model['driver_kohm'][edge] * model['c_gate_pf_per_um'] * gate_w[pin] + rest(pin, edge)
+               for pin in network['inputs'] for edge in ('rise', 'fall'))
+
+
+def size_internal_stages(network, model, lowest, finger_max, step):
+    """Coordinate descent over each internal stage's (NMOS, PMOS) width; see 5b."""
+    internal = sorted({d['stage'] for d in network['devices']} - {network['output']})
+    if not internal:
+        return None
+    w = {d['id']: d['w_um'] for d in network['devices']}
+    before = worst_delay(network, model, w)
+    grid = {k: [round(lowest + i * step, 9) for i in range(int((finger_max[k] - lowest) / step + 1e-9) + 1)]
+            for k in ('nmos', 'pmos')}
+    members = {s: {k: [d['id'] for d in network['devices'] if d['stage'] == s and d['type'] == k]
+                   for k in ('nmos', 'pmos')} for s in internal}
+
+    def key(trial):
+        return (round(worst_delay(network, model, trial) * 1e4), round(sum(trial.values()), 6))
+
+    current = key(w)
+    for _ in range(20):
+        improved = False
+        for s in internal:
+            for wn in grid['nmos']:
+                for wp in grid['pmos']:
+                    trial = dict(w)
+                    trial.update({i: wn for i in members[s]['nmos']})
+                    trial.update({i: wp for i in members[s]['pmos']})
+                    k = key(trial)
+                    if k < current:
+                        w, current, improved = trial, k, True
+        if not improved:
+            break
+    for d in network['devices']:
+        d['w_um'] = w[d['id']]
+        d['fingers'] = math.ceil(d['w_um'] / finger_max[d['type']] - 1e-9)
+    return {'method': 'Elmore delay, worst path from an inv_1-driven input pin to the nominal load; '
+                      'coordinate descent over internal stage widths (synthesize.py docstring, 5b)',
+            'model': model,
+            'stages': {s: {k: sorted({w[i] for i in members[s][k]}) for k in ('nmos', 'pmos')} for s in internal},
+            'worst_delay_ns': {'x1': round(before, 6), 'sized': round(worst_delay(network, model, w), 6)}}
+
+
 def sizes_from_reference(network, reference, finger_max):
     """Apply the installed cell's W and L (reference_cell.py's hd_reference.json)."""
     if not reference.get('reference'):
@@ -729,6 +859,9 @@ def main():
     ap.add_argument('--objective', choices=('inverters', 'transistors'), default='transistors')
     ap.add_argument('--hd-reference', type=Path,
                     help="reference_cell.py's hd_reference.json: sizes of the installed cell")
+    ap.add_argument('--hd-liberty', type=Path,
+                    help='PDK sky130_fd_sc_hd__tt_025C_1v80.lib: the inv_1 model for sizing internal stages')
+    ap.add_argument('--rules', type=Path, default=Path(__file__).resolve().parent / 'rules.json')
     ap.add_argument('--no-picture', action='store_true')
     args = ap.parse_args()
     try:
@@ -740,6 +873,16 @@ def main():
         request = validate_request(raw)
         frame = json.loads(args.frame.read_text(encoding='utf-8'))
         network = synthesize_best(request, frame, args.objective)
+        rules = json.loads(args.rules.read_text(encoding='utf-8'))
+        ref = frame['reference']
+        rows = {'nmos': ref['nmos_diffusion_y'], 'pmos': ref['pmos_diffusion_y']}
+        if request['sizing'] == 'opt':
+            if not args.hd_liberty:
+                raise ValueError("sizing 'opt' needs --hd-liberty (the inv_1 model)")
+            model = inverter_model(args.hd_liberty.read_text(encoding='utf-8'), ref['hd_x1_widths'])
+            network['internal_sizing'] = size_internal_stages(
+                network, model, rules['rules']['fet_min_width']['value'],
+                {k: round(v[1] - v[0], 9) for k, v in rows.items()}, 2 * frame['grid'])
         if args.hd_reference:
             reference = json.loads(args.hd_reference.read_text(encoding='utf-8'))
             ref = frame['reference']

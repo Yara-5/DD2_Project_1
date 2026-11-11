@@ -24,7 +24,7 @@
       "layers": "pass"
     },
     "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
-    "tool_version": "git:2f91bb9-dirty"
+    "tool_version": "git:dfa9771-dirty"
   },
   "request": {
     "request_id": "T6-10",
@@ -117,7 +117,7 @@
     },
     "met1_vias": 0,
     "met1_in_single_stage_cell": false,
-    "routing_attempts_failed": 36
+    "routing_attempts_failed": 108
   },
   "verification": {
     "drc_contexts": 24,
@@ -163,40 +163,40 @@
       {
         "pin": "A0",
         "sense": "positive_unate",
-        "cell_rise": 0.28138,
-        "rise_transition": 0.24777100000000002,
-        "cell_fall": 0.201371,
-        "fall_transition": 0.0711581
+        "cell_rise": 0.273043,
+        "rise_transition": 0.23908100000000002,
+        "cell_fall": 0.199884,
+        "fall_transition": 0.0702523
       },
       {
         "pin": "A1",
         "sense": "positive_unate",
-        "cell_rise": 0.28263900000000003,
-        "rise_transition": 0.286376,
-        "cell_fall": 0.163601,
-        "fall_transition": 0.0786963
+        "cell_rise": 0.260788,
+        "rise_transition": 0.258739,
+        "cell_fall": 0.157395,
+        "fall_transition": 0.07834780000000001
       },
       {
         "pin": "S",
         "sense": "negative_unate",
-        "cell_rise": 0.23789999999999997,
-        "rise_transition": 0.24767699999999998,
-        "cell_fall": 0.106028,
-        "fall_transition": 0.0835226
+        "cell_rise": 0.231643,
+        "rise_transition": 0.23897899999999997,
+        "cell_fall": 0.105957,
+        "fall_transition": 0.0836295
       },
       {
         "pin": "S",
         "sense": "positive_unate",
-        "cell_rise": 0.30680999999999997,
-        "rise_transition": 0.286346,
-        "cell_fall": 0.222491,
-        "fall_transition": 0.07272640000000001
+        "cell_rise": 0.286845,
+        "rise_transition": 0.258701,
+        "cell_fall": 0.219773,
+        "fall_transition": 0.07161970000000001
       }
     ],
     "input_capacitance_pf": {
-      "A0": 0.0022177222222222225,
-      "A1": 0.002352766666666667,
-      "S": 0.004346102777777777
+      "A0": 0.0022272083333333336,
+      "A1": 0.0023946111111111112,
+      "S": 0.004368869444444444
     },
     "extended_windows_ns": {
       "arc0_A0": 8.0,
@@ -212,6 +212,6 @@
     "extra_sites": 1,
     "area_increase_percent": 11.111,
     "installed_width_sites": 9,
-    "median_timing_difference_percent": -1.023
+    "median_timing_difference_percent": -3.164
   }
 }

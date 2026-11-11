@@ -19,37 +19,37 @@
     },
     "delay_per_pin_ns": {
       "A": {
-        "cell_rise": 0.344016,
-        "cell_fall": 0.0992861,
-        "rise_transition": 0.344822,
-        "fall_transition": 0.0693731
+        "cell_rise": 0.32999799999999996,
+        "cell_fall": 0.09982400000000001,
+        "rise_transition": 0.32648,
+        "fall_transition": 0.06918099999999999
       },
       "B": {
-        "cell_rise": 0.33105,
-        "cell_fall": 0.0934392,
-        "rise_transition": 0.344823,
-        "fall_transition": 0.06376319999999999
+        "cell_rise": 0.319305,
+        "cell_fall": 0.0938972,
+        "rise_transition": 0.326481,
+        "fall_transition": 0.06378249999999999
       },
       "C": {
-        "cell_rise": 0.293511,
-        "cell_fall": 0.0895574,
-        "rise_transition": 0.34473200000000004,
-        "fall_transition": 0.0620233
+        "cell_rise": 0.284282,
+        "cell_fall": 0.09002479999999999,
+        "rise_transition": 0.326413,
+        "fall_transition": 0.062299999999999994
       }
     },
     "input_capacitance_pf": {
-      "A": 0.002272497222222222,
-      "B": 0.002199416666666667,
-      "C": 0.0021466999999999997
+      "A": 0.002290638888888889,
+      "B": 0.0022119,
+      "C": 0.002157833333333333
     },
     "characterization": "cells/dd2_g5__nor3_1/characterized.json"
   },
   "stack": {
     "cell": "dd2_g5__nor3_stack_1",
     "sizing": "stack",
-    "width_sites": 15,
-    "width_um": 6.9,
-    "area_um2": 18.768,
+    "width_sites": 10,
+    "width_um": 4.6,
+    "area_um2": 12.512,
     "transistors": 12,
     "total_w_um": {
       "nmos": 1.95,
@@ -61,52 +61,52 @@
     },
     "delay_per_pin_ns": {
       "A": {
-        "cell_rise": 0.155797,
-        "cell_fall": 0.102472,
-        "rise_transition": 0.16446,
-        "fall_transition": 0.0673643
+        "cell_rise": 0.22347,
+        "cell_fall": 0.124411,
+        "rise_transition": 0.18163400000000002,
+        "fall_transition": 0.0883603
       },
       "B": {
-        "cell_rise": 0.207786,
-        "cell_fall": 0.119067,
-        "rise_transition": 0.174235,
-        "fall_transition": 0.0779395
+        "cell_rise": 0.208228,
+        "cell_fall": 0.113966,
+        "rise_transition": 0.181586,
+        "fall_transition": 0.074119
       },
       "C": {
-        "cell_rise": 0.229345,
-        "cell_fall": 0.13267500000000002,
-        "rise_transition": 0.17504,
-        "fall_transition": 0.0948644
+        "cell_rise": 0.165107,
+        "cell_fall": 0.10249,
+        "rise_transition": 0.175416,
+        "fall_transition": 0.0674847
       }
     },
     "input_capacitance_pf": {
-      "A": 0.0052615249999999995,
-      "B": 0.0055623638888888886,
-      "C": 0.00553081111111111
+      "A": 0.004649702777777778,
+      "B": 0.0044831666666666665,
+      "C": 0.004451588888888889
     },
     "characterization": "cells/dd2_g5__nor3_stack_1/characterized.json"
   },
   "stack_over_hd": {
-    "width": 3.75,
-    "area": 3.75,
+    "width": 2.5,
+    "area": 2.5,
     "delay_per_pin": {
       "A": {
-        "cell_rise": 0.4529,
-        "cell_fall": 1.0321,
-        "rise_transition": 0.4769,
-        "fall_transition": 0.971
+        "cell_rise": 0.6772,
+        "cell_fall": 1.2463,
+        "rise_transition": 0.5563,
+        "fall_transition": 1.2772
       },
       "B": {
-        "cell_rise": 0.6277,
-        "cell_fall": 1.2743,
-        "rise_transition": 0.5053,
-        "fall_transition": 1.2223
+        "cell_rise": 0.6521,
+        "cell_fall": 1.2137,
+        "rise_transition": 0.5562,
+        "fall_transition": 1.1621
       },
       "C": {
-        "cell_rise": 0.7814,
-        "cell_fall": 1.4815,
-        "rise_transition": 0.5078,
-        "fall_transition": 1.5295
+        "cell_rise": 0.5808,
+        "cell_fall": 1.1385,
+        "rise_transition": 0.5374,
+        "fall_transition": 1.0832
       }
     }
   },

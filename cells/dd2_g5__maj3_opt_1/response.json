@@ -1,0 +1,26 @@
+{
+  "request_id": "OPT-MAJ3",
+  "status": "pass",
+  "reason": null,
+  "cell": "dd2_g5__maj3_opt_1",
+  "stages": 2,
+  "transistors": 12,
+  "width_sites": 12,
+  "area_um2": 15.0144,
+  "files": {
+    "gds": "cells/dd2_g5__maj3_opt_1/cell.gds",
+    "liberty": "cells/dd2_g5__maj3_opt_1/cell.lib",
+    "verilog": "cells/dd2_g5__maj3_opt_1/cell.v",
+    "report": "cells/dd2_g5__maj3_opt_1/report.json"
+  },
+  "checks": {
+    "drc": 0,
+    "lvs": "match",
+    "rc_lvs": "match",
+    "truth_table": "pass",
+    "abutment": 0,
+    "layers": "pass"
+  },
+  "ngspice_sha256": "51123371dc6f20aff2e4fb0f6f7404c74fc9dad455b0f9ef119fc290c054e660",
+  "tool_version": "git:dfa9771-dirty"
+}
