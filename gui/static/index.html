@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cellforge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grain"></div>
+<header>
+  <div class="brand">
+    <span class="logo">CELLFORGE</span>
+    <span class="sub">sky130 hd cell, from function to layout</span>
+  </div>
+  <form id="form" autocomplete="off">
+    <input id="expr" placeholder="!(A & B) | C" spellcheck="false" aria-label="Boolean function">
+    <div class="family" role="radiogroup" aria-label="Sizing family">
+      <label><input type="radio" name="sizing" value="hd" checked><span>hd</span></label>
+      <label><input type="radio" name="sizing" value="stack"><span>stack</span></label>
+      <label><input type="radio" name="sizing" value="opt"><span>opt</span></label>
+    </div>
+    <button id="go" type="submit">Design</button>
+  </form>
+  <div class="examples" id="examples"></div>
+  <div class="error" id="error"></div>
+</header>
+
+<main id="main" class="idle">
+  <nav id="rail"></nav>
+  <section id="stage">
+    <div class="stage-head">
+      <span class="num" id="num">00</span>
+      <h2 id="title">Enter a function</h2>
+      <span class="timer" id="timer"></span>
+    </div>
+    <div class="body">
+      <div id="vis"></div>
+      <aside id="notes"></aside>
+    </div>
+    <div class="controls">
+      <button id="prev" type="button">Back</button>
+      <label class="auto"><input type="checkbox" id="auto"> Autoplay</label>
+      <button id="replay" type="button">Replay</button>
+      <button id="next" type="button">Next</button>
+    </div>
+  </section>
+</main>
+<div id="intro" class="intro">
+  <p class="lead">Type a Boolean function of up to four inputs, using <code>!</code> <code>&amp;</code> <code>|</code> <code>^</code> and parentheses. Pick a sizing family, and watch the flow design the cell: minimization, stages, transistors, Euler paths, layout and checks.</p>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
