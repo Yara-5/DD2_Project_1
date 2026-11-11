@@ -1,21 +1,75 @@
 # Project 1, Option 1: From a Boolean Function to an HD Cell
 
 ## 1. Group
-<names and student IDs> · Option 1 · AI used as a development aid (rules in `AGENTS.md`)
+Hassan Ashraf, Yara Abdelkader, Youssef Ayman Hassan (<student IDs>) · Option 1 · AI used as a development aid (rules in `AGENTS.md`)
 
-## 2. Quick start
-Tools: Yosys 0.52, Icarus Verilog 12.0, Magic 8.3.684, Netgen 1.5.133, ngspice-47 with the
-BSIM4 stress fix (course image, sha256 `51123371…`), Python 3.12 with gdsfactory 9.51.0,
-klayout 0.30.12 and matplotlib 3.11.2 (`requirements.txt`).
+## 2. Setup and quick start
+Tools: Yosys 0.52, Icarus Verilog 12.0, OpenSTA, Magic 8.3.684, Netgen 1.5.133, ngspice-47
+with the BSIM4 stress fix (course image), Python 3.12 with gdsfactory 9.51.0, klayout 0.30.12
+and matplotlib 3.11.2 (`requirements.txt`). Magic, Netgen and ngspice run in a Docker image
+that the Makefile builds from `tools/Dockerfile` (the student pack's container recipe, with a
+switch for the stock image).
 
-Put machine-specific paths in `local.mk` (see the top of the `Makefile`; `STOCK_IMAGE` is an
-image with a stock ngspice for Table 5, Tutorial 3's `dd2-layout-tools`, and `TUT4` the
-Tutorial 4 folder with SPM), then:
+### 2.1 What the machine needs
+- **Linux** (Ubuntu), or **Windows with WSL 2** (Ubuntu). On Windows, `make` and the Python
+  steps run on Windows (Git Bash with GNU make, Python 3.12), and every Linux tool runs in
+  WSL through the `LINUX` prefix.
+- On Linux (in WSL on Windows): Docker (`docker` on the PATH, the daemon running), Icarus
+  Verilog, Yosys and OpenSTA (`sta`), and `python3` (standard library only). On Ubuntu
+  26.04 the packages are `iverilog`, `yosys` and `opensta`.
+- Python 3.12 where `PYTHON` runs (Windows under WSL, else Linux):
+  `pip install -r requirements.txt`. `make check` stops if a pin differs.
+- The sky130A PDK at the version the flow was checked with, through ciel (`pip install ciel`):
+  `ciel enable --pdk sky130 --pdk-root "$PDK_ROOT" 1689ac3f2dc763876eaf967227c7dfe831b031ae`
+  (this gives `$PDK_ROOT/sky130A`).
+- The course files: the student pack (its `given/` folder) and Tutorial 3's `student`
+  folder (its `tools.sh`, `flow.py`, `verify.py` and `cells.py` are used unchanged). By
+  default they sit next to this repository (`../DD2_Project1_student_pack/given`,
+  `../student`); set `GIVEN` and `TUT3` otherwise.
+- Tutorial 4's SPM files for Table 5's design-level row: `tools/` holds copies of
+  `SPM.v`, `CSADD.v`, `TCMP.v`, `synth.ys` and `abc_constr.txt` as the Tutorial 4 handout
+  gives them (`set_load 33.44`), and `TUT4` defaults to `tools`.
 
-    make setup     # links the PDK into Tutorial 3's folder for its tools.sh
-    make check     # under a minute
-    make all       # the 20 requests, JOBS cells at a time (local.mk: JOBS, INNER_JOBS); make demo IN=... for one
-    make test      # make all, then every broken case
+### 2.2 `local.mk`
+Machine-specific values go in `local.mk` (not committed). On Linux most defaults work:
+
+    PDK_ROOT = /home/<you>/work/pdks
+
+On Windows with WSL:
+
+    PYTHON   = python
+    LINUX    = wsl -d Ubuntu-26.04 -e
+    PDK_ROOT = /home/<you>/work/pdks
+    PDK_HOST = //wsl.localhost/Ubuntu-26.04/home/<you>/work/pdks/ciel/sky130/versions/<hash>/sky130A
+    export MSYS_NO_PATHCONV = 1
+
+`PDK` is the PDK as Linux sees it and `PDK_HOST` as `PYTHON` sees it; `MSYS_NO_PATHCONV`
+stops Git Bash from rewriting Linux paths. `IMAGE` (default `dd2-layout-tools`) names the
+course image and `STOCK_IMAGE` (default `dd2-layout-tools-stock`) the stock one. Tutorial 3's
+stock image is also called `dd2-layout-tools`: on a machine that has it, set `IMAGE` to
+another name first, or `make check` will find a stock ngspice under that name and rebuild
+the tag as the course image. `JOBS` and `INNER_JOBS` set how much runs at once (section 3).
+
+### 2.3 Steps
+
+    make setup               # links the PDK into Tutorial 3's folder for its tools.sh
+    make docker-image        # the course image: Magic, Netgen, ngspice-47 with the fix, built
+                             # from source; the build itself runs the stress test
+    make docker-stock-image  # the stock image for Table 5: ngspice-42, no fix (optional:
+                             # make char_validate builds it if STOCK_IMAGE is missing)
+    make check               # packages, tools, PDK, given/, the stress test, every rule in rules.json
+    make char_validate       # Table 5: our characterizer against the shipped HD Liberty
+    make all                 # every request in tests/requests/, characterization, views, round trip
+    make test                # make all, then every broken case
+    make demo IN=<request.json>   # one request, as at the interview, into build/demo/
+
+`make check` builds the course image itself when `IMAGE` does not exist, and rebuilds it
+when the stress test finds a stock ngspice in it (exit 1), then tests it again; the log it
+keeps, `results/check/ngspice_stress.log`, is always the last run, and `make views` checks
+every characterization against its ngspice SHA-256. A rebuilt image has a binary of its own
+(this repository's results were made with SHA-256 `51123371…`), so characterize again after
+a rebuild rather than mix results. `make char` and `make demo` need `make char_validate` to
+have passed.
 
 ## 3. What the tool does
 It reads a cell request (Appendix A of the overview) and checks that its expression and
@@ -67,7 +121,7 @@ up to three tries; any other failure stops the target at once.
 | `make views` | `make char`'s results | `cells/<name>/cell.lib` (the checked Liberty view, `results/views/<cell>.json`), the model-level check on it, `cells/<name>/response.json` (Appendix A) and `report.json`; `libs/dd2_g5__tt_025C_1v80.lib` (every cell in CELLS) |
 | `make roundtrip` | `make views`'s results, `given/hd_reduced.lib`, `given/scripts/map.sh` | `results/round_trip/<cell>.json`, `summary.json` (section 3.3: each cell inside hd_reduced.lib, mapped with map.sh's scripts A and B, ABC cec) |
 | `make test_views` | `make roundtrip` passing | the broken cases of the Liberty view, the model-level check on it and the round trip |
-| `make demo IN=tests/requests/<cell>.json` | one request | the whole flow for that cell |
+| `make demo IN=<request.json>` | one request, any path; needs `make check` and a passed `make char_validate` | the whole flow for that cell (make all's steps, characterization, Liberty view, response, round trip) in `build/demo/cells/<name>/` and `build/demo/results/`, named by the request's `name`; `cells/` and `results/` are not touched; a refused request gets a fail response and exits non-zero |
 
 ## 5. Layout
 - `src/` the code, one script per step, and `rules.json` (the design rules behind every number)
