@@ -328,15 +328,6 @@ def main():
         with args.request_json.open("r", encoding="utf-8") as file:
             request = json.load(file)
 
-        # Force internal name to include prefix and match filename stem
-        cell_stem = args.request_json.stem
-        prefix = "dd2_g5__"
-        
-        if cell_stem.startswith(prefix):
-            request["name"] = cell_stem
-        else:
-            request["name"] = f"{prefix}{cell_stem}"
-
         result = {"status": "pass", "reason": None, "request": validate_request(request)}
     except (OSError, json.JSONDecodeError, RequestError) as exc:
         result = {"status": "fail", "reason": str(exc)}

@@ -87,7 +87,7 @@ define expect_fail
 	 else echo "ok   broken case $(1) rejected"; fi
 endef
 
-.PHONY: setup docker-image check test all demo clean reference network layout drc lvs compare sim model char_hd char_validate char \
+.PHONY: setup docker-image docker-stock-image check test all demo demo-cell clean reference network layout drc lvs compare sim model char_hd char_validate char \
 	views roundtrip test_views
 
 setup:            ## Tutorial 3's pdk link, which its tools.sh mounts into the container
@@ -98,8 +98,10 @@ docker-image:
 	$(LINUX) docker build --build-arg APPLY_STRESS_PATCH=1 \
 		-t $(IMAGE) -f $(DOCKERFILE) $(DOCKER_CONTEXT)
 
+# Table 5's stock row is Tutorial 3's stock image, ngspice-42 (AGENTS.md, The project), so the
+# stock image is built with ngspice 42 and without the stress fix, not as an unpatched 47.
 docker-stock-image:
-	$(LINUX) docker build --build-arg APPLY_STRESS_PATCH=0 \
+	$(LINUX) docker build --build-arg APPLY_STRESS_PATCH=0 --build-arg NGSPICE_VERSION=42 \
 		-t $(STOCK_IMAGE) -f $(DOCKERFILE) $(DOCKER_CONTEXT)
 
 check:            ## tool versions, PDK, and the ngspice stress test for Option 1
@@ -107,17 +109,18 @@ check:            ## tool versions, PDK, and the ngspice stress test for Option 
 	@test -f $(GIVEN)/hd_reduced.lib || (echo "missing $(GIVEN)/hd_reduced.lib: check GIVEN" && exit 1)
 	@test -f $(TUT3)/verify.py || (echo "missing Tutorial 3 at $(TUT3): set TUT3" && exit 1)
 	@test -f $(HD_GDS) || (echo "missing $(HD_GDS): set PDK_HOST" && exit 1)
-	@test -f $(HD_LIB) || (echo "missing $(HD_LIB): check PDK/HD_LIB" && exit 1)
+	@test -f $(HD_LIB_HOST) || (echo "missing $(HD_LIB_HOST): check PDK_HOST" && exit 1)
 
 	$(LINUX) test -f $(TECH)
 	$(LINUX) test -e $(TUT3)/pdk
 
 	$(PYTHON) -c "import sys; from importlib.metadata import version as v; bad=[p for p in open('requirements.txt').read().split() if v(p.split('==')[0])!=p.split('==')[1]]; sys.exit('package pins differ: '+' '.join(bad) if bad else 0)"
 
-	@$(LINUX) command -v iverilog >/dev/null || (echo "Icarus Verilog is missing" && exit 1)
-	@$(LINUX) command -v yosys >/dev/null || (echo "Yosys is missing" && exit 1)
-	@$(LINUX) command -v sta >/dev/null || (echo "OpenSTA is missing: install OpenSTA" && exit 1)
-	@$(LINUX) command -v docker >/dev/null || (echo "Docker is missing or unavailable" && exit 1)
+	@# command is a shell builtin, so it runs inside sh -c: `wsl -e` starts programs only.
+	@$(LINUX) sh -c 'command -v iverilog' >/dev/null || (echo "Icarus Verilog is missing" && exit 1)
+	@$(LINUX) sh -c 'command -v yosys' >/dev/null || (echo "Yosys is missing" && exit 1)
+	@$(LINUX) sh -c 'command -v sta' >/dev/null || (echo "OpenSTA is missing: install OpenSTA" && exit 1)
+	@$(LINUX) sh -c 'command -v docker' >/dev/null || (echo "Docker is missing or unavailable" && exit 1)
 
 	$(LINUX) iverilog -V
 	$(LINUX) yosys -V
@@ -126,22 +129,21 @@ check:            ## tool versions, PDK, and the ngspice stress test for Option 
 
 	@$(LINUX) docker image inspect "$(IMAGE)" >/dev/null 2>&1 || $(MAKE) docker-image
 
-	@$(LINUX) docker run --rm \
-	  -v "$(CURDIR)/tools/stress_test:/opt/dd2/stress_test:ro" \
-	  --entrypoint /opt/dd2/stress_test/check_stress.sh \
-	  $(IMAGE) > results/check/ngspice_stress.log 2>&1; \
-	  status=$$?; \
-	  cat results/check/ngspice_stress.log; \
-	  if grep -q "mobility stress is discarded" results/check/ngspice_stress.log; then \
-	    echo "Detected stock ngspice. Rebuilding course Docker image..."; \
-	    $(MAKE) docker-image && \
-	    $(LINUX) docker run --rm \
-	      -v "$(CURDIR)/tools/stress_test:/opt/dd2/stress_test:ro" \
-	      --entrypoint /opt/dd2/stress_test/check_stress.sh \
-	      $(IMAGE); \
-	  else \
-	    exit $$status; \
-	  fi
+	@# The stress test folder is mounted by its Linux path (asked of the Linux side, so it is
+	@# /mnt/c/... under WSL). check_stress.sh exits 1 for a stock ngspice: the image is then
+	@# rebuilt as the course image and tested again, and the log always holds the last run,
+	@# whose binary SHA-256 liberty_view.py compares with each characterization.
+	@mnt=$$($(LINUX) sh -c 'cd $(STRESS_TEST_DIR) && pwd') || exit 2; \
+	  stress() { $(LINUX) docker run --rm -v "$$mnt:/opt/dd2/stress_test:ro" \
+	    --entrypoint /opt/dd2/stress_test/check_stress.sh $(IMAGE) > results/check/ngspice_stress.log 2>&1; \
+	    status=$$?; cat results/check/ngspice_stress.log; }; \
+	  stress; \
+	  if [ $$status -eq 1 ]; then \
+	    echo "$(IMAGE) has a stock ngspice: rebuilding it as the course image, then testing it again"; \
+	    $(MAKE) docker-image || exit 1; \
+	    stress; \
+	  fi; \
+	  exit $$status
 
 	$(LPYTHON) src/pdk_rules.py --tech $(TECH) --frame $(FRAME) --out results/pdk_rules/report.json
 
@@ -301,54 +303,81 @@ test: all test_views         ## every broken case must be rejected by its check
 	$(call expect_fail,nand2_1_pex_missing_pullup,$(LPYTHON) src/transistor_level_check.py --pex tests/broken/nand2_1_pex_missing_pullup.spice --request cells/$(PREFIX)nand2_1/request.json --models $(TUT3)/pdk/libs.tech/ngspice/sky130.lib.spice --liberty $(GIVEN)/hd_reduced.lib --ngspice "$(TUT3)/tools.sh ngspice" --workdir $(TUT3)/build/dd2_sim_broken --out build/broken/transistor_level.json)
 	@echo "PASS: every broken case was rejected (DRC and layer-check broken cases run inside make drc)"
 
-demo:              ## what the interview runs: make demo IN=/path/to/any_cell.json
-	@test -n "$(IN)" || (echo "usage: make demo IN=/path/to/request.json" && exit 1)
+# make demo IN=<request.json>: the whole flow on one request, as at the interview. Every file
+# goes to build/demo/ (cells/<name>/ and results/<check>/ inside it), so a demo never
+# overwrites the committed cells/ and results/. The cell's name is the request's own "name",
+# read by request_reader.py, not the file name. Characterization needs Table 5 to have
+# passed (results/characterization/validation.json, make char_validate) and make check's
+# stress log, as make char and make views do.
+DEMO_DIR := build/demo
+demo:             ## the flow on one request, as at the interview: make demo IN=<request.json>
+	@test -n "$(IN)" || (echo "usage: make demo IN=<request.json>" && exit 1)
 	@test -f "$(IN)" || (echo "error: file $(IN) does not exist" && exit 1)
-	$(eval CELL_NAME := $(basename $(notdir $(IN))))
-	@mkdir -p cells/$(PREFIX)$(CELL_NAME) build results/switch_level
-	# 1. Read & Validate Request
-	@$(PYTHON) src/request_reader.py $(IN) --out cells/$(PREFIX)$(CELL_NAME)/request_original.json > /dev/null 2>&1 || \
-	  { $(PYTHON) src/write_response.py --cell-dir cells/$(PREFIX)$(CELL_NAME) --raw-request $(IN); \
-	    echo "Request $(IN) was rejected cleanly."; exit 0; }
-	# 2. Reference & Synthesis
-	@$(PYTHON) src/reference_cell.py cells/$(PREFIX)$(CELL_NAME)/request_original.json --hd-liberty $(HD_LIB_HOST) \
-	  --hd-spice $(HD_SPICE_HOST) --out cells/$(PREFIX)$(CELL_NAME)/request.json --reference-out cells/$(PREFIX)$(CELL_NAME)/hd_reference.json
-	@$(PYTHON) src/synthesize.py --request cells/$(PREFIX)$(CELL_NAME)/request.json --frame $(FRAME) \
-	  --hd-reference cells/$(PREFIX)$(CELL_NAME)/hd_reference.json \
-	  --outdir cells/$(PREFIX)$(CELL_NAME) --objective $(OBJECTIVE) > build/synthesize_$(CELL_NAME).log
-	@$(PYTHON) src/switch_level_check.py cells/$(PREFIX)$(CELL_NAME)/network.json --request cells/$(PREFIX)$(CELL_NAME)/request.json \
-	  --out results/switch_level/$(CELL_NAME)_network.json
-	# 3. Layout & GDS
-	@$(PYTHON) src/euler.py cells/$(PREFIX)$(CELL_NAME)/network.json --hd-spice $(HD_SPICE_HOST) --hd-liberty $(HD_LIB_HOST)
-	@$(PYTHON) src/switch_level_check.py cells/$(PREFIX)$(CELL_NAME)/layout_spec.json --request cells/$(PREFIX)$(CELL_NAME)/request.json \
-	  --out results/switch_level/$(CELL_NAME).json
-	@$(PYTHON) src/prepare_layout.py cells/$(PREFIX)$(CELL_NAME)/layout_spec.json --request cells/$(PREFIX)$(CELL_NAME)/request.json \
-	  --frame $(FRAME) --outdir cells
-	@$(PYTHON) src/generate_gds.py cells/$(PREFIX)$(CELL_NAME)/layout_plan.json --tutorial-root $(TUT3) --outdir cells
-	# 4. DRC, LVS, Compare (Targeted strictly to CELL_NAME)
-	@rm -rf build/demo_cells && mkdir -p build/demo_cells
-	@cp -r cells/$(PREFIX)$(CELL_NAME) build/demo_cells/
-	$(PYTHON) src/verify_drc.py --tutorial-root $(TUT3) --reference-gds $(HD_GDS) --frame $(FRAME) \
-	  --image $(IMAGE) --linux "$(LINUX)" --generated build/demo_cells
-	$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) \
-	  --image $(IMAGE) --cells build/demo_cells
-	@if grep -q "sky130_fd_sc_hd" cells/$(PREFIX)$(CELL_NAME)/hd_reference.json 2>/dev/null; then \
-	  $(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME) --generated build/demo_cells; \
+	@$(PYTHON) -c "import json,sys; sys.exit(0 if json.load(open(sys.argv[1])).get('passed') else 1)" \
+	  results/characterization/validation.json 2>/dev/null || \
+	  (echo "Table 5 has not passed (results/characterization/validation.json): run make char_validate first" && exit 1)
+	@test -f results/check/ngspice_stress.log || (echo "no results/check/ngspice_stress.log: run make check first" && exit 1)
+	@rm -rf build/demo
+	@mkdir -p $(DEMO_DIR)/cells $(DEMO_DIR)/results
+	@if $(PYTHON) src/request_reader.py "$(IN)" --out $(DEMO_DIR)/request_original.json > /dev/null; then \
+	  name=$$($(PYTHON) -c "import json,sys; print(json.load(open(sys.argv[1]))['request']['name'])" $(DEMO_DIR)/request_original.json) && \
+	  mkdir -p $(DEMO_DIR)/cells/$$name && cp $(DEMO_DIR)/request_original.json $(DEMO_DIR)/cells/$$name/ && \
+	  $(MAKE) --no-print-directory demo-cell DEMO_CELL=$$name; \
+	else \
+	  mkdir -p $(DEMO_DIR)/cells/refused && cp $(DEMO_DIR)/request_original.json $(DEMO_DIR)/cells/refused/ && \
+	  $(PYTHON) src/write_response.py --cell-dir $(DEMO_DIR)/cells/refused --raw-request "$(IN)" \
+	    --results $(DEMO_DIR)/results; \
+	  echo "The request was refused; the response is $(DEMO_DIR)/cells/refused/response.json"; exit 1; \
 	fi
-	# 5. Transistor & Model Level Simulation
-	$(LPYTHON) src/transistor_level_check.py --pex cells/$(PREFIX)$(CELL_NAME)/$(PREFIX)$(CELL_NAME)_pex.spice \
-	  --request cells/$(PREFIX)$(CELL_NAME)/request.json --models $(TUT3)/pdk/libs.tech/ngspice/sky130.lib.spice \
-	  --liberty $(GIVEN)/hd_reduced.lib --ngspice "$(TUT3)/tools.sh ngspice" \
-	  --workdir $(TUT3)/build/dd2_sim_$(CELL_NAME) --out results/transistor_level/$(CELL_NAME).json
-	$(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$(CELL_NAME)/request.json \
-	  --outdir cells/$(PREFIX)$(CELL_NAME) --report results/model_level/$(CELL_NAME).json
-	# 6. Characterization & Liberty View
+
+DEMO_C = $(DEMO_DIR)/cells/$(DEMO_CELL)
+DEMO_R = $(DEMO_DIR)/results
+DEMO_S = $(patsubst $(PREFIX)%,%,$(DEMO_CELL))
+demo-cell:        ## (called by make demo) the steps of make all, char and views on DEMO_CELL
+	@echo "== 1-3 read, reference, minimize, stages, size: $(DEMO_CELL)"
+	$(PYTHON) src/reference_cell.py $(DEMO_C)/request_original.json --hd-liberty $(HD_LIB_HOST) \
+	  --hd-spice $(HD_SPICE_HOST) --out $(DEMO_C)/request.json --reference-out $(DEMO_C)/hd_reference.json
+	$(PYTHON) src/synthesize.py --request $(DEMO_C)/request.json --frame $(FRAME) \
+	  --hd-reference $(DEMO_C)/hd_reference.json --hd-liberty $(HD_LIB_HOST) \
+	  --outdir $(DEMO_C) --objective $(OBJECTIVE)
+	$(PYTHON) src/switch_level_check.py $(DEMO_C)/network.json --request $(DEMO_C)/request.json \
+	  --out $(DEMO_R)/switch_level/$(DEMO_S)_network.json
+	@echo "== 4-5 Euler paths, layout plan, GDS"
+	$(PYTHON) src/euler.py $(DEMO_C)/network.json --hd-spice $(HD_SPICE_HOST) --hd-liberty $(HD_LIB_HOST)
+	$(PYTHON) src/switch_level_check.py $(DEMO_C)/layout_spec.json --request $(DEMO_C)/request.json \
+	  --out $(DEMO_R)/switch_level/$(DEMO_S).json
+	$(PYTHON) src/prepare_layout.py $(DEMO_C)/layout_spec.json --request $(DEMO_C)/request.json \
+	  --frame $(FRAME) --outdir $(DEMO_DIR)/cells
+	$(PYTHON) src/generate_gds.py $(DEMO_C)/layout_plan.json --tutorial-root $(TUT3) --outdir $(DEMO_DIR)/cells
+	@echo "== 6 DRC in tapped rows, abutment, layer check; LVS, RC-LVS"
+	$(PYTHON) src/verify_drc.py --tutorial-root $(TUT3) --reference-gds $(HD_GDS) --frame $(FRAME) \
+	  --image $(IMAGE) --linux "$(LINUX)" --jobs $(JOBS) --generated $(DEMO_DIR)/cells --outdir $(DEMO_R)/drc
+	$(LPYTHON) src/verify_lvs.py --tutorial-root $(TUT3) --pdk-spice $(HD_SPICE) --hd-liberty $(HD_LIB) \
+	  --image $(IMAGE) --jobs $(JOBS) --cells $(DEMO_DIR)/cells --outdir $(DEMO_R)/lvs
+	@echo "== 7 transistor level (the extracted RC netlist) and model level"
+	$(LPYTHON) src/transistor_level_check.py --pex $(DEMO_C)/$(DEMO_CELL)_pex.spice \
+	  --request $(DEMO_C)/request.json --models $(TUT3)/pdk/libs.tech/ngspice/sky130.lib.spice \
+	  --liberty $(GIVEN)/hd_reduced.lib --ngspice "$(TUT3)/tools.sh ngspice" --jobs $(INNER_JOBS) \
+	  --workdir $(TUT3)/build/dd2_demo_sim_$(DEMO_S) --out $(DEMO_R)/transistor_level/$(DEMO_S).json
+	$(LINUX) python3 src/model_level_check.py --request $(DEMO_C)/request.json \
+	  --outdir $(DEMO_C) --report $(DEMO_R)/model_level/$(DEMO_S).json
+	@echo "== 8 characterization, Liberty view, response; HD comparison; round trip"
 	$(LPYTHON) src/characterize.py --tutorial-root $(TUT3) --liberty $(HD_LIB) --image $(IMAGE) \
-	  --cell-dir cells/$(PREFIX)$(CELL_NAME) --out cells/$(PREFIX)$(CELL_NAME)/characterized
-	$(PYTHON) src/liberty_view.py --cell-dir cells/$(PREFIX)$(CELL_NAME)
-	$(LINUX) python3 src/model_level_check.py --request cells/$(PREFIX)$(CELL_NAME)/request.json \
-	  --outdir cells/$(PREFIX)$(CELL_NAME) --report results/model_level/$(CELL_NAME).json \
-	  --liberty cells/$(PREFIX)$(CELL_NAME)/cell.lib
-	$(PYTHON) src/write_response.py --cell-dir cells/$(PREFIX)$(CELL_NAME)
+	  --jobs $(INNER_JOBS) --cell-dir $(DEMO_C) --out $(DEMO_C)/characterized
+	$(PYTHON) src/liberty_view.py --cell-dir $(DEMO_C) --report $(DEMO_R)/views/$(DEMO_S).json
+	$(LINUX) python3 src/model_level_check.py --request $(DEMO_C)/request.json \
+	  --outdir $(DEMO_C) --report $(DEMO_R)/model_level/$(DEMO_S).json --liberty $(DEMO_C)/cell.lib
+	@# Only a request with an installed HD counterpart (hd_reference.json) is compared:
+	@# compare_hd.py fails when it has no cell to compare.
+	@if $(PYTHON) -c "import json,sys; sys.exit(0 if json.load(open(sys.argv[1])).get('reference') else 1)" \
+	    $(DEMO_C)/hd_reference.json; then \
+	  $(PYTHON) src/compare_hd.py --reference-gds $(HD_GDS) --frame $(FRAME) \
+	    --generated $(DEMO_DIR)/cells --outdir $(DEMO_R)/hd_comparison; \
+	else echo "$(DEMO_CELL) has no installed HD counterpart: HD comparison not run"; fi
+	$(PYTHON) src/write_response.py --cell-dir $(DEMO_C) --results $(DEMO_R)
+	$(LINUX) python3 src/round_trip.py --cell-dir $(DEMO_C) --reduced $(GIVEN)/hd_reduced.lib \
+	  --map-script $(GIVEN)/scripts/map.sh --outdir $(DEMO_R)/round_trip --workdir $(DEMO_DIR)/round_trip_work
+	@echo "PASS: $(DEMO_CELL); response $(DEMO_C)/response.json"
+
 clean:
 	rm -rf build
